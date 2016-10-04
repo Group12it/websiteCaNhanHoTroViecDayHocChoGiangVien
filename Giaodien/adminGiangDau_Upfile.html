@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
+
+    <!-- Bootstrap -->
+    <link href="css/styleadmin.css" rel="stylesheet">
+   <!--  <link href="css/Site.css" rel="stylesheet">-->
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="logo col-md-6 col-sm-6 col-xs-12"><h1><a href="#">Học lập trình</a></h1></div>
+          <!-- /Đăng nhập-->   
+                <div class="navbar-right">
+                <a href="#">Admin</a>
+                <img src="images/hoclaptrinh.jpg" align="bottom" width="40" height="40"/>
+                <button class="btn btn-danger navbar-btn">Đăng xuất</button>
+                </div>
+<!-- end đăng nhập-->
+                </div>
+
+        <body>
+
+           <body>
+               <img src="images/hoclaptrinh.jpg" align="bottom" width="1165" height="160"/>
+               
+              </body>
+
+
+        <div class="header-menu">
+          <!-- Menu do Bootstrap cung cấp có hỗ trợ menu trên di động -->
+          <nav class="navbar navbar-blue">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="admin.html">Trang chủ</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+             <ul class="nav navbar-nav">
+                <li><a href="khoahoc.html">Khóa học </a></li>
+                <li><a href="khoahoccuartoi.html">Khóa học của tôi</a></li>
+                <li><a href="thread.html">Thảo luận</a></li>
+                <li><a href="kiemtra.html">Kiểm tra</a></li>
+                <li> <a href="#">Giới thiệu</li>
+              </ul>
+<!-- start tìm kiếm-->
+
+          <div class="search col-md-4 col-sm-4 col-xs-12 text-right">
+           <!-- <form method="get" action="#">-->
+              <input type="text" placeholder="Nhập từ khóa tìm kiếm" id="q" name="q" value="">
+              <!--<input type="submit" value="Tìm Kiếm">-->
+              <button class="btn btn-info navbar-btn">Tìm kiếm</button>
+
+            <!--</form>-->
+          </div>
+          <div class="clearfix"></div>
+             
+        
+            <!-- End tìm kiếm-->
+
+            </div>
+          </nav>
+          <!-- End Menu Bootstrap -->
+        </div>
+      </div>
+    </header>
+    <body>
+     <div class="paper"> 
+        <table  class="tbBody" border="1px">
+            <tr style="height:600px">
+              <td class="content-left" width="25%">
+                 <div class="list-group">
+                  <a href="admin.html" class="list-group-item">Trang quản trị</a>
+                  <a href="#" class="list-group-item ">Quản lý khóa học</a>
+                  <a href="adminGiangDay.html" class="list-group-item active">Kế hoạch giảng dạy</a>
+                  <a href="adminQuanLyHocVien.html" class="list-group-item">Quản lý học viên</a>
+                  <a href="adminGuiMail.html" class="list-group-item">Gửi Mail cho học viên</a>
+                  <a href="#" class="list-group-item">Bài tập</a>
+                  <a href="#" class="list-group-item">Bài tập của học viên</a>
+                </div>
+                
+              <td class="content-center">
+                <table>
+                	<tr>
+                    	<td width="5%"></td>
+                        <td>
+                        	<div class=dataform>
+                                <form>
+                                 <fieldset style="width:100%">
+                                  <legend style="width:200px">Đưa bài giảng</legend>
+                                  
+                                    <table width="500px" height="400px">
+                                                 <!--Tạo ra hàng-->
+                                        <tr>
+                                                <!--tạo ra côt là <th>-->
+                                            <td width="200px" align = "left" valign = "top"><blockquote>Tên bài giảng:</blockquote> </td>
+                                                
+                                            <td>
+                                                <input style="float:left" size="40" type="text" name="" id="input" class="form-control" value="" required pattern="" title=""/>
+                                            </td>
+                                            <td width="10px"></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td height="245" align = "left" valign = "top"><blockquote>Nội dung bài giảng:</blockquote> </td>
+                                            <td>
+                                                <!--<textarea style="float:left" rows="15" cols="40"></textarea>-->
+                                                <textarea name="" id="input" class="form-control" rows="15" required></textarea>
+                                          </td>
+                                          <td width="20px"></td>
+                                        </tr>
+                                         <tr height="30px">
+                                            <td height="81"  align = "left" valign = "top"><blockquote> post file: </blockquote></td>
+                                            <td>
+                                               <button type="button" class="btn btn-primary">Chọn tệp</button>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td height="30px"></td>
+                                            <td>
+                                               <button type="button" class="btn btn-primary">Tải Lên</button>
+                                               <button style="float:right" type="button" class="btn btn-primary">Hủy bỏ</button>
+                                               <br/>
+                                               <br/>
+                                               <br/>
+                                            </td>
+                                            <td ></td>
+                                        </tr>
+                                      
+                                    </table>
+                            
+                            </fieldset>
+                                </form>
+                            </div>
+                        </td>
+                        <td width="5%"></td>
+                    </tr>
+                </table>
+              </td>
+              <td class="content-right" width="20%"></td>
+            </tr>
+            <tr>
+              <td colspan="3" style="height:5%">
+              <center> Group 12 Copyright© 2016</center>
+              </td>
+            </tr>
+        </table>
+      </div>
+      
+    </body>
+  </html>
