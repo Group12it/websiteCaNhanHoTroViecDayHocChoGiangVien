@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
   <head>
@@ -6,16 +6,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
       <link href="css/bootstrap.min.css" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
       <link href="ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
       <link href="css/bootstrap.min.css" rel="stylesheet">
        <link href="css/banerchuyendong.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/w3.css">
+      <script src="js/angular.min.js"></script>
+      <script src="js/myUsers.js"></script>
 </head>
 
 
-<body>
+<body ng-app="myApp" ng-controller="userCtrl">
 
     <header>
       <div class="container">
@@ -47,6 +50,7 @@
 
   </header>  
 
+
  <section class="container" style="min-height:800px">
         <!-- Modal đăng nhập-->
         <div class="modal fade" id="myModal" role="dialog">
@@ -62,29 +66,23 @@
                         <h2><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</h2>
                     </div>
                     <div class="modal-body" style="padding:40px 50px;">
-                    <form action="indexuser.html" method="post" role="form">                        
-                      <div class="form-group">
-                        <label for="usrname"><span class="glyphicon glyphicon glyphicon-envelope"></span> Email</label>
-                        <input class="form-control" id="Email" name="Email" type="text" value="" />
-                        <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-      valmsg-replace="true"></span>
-                    </div>
+                    <form action="indexuser.html" method="post" role="form"> 
 
-                    <div class="form-group">
-                    <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                    <input class="form-control" id="Password" name="Password" type="password" value="" />
-                    <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
-                    </div>
-                            
-                    <div class="checkbox">
-                        <label>
-                        <input id="Gender" name="Gender" type="checkbox" value="true" /><input name="Gender" type="hidden" value="false" />
-                                    Ghi nhớ?
-                        </label>
-                    </div>
-                    <button type="submit" style="background:#4CAF50;color:#fff" class="btn  btn-block">
-                                <span class="glyphicon glyphicon-off"></span> Đăng nhập
-                            </button>
-                    </form>                    
+                        <form hiden="hidenform">
+
+                            <label>Email:</label>
+                            <input class="w3-input w3-border" type="text" ng-model="email"  placeholder="Email">
+                            <br>
+                            <label>Password:</label>
+                            <input class="w3-input w3-border" type="password" ng-model="password" placeholder="Password">
+
+                            <br>
+                            <button class="w3-btn w3-green w3-ripple" ng-disabled="error || incomplete">&#10004; Đăng nhập</button>
+                        </form>
+
+                    
+                   
+                    </form>                  
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
@@ -184,12 +182,12 @@
                    <ul class="clearfix">
                       <li><a href="indexuser.html">Trang chủ</a></li>
                       <li>
-                          <li><a href="">Khóa học<span class="arrow"> &#9660;</span> </a>
+                          <li><a href="#">Khóa học<span class="arrow"> &#9660;</span> </a>
                           <ul class="sub-menu">
                               <li><a href="chitietkhoahoc.html">Khoá học lập trinh C căn bản</a></li>
-                    <li><a href="#">Khóa học lập trình java</a></li>
-                    <li><a href="#">Khoá học lập trình PHP</a></li>
-                    <li><a href="#">Khoá học lập trình Web</a></li>
+                              <li><a href="#">Khóa học lập hướng đối tượng C++</a></li>
+                              <li><a href="#">Khoá học lập trình Web Java</a></li>
+                              <li><a href="#">Khoá học lập trình Web PHP</a></li>
                           </ul>
                       </li>
                       <li><a href="khoahoccuartoi.html">Khóa học của tôi</a></li>
@@ -406,6 +404,9 @@ function showSlides() {
     <script src="Scripts/respond.min.js"></script>
     <script src="Scripts/jssocials.min.html"></script>
  
+
+<script src= "myUsers.js"></script>
+
    <!--Đăng nhập-->
     <script>
         $(document).ready(function () {
