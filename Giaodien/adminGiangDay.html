@@ -77,38 +77,38 @@
       </div>
     </header>
     <body>
-     <div class="paper"> 
-        <table  class="tbBody" border="1px">
-            <tr style="height:600px">
-              <td class="content-left" width="25%">
+        <table  class="tbBody">
+            <tr>
+              <td class="content-left">
                 <div class="list-group">
-                     <a class ="list-group-item " href="admin.html">Trang chủ quản trị</a>
-                                <a class ="list-group-item " href="quanlykhoahoc.html">Quản lý khoá học</a>
-                                <a class ="list-group-item " href="threadadmin.html">Thread thảo luận</a>
-                                <a class="list-group-item " href="admingiangday.html">Kế hoạch giảng dạy</a>
-                                <a class="list-group-item " href="adminQuanLyHocVien.html">Quản lý học viên</a>
-                                <a class="list-group-item " href="adminGuiMail.html">Gửi Mail cho học viên</a>
-                                <a class="list-group-item " href="Adminbaitap.html">Bài tập</a>
-                                <a class="list-group-item " href="admindanhsachhocvien.html">Bài tập của học viên</a>
-                                <a class="list-group-item " href="admindethitracnghiem.html">Đề trắc nghiệm</a>
+                     <div class="list-group">
+                  <a href="admin.html" class="list-group-item">Trang quản trị</a>
+                  <a  class="list-group-item ">Quản lý khóa học</a>
+                  <a href="adminGiangDay.html" class="list-group-item">Kế hoạch giảng dạy</a>
+                  <a href="adminQuanLyHocVien.html" class="list-group-item">Quản lý học viên</a>
+                  <a href="adminGuiMail.html" class="list-group-item">Gửi Mail cho học viên</a>
+                  <a  class="list-group-item">Bài tập</a>
+                  <a  class="list-group-item">Bài tập của học viên</a>
                 </div>
               <td class="content-center">
-                <table width="100%" border="1" cellpadding="10" style="border-collapse: collapse; font-size: 12px">
-                                <tbody><tr>
-                                <div>
-                                   <center ><font size="12px" color="red">Tải Tài liệu cho khóa học</font></center>
-      
-                                </div>
-                                  <table class="table table-striped" border="1px" style="margin-top:10px">
-                                      <thead>
-                                        <tr style="background:#00a8d8" align="center">
-                                          <th width="29"><center>STT</center></th>
-                                          <th width="129"><center>Mã Khóa Học</center></th>
-                                          <th width="134"><center>Tên Khóa Hoc</center></th>
-                                          <th width="177"><center>Thao Tác</center></th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
+              <table class="ria">
+              	<tr>
+              		<td width="5%"></td>
+                    <td width="90%">
+
+                    	 <div class="panel panel-default" style="height:100%" >
+                          <div  class="panel-heading" style="background:#0CC">
+                              <h4 style="font-family: verdana;color:#000">Quản lý giảng dạy</h4>
+                          </div>
+                            <div class="panel-body">
+                            <table class="table table-bordered table-hover">
+                              <thead style="background:#09F">
+                                          <th width="10%">STT</th>
+                                          <th width="30%">Mã Khóa Học</th>
+                                          <th width="30%">Tên Khóa Hoc</th>
+                                          <th width="20%">Thao Tác</th>
+                              </thead>
+                              <tbody>
                                         <tr>
                                           <td>1</td>
                                           <td>LT001</td>
@@ -126,8 +126,8 @@
                                           <td>mary@example.com</td>
                                           <th>
                                             <center>
-                                                <button type="button" class="btn btn-success">Xem</button>
-                                              <button type="button" class="btn btn-success">Tải lên</button>
+                                               <button type="button" class="btn btn-success"><a href="adminGiangDay_LoadDulieu.html">Xem</a></button>
+                                              <button type="button" class="btn btn-success" ><a href="adminGiangDau_Upfile.html">Tải lên</a></button>
                                             </center>
                                           </th>
                                         </tr>
@@ -137,17 +137,24 @@
                                           <td>july@example.com</td>
                                           <th>
                                             <center>
-                                               <button type="button" class="btn btn-success">Xem</button>
-                                              <button type="button" class="btn btn-success">Tải lên</button>
+                                              <button type="button" class="btn btn-success"><a href="adminGiangDay_LoadDulieu.html">Xem</a></button>
+                                              <button type="button" class="btn btn-success" ><a href="adminGiangDau_Upfile.html">Tải lên</a></button>
                                             </center>
                                           </th>
                                         </tr>
-                                      </tbody>
-                                    </table>
 
-                            </tbody></table>
+                              </tbody>
+                            </table>
+                            </div>
+                          </div>
+                      
+                      </td>
+                      <td width="5%"><td>
+                   </tr>
+                </table>
+               
               </td>
-              <td class="content-right" width="20%"></td>
+              <td class="content-right"></td>
             </tr>
             <tr>
               <td colspan="3" style="height:5%">
@@ -155,7 +162,6 @@
               </td>
             </tr>
         </table>
-      </div>
       
     </body>
   </html>
