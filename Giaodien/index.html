@@ -143,46 +143,40 @@
                                   <form action="">
                                       <div class="form-group">
                                           <label class="control-label"><span class="glyphicon glyphicon-user"> </span> Họ tên <span class="batbuoc">(Bắt buộc)</span></label>
-                                          <input class="form-control" data-val="true" data-val-length="Họ tên không được phép quá ngắn hoặc quá dài!" data-val-length-max="100" data-val-length-min="10" data-val-required="Họ tên không được để trống!" id="FullName" name="FullName" placeholder="Họ tên" type="text" value="">
-                                          <span class="field-validation-valid text-danger" data-valmsg-for="FullName" data-valmsg-replace="true"></span>
+                                            <input type="text" id="inputTen" class="form-control" placeholder="Name" required autofocus><br>
 
                                       </div>
                                       <div class="form-group">
                                           <label for="usrname"><span class="glyphicon glyphicon glyphicon-envelope"></span> Email <span class="batbuoc">(Bắt buộc)</span></label>
-                                          <input class="form-control" data-val="true" data-val-email="Địa chỉ email không hợp lệ." data-val-required="Bạn chưa nhập Email." id="Email" name="Email" type="text" value="">
-                                          <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                                          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus><br>
                                       </div>
                                       <div class="form-group">
                                           <label><span class="glyphicon glyphicon-eye-open"> </span> Mật khẩu <span class="batbuoc">(Bắt buộc)</span></label>
-                                          <input class="form-control" data-val="true" data-val-length="Mật khẩu phải tối thiếu 8 ký tự, tối đa 100 ký tự." data-val-length-max="100" data-val-length-min="8" data-val-required="Bạn chưa nhập mật khẩu." id="Password" name="Password" placeholder="Mật khẩu" type="password">
-                                          <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                                           <input type="password" id="inputPass" class="form-control" placeholder="Password" required autofocus><br>
                                       </div>
                                       <div class="form-group">
                                           <label><span class="glyphicon glyphicon-eye-open"> </span>Nhập lại mật khẩu <span class="batbuoc">(Bắt buộc)</span></label>
-                                          <input class="form-control" data-val="true" data-val-equalto="Nhập lại mật khẩu không khớp." data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" placeholder="Nhập lại mật khẩu" type="password">
-                                          <span class="field-validation-valid text-danger" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
+                                          <input type="password" id="inputRePass" class="form-control" placeholder="RepeatPassword" required autofocus><br>
                                       </div>
                                       <div class="form-group">
                                           <label><span class="glyphicon glyphicon-time"> </span>Ngày sinh <span class="batbuoc">(Bắt buộc)</span></label>
-                                          <input class="form-control valid" data-val="true" data-val-required="Ngày sinh không được bỏ trống!" id="datepicker" name="BirthDate" placeholder="Ngày sinh của bạn" type="text" value="">
-                                          <span class="text-danger field-validation-valid" data-valmsg-for="BirthDate" data-valmsg-replace="true"></span>
-                                          <span class="field-validation-valid text-danger" data-valmsg-for="CustomError" data-valmsg-replace="true"></span>
+                                           <input type="date" id="inputDate" class="form-control" placeholder="Input date" required autofocus><br>
                                       </div>
                                       <div class="form-group">
                                           <label>Giới tính:</label>
-                                          <label class="radio-inline"><input checked="checked" data-val="true" data-val-required="Bạn chưa chọn giới tính." id="Gender1" name="Gender" type="radio" value="True"> Nam </label>
+                                          <label class="radio-inline"><input checked="checked" data-val="true" data-val-required="Bạn chưa chọn giới tính." id="Gender1" name="Gender" type="radio" value="True" required> Nam </label>
                                           <label class="radio-inline"><input id="Gender2" name="Gender" type="radio" value="False">Nữ</label>
                                       </div>
                                       <div class="form-group">
                                           <label><span class="glyphicon glyphicon-phone"> </span>Điện thoại</label>
-                                          <input class="form-control" data-val="true" data-val-regex="Số điện thoại không hợp lệ" data-val-regex-pattern="^[0]\d{9,}$" id="PhoneNumber" name="PhoneNumber" placeholder="Số điện thoại liên hệ" type="text" value="">
-                                          <span class="field-validation-valid text-danger" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span>
+                                         <input type="number" id="inputSDT" class="form-control" placeholder="Phone" required autofocus><br>
                                       </div>
-                          <div class="g-recaptcha" data-sitekey="6LdjVRUTAAAAAIZngSeBDApHMnA_pKcxALxV4sMu"><div style="width: 304px; height: 78px;"><div><iframe src="https://www.google.com/recaptcha/api2/anchor?k=6LdjVRUTAAAAAIZngSeBDApHMnA_pKcxALxV4sMu&amp;co=aHR0cDovL2NodXllbmxhcHRyaW5oLm5ldDo4MA..&amp;hl=vi&amp;v=r20160926121436&amp;size=normal&amp;cb=yk1v9gsk006g" title="tiện ích con mã xác thực lại" width="304" height="78" role="presentation" frameborder="0" scrolling="no" name="undefined"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none;  display: none; "></textarea></div></div>
-                                    <a style="cursor:pointer"id= "myMod">   <button type="submit" style="background:#5cb85c;color:#fff;" class="btn  btn-block">
-                                          <span class="glyphicon glyphicon-ok"> </span> Đăng ký
-                                      </button>
+                     
+                                    <a style="cursor:pointer"id= "myMod">   
+                                    
                                     </a>
+                                    <button class="w3-btn w3-green w3-ripple" >&#10004; Đăng ký</button>
+                                     
                      
 
 
@@ -197,8 +191,6 @@
 
 
         <section class="row">
-  
-
 
 <div class ="container">
         <div class="row">
