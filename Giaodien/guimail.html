@@ -56,61 +56,49 @@ function validateText(id)
     });
 </script>
   </head>
-    <header>
-      <div class="container">
+ <header>
+    <div class="container">
         <div class="row">
-          <div class="logo col-md-6 col-sm-6 col-xs-12"><h1><a href="#">Học lập trình</a></h1></div>
-          <!-- /Đăng nhập-->   
-                <div class="navbar-right">
-              
-                
-                 <a href="#">Học Viên</a>
-                <img src="images/hoclaptrinh.jpg" align="bottom" width="40" height="40"/>
-               <a href="index.html" <button class="btn btn-info navbar-btn">Đăng xuất</button></a>
-                
-<!-- end đăng nhập-->
-                </div>
-
+            <div class="col-xs-2 col-sm-6 col-md-8"></div>
+            <div class="col-xs-6 col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="logo col-md-6 col-sm-6 col-xs-12"><h1><a href="#">Học lập trình</a></h1></div>
+            <div class="navbar-right">
+                <a href="#">Học Viên</a>
+                <img src="images/hoclaptrinh.jpg" align="bottom" width="40" height="40" />
+                <button class="btn btn-danger navbar-btn">Đăng xuất</button>
+            </div>
+          </div>
         <body>
-
-           <body>
-               <img src="images/hoclaptrinh.jpg" align="bottom" width="1165" height="160"/>
-               
-              </body>
-
- <div class="wrapper">
-                  <nav class="menu">
-                   <ul class="clearfix">
-                      <li><a href="indexuser.html">Trang chủ</a></li>
-                      <li>
-                          <li><a href="#">Khóa học<span class="arrow"> &#9660;</span> </a>
-                          <ul class="sub-menu">
-                                      <li><a href="chitietkhoahoc.html">Khoá học lập trinh C căn bản</a></li>
+            <img src="images/hoclaptrinh.jpg" align="bottom" width="1165" height="160" />
+        </body>
+       <div class="wrapper">
+            <nav class="menu">
+                <ul class="clearfix">
+                    <li><a href="indexuser.html">Trang chủ</a></li>
+                    <li>
+                    <li>
+                        <a href="#">Khóa học<span class="arrow"> &#9660;</span> </a>
+                        <ul class="sub-menu">
+                            <li><a href="chitietkhoahoc.html">Khoá học lập trinh C căn bản</a></li>
                             <li><a href="#">Khóa học lập trình java</a></li>
                             <li><a href="#">Khoá học lập trình PHP</a></li>
                             <li><a href="#">Khoá học lập trình Web</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="khoahoccuartoi.html">Khóa học của tôi</a></li>
-                            <li><a href="thread.html">Thảo luận</a></li>
-                            <li><a href="kiemtra.html">Kiểm tra</a></li>
-                            <li> <a href="guimail.html">Soạn mail</a></li>
-                            <li> <a href="#">Giới thiệu</a></li>
-                  </ul>
-              </nav>
-        
-
-
-                    <div class="clearfix"></div>
-                
-                    
-                  </div>   
-         
+                        </ul>
+                    </li>
+                    <li><a href="khoahoccuartoi.html">Khóa học của tôi</a></li>
+                    <li><a href="thread.html">Thảo luận</a></li>
+                    <li><a href="kiemtra.html">Kiểm tra</a></li>
+                     <li> <a href="guimail.html">Liên hệ</a></li>
+                    <li> <a href="#">Giới thiệu</a></li>
+                </ul>
+            </nav>
         </div>
-      </div>
-      </div>
-
-    </header>
+        </nav>
+    </div>
+    </div>
+</header>
 
   <div id="wrapper">
       <div class="container">
@@ -133,17 +121,17 @@ function validateText(id)
 	         		<form class="form" method="post" id="contactform" action="" role ="form">
 	         		<div class="form-group">
 	         			<label for="contactemail">Email Address</label>
-	         			<input type="email" class="form-control" id="contactemail" placeholder="Enter Email" >
+	         			<input type="email" class="form-control" id="contactemail" placeholder="Enter Email" required autofocus>
 	         			</div>
 	         			<div class ="form-group">
 	         			<label for="contactsubject">Subject</label>
-	         			<input type="subject" class="form-control" id="contactsubject" placeholder="Enter Subject">
+	         			<input type="subject" class="form-control" id="contactsubject" placeholder="Enter Subject" required autofocus>
 	         			</div>
 	         			<div class="form-group">
-						<label for="contactmessage">Message</label><br>
-	         			<textarea class="form-group" id="contactmessage" rows="10" cols="75"></textarea>
+					   	<label for="contactmessage">Message</label><br>
+	         			<textarea class="form-group" id="contactmessage" rows="10" cols="75" placeholder="Enter content"></textarea>
 	         			</div>
-	         			<button type="Submit" id ="contracbtn" class="btn btn-info">Gửi</button>
+	         			<button type="Submit" id ="contracbtn" class="btn btn-info" >Gửi</button>
 	         			<!-- kết thúc gửi mail-->
 	         		</div>
 	         	</form>
