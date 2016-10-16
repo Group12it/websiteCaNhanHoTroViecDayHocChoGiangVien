@@ -1,7 +1,6 @@
 ﻿*{
 	margin: 0px;
 	padding: 0px;
-	
 }
 .clearfix:after{
 	display: block;
@@ -16,10 +15,9 @@
 /* menu */
 .menu{
 	width: 1165px;
-	height: 45px;
 	margin: 0px left;
 	background:#039;
-	
+	height:45px;
 	margin-top: 0px;
 }
 .menu li {

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.css" rel="stylesheet" media="screen">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+<form method="post" id="contactform" action ="google.com" role="form">
+
+<div class="form-group">
+  <label for="contactname">Name</label>
+  <input type="text" class="form-control" id="contactname" placeholder="Enter Name">
+  </div>
+
+<button type="button" class="form-control" id="contactbtn" class="btn btn-default">Summit</button>
+</form>
+
+
+<script src="js/jquery.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+<script>
+
+
+function validateText(id)
+        {
+            if($("#"+id).val()==null || $("#"+id).val()=="")
+            {
+                var div = $("#"+id).closest("div");
+                div.addClass("has-error");                
+                return false;
+            }
+            else
+            {
+                var div = $("#"+id).closest("div");
+                div.removeClass("has-error");                
+                return false;
+            }
+        }
+        $(document).ready(
+            function()
+            {
+                var validcheck = true;
+                $("#stsub").click(function()
+                {
+                    if(!validateText("contactname"))
+                    {
+                        validcheck = false;
+                    }
+                    if(!validateText("stname"))
+                    {
+                        validcheck = false;
+                    }
+                    if(!validateText("pname"))
+                    {
+                        validcheck = false;
+                    }
+                    if(!validateText("phone"))
+                    {
+                        validcheck = false;
+                    }
+                    if(validcheck == true)
+                   {
+                        $("form#contactform").submit();                    
+                   }
+                });
+            });
+</script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js" type="text/javascript"></script>
+<script>
+
+$('#contactform').bootstrapValidator();
+</script>
+</body>
+</html>

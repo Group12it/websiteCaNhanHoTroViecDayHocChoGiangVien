@@ -13,23 +13,21 @@
 </head>
 <header>
     <div class="container">
+      
         <div class="row">
-            <div class="col-xs-2 col-sm-6 col-md-8"></div>
-            <div class="col-xs-6 col-md-4"></div>
-        </div>
-        <div class="row">
-            <div class="logo col-md-6 col-sm-6 col-xs-12"><h1><a href="#">Học lập trình</a></h1></div>
+            <div class="logo col-md-6 col-sm-6 col-xs-6 collapse-xs collapse-sm" ><h1><a href="#">Học lập trình</a></h1></div>
             <div class="navbar-right">
                 <a href="#">Học Viên</a>
-                <img src="images/hoclaptrinh.jpg" align="bottom" width="40" height="40" />
-                <button class="btn btn-danger navbar-btn">Đăng xuất</button>
+                <img src="images/hoclaptrinh.jpg" align="bottom" width="40" height="40" class="col-sm-img-responsive"/>
+                <button class="btn btn-danger navbar-btn collapse-xs">Đăng xuất</button>
             </div>
-          </div>
-        <body>
+        </div>
+     
+            <div class="col-md-13 visible-lg visible-md">
             <img src="images/hoclaptrinh.jpg" align="bottom" width="1165" height="160" />
-        </body>
+           </div>
        <div class="wrapper">
-            <nav class="menu">
+            <nav class="menu collapse-xs" >
                 <ul class="clearfix">
                     <li><a href="indexuser.html">Trang chủ</a></li>
                     <li>
@@ -54,9 +52,9 @@
     </div>
     </div>
 </header>
-
+<p></p>
 <body>
-    <section class="container" style="min-height:800px">
+    <section class="container" style="min-height:400px">
         <section class="row">
             <div class="col-md-12">
 
@@ -120,15 +118,19 @@
         </section>
     </section>
 
-    <footer>
+    <footer class="site-footer collapse-xs">
+     
         <div class="container">
             <div class="footer-info text-center">
                 <p>
                     Group 12 Copyright&copy; 2016 Designer</a><br>
                 </p>
             </div>
+            <div class="col-md-4">
+                <p>Home</p>
+            </div>
         </div>
-    </footer>
+     </footer>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

@@ -3,15 +3,22 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <SCRIPT LANGUAGE="JavaScript">
+      function confirmAction() {
+        return confirm("Bạn Đã Thực Hiện Thao Tác Thành Công")
+      }
+ 
+      </SCRIPT>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+       <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" media="all" type="text/css" href="css/font-awesome.min.css"/>
   </head>
-         <header>
+    <header>
     <div class="container">
         <div class="row">
             <div class="col-xs-2 col-sm-6 col-md-8"></div>
@@ -53,153 +60,126 @@
     </div>
     </div>
 </header>
+<p></p>
+<body>
 
-    <body>
-        <div id="wrapper">
+  <div>
       <div class="container">
         <div class="row">
+          <div id="wrapper">
+      <div class="container">
+        <div class="row">
+     
+           
             <div class="container">
                 <div class="row">
+                
                     <div class="col-md-3">
-                          <ul class="nav navs-tabs-brand">
-                                <a class ="list-group-item " href="admin.html"><span class="pull-right"><i class="icon-chevron-right"></i></span>Trang chủ quản trị</a>
-                                <a class ="list-group-item " href="quanlykhoahoc.html"><span class="pull-right"><i class="icon-chevron-right"></i></span>Quản lý khoá học</a>
-                                <a class ="list-group-item " href="threadadmin.html"><span class="pull-right"><i class="icon-chevron-right"></i></span>Thread thảo luận</a>
-                                <a class="list-group-item " href="admingiangday.html"><span class="pull-right"><i class="icon-chevron-right"></i></span>Kế hoạch giảng dạy</a>
-                                <a class="list-group-item " href="adminQuanLyHocVien.html"><span class="pull-right"><i class="icon-chevron-right"></i></span>Quản lý học viên</a>
-                                <a class="list-group-item " href="adminGuiMail.html"><span class="pull-right"><i class="icon-chevron-right"></i></span>Gửi Mail cho học viên</a>
-                                <a class="list-group-item " href="Adminbaitap.html"><span class="pull-right"><i class="icon-chevron-right"></i></span>Bài tập</a>
-                                <a class="list-group-item " href="admindanhsachhocvien.html"><span class="pull-right"><i class="icon-chevron-right"></i></span>Bài tập của học viên</a>
-                                <a class="list-group-item " href="admindethitracnghiem.html"><span class="pull-right"><i class="icon-chevron-right"></i></span>Đề trắc nghiệm</a>
+                          <div class="panel panel-primary" style="padding-top:0px ">
+                           <div class ="panel-body"> 
+                  
+                         <ul class="nav navs-tabs-brand">
+                                <li class="active"><a href="admin.html" class="list-group-item active" style="z-index: 0"><i class="glyphicon glyphicon-home"></i> &nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
+                               
+                                <li class="active"><a href="quanlykhoahoc.html" class ="list-group-item ""><i class="glyphicon glyphicon-education"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý khoá học</a></li>
+                               
+                                <li class="active"><a href="threadadmin.html" class="list-group-item"><i class="glyphicon glyphicon-comment"></i> &nbsp;&nbsp;&nbsp;&nbsp;Thread thảo luận</a></li>
+                             
+                                <li class="active"><a href="admingiangday.html" class ="list-group-item"><i class="glyphicon glyphicon-calendar"></i> &nbsp;&nbsp;&nbsp;&nbsp;Kế hoạch giảng dạy</a></li>
+                              
+                                <li class="active"><a href="adminQuanLyHocVien.html" class="list-group-item"><i class="glyphicon glyphicon-user"></i> &nbsp;&nbsp;&nbsp;&nbsp;Quản lý học viên</a></li>
+                              
+                                <li class="active"><a href="adminGuiMail.html" class ="list-group-item"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp; Gửi mail cho sinh viên</a></li>
+                              
+                            
+                                <li class="active"><a href="admindanhsachhocvien.html" class ="list-group-item"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
+                               
+                                <li class="active"><a href="admindethitracnghiem.html" class="list-group-item"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
 
                         </ul>
                     </div>  
-                      
-                            <div class="col-md-6">
+                    </div>
+                    </div>    
+                    <div class="col-md-9  ">
                     <ul class="nav navs-tabs-brand">
                           
-                                 <a class="list-group-item text-center" href="#">Đề Thi Trắc Nghiệm</a>
-                                 <br>
+                                 <a class="list-group-item text-center" href="#" style="font-size: 20px;color: blue;"
+                             type="text/css" media="screen">
+                                   
+                                 Soạn Đề Thi Trắc Nghiệm</a> <br>  <label
+                                 style="font-size: 15px" >Tên Đề Thi</label>
+                                 
+                                  <input type="text" class="form-control" name="" value ="" placeholder="Tên Đề Thi" >
+                                  <lable><b style="font-size: 15px; ">Môn Thi</b></lable>
                                  <div class="row">
-                                 <ul>
-                                  <button type="text">Môn Thi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                  
-                                  <input type="text" name="Tên Môn Thi" value="Tên Môn Thi" placeholder=""> <br>
-                                  <br>
-                                  <p align="left"><font face="Arial">
-                                  <button type="text">Đối Tượng&nbsp;&nbsp;&nbsp;&nbsp;</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="product_measuring_unit_1">
+                                 <div></div>
                                  
-                                    <option value="Lập trình web" selected>Lập trình java
-                                    <option value="Lập trình web" selected>Lập trình web
-                                     <option value="Lập trình web" selected>Lập trình c nâng cao
-                                      <option value="Lập trình web" selected>Lập trình c căn bản
-                                      <option value="Lập trình web" selected>Tất cả thành viên
-                               
+                                  
+                                  <p align=""><font face="Arial">
+                                  <div>
+                                   
+                                  <div class="col-md-6">
+                                    
                                  
-                                    </select></br>
-                                 </font> </p>
-                                <h3>Đề Thi Trắc Nghiệm</h3>
-                                
-                                <table class="table table-bordered table-hover " >
-                                  <thead>
-                                    <tr>
-                                      <th colspan="4">Câu 1 :<input type="text" name="cau1" value="Nhập Đề Thi" placeholder="" size="50"
-                                    ></th>                                
-                                    </tr>
+                                  <select name="product_measuring_unit_1" style="font-size: 15px;width: 100%" >
+                                 
+                                    <option value="Lập trình web" selected >Lập trình java</option>
+                                    <option value="Lập trình web" selected >Lập trình web</option>
+                                     <option value="Lập trình web" selected >Lập trình c nâng cao</option>
+                                      <option value="Lập trình web" selected >Lập trình c căn bản</option>
+                                      
+                                    </select>
+                                    </div>
+                                     </div>
+                                    </div>
 
-                                  </thead>
-                                   <tbody>
+                                  </p>
+                                 <!--  de thi trac ngiem-->
+                                 
+                                    <input type="file" id="opentFile"/>
+                                      <br>
+                                      <textarea id="fileContetnts" style="resize: none;width: 100%; height: 150px " ></textarea>
 
-                                    <tr>
-                                      <td>A <input type="text" name="dapan" value="Đáp Án" placeholder="" size="10"></td>
-                                      <td>B <input type="text" name="dapan" value="Đáp Án" placeholder="" size="10"></td>
-                                      <td>C <input type="text" name="dapan" value="Đáp Án" placeholder="" size="10"></td>
-                                      <td>D <input type="text" name="dapan" value="Đáp Án" placeholder="" size="10"></td>                                                                         
-                                    </tr>
-                                  </tbody>
-                                </table>
-                                <table class="table table-bordered table-hover">
-                                  <thead>
-                                    <tr>
-                                      <th colspan="4">Câu 2 :<input type="text" name="cau1" value="Nhập Đề Thi" placeholder="" size="50"
-                                    ></th>                                
-                                    </tr>
-
-                                  </thead>
-                                   <tbody>
-
-                                    <tr>
-                                      <td>A <input type="text" name="dapan" value="Đáp Án" placeholder="" size="10"></td>
-                                      <td>B <input type="text" name="dapan" value="Đáp Án" placeholder="" size="10"></td>
-                                      <td>C <input type="text" name="dapan" value="Đáp Án" placeholder="" size="10"></td>
-                                      <td>D <input type="text" name="dapan" value="Đáp Án" placeholder="" size="10"></td>                                                                         
-                                    </tr>
-                                  </tbody>
-                                </table>
-                                <table class="table table-bordered table-hover">
-                                  <thead>
-                                    <tr>
-                                      <th colspan="4">Câu 3 :<input type="text" name="cau1" value="Nhập Đề Thi" placeholder="" size="50"
-                                    ></th>                                
-                                    </tr>
-
-                                  </thead>
-                                   <tbody>
-
-                                    <tr>
-                                      <td>A <input type="text" name="dapan" value="Đáp Án" placeholder="" size="10"></td>
-                                      <td>B <input type="text" name="dapan" value="Đáp Án" placeholder="" size="10"></td>
-                                      <td>C <input type="text" name="dapan" value="Đáp Án" placeholder="" size="10"></td>
-                                      <td>D <input type="text" name="dapan" value="Đáp Án" placeholder="" size="10"></td>                                                                         
-                                    </tr>
-                                  </tbody>
-                                </table>
-                                <table class="table table-bordered table-hover">
-                                  <thead>
-                                    <tr>
-                                      <th colspan="4">Câu 4 :<input type="text" name="cau1" value="Nhập Đề Thi" placeholder="" size="50"
-                                    ></th>                                
-                                    </tr>
-
-                                  </thead>
-                                   <tbody>
-
-                                    <tr>
-                                      <td>A <input type="text" name="dapan" value="Đáp Án" placeholder="" size="10"></td>
-                                      <td>B <input type="text" name="dapan" value="Đáp Án" placeholder="" size="10"></td>
-                                      <td>C <input type="text" name="dapan" value="Đáp Án" placeholder="" size="10"></td>
-                                      <td>D <input type="text" name="dapan" value="Đáp Án" placeholder="" size="10"></td>                                                                         
-                                    </tr>
-                                  </tbody>
-                                </table>
-
-                                 </ul>
-                                 </div>
-                                <ul>          
-                                            
-                                            <ol>
-                                            <a href=""><span class="glyphicon glyphicon-hdd r" aria-hidden="true" ></span></a><br>
-                                            <input id="file" type="file" name="files" class="multitle" multiple/>
-                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="thongbaoOKadmin.html"><button class="btn btn-default" type="submit " style="font-size: 20px" >Tạo Đề Thi</button></a>
-                                             </ol>
-                                                                     
-                                </ul>
+                                      <script type="text/javascript" src="script.js"></script>
+                                      <div class="col-md-1"></div>
+                                      <div class="col-md-1"></div>
+                                      <div class="col-md-1"></div>
+                                      <div class="col-md-1"></div>
+                                      <div class="col-md-1"></div>
+                                        <div class="col-md-1">
+                                        <form action="admin.html" method="POST" name="bcdonline" onSubmit="return confirmAction()">
+                                        
+                                        <button class="btn btn-info">OK </button>
+                                        </div>
+                                        </form> 
+                                    
+                                   <!--code hien file text đề thi -->                      
+                    
 
                                             
 
                      </div>
-
-             
+                </div>
             </div>
             </div>
          
-        
+            
+
+              
+
+
+             
+              
+
             </div>
 
           </div>
         </div>
- 
- <footer>
+      </div>
+    </div>
+
+<footer>
       <div class="container">
         <div class="footer-info text-center">
           <p>Group 12 Copyright&copy; 2016 Designer</a><br>
@@ -207,5 +187,10 @@
         </div>
       </div>
     </footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
