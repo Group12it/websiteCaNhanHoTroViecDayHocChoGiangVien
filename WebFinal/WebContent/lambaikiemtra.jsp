@@ -137,7 +137,7 @@
             </div>
             
             <div class="form-group text-center">
-                           <a href=""> <button id="btnnop" type="submit" class="btn btn-info">Nộp bài</button></a>
+                           <a href="kiemtra.jsp"> <button id="btnnop" type="submit" class="btn btn-info">Nộp bài</button></a>
                         </div>
         </div>
     </div>
