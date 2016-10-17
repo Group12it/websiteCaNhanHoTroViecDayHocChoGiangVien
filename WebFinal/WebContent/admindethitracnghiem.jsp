@@ -20,6 +20,8 @@
     <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" media="all" type="text/css" href="css/font-awesome.min.css"/>
+    <script src="Script/Script.js"></script>
+    <script src="script.js"></script>
   </head>
     <header>
     <div class="container">
@@ -144,7 +146,7 @@
                                       <br>
                                       <textarea id="fileContetnts" style="resize: none;width: 100%; height: 150px " ></textarea>
 
-                                      <script type="text/javascript" src="script.js"></script>
+                                      <script type="text/javascript" src="Scripts/script.js"></script>
                                       <div class="col-md-1"></div>
                                       <div class="col-md-1"></div>
                                       <div class="col-md-1"></div>

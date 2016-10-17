@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
-
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
@@ -98,7 +97,7 @@
                     <div class="col-md-2 col-xs-1">
                           <ul class="nav navs-tabs-brand">
                                
-                                <a style="background:#00a8d8" class ="list-group-item " href="chitietkhoahoccuatoi1.jsp">Quay lại</a>
+                                <a style="background:#00a8d8" class ="list-group-item " href="chitietkhoahoccuatoi.jsp">Quay lại</a>
                                
 
                         </ul>
