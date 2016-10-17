@@ -74,7 +74,7 @@
             <h4 class="modal-title">Contact Form</h4>
         </div>
         <div class="modal-body">
-            <form class="form-horizontal" id="contactform" name="commentform" method="post" action="indexuser.html"
+            <form class="form-horizontal" id="contactform" name="commentform" method="post" action="indexuser.jsp"
             data-bv-message="This value is not valid"
             data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
             data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"

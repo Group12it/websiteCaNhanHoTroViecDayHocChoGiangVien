@@ -87,7 +87,7 @@
             
                
 
-                <form action="khoahoccuartoi.html" method="post" role="form" novalidate="novalidate">
+                <form action="khoahoccuartoi.jsp" method="post" role="form" novalidate="novalidate">
 
 
                     <div class="form-group">

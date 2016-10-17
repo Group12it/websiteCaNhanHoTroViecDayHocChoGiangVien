@@ -69,7 +69,7 @@
                         <h2><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</h2>
                     </div>
                     <div class="modal-body" style="padding:40px 50px;">
-                    <form action="indexuser.html" method="post" role="form"> 
+                    <form action="indexuser.jsp" method="post" role="form"> 
 
                         <form hiden="hidenform">
 
@@ -92,7 +92,7 @@
                             <span class="glyphicon glyphicon-remove"></span> Đóng
                         </button>
                         <p>
-                            <a href="../../TaiKhoan/LayLaiMatKhau.html">Quên mật khẩu?</a>
+                            <a href="../../TaiKhoan/LayLaiMatKhau.jsp">Quên mật khẩu?</a>
                         </p>
                     </div>
                 </div>
@@ -183,17 +183,17 @@
             <div class="wrapper">
                   <nav class="menu">
                    <ul class="clearfix">
-                      <li><a href="indexuser.html">Trang chủ</a></li>
+                      <li><a href="indexuser.jsp">Trang chủ</a></li>
                       <li>
                           <li><a href="#">Khóa học<span class="arrow"> &#9660;</span> </a>
                           <ul class="sub-menu">
-                              <li><a href="chitietkhoahoc.html">Khoá học lập trinh C căn bản</a></li>
+                              <li><a href="chitietkhoahoc.jsp">Khoá học lập trinh C căn bản</a></li>
                               <li><a href="#">Khóa học lập hướng đối tượng C++</a></li>
                               <li><a href="#">Khoá học lập trình Web Java</a></li>
                               <li><a href="#">Khoá học lập trình Web PHP</a></li>
                           </ul>
                       </li>
-                            <li><a href="thread.html">Thảo luận</a></li>
+                            <li><a href="thread.jsp">Thảo luận</a></li>
                              <li> <a href="#myModal"   data-toggle="modal" >Liên hệ</a></li>
                             <li> <a href="#">Giới thiệu</a></li>
                   </ul>
@@ -253,7 +253,7 @@
              <th>
              <marquee SCROLLDELAY = 150 width ="110%" height = "300" direction="up" style ="font:arial" scrollamount="2" id="bannerthongbao" name="bannerthongbao" onmouseover="this.stop()" onmouseout="this.start()">
              <ul>
-                 <li><a href="chitietkhoahoc.html">Thông tin khóa học C căn bản</a></li>
+                 <li><a href="chitietkhoahoc.jsp">Thông tin khóa học C căn bản</a></li>
                  <br>
                  <li>Thông tin học lập trình C# </li>
                  <br>
@@ -313,7 +313,7 @@ function showSlides() {
     <script src="ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/jquery-ui.min.js"></script>
     <script src="ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"></script>
     <script src="Scripts/respond.min.js"></script>
-    <script src="Scripts/jssocials.min.html"></script>
+    <script src="Scripts/jssocials.min.jsp"></script>
  
 
 <script src= "myUsers.js"></script>

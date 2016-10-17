@@ -51,7 +51,7 @@
                   </div> 
                   </div> 
                 <img src="images/hoclaptrinh.jpg" align="bottom" width="40" height="40"/>
-                <a href="index.html"><button class="btn btn-danger navbar-btn collapse-xs">Đăng xuất</button></a>
+                <a href="index.jsp"><button class="btn btn-danger navbar-btn collapse-xs">Đăng xuất</button></a>
             </div>
 
             <body>
@@ -72,7 +72,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="indexuser.html">Trang chủ<span class="glyphicon glyphicon-home"></span></a>
+              <a class="navbar-brand" href="indexuser.jsp">Trang chủ<span class="glyphicon glyphicon-home"></span></a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">

@@ -26,9 +26,9 @@
         <div class="row">
           <div class="logo col-md-6 col-sm-6 col-xs-12"><h1><a href="#">Học lập trình</a></h1></div>
           <!-- /Đăng nhập-->   
-                 <form action="index.html" >
+                 <form action="index.jsp" >
                 <div class="navbar-right">
-                <a href="quanlytaikhoan.html">Học viên</a>
+                <a href="quanlytaikhoan.jsp">Học viên</a>
                 <img src="images/hoclaptrinh.jpg" align="bottom" width="40" height="40"/>
                 <button class="btn btn-danger navbar-btn">Đăng xuất</button>
 
@@ -57,19 +57,19 @@
             <div class="wrapper">
                   <nav class="menu">
                    <ul class="clearfix">
-                      <li><a href="indexuser.html">Trang chủ</a></li>
+                      <li><a href="indexuser.jsp">Trang chủ</a></li>
                       <li>
                           <li><a href="#">Khóa học<span class="arrow"> &#9660;</span> </a>
                           <ul class="sub-menu">
-                              <li><a href="chitietkhoahoc.html">Khoá học lập trinh C căn bản</a></li>
+                              <li><a href="chitietkhoahoc.jsp">Khoá học lập trinh C căn bản</a></li>
                             <li><a href="#">Khóa học lập trình java</a></li>
                             <li><a href="#">Khoá học lập trình PHP</a></li>
                             <li><a href="#">Khoá học lập trình Web</a></li>
                           </ul>
-                           <li><a href="khoahoccuartoi.html">Khóa học của tôi</a></li>
+                           <li><a href="khoahoccuartoi.jsp">Khóa học của tôi</a></li>
                       </li>
-                            <li><a href="thread.html">Thảo luận</a></li>
-                            <li><a href="kiemtra.html">Kiểm tra</a></li>
+                            <li><a href="thread.jsp">Thảo luận</a></li>
+                            <li><a href="kiemtra.jsp">Kiểm tra</a></li>
                             <li> <a href="#">Gửi mail</a></li>
                             <li> <a href="#">Giới thiệu</a></li>
                   </ul>
@@ -98,7 +98,7 @@
                     <div class="col-md-2 col-xs-1">
                           <ul class="nav navs-tabs-brand">
                                
-                                <a style="background:#00a8d8" class ="list-group-item " href="chitietkhoahoccuatoi1.html">Quay lại</a>
+                                <a style="background:#00a8d8" class ="list-group-item " href="chitietkhoahoccuatoi1.jsp">Quay lại</a>
                                
 
                         </ul>
