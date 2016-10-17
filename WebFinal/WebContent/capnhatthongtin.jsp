@@ -13,8 +13,10 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
     <link rel="stylesheet" type="text/css" href="css/thongtin.css">
-
- 
+	<link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
+	<link rel="icon" href="images/head.ico" type="image/x-icon" />
+ <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
+	<link rel="icon" href="images/head.ico" type="image/x-icon" />
 </head>
 
 <header>
@@ -25,7 +27,7 @@
                  <div class="dropdown right">
                 <a href="" class="dropntn">Học viên<span class="arrow"></span></a>
                 <div class="dropdown-content">
-                    <a href="#">Tên học viên</a>
+                    <a href="#" id="Tenhocvien">Tên học viên</a>
                     <a href="thongtincanhan.jsp">Thông tin cá nhân</a>
                     <a href="doimatkhau.jsp">Đổi mật khẩu</a>
                     
@@ -74,7 +76,7 @@
 <div id="wrapper">
     <div class="container">
         <div class="row">
-            <div class="content col-md-9 col-sm-9 col-xs-12">
+            <div class="content col-md-9 col-sm-9 col-xs-8">
                 <div class="container">
                     <div class="row">
                         <div class="container">
@@ -84,55 +86,52 @@
                             </div>
                         </div>
 
-                        <div class="col-md-8">
-                            <table class="table table-bordered">
+                        <div class="col-md-8 col-sm-4 col-xs-2" >
+                            <table class="table table-bordered" style="overflow-x:auto;">
                                 <thead>
                                     <tr>
                                         <td style=" height:0px;" colspan="1" align="center">
+                                          <div class ="" style="overflow-x:auto;">
                                            <h4> Ảnh đại diện</h4>
-                                            <table class="table table-bordered">
+                                            <table class="table table-bordered" style="overflow-x:auto;">
                                                 <thead>
                                                     <tr>
-                                                        <img src="images/item2.jpg">
+                                                        <img src="images/item2.jpg" class="img-responsive">
                                                     </tr>
                                                 </thead>
                                             </table>
+                                            </div>
                                             <input type="file" name="file">
                                         </td>
                                         <th>
-                                            <div class="panel-body">
-                                                <form class="form" method="post" id="contactform" action="" role="form">
-                                                 <div class="form-group has-feedback">
-                                                        <label for="contactho">Họ</label>
-                                                        <input type="text" class="form-control" id="contactho" placeholder="Enter Ho">
+                                            <div class="panel-body" style="overflow-x:auto;">
+                                                <form class="form" method="post" id="contactform" action="thongtincanhan.jsp" role="form">
+                                                 <div class="form-group has-feedback" style="overflow-x:auto;">
+                                                        <label for="contactho">Họ tên</label>
+                                                        <input type="text" class="form-control" id="contactho" placeholder="Nhập họ tên" >
                                                     </div>
-                                                     <div class="form-group has-feedback">
-                                                        <label for="contactten">Tên</label>
-                                                        <input type="text" class="form-control" id="contactten" placeholder="Enter Ten">
-                                                    </div>
+                                                   
                                                     <div class="form-group has-feedback">
                                                         <label for="contactdienthoai">Điện thoại</label>
-                                                        <input type="text" class="form-control" id="contactdienthoai" placeholder="Enter Dienthoai">
+                                                        <input type="number" class="form-control" id="contactdienthoai" placeholder="Nhập số điện thoại">
                                                     </div>
-                                                        <div class="form-group">
-                                                            <label for="contactemail">Email</label>
-                                                            <input type="email" class="form-control" id="contactemail" placeholder="Enter Email">
-                                                        </div>
+                                                       
                                                         <div class="form-group">
                                                             <label for="contactdiachi">Địa chỉ liên lạc</label>
-                                                            <input type="text" class="form-control" id="contactdiachi" placeholder="Enter DiaChi">
+                                                            <input type="text" class="form-control" id="contactdiachi" placeholder="Nhập địa chỉ" >
                                                         </div>
-                                                         <div class="form-group">
-                                                            <label for="contacttinh">Tỉnh/Thành phố</label>
-                                                            <input type="text" class="form-control" id="contacttinh" placeholder="Enter Tinh/Thanh pho">
+                                                     
+                                                       <div class="form-group">
+                                                            <label for="contactdiachi">Ngày sinh</label>
+                                                            <input type="date" class="form-control" id="contactdiachi" placeholder="Nhập địa chỉ" >
                                                         </div>
 
-                                                    <button type="Submit" id="btnluu" name="btnluu" class="btn btn-info">Lưu</button>
-                                                     <button type="Submit" id="btnhuy" name="btnhuy" class="btn btn-default">Hủy</button>
+                                                   	 <button type="submit" id="btnluu" name="btnluu" class="btn btn-info">Lưu</button>
+                                                   <button type="submit" id="btnhuy" name="btnhuy" class="btn btn-default">Hủy</button>
 
                                                
                                             </form>
-                        </div>
+                       				 </div>
                         </th>
                         </tr>
                         </thead>

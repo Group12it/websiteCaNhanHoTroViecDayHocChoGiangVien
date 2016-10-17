@@ -14,7 +14,8 @@
 
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-
+<link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
+	<link rel="icon" href="images/head.ico" type="image/x-icon" />
 
     <link href="css/styleadmin.css" rel="stylesheet" />
 
@@ -115,7 +116,7 @@
 
                                         <div class="col-md-5">
 
-                                            <form action="quanlykhoahoc.jsp" method="post">
+                                            <form action="quanlykhoahoc.jsp" method="post" onSubmit="return confirmAction()">
                                                 <div class="form-group">
 
                                                     <label>Tên khóa học</label>
@@ -184,5 +185,14 @@
             </div>
         </footer>
     </div>
+    
+      <%--Thông báo --%> 
+    <SCRIPT LANGUAGE="JavaScript">
+      function confirmAction() {
+        return confirm("Bạn Đã Thực Hiện Thao Tác Thành Công")
+      }
+ 
+      </SCRIPT>
+      <%--Thông báo --%> 
 </body>
 </html>

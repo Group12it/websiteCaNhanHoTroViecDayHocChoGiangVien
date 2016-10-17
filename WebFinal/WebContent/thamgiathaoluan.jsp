@@ -10,6 +10,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/Site" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
+    <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
+	<link rel="icon" href="images/head.ico" type="image/x-icon" />
 </head>
 <header>
     <div class="container">

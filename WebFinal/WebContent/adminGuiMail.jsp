@@ -15,19 +15,15 @@
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
 
-
+<link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
+	<link rel="icon" href="images/head.ico" type="image/x-icon" />
     <link href="css/styleadmin.css" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="css/stylemenu.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" media="all" type="text/css" href="css/font-awesome.min.css" />
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+   
 </head>
 
 <header>
@@ -114,7 +110,7 @@
                                     <div class="panel-body">
 
                                         <div class="panel-body">
-                                            <form class="form" method="post" id="contactform" action="" role="form">
+                                            <form class="form" method="post" id="contactform" action="" role="form" onSubmit="return confirmAction()">
                                                 <div class="form-group">
                                                     <label for="contactemail">Địa Chỉ Email</label>
                                                     <input type="email" class="form-control" id="contactemail" placeholder="Nhập địa chỉ Email" required autofocus>
@@ -137,7 +133,7 @@
                                                     <label for="contactmessage">Nội dung tin nhắn</label><br>
                                                     <textarea class="form-group" id="contactmessage" rows="10" cols="75" placeholder="Nhập nội dung"></textarea>
                                                 </div>
-                                                <button type="submit" id="contracbtn" class="btn btn-info">Gửi</button>
+                                                <button type="submit" id="contracbtn" class="btn btn-info" >Gửi</button>
                                                 <!-- kết thúc gửi mail-->
                                             </form>
                                         </div>
@@ -159,5 +155,14 @@
             </div>
         </footer>
     </div>
+    
+  <%--script thông báo --%>  
+    <SCRIPT LANGUAGE="JavaScript">
+      function confirmAction() {
+        return confirm("Bạn Đã Thực Hiện Thao Tác Thành Công")
+      }
+ 
+      </SCRIPT>
+      <%--script thông báo --%>  
 </body>
 </html>

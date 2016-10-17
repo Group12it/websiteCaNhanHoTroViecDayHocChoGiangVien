@@ -7,6 +7,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
+	<link rel="icon" href="images/head.ico" type="image/x-icon" />
+    
     <SCRIPT LANGUAGE="JavaScript">
       function confirmAction() {
         return confirm("Bạn Đã Thực Hiện Thao Tác Thành Công")
@@ -114,7 +118,7 @@
                                  Soạn Đề Thi Trắc Nghiệm</a> <br>  <label
                                  style="font-size: 15px" >Tên Đề Thi</label>
                                  
-                                  <input type="text" class="form-control" name="" value ="" placeholder="Tên Đề Thi" >
+                                  <input type="text" class="form-control" name="" value ="" placeholder="Tên Đề Thi" requied >
                                   <lable><b style="font-size: 15px; ">Môn Thi</b></lable>
                                  <div class="row">
                                  
@@ -127,9 +131,8 @@
                                   <div class="col-md-6">
                                     
                                  
-                                  <select name="product_measuring_unit_1" style="font-size: 15px;width: 100%" >
-                                 
-                                    <option value="Lập trình web" selected >Lập trình java</option>
+                                  <select name="guitoi" id="guitoi" class="form-control" style="font-size: 15px;width: 100%"  >
+                                  <option value="Lập trình web" selected >Lập trình java</option>
                                     <option value="Lập trình web" selected >Lập trình web</option>
                                      <option value="Lập trình web" selected >Lập trình c nâng cao</option>
                                       <option value="Lập trình web" selected >Lập trình c căn bản</option>
@@ -155,7 +158,7 @@
                                         <div class="col-md-1">
                                         <form action="admin.jsp" method="post" name="bcdonline" onSubmit="return confirmAction()">
                                         
-                                        <button class="btn btn-info">OK </button>
+                                        <button class="btn btn-info" type="submit">OK </button>
                                         </div>
                                         </form> 
                                     
