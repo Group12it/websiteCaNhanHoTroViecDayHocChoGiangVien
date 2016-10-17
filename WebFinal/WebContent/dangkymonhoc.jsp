@@ -98,7 +98,7 @@
                 </div>
                 <div class="form-group">
                     <label for="usrname"><span class="glyphicon glyphicon-user"></span> Họ tên <span class="batbuoc">(Bắt buộc)</span></label>
-                     <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus><br>
+                     <input type="email" id="inputEmail" class="form-control" placeholder="Họ tên" required autofocus><br>
                     <span class="field-validation-valid text-danger" data-valmsg-for="HoTen" data-valmsg-replace="true"></span>
                 </div>
                 <div class="form-group">

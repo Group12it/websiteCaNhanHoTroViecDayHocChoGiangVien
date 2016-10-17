@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
-
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="js/vali.js">
     <link href="css/bootstrap.min.css" rel="stylesheet">
