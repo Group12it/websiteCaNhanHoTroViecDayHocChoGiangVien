@@ -1,2 +1,0 @@
-# LuuDinhMac
-Lưu Đình Mác
