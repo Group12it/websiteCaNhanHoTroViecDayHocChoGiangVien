@@ -116,7 +116,7 @@
 
                                         <div class="col-md-5">
 
-                                            <form action="quanlykhoahoc.jsp" method="post" onSubmit="return confirmAction()">
+                                            <form action="quanlykhoahoc.jsp" method="post" onSubmit="return formaction()">
                                                 <div class="form-group">
 
                                                     <label>Tên khóa học</label>
@@ -170,12 +170,13 @@
         </footer>
     </div>
    <%--Thông báo --%> 
-    <SCRIPT LANGUAGE="JavaScript">
-      function confirmAction() {
-        return confirm("Bạn Đã Thực Hiện Thao Tác Thành Công")
-      }
- 
-      </SCRIPT>
+   
+    <script type="text/javascript">
+    function formaction(){
+     return alert('Thao tác thành công');
+        
+    }</script>
+    
       <%--Thông báo --%> 
 </body>
 </html>

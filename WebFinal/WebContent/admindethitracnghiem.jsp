@@ -156,10 +156,10 @@
                                       <div class="col-md-1"></div>
                                       <div class="col-md-1"></div>
                                         <div class="col-md-1">
-                                        <form action="admin.jsp" method="post" name="bcdonline" onSubmit="return confirmAction()">
+                                        <form action="admin.jsp" method="post" name="bcdonline" onsubmit="return formaction() " >
                                         
                                         <button class="btn btn-info" type="submit">OK </button>
-                                        </div>
+                             </div>
                                         </form> 
                                     
                                    <!--code hien file text đề thi -->                      
@@ -200,5 +200,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    
+    
+    <script type="text/javascript">
+    function formaction(){
+     return alert('Thao tác thành công');
+        
+    }</script>
+    
   </body>
 </html>

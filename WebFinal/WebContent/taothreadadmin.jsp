@@ -123,7 +123,7 @@
                                    <div class="col-md-1"></div>      
                                     <div class="col-md-1"></div>      
                                       <div class="col-md-1"></div>      
-                                      <div class="col-md-1"><form action="admin.jsp" method="post" name="bcdonline" onSubmit="return confirmAction()">
+                                      <div class="col-md-1"><form action="threadadmin.jsp" method="post" name="bcdonline" onSubmit="return formaction()">
                                         
                                         <button class="btn btn-info">OK</button>
                                         </form>   </div>      
@@ -149,5 +149,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    
+     
+    <script type="text/javascript">
+    function formaction(){
+     return alert('Thao tác thành công');
+        
+    }</script>
+    
   </body>
 </html>

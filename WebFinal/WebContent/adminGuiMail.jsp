@@ -110,7 +110,7 @@
                                     <div class="panel-body">
 
                                         <div class="panel-body">
-                                            <form class="form" method="post" id="contactform" action="" role="form" onSubmit="return confirmAction()">
+                                            <form class="form" method="post" id="contactform" action="" role="form" onSubmit="return formaction()">
                                                 <div class="form-group">
                                                     <label for="contactemail">Địa Chỉ Email</label>
                                                     <input type="email" class="form-control" id="contactemail" placeholder="Nhập địa chỉ Email" required autofocus>
@@ -157,12 +157,13 @@
     </div>
     
   <%--script thông báo --%>  
-    <SCRIPT LANGUAGE="JavaScript">
-      function confirmAction() {
-        return confirm("Bạn Đã Thực Hiện Thao Tác Thành Công")
-      }
- 
-      </SCRIPT>
+    
+    <script type="text/javascript">
+    function formaction(){
+     return alert('Thao tác thành công');
+        
+    }</script>
+    
       <%--script thông báo --%>  
 </body>
 </html>
