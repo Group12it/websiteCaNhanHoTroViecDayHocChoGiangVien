@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -7,12 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
- <footer  class="bg-primary container-fluid" style ="margin-left: 90px; margin-right: 90px">
+
+ <footer  class="bg-primary container-fluid " style ="margin-left: 100px; margin-right:100px">
                         <div class="container">
                             <div class="footer-info text-center" >
                             <p>
 						    <div>
-						          © 2016 All Rights Reserved  •  Design by : <font size="3" color="black">Group 12</font>
+						          © 2016 All Rights Reserved  •  Design by : <font size="3" color="red">Group 12</font>
 						          </div>
 						        </p>
 								<p>
@@ -23,4 +26,13 @@
                         </div>
                     </footer>
 		</body>
+</html>
+
+
+
+
+
+
+
+</body>
 </html>
