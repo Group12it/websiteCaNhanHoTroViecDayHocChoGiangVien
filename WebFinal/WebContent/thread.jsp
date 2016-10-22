@@ -121,19 +121,7 @@
         </section>
     </section>
 
-    <footer class="site-footer collapse-xs">
-     
-        <div class="container">
-            <div class="footer-info text-center">
-                <p>
-                    Group 12 Copyright&copy; 2016 Designer</a><br>
-                </p>
-            </div>
-            <div class="col-md-4">
-                <p>Home</p>
-            </div>
-        </div>
-     </footer>
+    <jsp:include page="footer.jsp"></jsp:include>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

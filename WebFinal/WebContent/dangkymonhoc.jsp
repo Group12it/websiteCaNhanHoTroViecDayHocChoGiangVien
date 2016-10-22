@@ -147,14 +147,7 @@
     </div>
 
 
-   <footer>
-      <div class="container">
-        <div class="footer-info text-center">
-          <p>Group 12 Copyright&copy; 2016 Designer</a><br>
-        </p>
-        </div>
-      </div>
-    </footer>
+    <jsp:include page="footer.jsp"></jsp:include>
 
   <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>

@@ -224,16 +224,7 @@ $('#contactform').bootstrapValidator();
 
 
 
-
-
-            <footer>
-      <div class="container">
-        <div class="footer-info text-center">
-          <p>Group 12 Copyright&copy; 2016 Designer</a><br>
-        </p>
-        </div>
-      </div>
-    </footer>
+  <jsp:include page="footer.jsp"></jsp:include>
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

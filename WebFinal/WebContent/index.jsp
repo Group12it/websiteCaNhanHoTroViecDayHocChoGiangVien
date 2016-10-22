@@ -377,14 +377,7 @@ function showSlides() {
 
           
 
-    <footer>
-      <div class="container">
-        <div class="footer-info text-center">
-          <p>Group 12 Copyright&copy; 2016 Designer</a><br>
-        </p>
-        </div>
-      </div>
-    </footer>
+    <jsp:include page="footer.jsp" ></jsp:include>
 
     <script src="ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script>
     <script src="ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/jquery-ui.min.js"></script>

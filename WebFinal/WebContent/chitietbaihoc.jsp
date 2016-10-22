@@ -124,6 +124,7 @@
     </section>
 
           
+            <jsp:include page="footer.jsp"></jsp:include>
 
 <!--Script chuyển động baner-->
 
