@@ -23,77 +23,54 @@
 <link rel="stylesheet" media="all" type="text/css"
 	href="css/font-awesome.min.css" />
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
 </head>
 
 
 <body>
 
 	<jsp:include page="headeradmin.jsp" ></jsp:include>
-	<div class="paper">
-		<table class="tbBody">
-			<tr>
-				<td class="content-left">
+	
+	
+	
+	<div id="wrapper">
+      <div class="container">
+        <div class="row">
+                  
+            <div class="container">
+                <div class="row">
+                
+                    <div class="col-md-3">
+                          <div class="panel panel-primary" style="padding-top:0px ">
+                           <div class ="panel-body"> 
+                  
+                         <ul class="nav navs-tabs-brand">
+                                <li class="active"><a href="admin.jsp" class="list-group-item " style="z-index: 0"><i class="glyphicon glyphicon-home"></i> &nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
+                               
+                                <li class="active"><a href="quanlykhoahoc.jsp" class ="list-group-item ""><i class="glyphicon glyphicon-education"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý khoá học</a></li>
+                               
+                                <li class="active"><a href="threadadmin.jsp" class="list-group-item"><i class="glyphicon glyphicon-comment"></i> &nbsp;&nbsp;&nbsp;&nbsp;Thread thảo luận</a></li>
+                             
+                                <li class="active"><a href="admingiangday.jsp" class ="list-group-item"><i class="glyphicon glyphicon-calendar"></i> &nbsp;&nbsp;&nbsp;&nbsp;Kế hoạch giảng dạy</a></li>
+                              
+                                <li class="active"><a href="adminQuanLyHocVien.jsp" class="list-group-item"><i class="glyphicon glyphicon-user"></i> &nbsp;&nbsp;&nbsp;&nbsp;Quản lý học viên</a></li>
+                              
+                                <li class="active"><a href="adminGuiMail.jsp" class ="list-group-item"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp; Gửi mail cho sinh viên</a></li>
+                              
+                            
+                                <li class="active"><a href="admindanhsachhocvien.jsp" class ="list-group-item active"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
+                               
+                                <li class="active"><a href="admindethitracnghiem.jsp" class="list-group-item"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
 
-					<div class="panel panel-primary" style="padding-top: 0px">
-						<div class="panel-body">
-
-							<ul class="nav navs-tabs-brand">
-								<li class="active"><a href="admin.jsp"
-									class="list-group-item" style="z-index: 0"><i
-										class="glyphicon glyphicon-home"></i>
-										&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
-
-								<li class="active"><a href="quanlykhoahoc.jsp"
-									class="list-group-item"><i
-										class="glyphicon glyphicon-education"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-										Quản lý khoá học</a></li>
-
-								<li class="active"><a href="threadadmin.jsp"
-									class="list-group-item"><i
-										class="glyphicon glyphicon-comment"></i>
-										&nbsp;&nbsp;&nbsp;&nbsp;Thread thảo luận</a></li>
-
-								<li class="active"><a href="admingiangday.jsp"
-									class="list-group-item active" style="z-index: 0"><i
-										class="glyphicon glyphicon-calendar"></i>
-										&nbsp;&nbsp;&nbsp;&nbsp;Kế hoạch giảng dạy</a></li>
-
-								<li class="active"><a href="adminQuanLyHocVien.jsp"
-									class="list-group-item"><i class="glyphicon glyphicon-user"></i>
-										&nbsp;&nbsp;&nbsp;&nbsp;Quản lý học viên</a></li>
-
-								<li class="active"><a href="adminGuiMail.jsp"
-									class="list-group-item"><i
-										class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-										Gửi mail cho sinh viên</a></li>
-
-								<li class="active"><a href="admindanhsachhocvien.jsp"
-									class="list-group-item"><i
-										class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-										Bài tập của học viên</a></li>
-
-								<li class="active"><a href="admindethitracnghiem.jsp"
-									class="list-group-item"><i
-										class="glyphicon glyphicon-pencil"></i>
-										&nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
-
-							</ul>
-						</div>
-					</div>
-				</td>
-				<td class="content-center">
-					<table class="ria">
+                        </ul>
+                    </div>  
+                    </div>
+                    </div>    
+                    <div class="col-md-9">
+                    <ul class="nav navs-tabs-brand">
+                  <table class="ria">
 						<tr>
-							<td width="5%"></td>
-							<td width="90%">
-
-								<div class="panel panel-default">
+							<div class="panel panel-default">
 									<div class="panel-heading" style="background: #0CC">
 										<h4 style="font-family: verdana; color: #000">Bài giảng
 											lập trình c căn bản</h4>
@@ -102,13 +79,14 @@
 										<font size="6" color="red"> Bài 1: Giới thiệu về lập
 											trình c căn bản </font>
 									</p>
-									<div class="btn btn-default"
-										style="text-align: left; width: 100%; background-image: url(images/Untitled.png)">
-										BÀI 1: LÀM QUEN VỚI NGÔN NGỮ LẬP TRÌNH<br /> Giới thiệu về
-										ngôn ngữ lập trình.<br /> Demo project mẫu (môi trường visual
-										studio 2013):<br /> Ví dụ: xuất ra màn hình câu: “this is my
-										first project”<br /> <br /> Cấu trúc của chương trình<br />
-										Các kiểu dữ liệu cơ bản. Các bước lập trình Các hàm nhập xuất
+									<div class="panel-default" style="text-align: margin-left:5px; left; max-width:100%; background-image: url(images/Untitled.png)">
+										BÀI 1: LÀM QUEN VỚI NGÔN NGỮ LẬP TRÌNH<br />
+										-Giới thiệu về ngôn ngữ lập trình.<br />
+										-Demo project mẫu (môi trường visual	studio 2013):<br />
+										-Ví dụ: xuất ra màn hình câu: “this is my first project”<br />
+										 <br /> 
+										-Cấu trúc của chương trình<br />
+										-Các kiểu dữ liệu cơ bản. Các bước lập trình Các hàm nhập xuất
 										chuẩn Demo project mẫu: Tính tổng 2 số nguyên a, b <br /> Các
 										hàm tính toán<br /> Bài tập áp dụng<br /> Bài tập về nhà (có
 										đưa lời giải ở Bài 2)<br />
@@ -118,8 +96,8 @@
 										src="images/icondocument.JPG"> <span
 											class="instancename">Bài giảng: Bài 1<span
 												class="accesshide "> Page</span></span></a> <br> <a
-										href="adminnoidungbainop.jsp"> <img
-											src="images/videoicon.JPG"> <span class="instancename">Video:
+										href="adminnoidungbainop.jsp">
+										 <img src="images/videoicon.JPG"> <span class="instancename">Video:
 													Bài 1<span class="accesshide "> Page</span>
 											</span></a> <br>
 											<hr />
@@ -128,7 +106,7 @@
 													trình c căn bản </font>
 											</p>
 											<div class="btn btn-default"
-												style="text-align: left; width: 100%; background-image: url(images/Untitled.png)">
+												style="text-align: left; max-width:100%; background-image: url(images/Untitled.png)">
 												BÀI 2: LÀM QUEN VỚI NGÔN NGỮ LẬP TRÌNH<br /> Giới thiệu về
 												ngôn ngữ lập trình.<br /> Demo project mẫu (môi trường
 												visual studio 2013):<br /> Ví dụ: xuất ra màn hình câu:
@@ -142,16 +120,37 @@
 															class="accesshide "> Page</span></span></a> <br>
 													<hr />
 								</div>
-							</td>
-							<td width="5%"></td>
+							
+							
 						</tr>
 					</table>
-				</td>
-		</table>
+				
+                    </ul>
+                                            
+
+                     </div>
+
+            </div>
+            
+          </div>
+       </div>
+       </div>
+     </div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 		<jsp:include page="footer.jsp"></jsp:include>
 
-	</div>
+	
 	   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

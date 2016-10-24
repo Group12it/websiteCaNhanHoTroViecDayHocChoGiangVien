@@ -10,7 +10,7 @@
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+   <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
     <link rel="stylesheet" type="text/css" href="css/thongtin.css">
    <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
@@ -22,7 +22,7 @@
   
     <body>
     
-    <jsp:include page="header.jsp"></jsp:include>
+     <jsp:include page="header.jsp"></jsp:include> 
     
   <div id="wrapper">
       <div class="container">
@@ -34,10 +34,7 @@
                 
                     <div class="col-md-1">
                           <ul class="nav navs-tabs-brand">
-                               
-                              
-
-                        </ul>
+                                       </ul>
                     </div>    
                      
                     <div class ="col-md-7">
@@ -98,7 +95,7 @@
   
   
   
-<jsp:include page="footer.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
 
   
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

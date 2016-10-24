@@ -6,11 +6,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link href="css/Site.css" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>
 
- <footer  class="bg-primary container-fluid " style ="margin-left: 100px; margin-right:100px" >
+
+
+
+
+ <footer  class="bg-primary container-fluid " style ="" >
                         <div class="container col-md-12 col-xs-12" >
                             <div class="footer-info text-center" >
                             <p>
