@@ -1,4 +1,6 @@
 <%@ page import="java.lang.*" %>
+<%@ page import="model.*" %>
+<%@ page import="dao.*" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -37,6 +39,15 @@
 <sql:setDataSource var="conn" driver="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost/web" user="root" password="admin" />
 
+      <%
+           
+            Users users = null;
+            if (session.getAttribute("user") != null) {
+                users = (Users) session.getAttribute("user");
+            }
+        %>
+
+
 
     <header>
       <div class="container">
@@ -44,11 +55,19 @@
             <div class="logo col-md-6 col-sm-6 col-xs-12"><h1><a href="#">Học lập trình</a></h1></div>
             <div class="navbar-right">
                    <div class="dropdown right">
-                <a href="" class="dropntn">Học viên<span class="arrow"></span></a>
-                <div class="dropdown-content">
-                    <a href="#">Tên học viên</a>
-                    <a href="thongtincanhan.jsp">Thông tin cá nhân</a>
-                    <a href="doimatkhau.jsp">Đổi mật khẩu</a>
+                <a href="" class="dropntn"><span class="arrow"></span></a>
+                  <%if(users!=null){%>
+                <a href="#" class="dropntn"><%=users.getUserEmail()%></a> </li>
+                                <%}%><span class="arrow"></span></a>
+                
+                <div class="dropdown-content" style="z-index: 1">
+               
+<!--                   	<a href="#" style="z-index: 10">Tên học viên</a>  -->
+					   <%if(users!=null){%>
+                <a href="#" class="dropntn" style="z-index: 1"><%=users.getUserID()%></a> </li>
+                                <%}%><span class="arrow"></span></a>
+                    <a href="thongtincanhan.jsp" style="z-index: 1">Thông tin cá nhân</a>
+                    <a href="doimatkhau.jsp"  style="z-index: 1">Đổi mật khẩu</a>
                     
                   </div> 
                   </div>
@@ -61,31 +80,31 @@
             
            </div>
         
-        <nav class="navbar navbar-default" role="navigation" style="color:blue; z-index=-1;"> <!--navbar-default-->
-		<div class="container">
+        <nav class="navbar navbar-default" role="navigation" style="color:blue;"> <!--navbar-default-->
+		<div class="container" style="z-index: 0">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="z-index: 0">
 					<span class="sr-only">Đây là menu mobile</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="http://congdongit.org"></a>
+				<a class="navbar-brand" href="indexuser.jsp"></a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px; color: blue;">
 				<ul class="nav navbar-nav" style="color:blue;"><!-- navbar-nav-->
-					<li class=""><a href="./index.html" style="color:white;">Trang chủ</a></li>
+					<li class=""><a href="indexuser.jsp" style="color:white;">Trang chủ</a></li>
 					<li class="dropdown" style="color:white;">
 						<a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown">Khoá học<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Lập trình C căn bản</a></li>
+							<li><a href="chitietkhoahoc.jsp">Lập trình C căn bản</a></li>
 							<li><a href="#">Lập trình hướng đối tượng C++</a></li>
 							<li><a href="#">Lập trình java</a></li>
 						</ul>
 					</li>
-					<li><a href="#" style="color:white;">Khoá học của tôi</a></li>
-					<li><a href="#" style="color:white;">Thảo luận</a></li>
-					<li><a href="#" style="color:white;">Kiểm tra</a></li>	
+					<li><a href="chitietkhoahoccuatoi.jsp" style="color:white;">Khoá học của tôi</a></li>
+					<li><a href="thread.jsp" style="color:white;">Thảo luận</a></li>
+					<li><a href="kiemtra.jsp" style="color:white;">Kiểm tra</a></li>	
 					<li><a href="" style="color:white;cursor:pointer" id="myBtn">Liên hệ</a></li>
 					<li><a href="" style="color:white;">Giới thiệu</a></li>				
 				</ul>
