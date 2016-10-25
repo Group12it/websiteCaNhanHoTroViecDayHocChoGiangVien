@@ -29,8 +29,8 @@
 
 <body>
 
+
 	<jsp:include page="headeradmin.jsp" ></jsp:include>
-	
 	
 	
 	<div id="wrapper">
@@ -105,13 +105,14 @@
 												<font size="6" color="red"> Bài 2: Giới thiệu về lập
 													trình c căn bản </font>
 											</p>
-											<div class="btn btn-default"
+											<div class="panel-default"
 												style="text-align: left; max-width:100%; background-image: url(images/Untitled.png)">
 												BÀI 2: LÀM QUEN VỚI NGÔN NGỮ LẬP TRÌNH<br /> Giới thiệu về
 												ngôn ngữ lập trình.<br /> Demo project mẫu (môi trường
 												visual studio 2013):<br /> Ví dụ: xuất ra màn hình câu:
 												“this is my first project”<br />
-											</div> <a href="adminnoidungbainop.jsp"> <img
+											</div> 
+											<a href="adminnoidungbainop.jsp"> <img
 												src="images/homework.png"> <span class="instancename">Bài
 														tập: Bài 2<span class="accesshide "> Page</span>
 												</span></a> <br> <a href="adminnoidungbainop.jsp"> <img
@@ -136,15 +137,6 @@
        </div>
        </div>
      </div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 

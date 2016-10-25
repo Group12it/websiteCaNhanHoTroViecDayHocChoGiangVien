@@ -27,11 +27,11 @@ border: 2px solid rgb(137,111,43);
  }
 
 .tbBody {
-    width: 1165px;
+  /*   width: 1165px; */
 	height: 600px;
     vertical-align:top;
     text-decoration: none;
-	margin-left: 105px;
+	/* margin-left: 105px; */
     margin-right: auto;
 }
 .tbBody tr{

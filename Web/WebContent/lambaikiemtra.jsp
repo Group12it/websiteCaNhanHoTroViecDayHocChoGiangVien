@@ -22,23 +22,26 @@
    <body>
    <jsp:include page="header.jsp"></jsp:include>
 
+  
   <div id="wrapper">
       <div class="container">
         <div class="row">
-          <div class="content col-md-12 col-sm-12 col-xs-12">
-           
+         
             <div class="container">
                 <div class="row">
+                
+                    <div class="col-md-12">
+                       <div class="panel panel-primary" style="padding-top:0px ">
+              			 <div class="panel panel-default">
+                                <div class="panel-body text-center" style="background:Blue; "><font size="5"  color="white" >Làm bài kiểm tra</font> </div>
+                            </div>
+                           <div class ="panel-body"> 
+                  
+                           <div class="panel panel-primary lambaikiemtra">
       
-      
-      <div style="padding:0" >
-    <div class="panel panel-primary lambaikiemtra">
-        <div class="panel-heading">
-            <b><span class="glyphicon glyphicon-question-sign"> </span> Làm bài kiểm tra</b>
-        </div>
         <div class="panel-body" style="padding:0">
             <div class="panel ">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="panel-body">
                    
                         <div class="form">
@@ -58,17 +61,10 @@
                         </div>
                           <!--đồng hồ-->
                           
+                      <!-- kết thúc lấy đề bài-->
                       
-<!--kết thúc đồng hồ-->
-                        <!--lấy đề bài-->
-                      <!--  <div id="div1"><h2>bài kiểm tra</h2>
-
-                        <button id="btnnop" type="submit" class="btn btn-info">Show đề bài</button><br><br>-->
-                       <!-- <div id="demo"><h2>hiện đề bài</h2></div>
-
-                        <button type="button" class="btn btn-info" onclick="loadDoc()">Show đề bài</button>
-                        <!-- kết thúc lấy đề bài-->
-                       <embed src="baikiemtra.txt" type="" width="100%"></embed>
+                      <table> <embed src="baikiemtra.txt"  high="100%" type="" width="100%"></embed></table>
+                      
                         <br><br><br>
                         </div>
                         <!-- câu trả lời -->    
@@ -80,7 +76,30 @@
                         <span class="label label-default">Câu 4 :</span>  <input type="" name="">  <br><br>
                         <span class="label label-default">Câu 5 :</span>  <input type="" name="">  
                         </div>  
-                        <!-- kết thúc câu trả lời-->
+      
+                        
+                    </div>  
+                    </div>
+                    </div>    
+                    </div>
+            </div>
+            </div>
+         </div></div>
+    
+  
+  
+  
+  
+  
+  
+  
+  <div id="wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="content col-md-12 col-sm-12 col-xs-12">
+            <div class="container">
+                <div class="row">
+                   <!-- kết thúc câu trả lời-->
                    
                 </div>
                 </div>
@@ -100,14 +119,10 @@
 
                   
                 </div>
-
-            <!--<div class="slider"><img src="dimages/slider.jpg"></div>-->
-            
-            
+     
           </div>
                 </div> 
-      
-
+     
   <!-- bắt đầu script chèn file text -->
       <script>
       function loadDoc() {

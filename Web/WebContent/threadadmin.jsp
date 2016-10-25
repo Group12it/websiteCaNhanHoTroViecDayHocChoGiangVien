@@ -25,11 +25,9 @@
 <body>
 <jsp:include page="headeradmin.jsp" ></jsp:include>
 
-<%-- 
 <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
 
 <sql:query dataSource="${DBConnect }" var="result"> select * from thread;</sql:query>
- --%> 
  
   <div id="wrapper">
       <div class="container">
@@ -76,31 +74,27 @@
                                 			</tr>
                                 		</thead>
                                 		<tbody>
-                                		 <%-- <c:forEach var="rows" items="${result.rows }">
+                                		 <c:forEach var="rows" items="${result.rows }">
                                 			<tr>
                                 				
                                 				<td><c:out value="${rows.MaThread}"></c:out></td>
                                 				<td><c:out value="${rows.TenThread}"></c:out></td>
                                 				<td>
                                                        <a href="suathreadadmin.jsp"> <button type="button" class="btn btn-success" id="btnXacNhan">Sửa</button></a>
-                                                        <a href="xoathreadadmin.jsp"> <button type="button" class="btn btn-warning" id="btnXoa1">Xóa</button></a>
-                                                    </td>
+                                                        <a href="xoathreadadmin.jsp"> <button type="button" class="btn btn-warning" id="btnXoa1">Xóa</button></a> 
+                                                		<!-- <input type="text"></input>   --> 
+                                                </td>
 </td>
                                 			</tr>
-                                			</c:forEach> --%>
+                                			</c:forEach> 
                                 		</tbody>
                                 		
                                 	</table>	
-                                	<div class="col-md-1"></div>
-                              <div class="col-md-1"></div>
-                              <div class="col-md-1"></div>
-                              <div class="col-md-1"></div>
-                         
-                              
-                              <div class="col-md-1">
-                               <a href="taothreadadmin.jsp"> <button type="button" class="btn btn-success" id="btnXacNhan">Tạo thread</button></a>
+                            
+                              		 <a href="taothreadadmin.jsp"><button type="button" class="btn btn-success" id="btnXacNhan">Tạo thread</button></a>
+                             		
                                </div>
-                    </ul>
+                
                                             
 
                      </div>
@@ -110,9 +104,6 @@
 
 
                      
- 
-                </div>
-           
      <jsp:include page="footer.jsp" ></jsp:include>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -9,7 +9,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
 
-    <!-- Bootstrap -->
+   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
     <link rel="stylesheet" type="text/css" href="css/thongtin.css">
@@ -23,24 +24,27 @@
 
 	<jsp:include page="header.jsp"></jsp:include>
 
-<div id="wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="content col-md-9 col-sm-9 col-xs-8">
-                <div class="container">
-                    <div class="row">
-                        <div class="container">
-                            <br>
-                            <div class="panel panel-default">
-                                <div class="panel-body"><font size="3" color="green">Cập nhật thông tin cá nhân</font> </div>
-                            </div>
-                        </div>
 
-                        <div class="col-md-8 " >
+ <div id="wrapper">
+      <div class="container">
+        <div class="row">
+         
+            <div class="container">
+                <div class="row">
+                
+                    <div class="col-md-12">
+                       <div class="panel panel-primary" style="padding-top:0px ">
+               <div class="panel panel-default">
+                                <div class="panel-body text-center"><font size="5" color="green" >Cập nhật thông tin cá nhân</font> </div>
+                            </div>
+                           <div class ="panel-body"> 
+                  
+              
+                         <div class="col-md-4 " >
                             <table class="table table-bordered" style="overflow-x:auto;">
                                 <thead>
                                     <tr>
-                                        <td style=" height:0px;" colspan="1" align="center">
+                                        
                                              <td style=" height:0px;" colspan="1" align="center">
                                             <h4> Ảnh đại diện</h4>
                                             <table class="table table-bordered">
@@ -50,11 +54,17 @@
                                                     </tr>
                                                 </thead>
                                             </table>
-                                        
-                                            <input type="file" name="file">
+                                        		<input type="file" class="filestyle" data-buttonName="btn-primary" data-input="false"  data-icon="glyphicon glyphicon-home"></input>
                                         </td>
-                                        <th>
-                                            <div class="panel-body" style="overflow-x:auto;">
+                         	 </tr>
+                        </thead>
+
+                        </table>
+                        </div>
+                        
+                        
+                        <div class="panel-body" style="overflow-x:auto;">
+                                 
                                                 <form class="form" method="post" id="contactform" action="thongtincanhan.jsp" role="form">
                                                  <div class="form-group has-feedback" style="overflow-x:auto;">
                                                         <label for="contactho">Họ tên</label>
@@ -81,19 +91,32 @@
 
                                                
                                             </form>
+                                          
                        				 </div>
-                        </th>
-                        </tr>
-                        </thead>
-
-                        </table>
-                        </div>
+                        
+                        
+                    </div>  
                     </div>
-                </div>
+                    </div>    
+             
+  
+      
             </div>
-        </div>
-</div>
-</div>
+            </div>
+            </div>
+         </div></div>
+    
+
+
+             
+ <script>
+               
+		$(":file").filestyle({iconName: "glyphicon-inbox"});
+		
+
+
+</script>
+             
                   <jsp:include page="footer.jsp"></jsp:include>
                     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

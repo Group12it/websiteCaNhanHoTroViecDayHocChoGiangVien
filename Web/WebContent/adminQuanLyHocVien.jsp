@@ -17,8 +17,6 @@
 
 <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
-    <link href="css/styleadmin.css" rel="stylesheet" />
-
     <link rel="stylesheet" type="text/css" href="css/stylemenu.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" media="all" type="text/css" href="css/font-awesome.min.css" />
@@ -29,42 +27,45 @@
 <body>
 
 	<jsp:include page="headeradmin.jsp" ></jsp:include>
-    <div class="paper">
-        <table class="tbBody">
-            <tr style="height:600px">
-                <td class="content-left" width="25%">
-
-                    <div class="panel panel-primary" style="padding-top:0px ">
-                        <div class="panel-body">
-
-                            <ul class="nav navs-tabs-brand">
+	
+	   
+    <div id="wrapper">
+      <div class="container">
+        <div class="row">
+         
+            <div class="container">
+                <div class="row">
+                
+                    <div class="col-md-3">
+                       <div class="panel panel-primary" style="padding-top:0px ">
+                           <div class ="panel-body"> 
+                  
+                         <ul class="nav navs-tabs-brand">
                                 <li class="active"><a href="admin.jsp" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-home"></i> &nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
-
-                                <li class="active"><a href="quanlykhoahoc.jsp" class="list-group-item"><i class="glyphicon glyphicon-education"></i> &nbsp;&nbsp;&nbsp;&nbsp;Quản lý khóa học</a></li>
-
+                               
+                                <li class="active"><a href="quanlykhoahoc.jsp" class ="list-group-item ""><i class="glyphicon glyphicon-education"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý khoá học</a></li>
+                               
                                 <li class="active"><a href="threadadmin.jsp" class="list-group-item"><i class="glyphicon glyphicon-comment"></i> &nbsp;&nbsp;&nbsp;&nbsp;Thread thảo luận</a></li>
-
-                                <li class="active"><a href="admingiangday.jsp"  class="list-group-item"><i class="glyphicon glyphicon-calendar"></i> &nbsp;&nbsp;&nbsp;&nbsp;Kế hoạch giảng dạy</a></li>
-
-                                <li class="active"><a href="adminQuanLyHocVien.jsp" class="list-group-item active" style="z-index: 0"><i class="glyphicon glyphicon-user"></i> &nbsp;&nbsp;&nbsp;&nbsp;Quản lý học viên</a></li>
-
-                                <li class="active"><a href="adminGuiMail.jsp" class="list-group-item"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp; Gửi mail cho sinh viên</a></li>
-
-                                <li class="active"><a href="admindanhsachhocvien.jsp" class="list-group-item"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
-
+                             
+                                <li class="active"><a href="admingiangday.jsp" class ="list-group-item"><i class="glyphicon glyphicon-calendar"></i> &nbsp;&nbsp;&nbsp;&nbsp;Kế hoạch giảng dạy</a></li>
+                              
+                                <li class="active"><a href="adminQuanLyHocVien.jsp" class="list-group-item"><i class="glyphicon glyphicon-user"></i> &nbsp;&nbsp;&nbsp;&nbsp;Quản lý học viên</a></li>
+                              
+                                <li class="active"><a href="adminGuiMail.jsp" class ="list-group-item"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp; Gửi mail cho sinh viên</a></li>
+                              
+                                <li class="active"><a href="admindanhsachhocvien.jsp" class ="list-group-item active"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
+                               
                                 <li class="active"><a href="admindethitracnghiem.jsp" class="list-group-item"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
 
-                            </ul>
-                        </div>
+                        </ul>
+                    </div>  
                     </div>
-                </td>
-                <td class="content-center">
-                    <table id="tbform">
-                        <tr>
-                            <td width="5%"></td>
-                            <td>
-
-                                <div class="panel panel-default">
+                    </div>    
+                    <div class="col-md-9">
+                         <ul class="nav navs-tabs-brand">
+                   
+                                <div class="col-md-9">
+                         <div class="panel panel-default" 	>
                                     <div class="panel-heading" style="background:#0CC">
                                         <h4 style="font-family: verdana;color:#000">Xác nhận đăng ký của sinh viên</h4>
                                     </div>
@@ -94,14 +95,14 @@
                                         </form>
 
 
-                                        <table class="table table-bordered">
+                                        <table  class="table table-striped" border="1" >
                                             <thead style="background:#09F">
                                                 <tr>
                                                     <th><center>Email</center></th>
                                                     <th><center>Họ Và Tên</center></th>
                                                     <th><center>Ngày sinh</center></th>
                                                     <th><center>Số điện thoại</center></th>
-                                                    <th width="10%"><center>Mã khóa học</center></th>
+                                                    <th><center>Mã khóa học</center></th>
                                                     <th><center>Tên khóa học</center></th>
                                                     <th><center>Thao tác</center></th>
                                                 </tr>
@@ -169,7 +170,7 @@
 
 
 
-                                        <table class="table table-bordered">
+                                        <table class="table table-striped" border="1" >
                                             <thead style="background:#09F">
                                                 <tr>
                                                     <th width="10%"><center>STT</center></th>
@@ -211,13 +212,26 @@
                                         </table>
                                     </div>
                                 </div>
-                        </tr>
-                    </table>
-                </td>
-                </tr>
-        </table>
+               
+                     </div>
+
+                    </ul>
+                                            
+
+                     </div>
+  
       
-    </div>
+            </div>
+            </div>
+            </div>
+         </div></div>
+    
+	
+	
+                   
+  
+    
+	
     <jsp:include page="footer.jsp" ></jsp:include>
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

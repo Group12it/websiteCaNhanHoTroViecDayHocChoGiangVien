@@ -34,6 +34,8 @@ public class UsersDAO {
     public boolean insertUser(Users u) {
         Connection connection = DBConnect.getConnection();
         String sql = "INSERT INTO users VALUES(?,?,?,?)";
+        String t="select Email from users";
+        
         try {
             PreparedStatement ps = connection.prepareCall(sql);
             ps.setLong(1, u.getUserID());

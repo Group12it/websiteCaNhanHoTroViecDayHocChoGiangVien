@@ -5,25 +5,26 @@
     <servlet-name>CheckEmailServlet</servlet-name>
     <servlet-class>controller.CheckEmailServlet</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>UsersServlet</servlet-name>
+  <servlet> 
+      <servlet-name>UsersServlet</servlet-name>
     <servlet-class>controller.UsersServlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>CheckEmailServlet</servlet-name>
     <url-pattern>/CheckEmailServlet</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
+  <servlet-mapping> 
     <servlet-name>UsersServlet</servlet-name>
     <url-pattern>/UsersServlet</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> 
+   
+ 
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+  
+  
+  
+  
 </web-app>

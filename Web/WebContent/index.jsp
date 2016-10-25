@@ -11,12 +11,12 @@
     <meta name="viewport" content="width = device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
-      <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     
-      <link href="ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
-      <link href="css/bootstrap.min.css" rel="stylesheet">
-       <link href="css/banerchuyendong.css" rel="stylesheet">
-         	 <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/banerchuyendong.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
      <link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" media="all" type="text/css" href="css/font-awesome.min.css"/>
@@ -66,10 +66,14 @@
           <div class="logo col-md-6 col-sm-6 col-xs-12"><h1><a href="#">Học lập trình</a></h1></div>
                 <p></p>
                 <div class="navbar-right">
-                
+                 <%if(request.getParameter("error")!=null){%>
+                        <div>
+                            <p style="color:red"><%=request.getParameter("error")%></p>
+                        </div> 
+                        <%}%>
                 
                 <a style="cursor:pointer" id="myBtn"><button type="button" class="btn btn-info"">Đăng nhập</button> </a>
-                <a style="cursor:pointer" id="myBtn"><button type="button" class="btn btn-warning"  style="margin-right: 30px;">Đăng ký</button> </a>
+                <a style="cursor:pointer" id="btndangky"><button type="button" class="btn btn-warning"  style="margin-right: 30px;">Đăng ký</button> </a>
             </div>
     <!--End đăng nhập đăng ký-->
         </div>

@@ -18,18 +18,18 @@
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
 </head>
 <body>
+
+<jsp:include page="header.jsp"></jsp:include>
 <div id="wrapper">
     <div class="container">
         <div class="row">
-            <div class="content col-md-9 col-sm-9 col-xs-2">
+            <div class="content col-md-12 col-sm-9">
                 <div class="container">
                     <div class="row">
 
 
-                        <div class="col-md-10">
-                            <br><br>
-
-                            <div class="panel panel-default">
+                        <div class="col-md-12">
+                           <div class="panel panel-default">
                                 <div class="panel-heading" style="background:#0CC">
                                     <h4 style="font-family: verdana;color:#000">Lập trình c căn bản</h4>
                                 </div>
@@ -93,17 +93,8 @@
             </div>
 
         </div>
-    </div>
-    <footer>
-        <div class="container">
-            <div class="footer-info text-center">
-                <p>
-                    Group 12 Copyright&copy; 2016 Designer</a><br>
-                </p>
-            </div>
-        </div>
-    </footer>
-
+   
+   <jsp:include page="footer.jsp"></jsp:include>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

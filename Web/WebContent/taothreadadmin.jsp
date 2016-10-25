@@ -38,7 +38,7 @@
             <div class="container">
                 <div class="row">
                 
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-sm-4 col-xs-3">
                          <div class="panel panel-primary" style="padding-top:0px ">
                            <div class ="panel-body"> 
                   
@@ -66,15 +66,15 @@
                     </div>  
                      <div class="panel panel-default">
                      <div class="col-md-9">
-                    <a class ="list-group-item text-center " href="#" style="font-size: 20px;color: blue;background: #0CC">Tạo Thread Thảo Luận</a><br> 
+                    <a class ="list-group-item text-center " style="font-size: 20px;color: blue;background: #0CC">Tạo Thread Thảo Luận</a><br> 
                     <!--<span class="label label-info" style="font-size: 20px">Tên Đề Tài Thảo Luận</span>-->
                     <label style="font-size: 15px">Tên Đề Tài Thảo Luận</label>
                     <br>
-                    <input class="form-control" type="email" name="" value="" placeholder="Nhập Tên Đề Tài" size="50% " style="font-size: 15px">
+                    <input class="form-control" type="text" name="tenthread" value="" placeholder="Nhập Tên Đề Tài" size="50% " style="font-size: 15px">
                     <br>  
                     <label style="font-size: 15px">Thời Gian Tạo Thread</label>
  
-                    <input class="form-control" type="date" name="" value="" placeholder="">
+                    <input class="form-control" type="date" name="thoigian" value="" placeholder="">
                                     <br>
                                     <div class="col-md-1"></div> 
                                   <div class="col-md-1"></div>     

@@ -17,60 +17,59 @@
 <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
 
-    <link href="css/styleadmin.css" rel="stylesheet" />
-
+  
     <link rel="stylesheet" type="text/css" href="css/stylemenu.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" media="all" type="text/css" href="css/font-awesome.min.css" />
-
-  
 </head>
 
 <body>
 
 	<jsp:include page="headeradmin.jsp"></jsp:include>
-    <div class="paper">
-        <table class="tbBody">
-            <tr style="height:600px">
-                <td class="content-left" width="25%">
+  
+  
+   <div id="wrapper">
+      <div class="container">
+        <div class="row">
+         
+            <div class="container">
+                <div class="row">
+                
+                    <div class="col-md-3">
+                       <div class="panel panel-primary" style="padding-top:0px ">
+                           <div class ="panel-body"> 
+                  
+                         <ul class="nav navs-tabs-brand">
+                                <li class="active"><a href="admin.jsp" class="list-group-item" style="z-index: 0;" ><i class="glyphicon glyphicon-home"></i> &nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
+                               
+                                <li class="active"><a href="quanlykhoahoc.jsp" class ="list-group-item active " style="z-index: 0"><i class="glyphicon glyphicon-education"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý khoá học</a></li>
+                               
+                                <li class="active"><a href="threadadmin.jsp" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-comment"></i> &nbsp;&nbsp;&nbsp;&nbsp;Thread thảo luận</a></li>
+                             
+                                <li class="active"><a href="admingiangday.jsp" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-calendar"></i> &nbsp;&nbsp;&nbsp;&nbsp;Kế hoạch giảng dạy</a></li>
+                              
+                                <li class="active"><a href="adminQuanLyHocVien.jsp" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-user"></i> &nbsp;&nbsp;&nbsp;&nbsp;Quản lý học viên</a></li>
+                              
+                                <li class="active"><a href="adminGuiMail.jsp" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp; Gửi mail cho sinh viên</a></li>
+                              
+                                <li class="active"><a href="admindanhsachhocvien.jsp" class ="list-group-item " style="z-index: 0"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
+                               
+                                <li class="active"><a href="admindethitracnghiem.jsp" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
 
-                    <div class="panel panel-primary" style="padding-top:0px ">
-                        <div class="panel-body">
-
-                            <ul class="nav navs-tabs-brand">
-                                <li class="active"><a href="admin.jsp" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-home"></i> &nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
-
-                                <li class="active"><a href="quanlykhoahoc.jsp" class="list-group-item active" style="z-index: 0"><i class="glyphicon glyphicon-education"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý khoá học</a></li>
-
-                                <li class="active"><a href="threadadmin.jsp" class="list-group-item"><i class="glyphicon glyphicon-comment"></i> &nbsp;&nbsp;&nbsp;&nbsp;Thread thảo luận</a></li>
-
-                                <li class="active"><a href="admingiangday.jsp"  class="list-group-item"><i class="glyphicon glyphicon-calendar"></i> &nbsp;&nbsp;&nbsp;&nbsp;Kế hoạch giảng dạy</a></li>
-
-                                <li class="active"><a href="adminQuanLyHocVien.jsp" class="list-group-item"><i class="glyphicon glyphicon-user"></i> &nbsp;&nbsp;&nbsp;&nbsp;Quản lý học viên</a></li>
-
-                                <li class="active"><a href="adminGuiMail.jsp" class="list-group-item"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp; Gửi mail cho sinh viên</a></li>
-
-                                <li class="active"><a href="admindanhsachhocvien.jsp" class="list-group-item"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
-
-                                <li class="active"><a href="admindethitracnghiem.jsp" class="list-group-item"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
-
-                            </ul>
-                        </div>
+                        </ul>
+                    </div>  
                     </div>
-                </td>
-                <td class="content-center">
-                    <table class="ria">
-                        <tr>
-                            <td width="5%"></td>
-                            <td width="90%">
-
-                                <div class="panel panel-default" style="height:100%">
+                    </div>    
+                    <div class="col-md-9">
+                         <ul class="nav navs-tabs-brand">
+                               <td class="content-center">
+                              <div class="panel panel-default" style="max-height:100%">
                                     <div class="panel-heading" style="background:#0CC">
                                         <h4 style="font-family: verdana;color:#000">Quản lý Khóa học</h4>
                                     </div>
                                     <div class="panel-body">
 
-                                        <div class="col-md-5">
+                                        <div class="col-md-12">
 
                                             <form action="quanlykhoahoc.jsp" method="post" onSubmit="return formaction()">
                                                 <div class="form-group">
@@ -110,8 +109,24 @@
                                 </div>
 
                             </td>
-                        </tr>
-                    </table>
+                   
+                    </ul>
+                                            
+
+                     </div>
+  
+      
+            </div>
+            </div>
+            </div>
+         </div></div>
+    
+    
+    
+  
+  
+    
+               
                 </td>
             </tr>
         </table>

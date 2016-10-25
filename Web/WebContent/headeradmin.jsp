@@ -1,4 +1,6 @@
-
+<%@ page import="java.lang.*" %>
+<%@ page import="model.*" %>
+<%@ page import="dao.*" %>
 <%@ page import="java.lang.*" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
@@ -38,18 +40,32 @@
 <sql:setDataSource var="conn" driver="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost/web" user="root" password="admin" />
 
-
+      <%
+           
+            Users users = null;
+            if (session.getAttribute("user") != null) {
+                users = (Users) session.getAttribute("user");
+            }
+        %>
     <header>
       <div class="container">
            <div class="row">
             <div class="logo col-md-6 col-sm-6 col-xs-12"><h1><a href="#">Học lập trình</a></h1></div>
             <div class="navbar-right">
-                   <div class="dropdown right">
-                <a href="" class="dropntn" style="z-index: 1">Admin<span class="arrow"></span></a>
-                <div class="dropdown-content">
-                    <a href="#">Tên admin</a>
-                    <a href="thongtincanhan.jsp">Thông tin cá nhân</a>
-                    <a href="doimatkhau.jsp">Đổi mật khẩu</a>
+                  <div class="dropdown right">
+                <a href="" class="dropntn"><span class="arrow"></span></a>
+                  <%if(users!=null){%>
+                <a href="#" class="dropntn"><%=users.getUserEmail()%></a> </li>
+                                <%}%><span class="arrow"></span></a>
+                
+                <div class="dropdown-content" style="z-index: 1">
+               
+<!--                   	<a href="#" style="z-index: 10">Tên học viên</a>  -->
+					   <%if(users!=null){%>
+                	<a href="#" class="dropntn" style="z-index: 1"><%=users.getUserID()%></a> </li>
+                                <%}%><span class="arrow"></span></a>
+                    <a href="thongtincanhan.jsp" style="z-index: 1">Thông tin cá nhân</a>
+                    <a href="doimatkhau.jsp"  style="z-index: 1">Đổi mật khẩu</a>
                     
                   </div> 
                   </div>
@@ -75,18 +91,17 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px; color: blue;">
 				<ul class="nav navbar-nav" style="color:blue;"><!-- navbar-nav-->
-					<li class=""><a href="./index.html" style="color:white;">Trang chủ</a></li>
+					<li class=""><a href="indexuser.jsp" style="color:white;">Trang chủ</a></li>
 					<li class="dropdown" style="color:white;">
 						<a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown">Khoá học<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Lập trình C căn bản</a></li>
+							<li><a href="chitietkhoahoc.jsp">Lập trình C căn bản</a></li>
 							<li><a href="#">Lập trình hướng đối tượng C++</a></li>
 							<li><a href="#">Lập trình java</a></li>
 						</ul>
 					</li>
-					<li><a href="#" style="color:white;">Khoá học của tôi</a></li>
-					<li><a href="#" style="color:white;">Thảo luận</a></li>
-					<li><a href="#" style="color:white;">Kiểm tra</a></li>	
+				
+					<li><a href="thread.jsp" style="color:white;">Thảo luận</a></li>
 					<li><a href="" style="color:white;cursor:pointer" id="myBtn">Liên hệ</a></li>
 					<li><a href="" style="color:white;">Giới thiệu</a></li>				
 				</ul>
@@ -94,7 +109,7 @@
 		</div>
 	</nav>
 	</div>
-</div>
+
 </header>
      
 

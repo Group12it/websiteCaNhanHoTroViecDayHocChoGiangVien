@@ -14,55 +14,57 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" />
 	<link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
-    <link href="css/styleadmin.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="css/stylemenu.css" />
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
+	  <link rel="stylesheet" type="text/css" href="css/stylemenu.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" media="all" type="text/css" href="css/font-awesome.min.css" />
+	<script type="text/javascript" src=></script>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
 <jsp:include page="headeradmin.jsp" ></jsp:include>
-    <div class="paper">
-        <table class="tbBody">
-            <tr>
-                <td class="content-left">
-
-                    <div class="panel panel-primary" style="padding-top:0px ">
-                        <div class="panel-body">
-
-                            <ul class="nav navs-tabs-brand">
-                                <li class="active"><a href="admin.jsp" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-home"></i> &nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
-
-                                <li class="active"><a href="quanlykhoahoc.jsp" class="list-group-item"><i class="glyphicon glyphicon-education"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý khoá học</a></li>
-
+    
+  <div id="wrapper">
+      <div class="container">
+        <div class="row">
+                  
+            <div class="container">
+                <div class="row">
+                
+                    <div class="col-md-3">
+                          <div class="panel panel-primary" style="padding-top:0px ">
+                           <div class ="panel-body"> 
+                  
+                         <ul class="nav navs-tabs-brand">
+                                <li class="active"><a href="admin.jsp" class="list-group-item " style="z-index: 0"><i class="glyphicon glyphicon-home"></i> &nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
+                               
+                                <li class="active"><a href="quanlykhoahoc.jsp" class ="list-group-item ""><i class="glyphicon glyphicon-education"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý khoá học</a></li>
+                               
                                 <li class="active"><a href="threadadmin.jsp" class="list-group-item"><i class="glyphicon glyphicon-comment"></i> &nbsp;&nbsp;&nbsp;&nbsp;Thread thảo luận</a></li>
-
-                                <li class="active"><a href="admingiangday.jsp"  class="list-group-item active" style="z-index: 0"><i class="glyphicon glyphicon-calendar"></i> &nbsp;&nbsp;&nbsp;&nbsp;Kế hoạch giảng dạy</a></li>
-
+                             
+                                <li class="active"><a href="admingiangday.jsp" class ="list-group-item"><i class="glyphicon glyphicon-calendar"></i> &nbsp;&nbsp;&nbsp;&nbsp;Kế hoạch giảng dạy</a></li>
+                              
                                 <li class="active"><a href="adminQuanLyHocVien.jsp" class="list-group-item"><i class="glyphicon glyphicon-user"></i> &nbsp;&nbsp;&nbsp;&nbsp;Quản lý học viên</a></li>
-
-                                <li class="active"><a href="adminGuiMail.jsp" class="list-group-item"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp; Gửi mail cho sinh viên</a></li>
-
-                                <li class="active"><a href="admindanhsachhocvien.jsp" class="list-group-item"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
-
+                              
+                                <li class="active"><a href="adminGuiMail.jsp" class ="list-group-item"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp; Gửi mail cho sinh viên</a></li>
+                              
+                            
+                                <li class="active"><a href="admindanhsachhocvien.jsp" class ="list-group-item active"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
+                               
                                 <li class="active"><a href="admindethitracnghiem.jsp" class="list-group-item"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
 
-                            </ul>
-                        </div>
+                        </ul>
+                    </div>  
                     </div>
-                </td>
-                <td class="content-center">
-                    <table>
+                    </div>   
+    		 <div class="col-md-9">
+                    <ul class="nav navs-tabs-brand">
+                    <table class="ria">
                         <tr>
-                            <td width="5%"></td>
-                            <td>
+                           
+                       
 
                                 <div class="panel panel-default">
                                     <div class="panel-heading" style="background:#0CC">
@@ -79,24 +81,48 @@
 
                                                 <div class="form-group">
                                                     <label for="contactmessage">Nội Dung Bài Giảng</label><br>
-                                                    <textarea class="form-group" id="contactmessage" rows="10" cols="75" placeholder="Nhập nội dung"></textarea>
+                                               	<div class="col-md-6">
+                       							 <textarea rows="6" class="form-control" id="comments" name="noidungbaigiang" placeholder="nội dung"></textarea>
+                   								</div>
+                                               
                                                 </div>
-                                                <input type="file" />
-                                                <br />
+
+                                         
+   												<input type="file" class="filestyle" data-buttonName="btn-primary" data-input="false"  data-icon="glyphicon glyphicon-home"></input>
+ 												<br>
+ 												
+                                   
                                                 <button type="submit" id="contracbtn" class="btn btn-info">Tải Lên</button>
+                                                </br>
                                                 <!-- kết thúc gửi mail-->
                                             </form>
                                         </div>
                                     </div>
 
                                 </div>
-                            </td>
+                      
+                            </tr>
                     </table>
-                </td>
-                <td width="5%"></td>
-        </table>
+                    </ul>
+               
+    
+    </div></div></div></div></div>
+    
+    
+    
+    
+    
+    
+    
+    <script>
+               
+		$(":file").filestyle({iconName: "glyphicon-inbox"});
+		
+
+
+</script>
+    
        <jsp:include page="footer.jsp" ></jsp:include>]
-    </div>
        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
