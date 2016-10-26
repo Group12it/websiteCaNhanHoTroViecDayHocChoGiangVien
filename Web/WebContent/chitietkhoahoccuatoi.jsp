@@ -164,15 +164,7 @@
             </div>
         </div>
     </div>
-  <footer>
-     <div class="container">
-     <div class="footer-info text-center">
-      <p>
-      Group 12 Copyright&copy; 2016 Designer</a><br>
-      </p>
-      </div>
-      </div>
-    </footer>
+  <jsp:include page="footer.jsp" ></jsp:include>
 
 
                     <!--Script chuyển động baner-->
