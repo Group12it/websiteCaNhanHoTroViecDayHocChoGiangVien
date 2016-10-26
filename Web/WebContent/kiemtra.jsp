@@ -52,7 +52,7 @@
                           <tr>
                             <td>1</td>
                             <td>Lập trình c căn bản</td>
-                           <td><a href="chitietkiemtra.jsp">bài kiểm tra</a></td>
+                           <td><a href="lambaikiemtra.jsp">bài kiểm tra</a></td>
                            <td><a href="xemdiem.jsp"> Xem kết quả </a></td>
                           </tr>
                           <tr>
