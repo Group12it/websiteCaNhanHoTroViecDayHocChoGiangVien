@@ -41,7 +41,7 @@
                                 <div id="result">
                                     <ul class="list-group dscauhoi">
                                         <li class="list-group-item">
-                                            <a href="thamgiathaoluan.html" style="overflow-wrap:break-word" title="type - casting trong c++" class="text-primary"> Lập trình c thế nào</a>
+                                            <a href="thamgiathaoluan.jsp" style="overflow-wrap:break-word" title="type - casting trong c++" class="text-primary"> Lập trình c thế nào</a>
                                             <div style="clear:both;">
                                                 <span class="fontSmall"> <span class="glyphicon glyphicon-time"> </span> 10/12/2016 1:35:07 PM | <span class="glyphicon glyphicon-user"> </span> Admin | Số câu trả lời: 1</span>
                                             </div>
