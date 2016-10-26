@@ -85,22 +85,13 @@
             
             
           </div>
-          <div class="sidebar col-md-3 col-sm-3 col-xs-12">
-            <div class="sidebar-item">
-              <h4 class="widget-title">Thiết kế web</h4>
-              <div class="textwidget">
-                <img src="images/sidebar1.jpg">
-              </div>
-            </div>
-            
-            
-            </div>
-
-
+    
 
                 </div> 
-                </div></div>
+                </div>
+                </div>
      
+     <br><br><br><br>
 	<jsp:include page="footer.jsp"></jsp:include>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
