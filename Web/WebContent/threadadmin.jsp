@@ -11,8 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix= "c" %>
-		<%@ taglib uri= "http://java.sun.com/jsp/jstl/sql" prefix= "sql" %>
+	      
+    <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 	
 	<link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
@@ -68,17 +70,19 @@
                                 <table class="table table-striped" border="1" >
                                 		<thead>
                                 			<tr>
-                                				<th dir="rtl" style="background:#0CC"> Stt</th>
+                                				<th dir="rtl" style="background:#0CC"> STT</th>
                                 				<th dir="rtl" style="background:#0CC">Tên Thread</th>
                                 				<th dir="rtl" style="background:#0CC">Chi Tiết  </th>
                                 			</tr>
                                 		</thead>
                                 		<tbody>
+                                		  <c:set var="count" value="0" /> <%--Khởi tạo biến đếm =0 --%>
                                 		 <c:forEach var="rows" items="${result.rows }">
+                                		 <c:set var="count"  value="${count+1}" /> <%--Tăng biến đếm lên 1 đơn vị --%>
                                 			<tr>
                                 				
-                                				<td><c:out value="${rows.MaThread}"></c:out></td>
-                                				<td><c:out value="${rows.TenThread}"></c:out></td>
+                                				<td>${count}.</td>
+                                				<td>${rows.TenThread}</td>
                                 				<td>
                                                        <a href="suathreadadmin.jsp"> <button type="button" class="btn btn-success" id="btnXacNhan">Sửa</button></a>
                                                         <a href="xoathreadadmin.jsp"> <button type="button" class="btn btn-warning" id="btnXoa1">Xóa</button></a> 

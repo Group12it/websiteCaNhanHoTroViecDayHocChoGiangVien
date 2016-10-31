@@ -1,3 +1,6 @@
+<%@ page import="java.lang.*" %>
+<%@ page import="model.*" %>
+<%@ page import="dao.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,11 +20,24 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.css" rel="stylesheet" media="screen">
   <link href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="css/stylevadidating.css">
-   
+        
+    <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+	
   </head>
   
   <body>
+<sql:setDataSource var="conn" driver="com.mysql.jdbc.Driver"
+	url="jdbc:mysql://localhost/web" user="root" password="admin" />
 
+      <%
+           
+            Users users = null;
+            if (session.getAttribute("user") != null) {
+                users = (Users) session.getAttribute("user");
+            }
+        %>
 	<jsp:include page="header.jsp"></jsp:include>
       
         <div class ="container">
@@ -72,7 +88,12 @@
              <th>
              <marquee SCROLLDELAY = 150 width ="110%" height = "300" direction="up" style ="font:arial" scrollamount="2" id="bannerthongbao" name="bannerthongbao" onmouseover="this.stop()" onmouseout="this.start()">
              <ul>
-                 <li><a href="chitietkhoahoc.jsp">Thông tin khóa học C căn bản</a></li>
+                 
+                 <li> <%if(users!=null){%>
+                <a href="#" class="dropntn"><%=users.getUserEmail()%></a> </li>
+                                <%}%></li>
+                 <li>
+                      <a href="chitietkhoahoc.jsp">Thông tin khóa học C căn bản</a></li>
                  <br>
                  <li>Thông tin học lập trình C# </li>
                  <br>

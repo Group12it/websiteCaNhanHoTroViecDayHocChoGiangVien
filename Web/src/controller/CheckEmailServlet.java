@@ -23,7 +23,6 @@ public class CheckEmailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
     }
 
     @Override
@@ -32,7 +31,9 @@ public class CheckEmailServlet extends HttpServlet {
         if (usersDAO.checkEmail(request.getParameter("username"))) {
             response.getWriter().write("<img src=\"img/not-available.png\" />");
         } else {
-            response.getWriter().write("<img src=\"img/available.png\" />");
+            
+        	System.out.println("Mail da bi trung");
+        	response.getWriter().write("<img src=\"img/available.png\" />");
         }
     }
 

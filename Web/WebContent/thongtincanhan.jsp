@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,11 +15,31 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
     <link rel="stylesheet" type="text/css" href="css/thongtin.css">
-   
+   <%@page import="dao.*" %>
+   <%@page import="controller.*" %>
+   <%@page import="model.*" %>
+     <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
+
+
+<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
+<%-- <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>--%>
+
+  
+      <%
+           
+            Users users = null;
+            if (session.getAttribute("user") != null) {
+                users = (Users) session.getAttribute("user");
+            }
+        %>
+
+<sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=users.getUserEmail()%>";</sql:query> 
 
 
  <div id="wrapper">
@@ -46,7 +67,8 @@
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <img src="images/item2.png" class="img-responsive img-circle" alt="">
+                                                    	<img src="${msg}"  class="img-responsive img-circle" alt=""/>
+                                                         <!-- <img src="images/item2.png" class="img-responsive img-circle" alt=""> -->
                                                     </tr>
                                                 </thead>
                                             </table>
@@ -65,26 +87,52 @@
                                        <div class="panel-body">
                                          	
                                          
-                                                <form class="form" method="post" id="contactform" action="" role="form">
+                                                <form class="form" method="post" id="contactform" action="capnhatthongtin.jsp" role="form">
                                                  <div class="form-group has-feedback">
-                                                        <label><strong>Họ và tên:</strong> Lưu Đình Mác</label>
+                                                        <label><strong>ID:</strong>  <%if(users!=null){%>
+             			 								  <a href="#" class="dropntn">  <%=users.getUserID()%></a> </li>
+                             							   <%}%></label>
                                                        
                                                     </div>
+                                                   <div class="form-group">
+                                                        
+                                                        <label ><strong>Email:</strong>   <%if(users!=null){%>
+             			 								  <a href="#" class="dropntn"><%=users.getUserEmail()%></a> </li>
+                             							   <%}%>
+                             							 </label>  
+                             							 <%--Lấy email cá nhân --%>
+                                                       
+                                                        </div>
+                                                <c:forEach var="rows" items="${result.rows }">
+                                                 <div class="form-group has-feedback">
+                                                        <label><strong>Họ và tên:</strong> <%if(users!=null){%>
+             			 								  <a href="#" class="dropntn"><c:out value="${rows.HoTen}"></c:out></a> </li>
+                             							   <%}%></label>
+                                                       
+                                                    </div>
+                                                    
+                                            
+                                                    
                                                      <div class="form-group has-feedback">
-                                                        <label ><strong>Ngày sinh:</strong> 22/11/1996</label>
+                                                        <label ><strong>Ngày sinh:</strong> <%if(users!=null){%>
+             			 								  <a href="#" class="dropntn"> <c:out value="${rows.NgaySinh}"></c:out></a> </li>
+                             							   <%}%></label>
                                                        
                                                     </div>
                                                     <div class="form-group has-feedback">
-                                                        <label ><strong>Giới tính:</strong> Nam</label>
+                                                        <label ><strong>Giới tính:</strong><%if(users!=null){%>
+             			 								  <a href="#" class="dropntn"><c:out value="${rows.GioiTinh}"></c:out></a> </li>
+                             							   <%}%></label>
                                                        
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label ><strong>Email:</strong> nguoiemcuanui@gmail.com</label>
-                                                       
-                                                        </div>
+                                                  
+                                                 
                                                         <div class="form-group">
-                                                           <label ><strong>Điện thoại :</strong> 01234567890</label>
+                                                           <label ><strong>Điện thoại :</strong><%if(users!=null){%>
+             			 								  <a href="#" class="dropntn"><c:out value="${rows.SDT}"></c:out></a> </li>
+                             							   <%}%></label>
                                                         </div>
+                                                     </c:forEach>
                                                    <a href="capnhatthongtin.jsp"> <button type="Submit" id="btncapnhat" name="btncapnhat" class="btn btn-info">Cập nhật</button></a>
                                                      
                                                      

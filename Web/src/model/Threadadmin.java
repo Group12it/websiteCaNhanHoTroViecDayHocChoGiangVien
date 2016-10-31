@@ -1,14 +1,12 @@
 package model;
 
-import java.util.Date;
-
 public class Threadadmin {
 	  	private long threadID;
 	    private String tenThread;
-	    private Date ngaytaothread;
+	    private String ngaytaothread;
 	    public Threadadmin(){}
 	
-		public Threadadmin(long threadID, String tenThread, Date ngaytaothread) {
+		public Threadadmin(long threadID, String tenThread, String ngaytaothread) {
 			super();
 			this.threadID = threadID;
 			this.tenThread = tenThread;
@@ -31,13 +29,15 @@ public class Threadadmin {
 			this.tenThread = tenThread;
 		}
 
-		public Date getNgaytaothread() {
+		public String getNgaytaothread() {
 			return ngaytaothread;
 		}
 
-		public void setNgaytaothread(Date ngaytaothread) {
+		public void setNgaytaothread(String ngaytaothread) {
 			this.ngaytaothread = ngaytaothread;
 		}
+
+	
 
 	
 	    

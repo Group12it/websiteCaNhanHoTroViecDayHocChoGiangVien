@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,14 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.Thread;
-import dao.UsersDAO;
+import dao.ThreadDAO;
 import model.Threadadmin;
-import model.Users;
 
-@WebServlet("/ThreadServlet")
+@WebServlet("/thread")
 public class ThreadServlet extends HttpServlet {
-	Thread threaddao = new Thread();
+	ThreadDAO threaddao = new ThreadDAO();
 	private static final long serialVersionUID = 1L;
        
     public ThreadServlet() {
@@ -30,38 +27,29 @@ public class ThreadServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		  String command = request.getParameter("command");
+			
 	        String url = "";
-	        Threadadmin thr = new Threadadmin();
-	        HttpSession session = request.getSession();
+	        Threadadmin thread = new Threadadmin();
+	    
+	        String command = request.getParameter("command");
+			
+			HttpSession session = request.getSession();
 	        switch (command) {
 	            case "insert":
 	               
-	            thr.setThreadID(new java.util.Date().getTime());
-	             thr.setTenThread(request.getParameter("tenthread"));   
-	             thr.setNgaytaothread(new Date());  
-	           
-	              
-	                session.setAttribute("thread", thr);
-	             
-	                url = "/threadadminr.jsp";
-	               break;
-	           //trường hợp đăng nhập
-	            case "update":
+	            	
+		    		 thread.setThreadID(new java.util.Date().getTime());
+		             thread.setTenThread(request.getParameter("tenthread"));   
+		             thread.setNgaytaothread(request.getParameter("thoigian")); 
 	            
-//	                users = usersDAO.login(request.getParameter("email"),request.getParameter("pass"));
-//	                if (users != null) {
-//	                	
-//	               	 session.setAttribute("user", users);
-//	                    url = "/indexuser.jsp";
-//	                
-//	                }
-//	                else{
-//	                    request.setAttribute("error", "Sai mật khẩu hoặc Email");
-//	                    System.out.println("Sai mật khẩu hoặc tên đăng nhập");
-//	                    url = "/index.jsp";
-//	                    //đăng nhập lỗi
-//	                }
+		             threaddao.InsertThread(thread);
+	    				session.setAttribute("thread", thread);
+	    				url = "/threadadmin.jsp";
+	    	
+	               break;
+	     
+	            case "update":
+	           
 	                break;
 	        }
 	        RequestDispatcher rd = getServletContext().getRequestDispatcher(url);

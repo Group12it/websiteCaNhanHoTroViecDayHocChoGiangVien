@@ -67,7 +67,9 @@
                      <div class="panel panel-default">
                      <div class="col-md-9">
                     <a class ="list-group-item text-center " style="font-size: 20px;color: blue;background: #0CC">Tạo Thread Thảo Luận</a><br> 
-                    <!--<span class="label label-info" style="font-size: 20px">Tên Đề Tài Thảo Luận</span>-->
+                   
+                    <%--<span class="label label-info" style="font-size: 20px">Tên Đề Tài Thảo Luận</span>--%>
+                   
                     <label style="font-size: 15px">Tên Đề Tài Thảo Luận</label>
                     <br>
                     <input class="form-control" type="text" name="tenthread" value="" placeholder="Nhập Tên Đề Tài" size="50% " style="font-size: 15px">
@@ -81,11 +83,16 @@
                                    <div class="col-md-1"></div>      
                                     <div class="col-md-1"></div>      
                                       <div class="col-md-1"></div>      
-                                      <div class="col-md-1"><form action="threadadmin.jsp" method="post" name="bcdonline" onSubmit="return formaction()">
+                                      <div class="col-md-1">
+                                     
+                                     <%--action tao thread voi servlet --%>
+                                      <form action="thread" method="post" name="bcdonline" onSubmit="return formaction()">
                                         
-                                        <button class="btn btn-info">OK</button>
-                                        </form>   </div>      
-                                       <div class="col-md-1"></div>    
+                                        <input  type="hidden" value="insert" name="command"> <%--Lệnh này để gọi đến switch case trong servlet  --%>
+                                        <button class="btn btn-info" type="submit" >OK</button>
+                                        <a href="threadadmin.jsp"><button class="btn btn-info" type="button" >Huỷ</button></a>
+                                       </form>   </div>      
+                                      <div class="col-md-1"></div>    
                                              
                 </div>
                 </div>

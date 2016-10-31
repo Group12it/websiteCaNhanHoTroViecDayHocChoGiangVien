@@ -1,3 +1,6 @@
+   <%@page import="dao.*" %>
+   <%@page import="controller.*" %>
+   <%@page import="model.*" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,6 +24,15 @@
 </head>
 
 <body>
+
+     <%
+           
+            Users users = null;
+            if (session.getAttribute("user") != null) {
+                users = (Users) session.getAttribute("user");
+            }
+        %>
+
 
 	<jsp:include page="header.jsp"></jsp:include>
 
@@ -50,12 +62,19 @@
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <img src="images/item2.png" class="img-responsive img-circle" alt="">
+        												 <img src="${msg}"  class="img-responsive img-circle" alt=""/>
+                                                      <!--   <img src="images/item2.png" class="img-responsive img-circle" alt=""> -->
                                                     </tr>
                                                 </thead>
                                             </table>
-                                        		<input type="file" class="filestyle" data-buttonName="btn-primary" data-input="false"  data-icon="glyphicon glyphicon-home"></input>
-                                        </td>
+                                        		   <form method="post" action="uploadServlet" enctype="multipart/form-data">
+            
+            										<input type="file" name="uploadFile" class="filestyle" data-buttonName="btn-primary" data-input="false"  data-icon="glyphicon glyphicon-home"></input>
+           										
+           											 <br/><br/>
+            									<input type="submit" value="Upload" />
+        											</form>
+                                        		   </td>
                          	 </tr>
                         </thead>
 
@@ -65,29 +84,38 @@
                         
                         <div class="panel-body" style="overflow-x:auto;">
                                  
-                                                <form class="form" method="post" id="contactform" action="thongtincanhan.jsp" role="form">
+                                                <form class="form" method="post" id="contactform" action="Home" role="form">
                                                  <div class="form-group has-feedback" style="overflow-x:auto;">
-                                                        <label for="contactho">Họ tên</label>
-                                                        <input type="text" class="form-control" id="contactho" placeholder="Nhập họ tên" >
+                                                        <label for="contactho">ID:</label>
+                                                        <input type="text" class="form-control" name="UserID" id="contactho" value="<%=users.getUserID() %>" readonly="readonly">
+                                                    </div>
+                                                    <div class="form-group has-feedback" style="overflow-x:auto;">
+                                                        <label for="contactho">Email:</label>
+                                                        <input type="text" class="form-control" id="contactho" value="<%=users.getUserEmail()%>" readonly="readonly">
+                                                    </div>
+                                                
+                                                 <div class="form-group has-feedback" style="overflow-x:auto;">
+                                                        <label for="contactho">Họ tên:</label>
+                                                        <input type="text" class="form-control" name="hoten"  id="contactho" placeholder="Nhập họ tên" value="<%=users.getUserHoTen() %>" >
                                                     </div>
                                                    
                                                     <div class="form-group has-feedback">
-                                                        <label for="contactdienthoai">Điện thoại</label>
-                                                        <input type="number" class="form-control" id="contactdienthoai" placeholder="Nhập số điện thoại">
+                                                        <label for="contactdienthoai">Điện thoại:</label>
+                                                        <input type="number" class="form-control" name="sodienthoai" value="<%=users.getUserSDT()%>" >
                                                     </div>
                                                        
                                                         <div class="form-group">
-                                                            <label for="contactdiachi">Địa chỉ liên lạc</label>
-                                                            <input type="text" class="form-control" id="contactdiachi" placeholder="Nhập địa chỉ" >
+                                                            <label for="contactdiachi">Giới tính:</label>
+                                                            <input type="text" class="form-control"  name="gioitinh" value="<%=users.getUserGioiTinh() %>">
                                                         </div>
                                                      
                                                        <div class="form-group">
-                                                            <label for="contactdiachi">Ngày sinh</label>
-                                                            <input type="date" class="form-control" id="contactdiachi" placeholder="Nhập địa chỉ" >
+                                                            <label for="contactdiachi">Ngày sinh:</label>
+                                                            <input type="date" class="form-control" name="ngaysinh"  placeholder="ỉ" value="<%=users.getUserNgaySinh()%>">
                                                         </div>
-
-                                                   	 <button type="submit" id="btnluu" name="btnluu" class="btn btn-info">Lưu</button>
-                                                   <button type="submit" id="btnhuy" name="btnhuy" class="btn btn-default">Hủy</button>
+													<input type="hidden" value="update" name="command"> 
+                                                   	 <button type="submit" value="update" id="btnluu" name="btnluu" class="btn btn-info">Lưu</button>
+                                                   <a href="thongtincanhan.jsp"><button type="button" id="btnhuy" name="btnhuy" class="btn btn-default">Hủy</button></a>
 
                                                
                                             </form>

@@ -1,24 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
-public class Users {
+public class User {
 
-	 public Users() {
+	 public User() {
 	    }
-	 
-	 public Users(long userID, String userHoTen,String userNgaySinh,  String userGioiTinh, String userSDT) {
-		 this.userID = userID;
-			this.userHoTen = userHoTen;
-			this.userNgaySinh=userNgaySinh;
-			this.userGioiTinh = userGioiTinh;
-			this.userSDT = userSDT;
-			
-	    }
-
 	private long userID;
     private String userEmail;
     private String userPass;
@@ -28,21 +13,6 @@ public class Users {
     private String userGioiTinh;
     private String userSDT;
     
-    
-    
-	public Users(long userID, String userEmail, String userPass, String userRole, String userHoTen, String userNgaySinh,
-			String userGioiTinh, String userSDT) {
-		super();
-		this.userID = userID;
-		this.userEmail = userEmail;
-		this.userPass = userPass;
-		this.userRole = userRole;
-		this.userHoTen = userHoTen;
-		this.userNgaySinh = userNgaySinh;
-		this.userGioiTinh = userGioiTinh;
-		this.userSDT = userSDT;
-	}
-
 	public long getUserID() {
 		return userID;
 	}
@@ -91,5 +61,5 @@ public class Users {
 	public void setUserSDT(String userSDT) {
 		this.userSDT = userSDT;
 	}
- 
+    
 }

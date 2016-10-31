@@ -55,16 +55,16 @@
             <div class="logo col-md-6 col-sm-6 col-xs-12" ><h1><a href="#">Học lập trình</a></h1></div>
             <div class="navbar-right">
                    <div class="dropdown right">
-                <a href="" class="dropntn"><span class="arrow"></span></a>
+              <!--   <a href="" class="dropntn"><span class="arrow"></span></a> -->
                   <%if(users!=null){%>
-                <a href="#" class="dropntn"><%=users.getUserEmail()%></a> </li>
+                <a href="thongtincanhan.jsp" class="dropntn"><%=users.getUserEmail()%></a>
                                 <%}%><span class="arrow"></span></a>
                 
                 <div class="dropdown-content" style="z-index: 1">
                
 <!--                   	<a href="#" style="z-index: 10">Tên học viên</a>  -->
 					   <%if(users!=null){%>
-                	<a href="#" class="dropntn" style="z-index: 1"><%=users.getUserID()%></a> </li>
+                	<a href="#" class="dropntn" style="z-index: 1"><%=users.getUserHoTen()%></a> </li>
                                 <%}%><span class="arrow"></span></a>
                     <a href="thongtincanhan.jsp" style="z-index: 1">Thông tin cá nhân</a>
                     <a href="doimatkhau.jsp"  style="z-index: 1">Đổi mật khẩu</a>
@@ -72,7 +72,7 @@
                   </div> 
                   </div>
                 <img src="images/hoclaptrinh.jpg" align="bottom" width="40" height="40" />
-                <button class="btn btn-danger navbar-btn" style="border-radius: 15px; margin-right: 30px;">Đăng xuất</button>
+                <a href="index.jsp"> <button class="btn btn-danger navbar-btn" style="border-radius: 15px; margin-right: 30px;">Đăng xuất</button></a>
             </div>
           </div>
         <div class="col-md-13 ">
@@ -116,7 +116,6 @@
 
 </header>
      
-
 
   </header>  
 
