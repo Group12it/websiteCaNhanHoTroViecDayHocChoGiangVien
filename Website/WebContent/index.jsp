@@ -149,7 +149,7 @@
                     <div class="modal-body" style="padding:40px 50px;">
                   <div class="account">
             
-		                    <form id="frm-login" action="H
+		                    <form id="frm-login" action="Home
 		                    " method="POST" class="form-horizontal"   data-bv-message="This value is not valid"
 		            data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
 		            data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
@@ -430,6 +430,7 @@ $('#contactform').bootstrapValidator();
                     var user_name = $(this).val();
                     x_timer = setTimeout(function () {
                         check_username_ajax(user_name);
+          
                     }, 1000);
                 });
                 function check_username_ajax(username) {

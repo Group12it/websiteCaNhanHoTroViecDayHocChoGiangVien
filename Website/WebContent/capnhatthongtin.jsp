@@ -111,7 +111,7 @@
                                                      
                                                        <div class="form-group">
                                                             <label for="contactdiachi">Ngày sinh:</label>
-                                                            <input type="date" class="form-control" name="ngaysinh"  placeholder="ỉ" value="<%=users.getUserNgaySinh()%>">
+                                                            <input type="date" class="form-control" name="ngaysinh"  placeholder="" value="<%=users.getUserNgaySinh()%>">
                                                         </div>
 													<input type="hidden" value="update" name="command"> 
                                                    	 <button type="submit" value="update" id="btnluu" name="btnluu" class="btn btn-info">Lưu</button>

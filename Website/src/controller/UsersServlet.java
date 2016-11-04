@@ -23,7 +23,7 @@ import connect.DBConnect;
 import dao.UsersDAO;
 import model.Users;
 
-@WebServlet("/H")
+@WebServlet("/Home")
 
 public class UsersServlet extends HttpServlet {
 
@@ -32,12 +32,13 @@ public class UsersServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 
 	}
-
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+	
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		String command = request.getParameter("command");
@@ -46,14 +47,11 @@ public class UsersServlet extends HttpServlet {
 		String userid = request.getParameter("UserID");// LÃ¢y user hiá»‡n táº¡i
 		Connection connection = DBConnect.getConnection();
 		PreparedStatement stmt;
-		ResultSet rs; // thÃªm private Ä‘á»ƒ giáº£m dung lÆ°á»£n // Ä‘ang Ä‘Äƒng
-						// nháº­p
+		ResultSet rs;
 		Users users = new Users();
 		HttpSession session = request.getSession();
 		String sql = "select * from users where Email=? and Password=?";
 		switch (command) {
-		// cáº­p nháº­t thÃ´ng tin cÃ¡ nhÃ¢n
-
 		case "changepass":
 
 			String passnhap = request.getParameter("pass");
@@ -105,7 +103,6 @@ public class UsersServlet extends HttpServlet {
 
 				e1.printStackTrace();
 			}
-
 			break;
 
 		// Dăng ký tài khoản
@@ -154,6 +151,7 @@ public class UsersServlet extends HttpServlet {
 					users.setUserNgaySinh(rs.getString("NgaySinh"));
 					users.setUserGioiTinh(rs.getString("GioiTinh"));
 					users.setUserSDT(rs.getString("SDT"));
+
 					session.setAttribute("user", users);
 					switch (usertype) {
 
@@ -169,24 +167,17 @@ public class UsersServlet extends HttpServlet {
 				} // dong if
 				else {
 					response.setContentType("text/html;charset=UTF-8;");
-					/* response.getWriter().println("dang nhap loi roi"); */
-					request.setAttribute("error", "Sai máº­t kháº©u hoáº·c Email!");
-					url = "/index.jsp";// chuyá»ƒn trang Ä‘Äƒng nháº­p vÃ 
-										// thÃ´ng bÃ¡o lá»—i
-
+					request.setAttribute("error", "Sai mật khẩu hoặc Email!");
+					url = "/index.jsp";
 				}
-			} // dong try
+			} // end try
 
 			catch (Exception e) {
 				e.printStackTrace();
 			}
-
 			break;
-
 		}
-
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
-
 }

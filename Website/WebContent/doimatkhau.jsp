@@ -71,7 +71,7 @@
                <th>
                        <!-- start gửi mail-->
                     <div class="panel-body">
-                    <form class="form" method="post" id="contactform" action="H" role ="form">
+                    <form class="form" method="post" id="contactform" action="Home" role ="form">
                     <div class="form-group has-feedback">
                      	<%--Lấy id hiện tại để set pass --%>
                        <input type="hidden" class="form-control" name="UserID" id="contactho" value="<%=users.getUserID() %>" readonly="readonly">
@@ -80,11 +80,11 @@
  
                         </div>
                         <div class ="form-group">
-                        
-                                        
-                 <label for="contactmatkhauhientai">Mật khẩu hiện tại <font size="4" color="red">*</font></label>
+         
+                  <label for="contactmatkhauhientai">Mật khẩu hiện tại <font size="4" color="red">*</font></label>
                   <input name="pass" type="password" class="form-control" id="contactmatkhauhientai" placeholder="">
                   </div>
+                  
                   <%if(request.getAttribute("saimk")!=null){%>
                         <div class="">
                             <p style="color:red"><%=request.getAttribute("saimk")%></p>
@@ -94,7 +94,7 @@
                         <div class="">
                             <p style="color:red"><%=request.getAttribute("mktrong")%></p>
                         </div> 
-                        <%} %>     
+                    <%} %>     
                    
                 <div>
                  <label for="contactmatkhaumoi">Mật khẩu mới <font size="4" color="red">*</font></label>

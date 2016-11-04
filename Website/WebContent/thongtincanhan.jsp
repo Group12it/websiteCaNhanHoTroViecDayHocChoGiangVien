@@ -34,9 +34,9 @@
             if (session.getAttribute("user") != null) {
                 users = (Users) session.getAttribute("user");
             }
-        %>
+        %>	
+       
 <sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=users.getUserEmail()%>";</sql:query> 
-
 
  <div id="wrapper">
       <div class="container">
@@ -146,11 +146,7 @@
             </div>
             </div>
          </div>
-    
-
-
-                    
-             <jsp:include page="footer.jsp"></jsp:include>
+            <jsp:include page="footer.jsp"></jsp:include>
                     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
                     <!-- Include all compiled plugins (below), or include individual files as needed -->
