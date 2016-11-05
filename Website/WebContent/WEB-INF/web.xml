@@ -9,14 +9,8 @@
     <servlet-name>UsersServlet</servlet-name>
     <servlet-class>controller.UsersServlet</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>ThreadServlet</servlet-name>
-    <servlet-class>controller.ThreadServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ThreadServlet</servlet-name>
-    <url-pattern>/ThreadServlet</url-pattern>
-  </servlet-mapping>
+  
+  
   <servlet-mapping>
     <servlet-name>UsersServlet</servlet-name>
     <url-pattern>/UsersServlet</url-pattern>
@@ -28,4 +22,7 @@
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
+  <welcome-file-list>
+    <welcome-file>/index.jsp</welcome-file>
+  </welcome-file-list>
 </web-app>

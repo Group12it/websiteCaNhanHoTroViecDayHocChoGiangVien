@@ -1,3 +1,14 @@
+<%@ page import="java.sql.*" %>
+<%!Statement st=null;
+Connection cn=null;
+%>
+<%-- <%
+Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+cn=DriverManager.getConnection("jdbc:odbc:data","root","");
+
+st=cn.createStatement();
+%> --%>
+ 
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -20,7 +31,21 @@
      <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<script type="text/javascript">
+function onFileSelected(event) {
+	  var selectedFile =event.target.files[0];
+	  var reader = new FileReader();
 
+	  var imgtag = document.getElementById("target");
+	  imgtag.title = selectedFile.name;
+
+	  reader.onload = function(event) {
+	    imgtag.src = event.target.result;
+	  };
+
+	  reader.readAsDataURL(selectedFile);
+	}
+</script>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -37,6 +62,9 @@
         %>	
        
 <sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=users.getUserEmail()%>";</sql:query> 
+
+<sql:query dataSource="${DBConnect }" var="results">select photourl from name</sql:query>
+
 
  <div id="wrapper">
       <div class="container">
@@ -61,9 +89,12 @@
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                    	<img src="${msg}"  class="img-responsive img-circle" alt=""/>
-                                                         <!-- <img src="images/item2.png" class="img-responsive img-circle" alt=""> -->
+                                                   <c:forEach var="rows" items="${results.rows }">
+                                                  	<img id="target" src="/../../../../../../../../${rows.photourl}" class="img-responsive img-circle" alt="">
+                                                    	
+                                                </c:forEach>    <%-- <img src="images/item2.png" class="img-responsive img-circle" alt="">  --%>
                                                     </tr>
+                                                  
                                                 </thead>
                                             </table>
                                         		

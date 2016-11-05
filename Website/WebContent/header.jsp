@@ -61,18 +61,35 @@
                                 <%}%><span class="arrow"></span></a>
                 
                 <div class="dropdown-content" style="z-index: 1">
-               
-<!--                   	<a href="#" style="z-index: 10">Tên học viên</a>  -->
-					   <%if(users!=null){%>
+               	   <%if(users!=null){%>
                 	<a href="#" class="dropntn" style="z-index: 1"><%=users.getUserHoTen()%></a> </li>
                                 <%}%><span class="arrow"></span></a>
                     <a href="thongtincanhan.jsp" style="z-index: 1">Thông tin cá nhân</a>
                     <a href="doimatkhau.jsp"  style="z-index: 1">Đổi mật khẩu</a>
-                    
                   </div> 
                   </div>
-                <img src="images/hoclaptrinh.jpg" align="bottom" width="40" height="40" />
-                <a href="index.jsp"> <button class="btn btn-danger navbar-btn" style="border-radius: 15px; margin-right: 30px;">Đăng xuất</button></a>
+                  
+                    <div class="dropdown right">
+              <!--   <a href="" class="dropntn"><span class="arrow"></span></a> -->
+                  <%if(users!=null){%>
+<%--                 <a href="thongtincanhan.jsp" class="dropntn"><%=users.getUserEmail()%></a> --%>
+                                <%}%>
+                 <img src="images/hoclaptrinh.jpg" align="bottom" width="40" height="40" class="dropntn ;img-responsive img-circle" />               
+                                <span class="arrow"></span></a>
+                
+                <div class="dropdown-content" style="z-index: 1">
+               	   <%if(users!=null){%>
+                	<a href="#" class="dropntn" style="z-index: 1"><%=users.getUserHoTen()%></a> </li>
+                                <%}%><span class="arrow"></span></a>
+                    <a href="thongtincanhan.jsp" style="z-index: 1">Thông tin cá nhân</a>
+                    <a href="doimatkhau.jsp"  style="z-index: 1">Đổi mật khẩu</a>
+                  </div> 
+                  </div>
+                  
+                  
+                <from aciton ="Home" menthod="POST"></from>
+                <input type="hidden" name="command" value="logout">
+                <a href="index.jsp"> <button type="submit" class="btn btn-danger navbar-btn" style="border-radius: 15px; margin-right: 30px;">Đăng xuất</button></a>
             </div>
           </div>
         <div class="col-md-13 ">
@@ -84,7 +101,6 @@
 		<div class="container" style="z-index: 0">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="z-index: 0">
-					
 					<span class="sr-only"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>

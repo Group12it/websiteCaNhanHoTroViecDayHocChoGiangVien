@@ -62,14 +62,15 @@
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
+        												 
         												 <img src="${msg}"  class="img-responsive img-circle" alt=""/>
                                                       <!--   <img src="images/item2.png" class="img-responsive img-circle" alt=""> -->
                                                     </tr>
                                                 </thead>
                                             </table>
-                                        		   <form method="post" action="uploadServlet" enctype="multipart/form-data">
+                                        		   <form method="post" action="UploadServlet" enctype="multipart/form-data">
             
-            										<input type="file" name="uploadFile" class="filestyle" data-buttonName="btn-primary" data-input="false"  data-icon="glyphicon glyphicon-home"></input>
+            										<input type="file" name="file" value="Upload" class="filestyle" data-buttonName="btn-primary" data-input="false"  data-icon="glyphicon glyphicon-home"></input>
            										
            											 <br/><br/>
             										<input type="submit" value="Upload" />

@@ -270,16 +270,21 @@
                        
                           
                             <div class="form-group">
-                                          <label class="control-label col-md-4">Giới tính:</label>
+                                        
                                          
-                                          <label class="radio-inline"><input checked="checked" data-val="true" data-val-required="Bạn chưa chọn giới tính." id="Gender1" name="Gender" type="radio" value="True"> Nam </label>
-                                          <label class="radio-inline"><input id="Gender2" name="Gender" type="radio" value="False">Nữ</label>
+                                          <label class="control-label col-md-4">Giới tính:</label>
+                                        <select name="Gender">
+                                        <option value="Nam">Nam</option>
+                                        <option value="Nữ" >Nữ</option>
+                                        </select>
+                                          <label class="radio-inline"><input checked="checked" data-val="true" data-val-required="Bạn chưa chọn giới tính." id="Gender1" name="Gender" type="radio" value="true" required> Nam </label>
+                                          <label class="radio-inline"><input id="Gender2" name="Gender" type="radio" value="false">Nữ</label>
                             </div>
                             	
                              <div class="form-group">
                                           <label class="control-label col-md-4">Điện thoại<span class="glyphicon glyphicon-phone"> </span></label>
                                        <div class="col-md-8" >
-                                          <input class="form-control" data-val="true" data-val-regex="Số điện thoại không hợp lệ" data-val-regex-pattern="^[0]\d{9,}$" id="PhoneNumber" name="sodienthoai" placeholder="Số điện thoại liên hệ" type="text" value="">
+                                          <input class="form-control" data-val="true" data-val-regex="Số điện thoại không hợp lệ" data-val-regex-pattern="^[0]\d{9,}$" id="PhoneNumber" name="sodienthoai" placeholder="Số điện thoại liên hệ" type="text" value="0">
                                           <span class="field-validation-valid text-danger" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span>
                                </div></div>
                        	
@@ -291,50 +296,34 @@
 						</form>
 						  
 					</div>
-
-
-
                        </div>
                           </div>
                            </div>
                           </div>
-
   <!--End model đăng ký-->
-
-
-
         <section class="row">
   <div class="container">
-
         <div class="row">
-  <!---->
   		<div class="">
   		<div class="">
 
         <div class="col-md-9">
         <br><br>
-
                   <div class="slideshow-container">
-
                               <div class="mySlides fade">
                                <!-- <div class="numbertext">1 / 3</div>-->
                                 <img src="images/banner1.jpg" style="width:100%">
                                 <div class="text">Caption Text</div>
                               </div>
-
                               <div class="mySlides fade">
-                               
                                 <img src="images/banner2.jpg" style="width:100%">
                                 <div class="text">Caption Two</div>
-
                               <div class="mySlides fade">
-                               
                                 <img src="images/banner3.jpg" style="width:100%">
                                 <div class="text">Caption Three</div>
                               </div>
                             </div>
                             <br>
-
                             <div style="text-align:center">
                               <span class="dot"></span>
                               <span class="dot"></span>
@@ -342,9 +331,7 @@
                             </div>
 
 </div>
-
  </div>
-
 <!--Thông báo-->
    <div class="sidebar col-md-3 col-sm-3 col-xs-12">
       <br><br>
@@ -368,17 +355,13 @@
              </tr>
              </thead>
              </table>
-
     </div>
     </div></div>
     </div>
     </div>
-
         </section>
     </section>
-
 	<jsp:include page="footer.jsp"></jsp:include>
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -413,34 +396,7 @@ $('#contactform').bootstrapValidator();
             $(".bx-default-pager").remove();
         });
     </script>
-<!-- 
-<script>
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-</script>
- -->
 
-  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                var x_timer;
-                $("#email").keyup(function (e) {
-                    clearTimeout(x_timer);
-                    var user_name = $(this).val();
-                    x_timer = setTimeout(function () {
-                        check_username_ajax(user_name);
-          
-                    }, 1000);
-                });
-                function check_username_ajax(username) {
-                    $("#user-result").html('<img src="img/ajax-loader.gif" />');
-                    $.post('CheckEmailServlet', {'username': username}, function (data) {
-                        $("#user-result").html(data);
-                    });
-                }
-            });
-        </script> -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

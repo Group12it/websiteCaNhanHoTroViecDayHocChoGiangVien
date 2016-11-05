@@ -33,8 +33,8 @@ public class UsersServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getRequestDispatcher("index.jsp").forward(request, response);
-
 	}
+	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -130,9 +130,7 @@ public class UsersServlet extends HttpServlet {
 		// Đang nhập
 		case "login":
 
-			String username = request.getParameter("email"); // get email tá»«
-																// textbox trÃªn
-																// giao diá»‡n
+			String username = request.getParameter("email"); 
 			String password = request.getParameter("pass");
 
 			try {
@@ -176,6 +174,12 @@ public class UsersServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
+			
+		case "logout":
+			session.invalidate();
+			url="index.jsp";
+			break;
+			
 		}
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
 		rd.forward(request, response);

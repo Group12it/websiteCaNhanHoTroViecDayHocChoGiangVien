@@ -45,6 +45,7 @@ public class UsersDAO {
 			ps.setNString(6, u.getUserNgaySinh());
 			ps.setNString(7, u.getUserGioiTinh());
 			ps.setNString(8, u.getUserSDT());
+		
 
 			ps.executeUpdate();
 			return true;

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -29,15 +30,20 @@
 <body>
 	<jsp:include page="headeradmin.jsp" ></jsp:include>
   
+  
+<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
+
+<sql:query dataSource="${DBConnect }" var="result"> select * from thread;</sql:query>
+
+  
   <div id="wrapper">
       <div class="container">
         <div class="row">
            <div class="container">
                 <div class="row">
-                
                     <div class="col-md-3">
                           <div class="panel panel-primary" style="padding-top:0px ">
-                           <div class ="panel-body"> 
+                          <div class ="panel-body"> 
                   
                          <ul class="nav navs-tabs-brand">
                                 <li class="active"><a href="admin.jsp" class="list-group-item " style="z-index: 0"><i class="glyphicon glyphicon-home"></i> &nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
@@ -63,25 +69,22 @@
                     </div>  
                      <div class="panel panel-default">
                      <div class="col-md-9">
+                   <form action ="Thaoluan" method="post">
                     <a class ="list-group-item text-center " href="#" style="font-size: 20px;color: blue;background: #0CC">Sửa Thread Thảo Luận</a><br> 
-                    <!--<span class="label label-info" style="font-size: 20px">Tên Đề Tài Thảo Luận</span>-->
                     <label style="font-size: 15px">Tên Đề Tài Thảo Luận</label>
                     <br>
-                    <input class="form-control" type="email" name="" value="" placeholder="Nhập Tên Đề Tài" size="50% " style="font-size: 15px">
+                    <input class="form-control" type="text" name="tenthread"  placeholder="Nhập Tên Đề Tài" size="50% " style="font-size: 15px">
                     <br>  
                     <label style="font-size: 15px">Thời Gian Tạo Thread</label>
  
-                    <input class="form-control" type="date" name="" value="" placeholder="">
-                                    <br>
-                                    <div class="col-md-1"></div> 
-                                  <div class="col-md-1"></div>     
-                                   <div class="col-md-1"></div>      
-                                    <div class="col-md-1"></div>      
-                                      <div class="col-md-1"></div>      
-                                      <div class="col-md-1"><form action="threadadmin.jsp" method="post" name="bcdonline" onSubmit="return formaction()">
-                                        
-                                        <button class="btn btn-info">OK</button>
-                                        </form>   </div>      
+                     <input class="form-control valid" data-val="true" data-val-required="Ngày sinh không được bỏ trống!" id="datepicker" name="ngaytao" placeholder="Ngày sinh của bạn" type="date" value="<%= new Date().getDate() %>" />
+                      <input type="hidden" name="command" value="update"/>                  
+                   
+                    <button type="submit" class="btn btn-info">OK</button>
+                    	
+                        </form>  
+                        
+                     </div>      
                                        <div class="col-md-1"></div>    
                                              
                 </div>
