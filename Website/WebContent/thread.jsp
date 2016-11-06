@@ -1,3 +1,10 @@
+ <%@page import="java.*" %>
+ <%@page import="dao.*" %>
+   <%@page import="controller.*" %>
+   <%@page import="model.*" %>
+    <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,6 +23,25 @@
 <p></p>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
+<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
+
+  
+      <%
+            Users users = null;
+            if (session.getAttribute("user") != null) {
+                users = (Users) session.getAttribute("user");
+            }
+        %>	
+
+<sql:query dataSource="${DBConnect }" var="result"> select * from thread;</sql:query> 
+
+<sql:query dataSource="${DBConnect }" var="result2"> select count(*) as dem from chitietthread,thread where chitietthread.MaThread=thread.MaThread;</sql:query> 
+<%	
+	 ThreadsDAO threadsDAO =new ThreadsDAO();
+	
+%>
+
+
     <section class="container" style="min-height:0px">
         <section class="row">
             <div class="col-md-12">
@@ -40,34 +66,27 @@
                                 </form>
                                 <div id="result">
                                     <ul class="list-group dscauhoi">
-                                        <li class="list-group-item">
-                                            <a href="thamgiathaoluan.html" style="overflow-wrap:break-word" title="type - casting trong c++" class="text-primary"> Lập trình c thế nào</a>
+                                         
+                         <%
+                            for (Threads thr :threadsDAO.getThreadsList()){
+                        %>
+                           
+                     		<li class="list-group-item">
+                                            <a href="thamgiathaoluan.jsp?thread=<%=thr.getThreadID()%>" 
+                                            style="overflow-wrap:break-word" title="type - casting trong c++" 
+                                            class="text-primary"><td><%=thr.getTenThread() %></td></a>
                                             <div style="clear:both;">
-                                                <span class="fontSmall"> <span class="glyphicon glyphicon-time"> </span> 10/12/2016 1:35:07 PM | <span class="glyphicon glyphicon-user"> </span> Admin | Số câu trả lời: 1</span>
+                                                <span class="fontSmall"> <span class="glyphicon glyphicon-time"> 
+                                                </span>  <%=thr.getNgayThread() %> |
+                                                <span class="glyphicon glyphicon-user"> </span> 
+                                                                                           
+                                                <%%></span>
                                             </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                           <a href="/CauHoi/XemCauHoi/122" style="overflow-wrap:break-word" title="Setup SQL sever 2012" class="text-primary"> Setup SQL sever 2012</a>
-
-                                            <div style="clear:both;">
-                                                <span class="fontSmall"> <span class="glyphicon glyphicon-time"> </span> 10/8/2016 7:47:51 AM | <span class="glyphicon glyphicon-user"> </span> Admin | Số câu trả lời: 1</span>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <img src="/images/question-icon.png" alt="question-icon.png" /> <a href="/CauHoi/XemCauHoi/121" style="overflow-wrap:break-word" title="Hệ quản trị csdl" class="text-primary"> Hệ quản trị csdl</a>
-
-                                            <div style="clear:both;">
-                                                <span class="fontSmall"> <span class="glyphicon glyphicon-time"> </span> 10/6/2016 9:06:19 PM | <span class="glyphicon glyphicon-user"> </span> Admin | Số câu trả lời: 6</span>
-                                            </div>
-                                        </li>
-                            
-                                        <li class="list-group-item">
-                                            <img src="/images/question-icon.png" alt="question-icon.png" /> <a href="/CauHoi/XemCauHoi/99" style="overflow-wrap:break-word" title="Lập tr&#236;nh C" class="text-primary"> Lập trình C</a>
-
-                                            <div style="clear:both;">
-                                                <span class="fontSmall"> <span class="glyphicon glyphicon-time"> </span> 5/9/2016 11:32:53 PM | <span class="glyphicon glyphicon-user"> </span> Admin | Số câu trả lời: 1</span>
-                                            </div>
-                                        </li>
+                              </li>
+                     
+                        <%
+                            }
+                        %> 
                                     </ul>
 
                                 </div>

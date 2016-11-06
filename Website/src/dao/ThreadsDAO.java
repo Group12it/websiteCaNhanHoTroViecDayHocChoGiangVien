@@ -14,7 +14,22 @@ import model.Threads;
 public class ThreadsDAO {
 	Connection connection = DBConnect.getConnection();
 	
-	
+	public ArrayList<Threads> getThreadsListByID(String mathread) throws SQLException{
+		 
+		 String sql="Select * from thread where Mathread='"+mathread+"'";
+		 PreparedStatement ps=connection.prepareCall(sql);
+		 ResultSet rs=ps.executeQuery();
+		 ArrayList<Threads> list  =new ArrayList<>();
+		 while(rs.next()){
+			 Threads thread=new Threads();
+			 thread.setThreadID(rs.getLong("MaThread"));
+			 thread.setTenThread(rs.getString("TenThread"));
+			 thread.setNgayThread(rs.getString("NgayTao"));
+			
+			 list.add(thread);
+		 }
+		 return list;
+	 }
 	
 	public ArrayList<Threads> getThreadsList() throws SQLException{
 		 
@@ -25,8 +40,8 @@ public class ThreadsDAO {
 		 while(rs.next()){
 			 Threads thread=new Threads();
 			 thread.setThreadID(rs.getLong("MaThread"));
-			 thread.setTenThread(rs.getNString("TenThread"));
-			 thread.setNgayThread(rs.getNString("NgayTao"));
+			 thread.setTenThread(rs.getString("TenThread"));
+			 thread.setNgayThread(rs.getString("NgayTao"));
 			
 			 list.add(thread);
 		 }
@@ -34,7 +49,7 @@ public class ThreadsDAO {
 	 }
 	
 	
-	//thêm thread
+	//add thread
 	public boolean insertUser(Threads u) {
 		
 		String sql = "INSERT INTO thread VALUES(?,?,?)";
@@ -52,7 +67,7 @@ public class ThreadsDAO {
 		}
 		return false;
 	}
-	//Cập nhật thread
+	//update thread
 	 public boolean updateThread(Threads threads)
 	 {
 		 String sql="update thread set TenThread=?, NgayTao=? where MaThread=?";
@@ -70,7 +85,7 @@ public class ThreadsDAO {
 		 
 		 return false;
 	 }
-    //xoá thread
+    //delete thread
 	 public boolean DeleteThread(long MaThread)
 	 {
 		 String sql="delete from thread where MaThread=?";

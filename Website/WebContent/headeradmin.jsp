@@ -41,12 +41,14 @@
 	url="jdbc:mysql://localhost/web" user="root" password="admin" />
 
       <%
-           
             Users user = null;
             if (session.getAttribute("user") != null) {
                 user = (Users) session.getAttribute("user");
             }
         %>
+
+<% KhoaHocsDAO khoahocsDAO=new KhoaHocsDAO();
+%>
     <header>
       <div class="container">
            <div class="row">
@@ -95,9 +97,15 @@
 					<li class="dropdown" style="color:white;">
 						<a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown">Khoá học<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="chitietkhoahoc.jsp">Lập trình C căn bản</a></li>
-							<li><a href="#">Lập trình hướng đối tượng C++</a></li>
-							<li><a href="#">Lập trình java</a></li>
+							
+						<%
+                            for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
+                        %>
+                           	<li><a href="chitietkhoahoc.jsp?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
+                        <%
+                            }
+                        %>
+							
 						</ul>
 					</li>
 				
@@ -114,7 +122,6 @@
      
 
 
-  </header>  
 
 
  <section class="container" style="min-height:000px">

@@ -51,7 +51,6 @@ function onFileSelected(event) {
 	<jsp:include page="header.jsp"></jsp:include>
 
 <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
-<%-- <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>--%>
 
   
       <%
@@ -62,8 +61,6 @@ function onFileSelected(event) {
         %>	
        
 <sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=users.getUserEmail()%>";</sql:query> 
-
-<sql:query dataSource="${DBConnect }" var="results">select photourl from name</sql:query>
 
 
  <div id="wrapper">
@@ -88,12 +85,12 @@ function onFileSelected(event) {
                                             <h4> Ảnh đại diện</h4>
                                             <table class="table table-bordered">
                                                 <thead>
-                                                    <tr>
-                                                   <c:forEach var="rows" items="${results.rows }">
-                                                  	<img id="target" src="/../../../../../../../../${rows.photourl}" class="img-responsive img-circle" alt="">
-                                                    	
-                                                </c:forEach>    <%-- <img src="images/item2.png" class="img-responsive img-circle" alt="">  --%>
-                                                    </tr>
+                                                <c:forEach var="rows" items="${result.rows }">
+                                		 		<tr>
+                                				<img src="Upload/Avartar/${rows.HinhAnh }" class="img-responsive img-circle"></img>
+</td>	
+                                				</tr>
+                                			</c:forEach> 
                                                   
                                                 </thead>
                                             </table>

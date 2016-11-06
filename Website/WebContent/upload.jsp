@@ -14,39 +14,54 @@
 
 <body>
 
-<form action="UploadServlet" method="post" enctype="multipart/form-data"> <br><br>
+	<form action="UploadServlet" method="post"
+		enctype="multipart/form-data">
+		<br>
+		<br>
 
-<table>
+		<table>
 
-<tr>
+			<tr>
 
-<td>UserName: </td>
+				
+				<td>UserName:</td>
 
-<td width='10px'></td>
+				<td width='10px'></td>
 
-<td><input type="text" name="name"/></td>
+				<td><input type="text" name="Userid"  value="2"/></td>
 
-</tr>
+			</tr>
+			
+				<tr>
 
-<tr>
+				
+				<td>path:</td>
 
-<td>Upload: </td>
+				<td width='10px'></td>
 
-<td width='10px'></td>
+				<td><input type="text" name="path"  value="2"/></td>
 
-<td><input type="file" name="file" value="Upload"/></td>
+			</tr>
+			
 
-</tr>
+			<tr>
+				<td>Upload:</td>
 
-<tr>
+				<td width='10px'></td>
 
-<td><input type="submit" value="submit"></td>
+				<td><input type="file" name="file" value="Upload" /></td>
 
-</tr>
+			</tr>
 
-</table>
+			<tr>
 
-</form>
+				<td><input type="submit" value="submit"></td>
+
+			</tr>
+
+		</table>
+
+	</form>
 
 </body>
 

@@ -116,6 +116,7 @@ public class UsersServlet extends HttpServlet {
 			users.setUserNgaySinh(request.getParameter("ngaysinh"));
 			users.setUserGioiTinh(request.getParameter("gioitinh"));
 			users.setUserSDT(request.getParameter("sodienthoai"));
+			users.setUserHinhAnh("");
 			if (usersDAO.checkEmail(request.getParameter("email")) == false) {
 				usersDAO.insertUser(users);
 				session.setAttribute("user", users);

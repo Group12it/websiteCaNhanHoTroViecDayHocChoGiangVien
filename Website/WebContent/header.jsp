@@ -47,8 +47,6 @@
             }
         %>
 
-
-
     <header>
       <div class="container">
            <div class="row">
@@ -64,9 +62,9 @@
                	   <%if(users!=null){%>
                 	<a href="#" class="dropntn" style="z-index: 1"><%=users.getUserHoTen()%></a> </li>
                                 <%}%><span class="arrow"></span></a>
-                    <a href="thongtincanhan.jsp" style="z-index: 1">Thông tin cá nhân</a>
+                    <a href="thongtincanhan.jsp" style="z-index: 1"> Thông tin cá nhân</a>
                     <a href="doimatkhau.jsp"  style="z-index: 1">Đổi mật khẩu</a>
-                  </div> 
+                     </div> 
                   </div>
                   
                     <div class="dropdown right">

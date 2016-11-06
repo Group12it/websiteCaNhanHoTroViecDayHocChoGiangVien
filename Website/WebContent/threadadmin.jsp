@@ -31,6 +31,8 @@
 
 <sql:query dataSource="${DBConnect }" var="result"> select * from thread;</sql:query>
 
+
+
   <div id="wrapper">
       <div class="container">
         <div class="row">
@@ -84,11 +86,11 @@
                                 				<td>${rows.NgayTao }</td>
                                 				<td>
                                                     <center> 
-                                                     <a href="Thaoluan?command=update&MaThread=${rows.MaThread }"> <button type="button" class="btn btn-success" id="btnXacNhan">Sửa</button></a>
+                                                     <a href="suathreadadmin.jsp"> <button type="button" class="btn btn-success" id="btnXacNhan">Sửa</button></a>
                                                   	 <a href="Thaoluan?command=delete&MaThread=${rows.MaThread }"> <button type="button" class="btn btn-warning" id="btnXoa1">Xóa</button></a> 
                                                 	</center>
                                                 </td>
-</td>
+
                                 			</tr>
                                 			</c:forEach> 
                                 		</tbody>

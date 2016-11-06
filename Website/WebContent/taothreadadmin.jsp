@@ -73,7 +73,7 @@
  
                      <input class="form-control valid" data-val="true" data-val-required="Ngày sinh không được bỏ trống!" id="datepicker" name="ngaytao" placeholder="Ngày sinh của bạn" type="date" value=""></input>
                	     <input type="hidden" name="command" value="insert"></input>                  
-                    	<button type="submit" class="btn btn-info">OK</button>
+                     <button type="submit" class="btn btn-info">OK</button>
                     </form>
                          </div>      
                                              

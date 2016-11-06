@@ -1,6 +1,9 @@
    <%@page import="dao.*" %>
    <%@page import="controller.*" %>
    <%@page import="model.*" %>
+    <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -33,10 +36,10 @@
             }
         %>
 
+<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
 
+<sql:query dataSource="${DBConnect }" var="result"> select * from users where UserID=<%=users.getUserID() %>;</sql:query>
 	<jsp:include page="header.jsp"></jsp:include>
-
-
  <div id="wrapper">
       <div class="container">
         <div class="row">
@@ -56,35 +59,30 @@
                             <table class="table table-bordered" style="overflow-x:auto;">
                                 <thead>
                                     <tr>
-                                        
                                              <td style=" height:0px;" colspan="1" align="center">
                                             <h4> Ảnh đại diện</h4>
                                             <table class="table table-bordered">
                                                 <thead>
-                                                    <tr>
-        												 
-        												 <img src="${msg}"  class="img-responsive img-circle" alt=""/>
-                                                      <!--   <img src="images/item2.png" class="img-responsive img-circle" alt=""> -->
-                                                    </tr>
+                                             <c:forEach var="rows" items="${result.rows }"> 
+                                		 		<tr>
+                                				<img src="Upload/Avartar/${rows.HinhAnh }" class="img-responsive img-circle"></img>
+ 											</tr>
+                                 			</c:forEach> 
                                                 </thead>
-                                            </table>
-                                        		   <form method="post" action="UploadServlet" enctype="multipart/form-data">
-            
-            										<input type="file" name="file" value="Upload" class="filestyle" data-buttonName="btn-primary" data-input="false"  data-icon="glyphicon glyphicon-home"></input>
-           										
-           											 <br/><br/>
-            										<input type="submit" value="Upload" />
+        								    </table>
+                                        		<table>  
+                                        		   <form method="post" action="edit-profile" enctype="multipart/form-data">
+            										<input type="hidden" name="Userid" value="<%=users.getUserID() %>"/>
+            										<input type="file" name="file" value="Upload" class="filestyle" style="border-radius: 15px; margin-right: 30px;" data-buttonName="btn-primary" data-input="false"  data-icon="glyphicon glyphicon-home"></input>
+           											<input type="submit" value="Tải lên hình ảnh" class="btn btn-danger navbar-btn" style="border-radius: 15px; margin-right: 30px;" />
         											</form>
-                                        		   </td>
+                                        		   </table>
                          	 </tr>
                         </thead>
 
                         </table>
                         </div>
-                        
-                        
                         <div class="panel-body" style="overflow-x:auto;">
-                                 
                                                 <form class="form" method="post" id="contactform" action="Home" role="form">
                                                  <div class="form-group has-feedback" style="overflow-x:auto;">
                                                         <label for="contactho">ID:</label>
@@ -117,39 +115,22 @@
 													<input type="hidden" value="update" name="command"> 
                                                    	 <button type="submit" value="update" id="btnluu" name="btnluu" class="btn btn-info">Lưu</button>
                                                    <a href="thongtincanhan.jsp"><button type="button" id="btnhuy" name="btnhuy" class="btn btn-default">Hủy</button></a>
-
-                                               
                                             </form>
-                                          
                        				 </div>
-                        
-                        
                     </div>  
                     </div>
                     </div>    
-             
-  
-      
             </div>
             </div>
             </div>
          </div></div>
-    
-
-
-             
  <script>
-               
 		$(":file").filestyle({iconName: "glyphicon-inbox"});
-		
-
-
 </script>
-             
-                  <jsp:include page="footer.jsp"></jsp:include>
-                    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-                    <!-- Include all compiled plugins (below), or include individual files as needed -->
-                    <script src="js/bootstrap.min.js"></script>
-                    </body>
+              
+      <%--Header --%> <jsp:include page="footer.jsp"></jsp:include>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/bootstrap.min.js"></script>
+ </body>
 </html>

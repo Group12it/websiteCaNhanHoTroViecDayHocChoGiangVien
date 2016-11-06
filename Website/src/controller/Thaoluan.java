@@ -9,14 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ChiTietThreadsDAO;
 import dao.ThreadsDAO;
+import model.ChiTietThreads;
 import model.Threads;
+import model.Users;
 
 @SuppressWarnings("serial")
 @WebServlet("/Thaoluan")
 public class Thaoluan extends HttpServlet {
 	ThreadsDAO threadsDAO = new ThreadsDAO();
-
+	ChiTietThreadsDAO chitietthreadDao=new ChiTietThreadsDAO();
 	public Thaoluan() {
 		super();
 
@@ -31,7 +34,8 @@ public class Thaoluan extends HttpServlet {
 		String url = "";
 		String MaThread = request.getParameter("MaThread");
 		Threads threads = new Threads();
-
+		ChiTietThreads chitietthread=new ChiTietThreads();
+		Users users=new Users();
 		switch (command) {
 		case "insert":
 
@@ -57,6 +61,20 @@ public class Thaoluan extends HttpServlet {
 		case "delete":
 			threadsDAO.DeleteThread(Long.parseLong(MaThread));
 			url="/threadadmin.jsp";
+
+			break;
+			
+		case "insertchitiet":
+		
+			String mathread=request.getParameter("mathread");
+			chitietthread.setThreadID(new java.util.Date().getTime());
+			chitietthread.setMathread(Long.parseLong(mathread));
+			chitietthread.setUserID("1");
+			chitietthread.setThoigian("2016-01-01");
+			chitietthread.setBinhluan(request.getParameter("binhluan"));
+			chitietthreadDao.insertchitietthread(chitietthread);
+			
+			url = "/thread.jsp";
 
 			break;
 		}
@@ -101,6 +119,20 @@ public class Thaoluan extends HttpServlet {
 
 		case "delete":
 			String id = request.getParameter("MaThread");
+
+			break;
+		
+		case "insertchitiet":
+			ChiTietThreads chitietthread=new ChiTietThreads();
+			String mathread=request.getParameter("mathread");
+						chitietthread.setThreadID(new java.util.Date().getTime());
+			chitietthread.setMathread(Long.parseLong(mathread));
+			chitietthread.setUserID("1");
+			chitietthread.setThoigian("2016-01-01");
+			chitietthread.setBinhluan(request.getParameter("binhluan"));
+			chitietthreadDao.insertchitietthread(chitietthread);
+			
+			url = "/thamgiathaoluan.jsp";
 
 			break;
 

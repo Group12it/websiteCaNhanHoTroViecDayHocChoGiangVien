@@ -12,9 +12,11 @@ import model.Users;
 
 public class UsersDAO {
 
+	
+	Connection connection = DBConnect.getConnection();
 	// Kiem tra email co bi trung k
 	public boolean checkEmail(String email) {
-		Connection connection = DBConnect.getConnection();
+		
 		String sql = "SELECT * FROM users WHERE Email = '" + email + "'";
 		PreparedStatement ps;
 		try {
@@ -32,8 +34,8 @@ public class UsersDAO {
 
 	// Them tai khoan
 	public boolean insertUser(Users u) {
-		Connection connection = DBConnect.getConnection();
-		String sql = "INSERT INTO users VALUES(?,?,?,?,?,?,?,?)";
+		
+		String sql = "INSERT INTO users VALUES(?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ps = connection.prepareCall(sql);
 
@@ -45,6 +47,7 @@ public class UsersDAO {
 			ps.setNString(6, u.getUserNgaySinh());
 			ps.setNString(7, u.getUserGioiTinh());
 			ps.setNString(8, u.getUserSDT());
+			ps.setNString(9,u.getUserHinhAnh());
 		
 
 			ps.executeUpdate();
@@ -57,26 +60,26 @@ public class UsersDAO {
 
 	// kiem tra dang nhap
 	public Users login(String email, String password) {
-		Connection con = DBConnect.getConnection();
+	
 		String sql = "select * from users where Email='" + email + "' and Password='" + password + "'";
 
 		PreparedStatement ps;
 		try {
-			ps = (PreparedStatement) con.prepareStatement(sql);
+			ps = (PreparedStatement) connection.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
 				Users u = new Users();
 				u.setUserID(rs.getLong("UserID"));// khai bÃ¡o trong csdl
-				u.setUserEmail(rs.getString("Email"));
-				u.setUserPass(rs.getString("Password"));
-				u.setUserRole(rs.getString("Role"));
-				u.setUserHoTen(rs.getString("HoTen"));
+				u.setUserEmail(rs.getNString("Email"));
+				u.setUserPass(rs.getNString("Password"));
+				u.setUserRole(rs.getNString("Role"));
+				u.setUserHoTen(rs.getNString("HoTen"));
 				u.setUserNgaySinh(rs.getString("NgaySinh"));
 				u.setUserHoTen(rs.getString("GioiTinh"));
 				u.setUserHoTen(rs.getString("SDT"));
-
-				con.close();
+				u.setUserHinhAnh(rs.getNString("HinhAnh"));
+				connection.close();
 				return u;
 			}
 		} catch (SQLException e) {
@@ -89,7 +92,7 @@ public class UsersDAO {
 	// kiá»ƒm tra update thông tin cá nhân
 	public boolean update(Users u) throws SQLException {
 		try {
-			Connection connection = DBConnect.getConnection();
+			
 			String sql = "UPDATE users SET HoTen = ? , NgaySinh=?,GioiTinh=?,SDT=? WHERE UserID= ?";
 			PreparedStatement ps = connection.prepareCall(sql);
 
@@ -101,8 +104,28 @@ public class UsersDAO {
 			int temp = ps.executeUpdate();
 			return temp == 1;
 		} catch (Exception e) {
-			return false;
+			e.printStackTrace();
 		}
+		return false;
+	}
+	
+	
+	
+	public boolean capnhathinhanh(Users u) throws SQLException 
+	{
+		try {
+			String sql = "UPDATE users SET HinhAnh = ? WHERE UserID= ?";
+			PreparedStatement ps = connection.prepareCall(sql);
+			
+			ps.setNString(1, u.getUserHinhAnh());
+			ps.setLong(2, u.getUserID());
+			int temp=ps.executeUpdate();
+			return temp==1;
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	

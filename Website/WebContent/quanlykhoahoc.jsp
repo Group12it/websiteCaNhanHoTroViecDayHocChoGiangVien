@@ -32,11 +32,9 @@
 <body>
 
 <jsp:include page="headeradmin.jsp"></jsp:include>
-<%-- <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
+<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
 
-<sql:query dataSource="${DBConnect }" var="result"> select MaKH,TenKH,NgayKhaiGiang, HocPhi from khoahoc;</sql:query> --%>
-   
-   
+<sql:query dataSource="${DBConnect }" var="result"> select * from khoahoc;</sql:query>
    
     <div id="wrapper">
       <div class="container">
@@ -91,11 +89,11 @@
                                             <th>Tên khóa học</th>
                                             <th>Ngày giạy</th>
                                             <th>Hoc phí</th>
-                                            <th>Thao tác</th>
+                                            <th>Tuỳ chọn</th>
                                             </thead>
                                             <tbody>
                                              
-                                               <%--  <c:forEach var="rows" items="${result.rows }">
+                                              <c:forEach var="rows" items="${result.rows }">
                                                 <tr>
                                                     <td><c:out value="${rows.MaKH}"></c:out>1</td>
                                                     <td><c:out value="${rows.TenKH}"></c:out></td>
@@ -105,12 +103,14 @@
                                                         <a href="adminQuanLyKhoaHoc-ChinhSua.jsp" class="btn btn-info btn-sm" style="background: #660066">
                                                             <span class="glyphicon glyphicon-wrench"></span> Chỉnh sửa
                                                         </a>
-                                                        <a href="#" class="btn btn-info btn-sm" style="background: #ff3300;">
+                                                        
+                                                       
+                                                        <a href="quan-ly-khoa-hoc?command=delete&makh=${rows.MaKH }" class="btn btn-info btn-sm" style="background: #ff3300;">
                                                             <span class="glyphicon glyphicon-trash"></span> Xóa
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                </c:forEach> --%>
+                                                </c:forEach>
                                               
                                             </tbody>
                                         </table>

@@ -15,11 +15,9 @@ public class Users {
     private String userNgaySinh;
     private String userGioiTinh;
     private String userSDT;
+    private String userHinhAnh;
     
-    //
-    private String userPassNew;
-    private String userPassRe;
-	 public Users() {
+    public Users() {
 	    }
 	 
 	 public Users(long userID, String userPass) {
@@ -36,12 +34,9 @@ public class Users {
 			this.userSDT = userSDT;
 			
 	    }
-	
-	 
-	
-	
-    public Users(long userID, String userEmail, String userPass, String userRole, String userHoTen, String userNgaySinh,
-			String userGioiTinh, String userSDT) {
+
+	public Users(long userID, String userEmail, String userPass, String userRole, String userHoTen, String userNgaySinh,
+			String userGioiTinh, String userSDT, String userHinhAnh) {
 		super();
 		this.userID = userID;
 		this.userEmail = userEmail;
@@ -51,6 +46,7 @@ public class Users {
 		this.userNgaySinh = userNgaySinh;
 		this.userGioiTinh = userGioiTinh;
 		this.userSDT = userSDT;
+		this.userHinhAnh = userHinhAnh;
 	}
 
 	public long getUserID() {
@@ -116,8 +112,17 @@ public class Users {
 	public void setUserSDT(String userSDT) {
 		this.userSDT = userSDT;
 	}
-  
-    
+
+	public String getUserHinhAnh() {
+		return userHinhAnh;
+	}
+
+	public void setUserHinhAnh(String userHinhAnh) {
+		this.userHinhAnh = userHinhAnh;
+	}
 	
- 
+	
+	
+	 
+
 }

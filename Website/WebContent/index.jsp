@@ -1,6 +1,7 @@
 <%@ page import="java.lang.*" %>
 <%@ page import="model.*" %>
 <%@page import="controller.*" %>
+<%@page import="dao.*" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -60,7 +61,7 @@
 
 <body ng-app="myApp" ng-controller="userCtrl">
 
-<sql:setDataSource var="conn" driver="com.mysql.jdbc.Driver"
+<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost/web" user="root" password="admin" />
 
 
@@ -71,6 +72,10 @@
 	  error=(String) request.getAttribute("error");
   }
   %>
+  
+ 
+<sql:query dataSource="${DBConnect }" var="result"> select * from khoahoc;</sql:query>
+ 
   
     <header>
       <div class="container">
@@ -344,11 +349,11 @@
              <th>
              <marquee SCROLLDELAY = 150 width ="100%" height = "300" direction="up" style ="font:arial" scrollamount="2" id="bannerthongbao" name="bannerthongbao" onmouseover="this.stop()" onmouseout="this.start()">
              <ul>
-                 <li><a href="chitietkhoahoc.jsp">Thông tin khóa học C căn bản</a></li>
-                 <br>
-                 <li>Thông tin học lập trình C# </li>
-                 <br>
-                 <li>Lâp trình java</li>
+                 
+                  <c:forEach var="rows" items="${result.rows }">
+                	 <li><a href="chitietkhoahoc.jsp">${rows.TenKH}</a></li>
+                  </c:forEach>
+                
              </ul>
              </marquee>
              </th>
