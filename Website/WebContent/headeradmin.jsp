@@ -37,7 +37,7 @@
 
 <body ng-app="myApp" ng-controller="userCtrl">
 
-<sql:setDataSource var="conn" driver="com.mysql.jdbc.Driver"
+<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost/web" user="root" password="admin" />
 
       <%
@@ -46,6 +46,8 @@
                 user = (Users) session.getAttribute("user");
             }
         %>
+       
+<sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=user.getUserEmail()%>";</sql:query> 
 
 <% KhoaHocsDAO khoahocsDAO=new KhoaHocsDAO();
 %>
@@ -54,24 +56,27 @@
            <div class="row">
             <div class="logo col-md-6 col-sm-6 col-xs-12"><h1><a href="#">Học lập trình</a></h1></div>
             <div class="navbar-right">
-                  <div class="dropdown right">
+                           
+                     <%if(user!=null){%>
+                <a href="thongtincanhan.jsp" class="dropntn"><%=user.getUserEmail()%></a>
+                                <%}%><span class="arrow"></span>
+                
+                     <div class="dropdown right">
                 <a href="" class="dropntn"><span class="arrow"></span></a>
                   <%if(user!=null){%>
-                <a href="thongtincanhan.jsp" class="dropntn"><%=user.getUserEmail()%></a> </li>
-                                <%}%><span class="arrow"></span></a>
+                <c:forEach var="rows" items="${result.rows }">
+                	<img src="Upload/Avartar/${rows.HinhAnh }" class="img-circle img-thumbnail" align="bottom" width="40" height="40" />
+              		</c:forEach>
+                                <%}%><span class="arrow"></span>
                 
                 <div class="dropdown-content" style="z-index: 1">
-               
-<!--                   	<a href="#" style="z-index: 10">Tên học viên</a>  -->
-					   <%if(user!=null){%>
+         			   <%if(user!=null){%>
                 	<a href="#" class="dropntn" style="z-index: 1"><%=user.getUserHoTen()%></a> </li>
                                 <%}%><span class="arrow"></span></a>
                     <a href="thongtincanhan.jsp" style="z-index: 1">Thông tin cá nhân</a>
                     <a href="doimatkhau.jsp"  style="z-index: 1">Đổi mật khẩu</a>
-                    
                   </div> 
                   </div>
-                <img src="images/hoclaptrinh.jpg" align="bottom" width="40" height="40" />
               <a href="index.jsp"> <button class="btn btn-danger navbar-btn" style="border-radius: 15px; margin-right: 30px;">Đăng xuất</button></a>
             </div>
           </div>
@@ -97,7 +102,8 @@
 					<li class="dropdown" style="color:white;">
 						<a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown">Khoá học<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							
+					
+		<%-- 	Đưa thông tin từ bảng khoá học lên menu li --%>
 						<%
                             for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
                         %>
@@ -120,9 +126,6 @@
 
 </header>
      
-
-
-
 
  <section class="container" style="min-height:000px">
         <!-- Modal đăng nhập-->

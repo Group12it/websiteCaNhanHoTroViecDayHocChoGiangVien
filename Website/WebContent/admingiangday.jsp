@@ -43,7 +43,7 @@
                          <ul class="nav navs-tabs-brand">
                                 <li class="active"><a href="admin.jsp" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-home"></i> &nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
                                
-                                <li class="active"><a href="quanlykhoahoc.jsp" class ="list-group-item ""><i class="glyphicon glyphicon-education"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý khoá học</a></li>
+                                <li class="active"><a href="quanlykhoahoc.jsp" class ="list-group-item "><i class="glyphicon glyphicon-education"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý khoá học</a></li>
                                
                                 <li class="active"><a href="threadadmin.jsp" class="list-group-item"><i class="glyphicon glyphicon-comment"></i> &nbsp;&nbsp;&nbsp;&nbsp;Thread thảo luận</a></li>
                              
@@ -62,19 +62,17 @@
                     </div>
                     </div>    
                     <div class="col-md-9">
-               
-                   
-                       <div class="panel panel-default" style="height:100%">
+                       <div class="panel panel-default" style="max-height:100%">
                                     <div class="panel-heading" style="background:#0CC">
                                         <h4 style="font-family: verdana;color:#000">Quản lý giảng dạy</h4>
                                     </div>
                                     <div class="panel-body">
                                         <table class="table table-bordered table-hover">
                                             <thead style="background:#09F">
-                                            <th width="10%">STT</th>
-                                            <th width="30%">Mã Khóa Học</th>
-                                            <th width="30%">Tên Khóa Hoc</th>
-                                            <th width="20%">Thao Tác</th>
+                                            <th>STT</th>
+                                            <th >Mã Khóa Học</th>
+                                            <th >Tên Khóa Hoc</th>
+                                            <th >Thao Tác</th>
                                             </thead>
                                             <tbody>
                                                 <tr>
@@ -84,44 +82,15 @@
                                                     <th>
                                                         <center>
                                                              <a href="adminGiangDay_LoadDulieu.jsp"> <button type="button" class="btn btn-success">Xem</button></a>
-                                                          <a href="adminGiangDau_Upfile.jsp">  <button type="button" class="btn btn-success">Tải lên</button></a>
+                                                          <a href="adminGiangDay_UpFile.jsp">  <button type="button" class="btn btn-success">Tải lên</button></a>
                                                         </center>
                                                     </th>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Moe</td>
-                                                    <td>mary@example.com</td>
-                                                    <th>
-                                                        <center>
-                                                           <a href="adminGiangDay_LoadDulieu.jsp"> <button type="button" class="btn btn-success">Xem</button></a>
-                                                          <a href="adminGiangDau_Upfile.jsp">  <button type="button" class="btn btn-success">Tải lên</button></a>
-                                                        </center>
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Dooley</td>
-                                                    <td>july@example.com</td>
-                                                    <th>
-                                                        <center>
-                                                           <a href="adminGiangDay_LoadDulieu.jsp"> <button type="button" class="btn btn-success">Xem</button></a>
-                                                          <a href="adminGiangDau_Upfile.jsp">  <button type="button" class="btn btn-success">Tải lên</button></a>
-                                                        </center>
-                                                    </th>
-                                                </tr>
-
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-
-                    </ul>
-                                            
-
-                     </div>
-  
-      
+         </div>
             </div>
             </div>
             </div>

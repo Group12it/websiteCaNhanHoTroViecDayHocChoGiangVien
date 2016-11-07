@@ -1,0 +1,122 @@
+<%@page import="dao.ChiTietThreadsDAO"%>
+<%@page import="model.*" %>
+<%@page import="dao.ThreadsDAO"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/Site" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
+    <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
+	<link rel="icon" href="images/head.ico" type="image/x-icon" />
+</head>
+
+<body>
+	
+	<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
+	<jsp:include page="header.jsp"></jsp:include>
+
+	<%
+		
+		ThreadsDAO threadsDao=new ThreadsDAO();ChiTietThreadsDAO chitietthreadDAO=new ChiTietThreadsDAO();
+		String threadid="";
+		if(request.getParameter("thread")!=null){
+		threadid= request.getParameter("thread");
+		
+	}
+	%>
+
+    <section class="container" style="min-height:500px">
+
+        <section class="row">
+            <div class="col-md-12">
+                <div class="maincontent col-lg-12" style="padding:0">
+                    <div class="panel panel-primary hoidap">
+
+                        <div class="panel-body" style="padding:0">
+                            <div class="panel ">
+                                <div class="panel-body">
+                                    <form  action="Thaoluan" method="post" >
+                                        <div class="validation-summary-valid text-danger" data-valmsg-summary="true">
+                                            <ul>
+                                                <li style="display:none"></li>
+                                            </ul>
+                                        </div>
+                                        <input data-val="true" data-val-number="The field Mã câu hỏi must be a number." data-val-required="The Mã câu hỏi field is required." id="MaCauHoi" name="MaCauHoi" type="hidden" value="99" />
+                                        <input name="__RequestVerificationToken" type="hidden" value="Lnj7bITUxRjmYdithh-kxyIewsUB_dJBdwWP2HKT36rUFbVcTB00dS-LCYJbAsab0hl3hefvPsduiu4cJQCuKSpkRbAeedauALux6YhiGjIQBbD-V9qAZF9xlV4NHHD2Bj3iueS9eqg2chwchX8_6w2" />
+
+                                        <div class="form-group">
+                                    	  <%
+                        for (Threads thr : threadsDao.getThreadsListByID(threadid)){
+                        %>
+                        			<h3>&nbsp; <%=thr.getTenThread()%></h3>
+                        			<input type="hidden" name="mathread" value="<%=thr.getThreadID() %>"> 
+                                 
+                        <%} %>
+                                           	<div class="col-lg-10 col-md-9 col-sm-8 fontLarger pull-left" style="overflow-wrap:break-word">
+                                            </div>
+                                            <label>
+                                                Các câu trả lời</label> <span class="badge">3</span>
+                                                <ul class="list-group" id="dscautraloi" style="min-height:200px">
+                             <%--                      
+		                        <%
+		                            for (ChiTietThreads ct :chitietthreadDAO.getChiTietThreadsListByID(mathread)){
+		                        %>
+                              
+                                                    <li class="list-group-item">
+                                                        <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3 text-center">
+                                                            <img src="images/hoclaptrinh.jpg" width="70" height="70" />
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-11 col-sm-10 col-xs-9" style="overflow:auto;">
+                                                            <div style="overflow-wrap:break-word;">
+                                                                <p><%=ct.getBinhluan() %>Đưa ra 1 cái đề cụ thể đi</p>
+                                                            </div>
+                                                        </div>
+                                                       <input name="mathread" value="<%=ct.getMathread() %>">
+                                                        <div class="text-primary floatLeft thongtinnguoidang">
+                                                            <br />
+                                                            <label class="fontSmall"><span class="glyphicon glyphicon-user"> </span> Thành viên: <a href="#" data-toggle="tooltip" data-placement="top" class="text-primary"><%=ct.getUserID() %></a> </label><br />
+                                                            <label class="fontSmall"><span class="glyphicon glyphicon-time"> </span> Ngày đăng: <%=ct.getThoigian() %> </label>
+                                                        </div>
+                                                    </li>
+                                 <%} %>    --%>             
+                                                </ul>
+                                                <br></<br>
+                                             <textarea name="binhluan" class="form-control" cols="20" 
+                                             data-val="true" data-val-required="Nội dung câu trả lời không được bỏ trống."
+                                              rows="5" placeholder="Comment" name="txtTraLoi" id="traloi"></textarea>
+                              
+                                </div>
+                                <div class="form-group">
+                                    <label>&nbsp;&nbsp;Tải hình lên</label>
+                                    <input type="file" id="file" name="files" class="multiple" multiple />
+                                </div>
+                                <hr />
+                                <div style="text-align:center;margin:20px;">
+                                  
+                                   <input type="hidden" name="command" value="insertchitiet"></input>                  
+                                    <a href="thread.jsp" class="floatLeft btn btn-primary" role="link">Trở về</a>
+                                    <button type="submit" class="btn btn-success" data-toggle="tooltip" data-placement="right" title="Trả lời câu hỏi này">Trả lời</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+    </section>
+
+   <jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>

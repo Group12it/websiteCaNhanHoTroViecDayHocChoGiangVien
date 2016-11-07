@@ -20,15 +20,12 @@
     <link rel="stylesheet" type="text/css" href="css/thongtin.css">
    
   </head>
-  
    <body>
-   
-   <jsp:include page="header.jsp"></jsp:include>
+  <jsp:include page="header.jsp"></jsp:include>
 
     <section class="container" style="min-height:0px">
      
-<sql:setDataSource var="conn" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://localhost/web" user="root" password="admin" />
+<sql:setDataSource var="conn" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin" />
 
 <% 
 	KhoaHocsDAO khoahocsDAO=new KhoaHocsDAO(); //lấy danh sách khoá học

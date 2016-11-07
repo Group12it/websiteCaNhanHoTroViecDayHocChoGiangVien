@@ -20,7 +20,6 @@ public class QuanLyKhoaHocServlet extends HttpServlet {
 	public QuanLyKhoaHocServlet() {
 		super();
 	}
-
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

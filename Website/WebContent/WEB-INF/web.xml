@@ -1,34 +1,392 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name></display-name>
-  <servlet>
-    <servlet-name>CheckEmailServlet</servlet-name>
-    <servlet-class>controller.CheckEmailServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>UsersServlet</servlet-name>
-    <servlet-class>controller.UsersServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>admin</servlet-name>
-    <jsp-file>/admin.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UsersServlet</servlet-name>
-    <url-pattern>/UsersServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>CheckEmailServlet</servlet-name>
-    <url-pattern>/CheckEmailServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>admin</servlet-name>
-    <url-pattern>/admin</url-pattern>
-  </servlet-mapping>
-  <session-config>
-    <session-timeout>30</session-timeout>
-  </session-config>
-  <welcome-file-list>
-    <welcome-file>/index.jsp</welcome-file>
-  </welcome-file-list>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name></display-name>
+	<servlet>
+		<servlet-name>CheckEmailServlet</servlet-name>
+		<servlet-class>controller.CheckEmailServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UsersServlet</servlet-name>
+		<servlet-class>controller.UsersServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UsersServlet</servlet-name>
+		<url-pattern>/UsersServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CheckEmailServlet</servlet-name>
+		<url-pattern>/CheckEmailServlet</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- map phần jsp -->
+	<servlet>
+		<servlet-name>admin</servlet-name>
+		<jsp-file>/admin.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>admin</servlet-name>
+		<url-pattern>/trang-chu-quan-tri</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>adminbainophocvien</servlet-name>
+		<jsp-file>/adminbainophocvien.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>adminbainophocvien</servlet-name>
+		<url-pattern>/bai-nop-cua-hoc-vien</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>admindanhsachhocvien</servlet-name>
+		<jsp-file>/admindanhsachhocvien.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>admindanhsachhocvien</servlet-name>
+		<url-pattern>/danh-sach-hoc-vien</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>admin de thi trac nghiem</servlet-name>
+		<jsp-file>/admindethitracnghiem.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>admin de thi trac nghiem</servlet-name>
+		<url-pattern>/them-de-thi-trac-nghiem</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>admin giang day load du lieu</servlet-name>
+		<jsp-file>/adminGiangDay_LoadDulieu.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>admin giang day load du lieu</servlet-name>
+		<url-pattern>/xem-bai-giang</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>admin giang day upload du lieu</servlet-name>
+		<jsp-file>/adminGiangDay_UpFile.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>admin giang day upload du lieu</servlet-name>
+		<url-pattern>/upload-bai-giang</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ke hoach giang day</servlet-name>
+		<jsp-file>/admingiangday.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ke hoach giang day</servlet-name>
+		<url-pattern>/ke-hoach-giang-day</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>admin gui mail</servlet-name>
+		<jsp-file>/adminGuiMail.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>admin gui mail</servlet-name>
+		<url-pattern>/guil-mail</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>admin noi dung bai nop</servlet-name>
+		<jsp-file>/adminnoidungbainop.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>admin noi dung bai nop</servlet-name>
+		<url-pattern>/chi-tiet-bai-nop-cua-hoc-vien</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>quan ly hoc vien</servlet-name>
+		<jsp-file>/adminQuanLyHocVien.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>quan ly hoc vien</servlet-name>
+		<url-pattern>/quan-ly-hoc-vien</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>quan ly hoc vien danh sach khoa hoc</servlet-name>
+		<jsp-file>/adminQuanLyHocVienDanhSachKhoaHoc.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>quan ly hoc vien danh sach khoa hoc</servlet-name>
+		<url-pattern>/quan-ly-hoc-vien-trong-khoa-hoc</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>quan ly khoa hoc chinh sua</servlet-name>
+		<jsp-file>/adminQuanLyKhoaHoc-ChinhSua.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>quan ly khoa hoc chinh sua</servlet-name>
+		<url-pattern>/chinh-sua-khoa-hoc</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>quan ly khoa hoc them</servlet-name>
+		<jsp-file>/adminQuanLyKhoaHoc-Them.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>quan ly khoa hoc them</servlet-name>
+		<url-pattern>/tao-khoa-hoc-moi</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>cap nhat thong tin ca nhan hoc vien</servlet-name>
+		<jsp-file>/capnhathongtin.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>cap nhat thong tin ca nhan hoc vien</servlet-name>
+		<url-pattern>/chinh-sua-thong-tin-ca-nhan</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>chi tiet bai hoc</servlet-name>
+		<jsp-file>/chitietbaihoc.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>chi tiet bai hoc</servlet-name>
+		<url-pattern>/bai-hoc-chi-tiet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>chi tiet khoa hoc</servlet-name>
+		<jsp-file>/chitietkhoahoc.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>chi tiet khoa hoc</servlet-name>
+		<url-pattern>/khoa-hoc-chi-tiet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>chi tiet khoa hoc cua toi</servlet-name>
+		<jsp-file>/chitietkhoahoccuatoi.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>chi tiet khoa hoc cua toi</servlet-name>
+		<url-pattern>/chi-tiet-khoa-hoc-cua-toi</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>chi tiet khoa hoc chua dang nhap</servlet-name>
+		<jsp-file>/chitietkhoahocs.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>chi tiet khoa hoc chua dang nhap</servlet-name>
+		<url-pattern>/chi-tiet-khoa-hoc-xem</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>dang ky mon hoc</servlet-name>
+		<jsp-file>/dangkymonhoc.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dang ky mon hoc</servlet-name>
+		<url-pattern>/dang-ky-mon-hoc</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>doi mat khau</servlet-name>
+		<jsp-file>/doimatkhau.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>doi mat khau</servlet-name>
+		<url-pattern>/doi-mat-khau</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>trangchu</servlet-name>
+		<jsp-file>/index.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>trangchu</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>trang chu</servlet-name>
+		<jsp-file>/indexuser.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>trang chu</servlet-name>
+		<url-pattern>/trang-chu</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>khoa hoc cua toi</servlet-name>
+		<jsp-file>/khoahoccuartoi.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>khoa hoc cua toi</servlet-name>
+		<url-pattern>/khoa-hoc-cua-toi</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>kiem tra</servlet-name>
+		<jsp-file>/kiemtra.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>kiem tra</servlet-name>
+		<url-pattern>/kiem-tra</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>lam bai kiem tra</servlet-name>
+		<jsp-file>/lambaikiemtra.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>lam bai kiem tra</servlet-name>
+		<url-pattern>/lam-bai-kiem-tra</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>quan ly khoa hoc</servlet-name>
+		<jsp-file>/quanlykhoahoc.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>quan ly khoa hoc</servlet-name>
+		<url-pattern>/quan-ly-khoa-hoc</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>sua thread admin</servlet-name>
+		<jsp-file>/suathreadadmin.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>sua thread admin</servlet-name>
+		<url-pattern>/chinh-sua-thread</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>tao thread admin</servlet-name>
+		<jsp-file>/taothreadadmin.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>tao thread admin</servlet-name>
+		<url-pattern>/tao-thread-moi</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>tham gia thao luan</servlet-name>
+		<jsp-file>/thamgiathaoluan.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>tham gia thao luan</servlet-name>
+		<url-pattern>/thao-luan</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>thong tin ca nhan</servlet-name>
+		<jsp-file>/thongtincanhan.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>thong tin ca nhan</servlet-name>
+		<url-pattern>/thong-tin-ca-nhan</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>thread</servlet-name>
+		<jsp-file>/thread.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>thread</servlet-name>
+		<url-pattern>/thread-thao-luan</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>thread admin</servlet-name>
+		<jsp-file>/threadadmin.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>thread admin</servlet-name>
+		<url-pattern>/quan-ly-thread</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>upload bai tap</servlet-name>
+		<jsp-file>/uploadbaitap.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>upload bai tap</servlet-name>
+		<url-pattern>/upload-bai-tap</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>xem diem</servlet-name>
+		<jsp-file>/xemdiem.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>xem diem</servlet-name>
+		<url-pattern>/xem-diem</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>yeucaudangnhap</servlet-name>
+		<jsp-file>/yeucaudangnhap.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>yeucaudangnhap</servlet-name>
+		<url-pattern>/yeu-cau-dang-nhap</url-pattern>
+	</servlet-mapping>
+
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	<welcome-file-list>
+		<welcome-file>/index.jsp</welcome-file>
+	</welcome-file-list>
 </web-app>

@@ -63,8 +63,6 @@
 
 <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost/web" user="root" password="admin" />
-
-
   <%
   	String error="";
   if(request.getAttribute("error")!=null)
@@ -72,7 +70,8 @@
 	  error=(String) request.getAttribute("error");
   }
   %>
-  
+  <% KhoaHocsDAO khoahocsDAO=new KhoaHocsDAO();
+%>
  
 <sql:query dataSource="${DBConnect }" var="result"> select * from khoahoc;</sql:query>
  
@@ -80,7 +79,7 @@
     <header>
       <div class="container">
         <div class="row">
-          <div class="logo col-md-6 col-sm-6 col-xs-12"><h1><a href="#">Học lập trình</a></h1></div>
+           <div class="logo col-md-6 col-sm-6 col-xs-12" ><h1><a href="#">Học lập trình</a></h1></div>
                 <p></p>
                 <div class="navbar-right">
                 <%if(request.getAttribute("error")!=null){%>
@@ -112,18 +111,22 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px; color: blue;">
 				<ul class="nav navbar-nav" style="color:blue;"><!-- navbar-nav-->
-					<li class=""><a href="./index.html" style="color:white;">Trang chủ</a></li>
+					<li class=""><a href="home" style="color:white;">Trang chủ</a></li>
 					<li class="dropdown" style="color:white;">
 						<a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown">Khoá học<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Lập trình C căn bản</a></li>
-							<li><a href="#">Lập trình hướng đối tượng C++</a></li>
-							<li><a href="#">Lập trình java</a></li>
+							<%
+                            for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
+                        %>
+                           	<li><a href="chi-tiet-khoa-hoc-view?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
+                        <%
+                            }
+                        %>
 						</ul>
 					</li>
-					<li><a href="#" style="color:white;">Khoá học của tôi</a></li>
-					<li><a href="#" style="color:white;">Thảo luận</a></li>
-					<li><a href="#" style="color:white;">Kiểm tra</a></li>	
+					<li><a href="yeu-cau-dang-nhap" style="color:white;">Khoá học của tôi</a></li>
+					<li><a href="yeu-cau-dang-nhap" style="color:white;">Thảo luận</a></li>
+					<li><a href="yeu-cau-dang-nhap" style="color:white;">Kiểm tra</a></li>	
 					<li><a href="" style="color:white;">Liên hệ</a></li>
 					<li><a href="" style="color:white;">Giới thiệu</a></li>				
 				</ul>
@@ -133,18 +136,12 @@
 	</div>
 </div>
 </header>
-     
-
-
   </header>  
-
-
  <section class="container" style="min-height:500px">
         <!-- Modal đăng nhập-->
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
+                 <div class="modal-content">
                     <div class="modal-header" style="padding:10px 20px;background:#0CC;">
                         <button type="button" class="close" data-dismiss="modal">
                             &times;
@@ -153,8 +150,7 @@
                     </div>
                     <div class="modal-body" style="padding:40px 50px;">
                   <div class="account">
-            
-		                    <form id="frm-login" action="Home
+                            <form id="frm-login" action="Home
 		                    " method="POST" class="form-horizontal"   data-bv-message="This value is not valid"
 		            data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
 		            data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
@@ -351,9 +347,14 @@
              <ul>
                  
                   <c:forEach var="rows" items="${result.rows }">
-                	 <li><a href="chitietkhoahoc.jsp">${rows.TenKH}</a></li>
+                	<%
+                            for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
+                        %>
+                           	<li><a href="chi-tiet-khoa-hoc-view?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
+                        <%
+                            }
+                        %>
                   </c:forEach>
-                
              </ul>
              </marquee>
              </th>

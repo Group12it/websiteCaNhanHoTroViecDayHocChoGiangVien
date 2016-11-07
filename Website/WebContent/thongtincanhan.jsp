@@ -88,7 +88,7 @@ function onFileSelected(event) {
                                                 <c:forEach var="rows" items="${result.rows }">
                                 		 		<tr>
                                 				<img src="Upload/Avartar/${rows.HinhAnh }" class="img-responsive img-circle"></img>
-</td>	
+
                                 				</tr>
                                 			</c:forEach> 
                                                   

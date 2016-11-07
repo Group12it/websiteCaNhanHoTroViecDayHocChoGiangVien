@@ -16,12 +16,13 @@
             });
         });
 
-        
-        <!--Gui mail--> 
         $(document).ready(function () {
             $.ajaxSetup({ cache: false });
-            $("#btnLienHe").click(function () {
-                $("#myModalMail").modal();
+            $("#btnguimail").click(function () {
+                $("#myModal2").modal();
 
             });
         });
+        
+        <!--Gui mail--> 
+     

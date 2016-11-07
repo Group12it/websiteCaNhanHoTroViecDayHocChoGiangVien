@@ -36,7 +36,7 @@
 
 <body ng-app="myApp" ng-controller="userCtrl">
 
-<sql:setDataSource var="conn" driver="com.mysql.jdbc.Driver"
+<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost/web" user="root" password="admin" />
 
       <%
@@ -46,6 +46,11 @@
                 users = (Users) session.getAttribute("user");
             }
         %>
+               
+<sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=users.getUserEmail()%>";</sql:query> 
+        
+<% KhoaHocsDAO khoahocsDAO=new KhoaHocsDAO();
+%>
 
     <header>
       <div class="container">
@@ -72,7 +77,10 @@
                   <%if(users!=null){%>
 <%--                 <a href="thongtincanhan.jsp" class="dropntn"><%=users.getUserEmail()%></a> --%>
                                 <%}%>
-                 <img src="images/hoclaptrinh.jpg" align="bottom" width="40" height="40" class="dropntn ;img-responsive img-circle" />               
+                <c:forEach var="rows" items="${result.rows }">
+                	<img src="Upload/Avartar/${rows.HinhAnh }" class="img-circle img-thumbnail" align="bottom" width="40" height="40" />
+              		</c:forEach>
+<!--                  <img src="images/hoclaptrinh.jpg" align="bottom" width="40" height="40" class="dropntn ;img-responsive img-circle" />                -->
                                 <span class="arrow"></span></a>
                 
                 <div class="dropdown-content" style="z-index: 1">
@@ -112,9 +120,17 @@
 					<li class="dropdown" style="color:white;">
 						<a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown">Khoá học<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="chitietkhoahoc.jsp">Lập trình C căn bản</a></li>
-							<li><a href="#">Lập trình hướng đối tượng C++</a></li>
-							<li><a href="#">Lập trình java</a></li>
+						<%
+                            for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
+                        %>
+                           	<li><a href="chitietkhoahoc.jsp?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
+                        <%
+                            }
+                        %>
+<!-- 							<li><a href="chitietkhoahoc.jsp">Lập trình C căn bản</a></li> -->
+<!-- 							<li><a href="#">Lập trình hướng đối tượng C++</a></li> -->
+<!-- 							<li><a href="#">Lập trình java</a></li> -->
+<!-- 						-->
 						</ul>
 					</li>
 					<li><a href="chitietkhoahoccuatoi.jsp" style="color:white;">Khoá học của tôi</a></li>
@@ -131,11 +147,9 @@
 </header>
      
 
-  </header>  
-
 
  <section class="container" style="min-height:000px">
-        <!-- Modal đăng nhập-->
+       
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
