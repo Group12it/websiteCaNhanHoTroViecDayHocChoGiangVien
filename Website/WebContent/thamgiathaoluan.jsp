@@ -26,7 +26,11 @@
 	<jsp:include page="header.jsp"></jsp:include>
 
 	<%
-		
+		Users users=new Users();
+	if (session.getAttribute("user") != null) {
+        users = (Users) session.getAttribute("user");
+    }
+	
 		ThreadsDAO threadsDao=new ThreadsDAO();ChiTietThreadsDAO chitietthreadDAO=new ChiTietThreadsDAO();
 		String threadid="";
 		if(request.getParameter("thread")!=null){
@@ -35,7 +39,7 @@
 	}
 	%>
 
-    <section class="container" style="min-height:500px">
+    <section class="container" style="min-height:100px">
 
         <section class="row">
             <div class="col-md-12">
@@ -65,11 +69,11 @@
                                            	<div class="col-lg-10 col-md-9 col-sm-8 fontLarger pull-left" style="overflow-wrap:break-word">
                                             </div>
                                             <label>
-                                                Các câu trả lời</label> <span class="badge">3</span>
-                                                <ul class="list-group" id="dscautraloi" style="min-height:200px">
-                             <%--                      
+                                                Các câu trả lời</label> <span class="badge"></span>
+                                                <ul class="list-group" id="dscautraloi" style="min-height:0px">
+                                                
 		                        <%
-		                            for (ChiTietThreads ct :chitietthreadDAO.getChiTietThreadsListByID(mathread)){
+		                            for (ChiTietThreads ct :chitietthreadDAO.getChiTietThreadsListByID(threadid)){
 		                        %>
                               
                                                     <li class="list-group-item">
@@ -78,23 +82,25 @@
                                                         </div>
                                                         <div class="col-lg-10 col-md-11 col-sm-10 col-xs-9" style="overflow:auto;">
                                                             <div style="overflow-wrap:break-word;">
-                                                                <p><%=ct.getBinhluan() %>Đưa ra 1 cái đề cụ thể đi</p>
+                                                                <p><%=ct.getBinhluan() %></p>
                                                             </div>
                                                         </div>
-                                                       <input name="mathread" value="<%=ct.getMathread() %>">
+                                                        
+                                                       <input type="hidden" name="mathread" value="<%=ct.getMathread() %>">
                                                         <div class="text-primary floatLeft thongtinnguoidang">
                                                             <br />
                                                             <label class="fontSmall"><span class="glyphicon glyphicon-user"> </span> Thành viên: <a href="#" data-toggle="tooltip" data-placement="top" class="text-primary"><%=ct.getUserID() %></a> </label><br />
                                                             <label class="fontSmall"><span class="glyphicon glyphicon-time"> </span> Ngày đăng: <%=ct.getThoigian() %> </label>
                                                         </div>
                                                     </li>
-                                 <%} %>    --%>             
+                                 <%} %>              
                                                 </ul>
                                                 <br></<br>
+                                                
+                                                <input type="hidden" name="userid" value="<%=users.getUserHoTen() %>">
                                              <textarea name="binhluan" class="form-control" cols="20" 
                                              data-val="true" data-val-required="Nội dung câu trả lời không được bỏ trống."
                                               rows="5" placeholder="Comment" name="txtTraLoi" id="traloi"></textarea>
-                              
                                 </div>
                                 <div class="form-group">
                                     <label>&nbsp;&nbsp;Tải hình lên</label>

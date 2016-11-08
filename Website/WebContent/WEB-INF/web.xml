@@ -24,7 +24,7 @@
 
 
 	<!-- map phần jsp -->
-	<servlet>
+ 	 <servlet>
 		<servlet-name>admin</servlet-name>
 		<jsp-file>/admin.jsp</jsp-file>
 	</servlet>
@@ -280,16 +280,18 @@
 		<servlet-name>lam bai kiem tra</servlet-name>
 		<url-pattern>/lam-bai-kiem-tra</url-pattern>
 	</servlet-mapping>
-
+	
 	<servlet>
-		<servlet-name>quan ly khoa hoc</servlet-name>
+		<servlet-name>quan ly khoa hoc admin</servlet-name>
 		<jsp-file>/quanlykhoahoc.jsp</jsp-file>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>quan ly khoa hoc</servlet-name>
-		<url-pattern>/quan-ly-khoa-hoc</url-pattern>
+		<servlet-name>quan ly khoa hoc admin</servlet-name>
+		<url-pattern>/quanly-khoa-hoc</url-pattern>
 	</servlet-mapping>
+
+
 	
 		<servlet>
 		<servlet-name>sua thread admin</servlet-name>
@@ -318,7 +320,7 @@
 
 	<servlet-mapping>
 		<servlet-name>tham gia thao luan</servlet-name>
-		<url-pattern>/thao-luan</url-pattern>
+		<url-pattern>/tham-gia-thao-luan</url-pattern>
 	</servlet-mapping>
 	
 	
@@ -380,7 +382,7 @@
 	<servlet-mapping>
 		<servlet-name>yeucaudangnhap</servlet-name>
 		<url-pattern>/yeu-cau-dang-nhap</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> 
 
 
 	<session-config>

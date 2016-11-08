@@ -111,7 +111,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px; color: blue;">
 				<ul class="nav navbar-nav" style="color:blue;"><!-- navbar-nav-->
-					<li class=""><a href="home" style="color:white;">Trang chủ</a></li>
+					<li class=""><a href="" style="color:white;">Trang chủ</a></li>
 					<li class="dropdown" style="color:white;">
 						<a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown">Khoá học<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
@@ -274,8 +274,8 @@
                                         
                                          
                                           <label class="control-label col-md-4">Giới tính:</label>
-                                        <select name="Gender">
-                                        <option value="Nam">Nam</option>
+                                        <select  name="Gender">
+                                        <option  value="Nam">Nam</option>
                                         <option value="Nữ" >Nữ</option>
                                         </select>
                                           <label class="radio-inline"><input checked="checked" data-val="true" data-val-required="Bạn chưa chọn giới tính." id="Gender1" name="Gender" type="radio" value="true" required> Nam </label>

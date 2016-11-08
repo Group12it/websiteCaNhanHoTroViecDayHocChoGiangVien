@@ -1,6 +1,10 @@
 package controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -123,21 +127,43 @@ public class Thaoluan extends HttpServlet {
 			break;
 		
 		case "insertchitiet":
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			   //get current date time with Date()
+			   Date date = new Date();
+			   System.out.println(dateFormat.format(date));
+
+			   //get current date time with Calendar()
+			   Calendar cal = Calendar.getInstance();
+			
 			ChiTietThreads chitietthread=new ChiTietThreads();
 			String mathread=request.getParameter("mathread");
-						chitietthread.setThreadID(new java.util.Date().getTime());
+			
+			chitietthread.setThreadID(new java.util.Date().getTime());
 			chitietthread.setMathread(Long.parseLong(mathread));
-			chitietthread.setUserID("1");
-			chitietthread.setThoigian("2016-01-01");
+			chitietthread.setUserID((request.getParameter("userid")));
+			chitietthread.setThoigian(dateFormat.format(cal.getTime()));
 			chitietthread.setBinhluan(request.getParameter("binhluan"));
 			chitietthreadDao.insertchitietthread(chitietthread);
-			
-			url = "/thamgiathaoluan.jsp";
+			String t="?thread=";
+			String uri="/tham-gia-thao-luan";
+			url =uri+t+mathread;// "/thamgiathaoluan.jsp";
 
 			break;
 
 		}
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
 		rd.forward(request, response);
+	}
+	
+	
+	public static void main(String[] args) {
+		  DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		   //get current date time with Date()
+		   Date date = new Date();
+		   System.out.println(dateFormat.format(date));
+
+		   //get current date time with Calendar()
+		   Calendar cal = Calendar.getInstance();
+		   System.out.println();
 	}
 }

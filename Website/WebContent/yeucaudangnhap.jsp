@@ -63,8 +63,6 @@
 
 <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost/web" user="root" password="admin" />
-
-
   <%
   
   	String error="";
@@ -115,7 +113,7 @@
 			<div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px; color: blue;">
 				<ul class="nav navbar-nav" style="color:blue;"><!-- navbar-nav-->
 				
-					<li class=""><a href="index.jsp" style="color:white;">Trang chủ</a></li>
+					<li class=""><a href="home" style="color:white;">Trang chủ</a></li>
 					<li class="dropdown" style="color:white;">
 						<a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown">Khoá học<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">

@@ -4,30 +4,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
   <head>
-    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
 	<link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
-   
-     <SCRIPT LANGUAGE="JavaScript">
-      function confirmAction() {
-        return confirm("Bạn Đã Thực Hiện Thao Tác Thành Công")
-      }
- 
-      </SCRIPT>
-    
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" media="all" type="text/css" href="css/font-awesome.min.css"/>
+
   </head>
    
 <body>
-	<jsp:include page="headeradmin.jsp" ></jsp:include>
+  
+<jsp:include page="headeradmin.jsp" ></jsp:include> 
   
   <div id="wrapper">
       <div class="container">
@@ -70,10 +57,9 @@
                     <input class="form-control" type="text" name="tenthread"  placeholder="Nhập Tên Đề Tài" size="50% " style="font-size: 15px" requied autofocus>
                     <br>  
                     <label style="font-size: 15px">Thời Gian Tạo Thread</label>
- 					
- 					<div id="datepicker" class="input-group date" data-date-format="dd/mm/yyyy"> <input class="form-control" type="text" name="dngaytao"></input><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span></div>
-    
-            		<input class="form-control valid input-group date"  name="ngaytao"  type="text" value=""></input>
+ 
+ 	
+                  	<div id="datepicker" name="ngaytao" class="input-group date" data-date-format="dd/mm/yyyy"> <input class="form-control" type="text" name="ngaytao"></input><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span></div>
                	     <input type="hidden" name="command" value="insert"></input>                  
                      <button type="submit" class="btn btn-info">OK</button>
                     </form>
@@ -85,7 +71,7 @@
   
       </div>
     </div>
-</div></div>
+</div>
 
     <jsp:include page="footer.jsp" ></jsp:include>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
