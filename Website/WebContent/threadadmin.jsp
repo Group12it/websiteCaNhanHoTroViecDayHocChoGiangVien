@@ -77,7 +77,14 @@
                                 			</tr>
                                 		</thead>
                                 		<tbody>
-                                		 <c:set var="count" value="0" /> <%--Khởi tạo biến đếm =0 --%>
+  <%	
+	 ThreadsDAO threadsDAO =new ThreadsDAO();
+	
+	%>
+                        <%--         		  <%
+                            for (Threads thr :threadsDAO.getThreadsList()){
+                        %>
+                             --%>    		 <c:set var="count" value="0" /> <%--Khởi tạo biến đếm =0 --%>
                                 		 <c:forEach var="rows" items="${result.rows }">
                                 		 <c:set var="count"  value="${count+1}" /> <%--Tăng biến đếm lên 1 đơn vị --%>
                                 			<tr>
@@ -86,7 +93,7 @@
                                 				<td>${rows.NgayTao }</td>
                                 				<td>
                                                     <center> 
-                                                     <a href="suathreadadmin.jsp"> <button type="button" class="btn btn-success" id="btnXacNhan">Sửa</button></a>
+                                                     <a href="suathreadadmin.jsp?thread=${rows.MaThread }"> <button type="button" class="btn btn-success" id="btnXacNhan">Sửa</button></a>
                                                   	 <a href="Thaoluan?command=delete&MaThread=${rows.MaThread }"> <button type="button" class="btn btn-warning" id="btnXoa1">Xóa</button></a> 
                                                 	</center>
                                                 </td>
@@ -94,8 +101,8 @@
                                 			</tr>
                                 			</c:forEach> 
                                 		</tbody>
-                                		
-                                	</table>	
+                                	<%-- 	<%} %>
+                                	 --%></table>	
                             
                               		 <a href="taothreadadmin.jsp"><button type="button" class="btn btn-success" id="btnXacNhan">Tạo thread</button></a>
                              		

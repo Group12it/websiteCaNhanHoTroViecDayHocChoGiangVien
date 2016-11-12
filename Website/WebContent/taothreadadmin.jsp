@@ -71,9 +71,8 @@
                     <br>  
                     <label style="font-size: 15px">Thời Gian Tạo Thread</label>
  					
- 					<div id="datepicker" class="input-group date" data-date-format="dd/mm/yyyy"> <input class="form-control" type="text" name="dngaytao"></input><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span></div>
-    
-            		<input class="form-control valid input-group date"  name="ngaytao"  type="text" value=""></input>
+ 				
+            		<input class="form-control valid "  name="ngaytao"  type="date" value=""></input>
                	     <input type="hidden" name="command" value="insert"></input>                  
                      <button type="submit" class="btn btn-info">OK</button>
                     </form>

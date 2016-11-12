@@ -30,7 +30,7 @@ public class QuanLyKhoaHocServlet extends HttpServlet {
 		String url = "";
 		String MaKH = request.getParameter("makh");
 		KhoaHocs khoahocs=new KhoaHocs();
-		Users users = new Users();
+//		Users users = new Users();
 		String tenkh=request.getParameter("tenkh");
 		String ngaykhaigiang=request.getParameter("ngaykhaigiang");
 		String hocphi=request.getParameter("hocphi");

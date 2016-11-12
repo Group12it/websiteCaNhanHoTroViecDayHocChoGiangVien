@@ -62,9 +62,9 @@
                                             <p><%=kh.getAdNoiDung()%></p>
                                             <p><%=kh.getAdNgayKhaiGiang() %></p> 
                                             <p><%=kh.getAdHocPhi()%></p>
-                                            <p><%=kh.getAdShowtester() %></p>
+<%--                                             <p><%=kh.getAdShowtester() %></p> --%>
                                                                                      </p>
-                                        <a href="yeucaudangnhap.jsp" target="_blank" class="btn btn-primary btn-lg">Đăng ký</a></p>
+                                        <a href="yeucaudangnhap.jsp" class="btn btn-primary btn-lg">Đăng ký</a></p>
                                     </div>
 
                       </ul>
@@ -94,10 +94,6 @@
 <script>
 $('#contactform').bootstrapValidator();
 </script>
-
-
-
-
 
 <jsp:include page="footer.jsp"></jsp:include>
 

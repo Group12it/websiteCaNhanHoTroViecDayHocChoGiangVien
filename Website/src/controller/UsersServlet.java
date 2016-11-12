@@ -150,7 +150,7 @@ public class UsersServlet extends HttpServlet {
 					users.setUserNgaySinh(rs.getString("NgaySinh"));
 					users.setUserGioiTinh(rs.getString("GioiTinh"));
 					users.setUserSDT(rs.getString("SDT"));
-
+					session.setAttribute("role",request.getParameter("Role"));
 					session.setAttribute("user", users);
 					switch (usertype) {
 

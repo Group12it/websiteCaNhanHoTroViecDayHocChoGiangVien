@@ -66,21 +66,21 @@
 
 <body ng-app="myApp" ng-controller="userCtrl">
 
-	<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://localhost/web" user="root" password="admin" />
-
-	<%
+	<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin" />
+<%
 		Users user = null;
 		if (session.getAttribute("user") != null) {
 			user = (Users) session.getAttribute("user");
 		}
-	%>
+%>
 
-	<sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=user.getUserEmail()%>";</sql:query>
+ 	<sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=user.getUserEmail()%>";</sql:query>
 
 	<%
 		KhoaHocsDAO khoahocsDAO = new KhoaHocsDAO();
 	%>
+
+	
 	<header>
 
 	<div class="container">
@@ -95,7 +95,7 @@
 				<%
 					if (user != null) {
 				%>
-				<a href="thongtincanhan.jsp" class="dropntn"><%=user.getUserEmail()%></a>
+				<a href="thong-tin-ca-nhan" class="dropntn"><%=user.getUserEmail()%></a>
 				<%
 					}
 				%><span class="arrow"></span>
@@ -122,8 +122,8 @@
 						</li>
 						<%
 							}
-						%><span class="arrow"></span></a> <a href="thongtincanhan.jsp"
-							style="z-index: 1">Thông tin cá nhân</a> <a href="doimatkhau.jsp"
+						%><span class="arrow"></span></a> <a href="thong-tin-ca-nhan"
+							style="z-index: 1">Thông tin cá nhân</a> <a href="doi-mat-khau"
 							style="z-index: 1">Đổi mật khẩu</a>
 					</div>
 				</div>
@@ -257,7 +257,6 @@
 									<button type="submit" value="Submit"
 										class="btn btn-custom pull-right"
 										style="color: white; background: #0cc">Send</button>
-
 								</div>
 							</div>
 						</Form>
@@ -268,12 +267,6 @@
 		</div>
 	</div>
 
-
-<!-- 	<div id="datepicker" class="input-group date" -->
-<!-- 		data-date-format="dd-mm-yyyy"> -->
-<!-- 		<input class="form-control" type="text" readonly=""> <span -->
-<!-- 			class="input-group-addon"><i -->
-<!-- 			class="glyphicon glyphicon-calendar"></i></span> -->
 	</section>
 
 

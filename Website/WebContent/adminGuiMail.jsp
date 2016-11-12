@@ -72,15 +72,15 @@
                                     <div class="panel-body">
 
                                         <div class="panel-body">
-                                            <form class="form" method="post" id="contactform" action="" role="form" onSubmit="return formaction()">
-                                                <div class="form-group">
-                                                    <label for="contactemail">Địa Chỉ Email</label>
-                                                    <input type="email" class="form-control" id="contactemail" placeholder="Nhập địa chỉ Email" required autofocus>
-                                                </div>
+                                            <form class="form" method="post" id="contactform" action="GuiMailAll" role="form" ">
+<!--                                                 <div class="form-group"> -->
+<!--                                                     <label for="contactemail">Địa Chỉ Email</label> -->
+<!--                                                     <input type="email" class="form-control" id="contactemail" placeholder="Nhập địa chỉ Email" required autofocus> -->
+<!--                                                 </div> -->
 
                                                 <div class="form-group">
                                                     <label for="contactsubject">Gửi Tới</label>
-                                                    <select name="" id="input" class="form-control">
+                                                    <select name="to" id="input" class="form-control">
                                                         <option value="">Khóa học lập trình c căn bản</option>
                                                         <option value="">Khóa học lập trình java</option>
                                                         <option value="">Khóa học lập trình web</option>
@@ -89,12 +89,12 @@
 
                                                 <div class="form-group">
                                                     <label for="contactsubject">Tiêu Đề</label>
-                                                    <input type="subject" class="form-control" id="contactsubject" placeholder="Nhập tiêu đề" required autofocus>
+                                                    <input name="tieude" type="subject" class="form-control" id="contactsubject" placeholder="Nhập tiêu đề" required autofocus>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="contactmessage">Nội dung tin nhắn</label><br>
                                           
-                       							 <textarea rows="6" class="form-control" id="comments" name="noidungbaigiang" placeholder="nội dung"></textarea>
+                       							 <textarea rows="6" class="form-control" id="comments" name="noidung" placeholder="nội dung"></textarea>
                    								</div>    
                                                 <button type="submit" id="contracbtn" class="btn btn-info" >Gửi</button>
                                                 <!-- kết thúc gửi mail-->

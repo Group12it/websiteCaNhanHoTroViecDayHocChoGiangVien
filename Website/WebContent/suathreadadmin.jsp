@@ -1,3 +1,6 @@
+<%@page import="dao.ChiTietThreadsDAO"%>
+<%@page import="model.*" %>
+<%@page import="dao.ThreadsDAO"%>
 <?xml version="1.0" encoding="utf-8" ?>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -21,6 +24,9 @@
  
       </SCRIPT>
     
+    <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
   <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -35,6 +41,19 @@
 
 <sql:query dataSource="${DBConnect }" var="result"> select * from thread;</sql:query>
 
+	<%
+	Users user = null;
+	if (session.getAttribute("user") != null) {
+		user = (Users) session.getAttribute("user");
+	}
+	
+		ThreadsDAO threadsDao=new ThreadsDAO();ChiTietThreadsDAO chitietthreadDAO=new ChiTietThreadsDAO();
+		String threadid="";
+		if(request.getParameter("thread")!=null){
+		threadid= request.getParameter("thread");
+		
+	}
+	%>
   
   <div id="wrapper">
       <div class="container">
@@ -57,8 +76,7 @@
                                 <li class="active"><a href="adminQuanLyHocVien.jsp" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-user"></i> &nbsp;&nbsp;&nbsp;&nbsp;Quản lý học viên</a></li>
                               
                                 <li class="active"><a href="adminGuiMail.jsp" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp; Gửi mail cho sinh viên</a></li>
-                              
-                            
+                                                          
                                 <li class="active"><a href="admindanhsachhocvien.jsp" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
                                
                                 <li class="active"><a href="admindethitracnghiem.jsp" class="list-group-item " style="z-index: 0"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
@@ -69,16 +87,28 @@
                     </div>  
                      <div class="panel panel-default">
                      <div class="col-md-9">
+              	 
                    <form action ="Thaoluan" method="post">
                     <a class ="list-group-item text-center " href="#" style="font-size: 20px;color: blue;background: #0CC">Sửa Thread Thảo Luận</a><br> 
-                    <label style="font-size: 15px">Tên Đề Tài Thảo Luận</label>
+                	
+                       <%-- <%
+                        for (Threads thr : threadsDao.getThreadsListByID(threadid)){
+                        %>
+                        			 --%>
+                        			<input type="hidden" name="mathread" value=""> 
+                       <label style="font-size: 15px">Tên Đề Tài Thảo Luận</label>
                     <br>
-                    <input class="form-control" type="text" name="tenthread"  placeholder="Nhập Tên Đề Tài" size="50% " style="font-size: 15px">
+                    <input value="" class="form-control" type="text" name="tenthread"  placeholder="Nhập Tên Đề Tài" size="50% " style="font-size: 15px">
                     <br>  
                     <label style="font-size: 15px">Thời Gian Tạo Thread</label>
  
-                     <input class="form-control valid" data-val="true" data-val-required="Ngày sinh không được bỏ trống!" id="datepicker" name="ngaytao" placeholder="Ngày sinh của bạn" type="date" value="<%= new Date().getDate() %>" />
-                      <input type="hidden" name="command" value="update"/>                  
+ 					<input class="form-control valid "  name="ngaytao"  type="date" value=""></input>
+               	   <%--  
+                     <input value="<%=thr.getNgayThread() %>" class="form-control valid" data-val="true" data-val-required="Ngày sinh không được bỏ trống!"  name="ngaytao"  type="date"  />
+                --%>
+                      <%--            
+                        <%} %> --%>
+                          <input type="hidden" name="command" value="update"/>                  
                    
                     <button type="submit" class="btn btn-info">OK</button>
                     	

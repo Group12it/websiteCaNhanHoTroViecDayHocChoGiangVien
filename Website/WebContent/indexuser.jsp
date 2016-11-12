@@ -92,9 +92,20 @@
              <th>
              <marquee SCROLLDELAY = 150 width ="100%" height = "300" direction="up" style ="font:arial" scrollamount="2" id="bannerthongbao" name="bannerthongbao" onmouseover="this.stop()" onmouseout="this.start()">
              <ul>
-                 <c:forEach var="rows" items="${result.rows }">
-                	 <li><a href="chitietkhoahoc.jsp">${rows.TenKH}</a></li>
-                  </c:forEach>
+             
+      <% KhoaHocsDAO khoahocsDAO=new KhoaHocsDAO();
+%>        
+                 	<%
+                            for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
+                        %>
+                           	<li><a href="khoa-hoc-chi-tiet?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
+                           	<p></p>
+                        <%
+                            }
+                        %>
+<%--                  <c:forEach var="rows" items="${result.rows }"> --%>
+<%--                 	 <li><a href=chi-tiet-khoa-hoc-xem?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%>  "chitietkhoahoc.jsp">${rows.TenKH}</a></li> --%>
+<%--                   </c:forEach> --%>
              </ul>
              </marquee>
              </th>

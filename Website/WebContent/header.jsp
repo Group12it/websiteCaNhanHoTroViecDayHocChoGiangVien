@@ -57,21 +57,8 @@
            <div class="row">
             <div class="logo col-md-6 col-sm-6 col-xs-12" ><h1><a href="#">Học lập trình</a></h1></div>
             <div class="navbar-right">
-                   <div class="dropdown right">
-              <!--   <a href="" class="dropntn"><span class="arrow"></span></a> -->
-                  <%if(users!=null){%>
-                <a href="thongtincanhan.jsp" class="dropntn"><%=users.getUserEmail()%></a>
-                                <%}%><span class="arrow"></span></a>
-                
-                <div class="dropdown-content" style="z-index: 1">
-               	   <%if(users!=null){%>
-                	<a href="#" class="dropntn" style="z-index: 1"><%=users.getUserHoTen()%></a> </li>
-                                <%}%><span class="arrow"></span></a>
-                    <a href="thongtincanhan.jsp" style="z-index: 1"> Thông tin cá nhân</a>
-                    <a href="doimatkhau.jsp"  style="z-index: 1">Đổi mật khẩu</a>
-                     </div> 
-                  </div>
-                  
+        
+                   <a href="thong-tin-ca-nhan" class="dropntn"><%=users.getUserHoTen()%></a>
                     <div class="dropdown right">
               <!--   <a href="" class="dropntn"><span class="arrow"></span></a> -->
                   <%if(users!=null){%>
@@ -87,15 +74,15 @@
                	   <%if(users!=null){%>
                 	<a href="#" class="dropntn" style="z-index: 1"><%=users.getUserHoTen()%></a> </li>
                                 <%}%><span class="arrow"></span></a>
-                    <a href="thongtincanhan.jsp" style="z-index: 1">Thông tin cá nhân</a>
-                    <a href="doimatkhau.jsp"  style="z-index: 1">Đổi mật khẩu</a>
+                    <a href="thong-tin-ca-nhan" style="z-index: 1">Thông tin cá nhân</a>
+                    <a href="doi-mat-khau"  style="z-index: 1">Đổi mật khẩu</a>
                   </div> 
                   </div>
                   
                   
                 <from aciton ="Home" menthod="POST"></from>
                 <input type="hidden" name="command" value="logout">
-                <a href="index.jsp"> <button type="submit" class="btn btn-danger navbar-btn" style="border-radius: 15px; margin-right: 30px;">Đăng xuất</button></a>
+                <a href="logout.jsp"> <button type="submit" class="btn btn-danger navbar-btn" style="border-radius: 15px; margin-right: 30px;">Đăng xuất</button></a>
             </div>
           </div>
         <div class="col-md-13 ">
@@ -123,7 +110,7 @@
 						<%
                             for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
                         %>
-                           	<li><a href="chitietkhoahoc.jsp?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
+                           	<li><a href="khoa-hoc-chi-tiet?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
                         <%
                             }
                         %>
@@ -133,9 +120,9 @@
 <!-- 						-->
 						</ul>
 					</li>
-					<li><a href="chitietkhoahoccuatoi.jsp" style="color:white;">Khoá học của tôi</a></li>
-					<li><a href="thread.jsp" style="color:white;">Thảo luận</a></li>
-					<li><a href="kiemtra.jsp" style="color:white;">Kiểm tra</a></li>	
+					<li><a href="chi-tiet-khoa-hoc-cua-toi" style="color:white;">Khoá học của tôi</a></li>
+					<li><a href="thread-thao-luan" style="color:white;">Thảo luận</a></li>
+					<li><a href="kiem-tra" style="color:white;">Kiểm tra</a></li>	
 					<li><a href="" style="color:white;cursor:pointer" id="myBtn">Liên hệ</a></li>
 					<li><a href="" style="color:white;">Giới thiệu</a></li>				
 				</ul>
@@ -217,9 +204,6 @@
 					</div>
 					</div>
 					</div>
-                    
-    
-       
     </section>
 
 

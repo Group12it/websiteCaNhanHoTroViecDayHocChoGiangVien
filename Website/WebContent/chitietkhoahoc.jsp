@@ -60,7 +60,7 @@
                                             <p><%=kh.getAdNoiDung()%></p>
                                             <p><%=kh.getAdNgayKhaiGiang() %></p> 
                                             <p><%=kh.getAdHocPhi()%></p>
-                                            <p><%=kh.getAdShowtester() %></p>
+<%--                                             <p><%=kh.getAdShowtester() %></p> --%>
                                                                                      </p>
                                         <a href="dangkymonhoc.jsp" target="_blank" class="btn btn-primary btn-lg">Đăng ký</a></p>
                                     </div>

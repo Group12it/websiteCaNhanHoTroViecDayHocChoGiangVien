@@ -35,7 +35,6 @@
 		String threadid="";
 		if(request.getParameter("thread")!=null){
 		threadid= request.getParameter("thread");
-		
 	}
 	%>
 
@@ -71,7 +70,7 @@
                                             <label>
                                                 Các câu trả lời</label> <span class="badge"></span>
                                                 <ul class="list-group" id="dscautraloi" style="min-height:0px">
-                                                
+                                              
 		                        <%
 		                            for (ChiTietThreads ct :chitietthreadDAO.getChiTietThreadsListByID(threadid)){
 		                        %>
@@ -93,7 +92,7 @@
                                                             <label class="fontSmall"><span class="glyphicon glyphicon-time"> </span> Ngày đăng: <%=ct.getThoigian() %> </label>
                                                         </div>
                                                     </li>
-                                 <%} %>              
+                                 <%} %>             
                                                 </ul>
                                                 <br></<br>
                                                 

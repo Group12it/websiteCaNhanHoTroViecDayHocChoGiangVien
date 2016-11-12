@@ -97,6 +97,7 @@ public class Thaoluan extends HttpServlet {
 		String command = request.getParameter("command");
 		String url = "";
 		String threadid = request.getParameter("MaThread");
+		String MaThread = request.getParameter("MaThread");
 		Threads threads = new Threads();
 
 		switch (command) {
@@ -111,8 +112,7 @@ public class Thaoluan extends HttpServlet {
 			break;
 		case "update":
 			try {
-				threadsDAO.updateThread(new Threads(Long.parseLong(threadid), request.getParameter("tenthread"),
-						request.getParameter("ngaytao")));
+				threadsDAO.updateThread(new Threads(Long.parseLong(threadid), request.getParameter("tenthread"),request.getParameter("ngaytao")));
 
 				url = "/threadadmin.jsp";
 			} catch (NumberFormatException e1) {
@@ -122,8 +122,8 @@ public class Thaoluan extends HttpServlet {
 			break;
 
 		case "delete":
-			String id = request.getParameter("MaThread");
-
+			threadsDAO.DeleteThread(Long.parseLong(MaThread));
+			url="/threadadmin.jsp";
 			break;
 		
 		case "insertchitiet":
@@ -161,7 +161,6 @@ public class Thaoluan extends HttpServlet {
 		   //get current date time with Date()
 		   Date date = new Date();
 		   System.out.println(dateFormat.format(date));
-
 		   //get current date time with Calendar()
 		   Calendar cal = Calendar.getInstance();
 		   System.out.println();

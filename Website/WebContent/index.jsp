@@ -115,10 +115,10 @@
 					<li class="dropdown" style="color:white;">
 						<a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown">Khoá học<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<%
+						<%
                             for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
                         %>
-                           	<li><a href="chi-tiet-khoa-hoc-view?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
+                           	<li><a href="chi-tiet-khoa-hoc-xem?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
                         <%
                             }
                         %>
@@ -346,16 +346,15 @@
              <marquee SCROLLDELAY = 150 width ="100%" height = "300" direction="up" style ="font:arial" scrollamount="2" id="bannerthongbao" name="bannerthongbao" onmouseover="this.stop()" onmouseout="this.start()">
              <ul>
                  
-                  <c:forEach var="rows" items="${result.rows }">
-                	<%
+                 	<%
                             for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
                         %>
-                           	<li><a href="chi-tiet-khoa-hoc-view?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
+                           	<li><a href="chi-tiet-khoa-hoc-xem?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
+                           	<p></p>
                         <%
                             }
                         %>
-                  </c:forEach>
-             </ul>
+                              </ul>
              </marquee>
              </th>
              </tr>

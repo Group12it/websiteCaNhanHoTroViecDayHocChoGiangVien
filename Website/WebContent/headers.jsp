@@ -59,27 +59,9 @@
             <div class="logo col-md-6 col-sm-6 col-xs-12" ><h1><a href="#">Học lập trình</a></h1></div>
             <p></p>
             <div class="navbar-right">
-                   <%if(users!=null){%>
-                <a href="thongtincanhan.jsp" class="dropntn"><%=users.getUserEmail()%></a>
-                                <%}%><span class="arrow"></span></a>
-                    <div class="dropdown right">
-<%--                                <%if(users!=null){%> --%>
-                <c:forEach var="rows" items="${result.rows }">
-                	<img src="Upload/Avartar/${rows.HinhAnh }" class="img-circle img-thumbnail" align="bottom" width="40" height="40" />
-              		</c:forEach>
-<%--                                 <%}%> --%>
-                                <span class="arrow"></span>
-                
-                <div class="dropdown-content" style="z-index: 1">
-               	   <%if(users!=null){%>
-                	<a href="#" class="dropntn" style="z-index: 1"></a> </li>
-                                <%}%><span class="arrow"></span></a>
-                    <a href="thongtincanhan.jsp" style="z-index: 1">Thông tin cá nhân</a>
-                    <a href="doimatkhau.jsp"  style="z-index: 1">Đổi mật khẩu</a>
-                  </div> 
-                  </div>
+                  
             	<a style="cursor:pointer" id="myBtn"><button type="button" class="btn btn-info"">Đăng nhập</button> </a>
-                <a style="cursor:pointer" id="btndangky"><button type="button" class="btn btn-warning"  style="margin-right: 30px;">Đăng ký</button> </a>
+                <a style="cursor:pointer" id="btnguimail"><button type="button" class="btn btn-warning"  style="margin-right: 30px;">Đăng ký</button> </a>
 <!--                 <a href="index.jsp"> <button type="submit" class="btn btn-danger navbar-btn" style="border-radius: 15px; margin-right: 30px;">Đăng xuất</button></a> -->
             </div>
           </div>
@@ -108,15 +90,15 @@
 						<%
                             for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
                         %>
-                           	<li><a href="chitietkhoahocs.jsp?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
+                           	<li><a href="chi-tiet-khoa-hoc-xem?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
                         <%
                             }
                         %>
 						</ul>
 					</li>
-					<li><a href="yeucaudangnhap.jsp" style="color:white;">Khoá học của tôi</a></li>
-					<li><a href="yeucaudangnhap.jsp" style="color:white;">Thảo luận</a></li>
-					<li><a href="yeucaudangnhap.jsp" style="color:white;">Kiểm tra</a></li>	
+					<li><a href="yeu-cau-dang-nhap" style="color:white;">Khoá học của tôi</a></li>
+					<li><a href="yeu-cau-dang-nhap" style="color:white;">Thảo luận</a></li>
+					<li><a href="yeu-cau-dang-nhap" style="color:white;">Kiểm tra</a></li>	
 					<li><a href="" style="color:white;cursor:pointer" id="btnguimail">Liên hệ</a></li>
 					<li><a href="" style="color:white;">Giới thiệu</a></li>				
 				</ul>
@@ -152,7 +134,7 @@
             data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
 						
 						
-						  <div class="form-group">
+			  <div class="form-group">
                     <label class="control-label col-md-4" for="email">Địa chỉ Email</label>
                     <div class="col-md-6">
            				 <input type="email" class="form-control" id="email" name="email" placeholder="Địa chỉ Email"
@@ -218,6 +200,6 @@ $('#contactform').bootstrapValidator();
    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <!--   <script src="js/bootstrap.min.js"></script> -->
+ <script src="js/bootstrap.min.js"></script> -->
   </body>
 </html>
