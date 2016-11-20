@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author TUNGDUONG
  */
+@SuppressWarnings("serial")
 public class CheckEmailServlet extends HttpServlet {
 
     UsersDAO usersDAO = new UsersDAO();

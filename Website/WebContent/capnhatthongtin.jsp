@@ -65,8 +65,10 @@
                                                 <thead>
                                              <c:forEach var="rows" items="${result.rows }"> 
                                 		 		<tr>
-                                				<img src="Upload/Avartar/${rows.HinhAnh }" class="img-responsive img-circle"></img>
+                                				<img src="<%=request.getContextPath()%>/fileUpload/${rows.HinhAnh }" class="img-responsive img-circle"></img>
  											</tr>
+ 											
+ 											
                                  			</c:forEach> 
                                                 </thead>
         								    </table>

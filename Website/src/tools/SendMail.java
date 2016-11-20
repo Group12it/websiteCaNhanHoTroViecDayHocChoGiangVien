@@ -48,18 +48,19 @@ public class SendMail {
 	
 	public static void main(String[] args) {
 		
-//		try {
-//			Connection con=DBConnect.getConnection();
-//			Statement stmt=con.createStatement();
-//			String sql1="SELECT GROUP_CONCAT(Email)FROM users";
-//			ResultSet rs=stmt.executeQuery(sql1);
-//			while(rs.next()) {
-//			String ms=rs.getString("Email");
-//			System.out.println(ms);
-//			}}
-//		catch(Exception e){
-//			
-//		}
-//	System.out.println(sendMail("luumac2801@gmail.com,nguoiemcuanui@gmail.com,vanbinh628@gmail.com", "subject"," text"));
+		try {
+			Connection con=DBConnect.getConnection();
+		Statement stmt=con.createStatement();
+			String sql1="SELECT GROUP_CONCAT(Email)FROM users";
+		ResultSet rs=stmt.executeQuery(sql1);
+			while(rs.next()) {		
+				String ms=rs.getString("GROUP_CONCAT(Email)");
+				System.out.println(ms);
+				System.out.println(sendMail(ms, "subject"," text"));
+			}}
+		catch(Exception e){
+			
+		}
+	
 	}
 }

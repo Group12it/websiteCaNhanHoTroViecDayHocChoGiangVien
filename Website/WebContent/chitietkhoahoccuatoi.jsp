@@ -1,3 +1,6 @@
+<%@page import="java.lang.*" %>
+<%@page import="model.*" %>
+<%@page import="dao.*" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,16 +18,27 @@
     <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
     <link href="css/banerchuyendong.css" rel="stylesheet">
     <link href="css/thongtin.css"  rel="stylesheet" type="text/css">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+      
+    <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+	
 </head>
 <body>
 
 <jsp:include page="header.jsp"></jsp:include>
+
+<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
+	url="jdbc:mysql://localhost/web" user="root" password="admin" />
+
+      <%
+            Users users = null;
+            if (session.getAttribute("user") != null) {
+                users = (Users) session.getAttribute("user");
+            }
+        %>
+                       
+<sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=users.getUserEmail()%>";</sql:query>
 
 <div id="wrapper">
     <div class="container">
@@ -93,10 +107,24 @@
                                                 <span class="instancename">Video: Bài 1<span class="accesshide "><a href="chitietbaihoc.jsp">Page</a></span></span>
                                                 <br><br>
                                             </a>
-                                            <a href="">
+                                           
+                                         
+                                            <a href="DownLoadFile">
+                                     <%--           
+                                               <c:forEach var="rows" items="${result.rows }">
+                					
+ 					
+                	
+                				<img src="<%=request.getContextPath()%>/fileUpload/${rows.HinhAnh }" class="img-circle img-thumbnail" align="bottom" width="40" height="40" />
+              					</c:forEach> --%>
+                                               
+                                               <c:forEach var="rows" items="${result.rows }">
+               									    <input  type="text" name="hinhdown" value="${rows.HinhAnh}">
+                                                </c:forEach>
                                                 <img src="images/pdf.png">
                                                 <span class="instancename">Ebook Ngôn ngữ lập trình C</span>
                                             </a>
+                                            
                                             <br><br>
                                              <a href="">
                                                 <img src="images/homework1.png">

@@ -85,13 +85,14 @@ function onFileSelected(event) {
                                             <h4> Ảnh đại diện</h4>
                                             <table class="table table-bordered">
                                                 <thead>
-                                                <c:forEach var="rows" items="${result.rows }">
+                                                
+										<c:forEach var="rows" items="${result.rows }"> 
                                 		 		<tr>
-                                				<img src="Upload/Avartar/${rows.HinhAnh }" class="img-responsive img-circle"></img>
-
-                                				</tr>
-                                			</c:forEach> 
-                                                  
+                                				<img src="<%=request.getContextPath()%>/fileUpload/${rows.HinhAnh }" class="img-responsive img-circle"></img>
+ 											</tr>
+ 											
+ 											
+                                 			</c:forEach> 
                                                 </thead>
                                             </table>
                                         		

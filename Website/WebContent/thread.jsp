@@ -35,7 +35,6 @@
 
 <sql:query dataSource="${DBConnect }" var="result"> select * from thread;</sql:query> 
 
-<sql:query dataSource="${DBConnect }" var="result2"> select count(*) as dem from chitietthread,thread where chitietthread.MaThread=thread.MaThread;</sql:query> 
 <%	
 	 ThreadsDAO threadsDAO =new ThreadsDAO();
 	
@@ -72,7 +71,7 @@
                         %>
                            
                      		<li class="list-group-item">
-                                            <a href="thamgiathaoluan.jsp?thread=<%=thr.getThreadID()%>" 
+                                            <a href="tham-gia-thao-luan?thread=<%=thr.getThreadID()%>" 
                                             style="overflow-wrap:break-word" title="type - casting trong c++" 
                                             class="text-primary"><td><%=thr.getTenThread() %></td></a>
                                             <div style="clear:both;">

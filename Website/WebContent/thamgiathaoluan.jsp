@@ -13,9 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/Site" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
+
     <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
 </head>
@@ -23,7 +21,10 @@
 <body>
 	
 	<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
+	
 	<jsp:include page="header.jsp"></jsp:include>
+
+<sql:query dataSource="${DBConnect }" var="result"> select * from chitietthread;</sql:query> 
 
 	<%
 		Users users=new Users();
@@ -37,9 +38,7 @@
 		threadid= request.getParameter("thread");
 	}
 	%>
-
     <section class="container" style="min-height:100px">
-
         <section class="row">
             <div class="col-md-12">
                 <div class="maincontent col-lg-12" style="padding:0">
@@ -62,14 +61,21 @@
                         for (Threads thr : threadsDao.getThreadsListByID(threadid)){
                         %>
                         			<h3>&nbsp; <%=thr.getTenThread()%></h3>
-                        			<input type="hidden" name="mathread" value="<%=thr.getThreadID() %>"> 
-                                 
+                        			<input type="hidden" name="mathread" value="<%=thr.getThreadID() %>">
+                        			  <sql:query dataSource="${DBConnect }" var="result"> select * from chitietthread where MaThread=<%=thr.getThreadID() %>;</sql:query>                   
                         <%} %>
                                            	<div class="col-lg-10 col-md-9 col-sm-8 fontLarger pull-left" style="overflow-wrap:break-word">
                                             </div>
-                                            <label>
-                                                Các câu trả lời</label> <span class="badge"></span>
-                                                <ul class="list-group" id="dscautraloi" style="min-height:0px">
+                                            <label>Số câu trả lời</label>
+                          			 	<c:set var="count" value="0" /> <%--Khởi tạo biến đếm =0 --%>
+                                		 <c:forEach var="rows" items="${result.rows }">
+                                		 <c:set var="count"  value="${count+1}" />
+                                		</c:forEach>
+                                			<label>${count}</label> 
+                                            
+                                             <span class="badge"></span>
+                                                
+                             <ul class="list-group" id="dscautraloi" style="min-height:0px">
                                               
 		                        <%
 		                            for (ChiTietThreads ct :chitietthreadDAO.getChiTietThreadsListByID(threadid)){

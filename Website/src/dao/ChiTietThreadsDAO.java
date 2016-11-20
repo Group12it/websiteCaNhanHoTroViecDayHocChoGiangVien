@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 
 import connect.DBConnect;
 import model.ChiTietThreads;
-import model.Threads;
 
 public class ChiTietThreadsDAO {
 		Connection connection=DBConnect.getConnection();

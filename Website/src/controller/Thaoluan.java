@@ -39,6 +39,7 @@ public class Thaoluan extends HttpServlet {
 		String MaThread = request.getParameter("MaThread");
 		Threads threads = new Threads();
 		ChiTietThreads chitietthread=new ChiTietThreads();
+		@SuppressWarnings("unused")
 		Users users=new Users();
 		switch (command) {
 		case "insert":
@@ -162,7 +163,8 @@ public class Thaoluan extends HttpServlet {
 		   Date date = new Date();
 		   System.out.println(dateFormat.format(date));
 		   //get current date time with Calendar()
-		   Calendar cal = Calendar.getInstance();
+		   @SuppressWarnings("unused")
+		Calendar cal = Calendar.getInstance();
 		   System.out.println();
 	}
 }

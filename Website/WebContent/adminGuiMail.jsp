@@ -23,7 +23,6 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" media="all" type="text/css" href="css/font-awesome.min.css" />
 
-   
 </head>
 <body>
 	
@@ -72,6 +71,7 @@
                                     <div class="panel-body">
 
                                         <div class="panel-body">
+                                        
                                             <form class="form" method="post" id="contactform" action="GuiMailAll" role="form" ">
 <!--                                                 <div class="form-group"> -->
 <!--                                                     <label for="contactemail">Địa Chỉ Email</label> -->

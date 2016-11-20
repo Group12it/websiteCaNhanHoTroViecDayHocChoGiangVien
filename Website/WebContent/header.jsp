@@ -40,13 +40,12 @@
 	url="jdbc:mysql://localhost/web" user="root" password="admin" />
 
       <%
-           
             Users users = null;
             if (session.getAttribute("user") != null) {
                 users = (Users) session.getAttribute("user");
             }
         %>
-               
+                       
 <sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=users.getUserEmail()%>";</sql:query> 
         
 <% KhoaHocsDAO khoahocsDAO=new KhoaHocsDAO();
@@ -64,8 +63,11 @@
                   <%if(users!=null){%>
 <%--                 <a href="thongtincanhan.jsp" class="dropntn"><%=users.getUserEmail()%></a> --%>
                                 <%}%>
-                <c:forEach var="rows" items="${result.rows }">
-                	<img src="Upload/Avartar/${rows.HinhAnh }" class="img-circle img-thumbnail" align="bottom" width="40" height="40" />
+                	<c:forEach var="rows" items="${result.rows }">
+                					
+ 					
+                	
+                	<img src="<%=request.getContextPath()%>/fileUpload/${rows.HinhAnh }" class="img-circle img-thumbnail" align="bottom" width="40" height="40" />
               		</c:forEach>
 <!--                  <img src="images/hoclaptrinh.jpg" align="bottom" width="40" height="40" class="dropntn ;img-responsive img-circle" />                -->
                                 <span class="arrow"></span></a>
@@ -79,6 +81,7 @@
                   </div> 
                   </div>
                   
+           
                   
                 <from aciton ="Home" menthod="POST"></from>
                 <input type="hidden" name="command" value="logout">

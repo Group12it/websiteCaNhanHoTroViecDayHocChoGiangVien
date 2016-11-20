@@ -53,7 +53,7 @@
                             <span class="sp-time" id="aTime" class="timeCount">
 
                                         <script type="text/javascript">
-                                            timeDisplay('aTime',0,0,1,01,5,'ctl15_btn');
+                                            timeDisplay('aTime',0,0,10,01,5,'ctl15_btn');
                                         </script>
 
                                         </span>

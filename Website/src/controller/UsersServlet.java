@@ -23,6 +23,7 @@ import connect.DBConnect;
 import dao.UsersDAO;
 import model.Users;
 
+@SuppressWarnings("serial")
 @WebServlet("/Home")
 
 public class UsersServlet extends HttpServlet {
@@ -114,7 +115,7 @@ public class UsersServlet extends HttpServlet {
 			users.setUserRole("user");
 			users.setUserHoTen(request.getParameter("hovaten"));
 			users.setUserNgaySinh(request.getParameter("ngaysinh"));
-			users.setUserGioiTinh(request.getParameter("gioitinh"));
+			users.setUserGioiTinh(request.getParameter("Gender"));
 			users.setUserSDT(request.getParameter("sodienthoai"));
 			users.setUserHinhAnh("");
 			if (usersDAO.checkEmail(request.getParameter("email")) == false) {

@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 
 import connect.DBConnect;
 import model.KhoaHocs;
-import model.Threads;
 
 public class KhoaHocsDAO {
 

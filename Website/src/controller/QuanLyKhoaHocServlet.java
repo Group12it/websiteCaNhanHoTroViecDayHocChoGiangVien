@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.KhoaHocsDAO;
 import model.KhoaHocs;
-import model.Users;
 
 @WebServlet("/quan-ly-khoa-hoc")
 public class QuanLyKhoaHocServlet extends HttpServlet {

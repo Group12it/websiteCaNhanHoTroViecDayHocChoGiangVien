@@ -21,16 +21,16 @@
     <link href="css/banerchuyendong.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
-     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" media="all" type="text/css" href="css/font-awesome.min.css"/>
-      <link rel="stylesheet" href="css/w3.css">
-        <link href="js/bootstrap.min.js" rel="stylesheet">
+    <link rel="stylesheet" href="css/w3.css">
+    <link href="js/bootstrap.min.js" rel="stylesheet">
     <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-		<script src="js/angular.min.js"></script>
-      <script src="js/myUsers.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+	<script src="js/angular.min.js"></script>
+    <script src="js/myUsers.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
  
 	<%--Kiểm tra mail đã trùng bằng ajax--%>
 	<!-- <script type="text/javascript">
@@ -241,6 +241,7 @@
                                   <input  class="form-control" type="email"  id="user-result" name="email" ng-model="email" placeholder="Nhập Email"  requied autofocus/><span id="user-result"  ></span>
                                </div>
                                 </div>
+               	
                				<%--Password --%>
 							 <div class="form-group">
                                   <label class="control-label col-md-4" for="usrname"> Mật khẩu <span class="batbuoc">(*)</span><span class="glyphicon glyphicon glyphicon-envelope"></span></label>
@@ -270,16 +271,25 @@
                             </div>
                        
                           
+                    <!--       <div class="form-group">
+                                                     <label class="control-label col-md-4">Giới tính:</label>
+                                                    <select name="Gender" id="input" class="form-control">
+                                                        <option value="Nam">Nam</option>
+                                                        <option value="Nữ">Nữ</option>
+                                                       
+                                                    </select>
+                          </div>
+                           -->
+                          
                             <div class="form-group">
                                         
                                          
                                           <label class="control-label col-md-4">Giới tính:</label>
-                                        <select  name="Gender">
-                                        <option  value="Nam">Nam</option>
-                                        <option value="Nữ" >Nữ</option>
-                                        </select>
-                                          <label class="radio-inline"><input checked="checked" data-val="true" data-val-required="Bạn chưa chọn giới tính." id="Gender1" name="Gender" type="radio" value="true" required> Nam </label>
-                                          <label class="radio-inline"><input id="Gender2" name="Gender" type="radio" value="false">Nữ</label>
+                                       
+                                       
+                                 
+                                          <label class="radio-inline"><input checked="checked" data-val="true" data-val-required="Bạn chưa chọn giới tính." id="Gender1" name="Gender" type="radio" value="Nam" required> Nam </label>
+                                          <label class="radio-inline"><input id="Gender2" name="Gender" type="radio" value="Nữ">Nữ</label>
                             </div>
                             	
                              <div class="form-group">
