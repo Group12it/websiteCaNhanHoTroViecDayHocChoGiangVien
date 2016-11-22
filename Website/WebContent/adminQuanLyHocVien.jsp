@@ -1,3 +1,6 @@
+<%@ page import="java.sql.*" %>
+<%@ page import="connect.*" %>
+<% Class.forName("com.mysql.jdbc.Driver"); %>
 <?xml version="1.0" encoding="utf-8" ?>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
@@ -64,7 +67,7 @@
                     <div class="col-md-9">
                          <ul class="nav navs-tabs-brand">
                    
-                                <div class="col-md-9">
+                                <div class="col-md-12">
                          <div class="panel panel-default" 	>
                                     <div class="panel-heading" style="background:#0CC">
                                         <h4 style="font-family: verdana;color:#000">Xác nhận đăng ký của sinh viên</h4>
@@ -104,58 +107,34 @@
                                                     <th><center>Số điện thoại</center></th>
                                                     <th><center>Mã khóa học</center></th>
                                                     <th><center>Tên khóa học</center></th>
-                                                    <th><center>Thao tác</center></th>
+                                                    <th width="21%"><center>Thao tác</center></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr id="index1">
-                                                    <td>vanA@gmail.com</td>
-                                                    <td>Nguyễn Văn A</td>
-                                                    <td>20/10/1996</td>
-                                                    <td>01627637208</td>
-                                                    <td>LT001</td>
-                                                    <td>Lập trình c căn bản</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-success" id="btnXacNhan">Xác Nhận</button>
-                                                        <button type="button" class="btn btn-warning" id="btnXoa1">Xóa</button>
+                                            <% Connection connection = DBConnect.getConnection();
+
+									            Statement statement = connection.createStatement() ;
+									            ResultSet resultset = 
+									                statement.executeQuery("select * from viewthongtindangky") ; 
+									        %>
+									
+									            <% while(resultset.next()){ %>
+									            <TR>
+									                <TD> <%= resultset.getString(2) %></td>
+									                <TD> <%= resultset.getString(3) %></TD>
+									                <TD> <%= resultset.getString(4) %></TD>
+									                <TD> <%= resultset.getString(5) %></TD>
+									                <TD> <%= resultset.getString(6) %></TD>
+									                <TD> <%= resultset.getString(7) %></TD>
+									                 <td width="21%" >
+									                 <form action="DangKyKhoaHocServlet?userid=<%= resultset.getString(1)%>&makh=<%= resultset.getString(6) %>" method="post">
+                                                        <button type="submit" class="btn btn-success" id="btnXacNhan">Xác Nhận</button>
+                                                        <button type="button" class="btn btn-warning" id="btnXoa1" title="right">Xóa</button>
+                                                     </form>
                                                     </td>
-                                                </tr>
-                                                <tr id="index2">
-                                                    <td>nhong@gmail.com</td>
-                                                    <td>Trần A</td>
-                                                    <td>20/10/1996</td>
-                                                    <td>01627637208</td>
-                                                    <td>LT002</td>
-                                                    <td>Lập trình javar</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-success" id="btnXacNhan">Xác Nhận</button>
-                                                        <button type="button" class="btn btn-warning" id="btnXoa2">Xóa</button>
-                                                    </td>
-                                                </tr>
-                                                <tr id="index3">
-                                                    <td>thibuoi@gmail.com</td>
-                                                    <td>Trần Hải</td>
-                                                    <td>19/09/1996</td>
-                                                    <td>01634537203</td>
-                                                    <td>LT001</td>
-                                                    <td>Lập trình c căn bản</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-success" id="btnXacNhan">Xác Nhận</button>
-                                                        <button type="button" class="btn btn-warning" id="btnXoa3">Xóa</button>
-                                                    </td>
-                                                </tr>
-                                                <tr id="index4">
-                                                    <td>met@gmail.com</td>
-                                                    <td>Nguyễn văn B</td>
-                                                    <td>20/10/1996</td>
-                                                    <td>01627637208</td>
-                                                    <td>LT001</td>
-                                                    <td>Lập trình c căn bản</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-success" id="btnXacNhan">Xác Nhận</button>
-                                                        <button type="button" class="btn btn-warning" id="btnXoa4">Xóa</button>
-                                                    </td>
-                                                </tr>
+									              
+									            </TR>
+									            <% } %>
                                             </tbody>
                                         </table>
                                     </div>
@@ -181,33 +160,24 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>LT001</td>
-                                                    <td>Lập Trình C căn Bản</td>
-                                                    <td>60</td>
+                                               <% resultset = 
+									                statement.executeQuery("select * from viewthongtinkhoahoc") ; 
+                                               int i=0;
+									        %>
+									
+									            <% while(resultset.next()){i++; %>
+									            <TR>
+									            	<td><%=i %></td>
+									                <TD> <%= resultset.getString(1) %></td>
+									                <TD> <%= resultset.getString(2) %></TD>
+									                <TD> <%= resultset.getString(3) %></TD>
                                                     <td>
                                                         <a href="adminQuanLyHocVienDanhSachKhoaHoc.jsp" style="text-decoration:underline"><center>Xem Danh sách</center></a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>LT002</td>
-                                                    <td>Lập Trình java</td>
-                                                    <td>40</td>
-                                                    <td>
-                                                        <a href="#" style="text-decoration:underline"><center>Xem Danh sách</center></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>LT003</td>
-                                                    <td>Lập Trình C#</td>
-                                                    <td>40</td>
-                                                    <td>
-                                                        <a href="#" style="text-decoration:underline"><center>Xem Danh sách</center></a>
-                                                    </td>
-                                                </tr>
+                                                
+                                                <% } %>
+                                                
                                             </tbody>
                                         </table>
                                     </div>
@@ -233,8 +203,7 @@
     
 	
     <jsp:include page="footer.jsp" ></jsp:include>
-    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
     <script src="menu_js/javajquery.js"></script>
        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
