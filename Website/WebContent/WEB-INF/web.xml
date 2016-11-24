@@ -39,7 +39,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>admindanhsachhocvien</servlet-name>
-    <url-pattern>/danh-sach-hoc-vien</url-pattern>
+    <url-pattern>/danh-sach-hoc-vien-nop-bai</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>admin de thi trac nghiem</servlet-name>
@@ -296,6 +296,15 @@
   <servlet-mapping>
     <servlet-name>yeucaudangnhap</servlet-name>
     <url-pattern>/yeu-cau-dang-nhap</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>phuchoimatkhau</servlet-name>
+    <jsp-file>/quenmatkhau.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>phuchoimatkhau</servlet-name>
+    <url-pattern>/quen-mat-khau</url-pattern>
   </servlet-mapping>
   <session-config>
     <session-timeout>30</session-timeout>

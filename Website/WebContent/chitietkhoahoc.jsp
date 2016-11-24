@@ -3,6 +3,9 @@
 <%@page import="model.*" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+ <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
   <head>
@@ -23,7 +26,7 @@
    <body>
   <jsp:include page="header.jsp"></jsp:include>
 
-    <section class="container" style="min-height:0px">
+ 
      
 <sql:setDataSource var="conn" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin" />
 
@@ -35,6 +38,7 @@
 	}
 %>
 
+        <section class="container" style="min-height:0px">
         <section class="row">
         <div class="row">
  <div class="content col-md-9 col-sm-9 col-xs-12">
@@ -62,7 +66,7 @@
                                             <p><%=kh.getAdHocPhi()%></p>
 <%--                                             <p><%=kh.getAdShowtester() %></p> --%>
                                                                                      </p>
-                                        <a href="dangkymonhoc.jsp" target="_blank" class="btn btn-primary btn-lg">Đăng ký</a></p>
+                                        <a href="dang-ky-mon-hoc"  class="btn btn-primary btn-lg">Đăng ký</a></p>
                                     </div>
 
                       </ul>
@@ -92,10 +96,6 @@
 <script>
 $('#contactform').bootstrapValidator();
 </script>
-
-
-
-
 
 
 

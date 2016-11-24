@@ -93,7 +93,7 @@ public class UsersDAO {
 	public boolean update(Users u) throws SQLException {
 		try {
 			
-			String sql = "UPDATE users SET HoTen = ? , NgaySinh=?,GioiTinh=?,SDT=? WHERE UserID= ?";
+			String sql = "update users SET HoTen = ? , NgaySinh=?,GioiTinh=?,SDT=? WHERE UserID= ?";
 			PreparedStatement ps = connection.prepareCall(sql);
 
 			ps.setNString(1, u.getUserHoTen());

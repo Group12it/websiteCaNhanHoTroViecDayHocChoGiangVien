@@ -108,23 +108,20 @@
                                                 <br><br>
                                             </a>
                                            
-                                         
+                                          <c:forEach var="rows" items="${result.rows }">
                                             <a href="DownLoadFile">
                                      <%--           
                                                <c:forEach var="rows" items="${result.rows }">
-                					
- 					
-                	
-                				<img src="<%=request.getContextPath()%>/fileUpload/${rows.HinhAnh }" class="img-circle img-thumbnail" align="bottom" width="40" height="40" />
+                			                				<img src="<%=request.getContextPath()%>/fileUpload/${rows.HinhAnh }" class="img-circle img-thumbnail" align="bottom" width="40" height="40" />
               					</c:forEach> --%>
                                                
-                                               <c:forEach var="rows" items="${result.rows }">
-               									    <input  type="text" name="hinhdown" value="${rows.HinhAnh}">
-                                                </c:forEach>
+                                              
+               									    <input  type="text" name="filename" value="${rows.HinhAnh}">
+                                              
                                                 <img src="images/pdf.png">
                                                 <span class="instancename">Ebook Ngôn ngữ lập trình C</span>
                                             </a>
-                                            
+                                              </c:forEach>
                                             <br><br>
                                              <a href="">
                                                 <img src="images/homework1.png">
