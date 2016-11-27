@@ -29,9 +29,15 @@
                 
                     <div class="col-md-2">
                           <ul class="nav navs-tabs-brand">
-                          </ul>
+                               
+                              
+
+                        </ul>
                     </div>    
+                     
                     <div class ="col-md-7">
+                      
+                    
                       <h1>Danh sách kiểm tra</h1>
                      <table class="table table-bordered">
                         <thead>
@@ -64,15 +70,41 @@
                         </tbody>
                   </table>
                     </div>
-             </div>
+
+                    
+
+ 
+                    </div>
+
+                  
+
+                 
                 </div>
+
+            <!--<div class="slider"><img src="dimages/slider.jpg"></div>-->
+            
+            
           </div>
+          <div class="sidebar col-md-3 col-sm-3 col-xs-12">
+            <div class="sidebar-item">
+              <h4 class="widget-title">Thiết kế web</h4>
+              <div class="textwidget">
+                <img src="images/sidebar1.jpg">
+              </div>
+            </div>
+            
+            
+            </div>
+
+
+
                 </div> 
                 </div></div>
-     <br><br><br>
+     
 	<jsp:include page="footer.jsp"></jsp:include>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
   </body>

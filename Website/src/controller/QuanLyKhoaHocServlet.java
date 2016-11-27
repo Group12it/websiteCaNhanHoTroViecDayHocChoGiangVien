@@ -46,7 +46,7 @@ public class QuanLyKhoaHocServlet extends HttpServlet {
 			khoahocs.setAdHocPhi(request.getParameter("hocphi"));
 			khoahocs.setAdKhaiQuat(request.getParameter("khaiquat"));
 			khoahocs.setAdNoiDung(request.getParameter("noidung"));
-			khoahocs.setAdShowtester(request.getParameter("showtester"));
+			khoahocs.setAdShowtester("");
 			khoahocsDAO.insertkhoahoc(khoahocs);
 			url = "/quanlykhoahoc.jsp";
 			}

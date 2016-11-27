@@ -9,7 +9,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
 <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
-<meta content="charset=utf-8">
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width = device-width, initial-scale=1">
 <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
@@ -57,6 +57,10 @@
 
 <script src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
 <script src="Scripts/jquery.bxslider.min.js"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<!--   <script src="js/bootstrap.min.js"></script> -->
 
 </head>
 
@@ -91,7 +95,7 @@
 				<%
 					if (user != null) {
 				%>
-				<a href="thong-tin-ca-nhan" class="dropntn"><%=user.getUserHoTen()%></a>
+				<a href="thong-tin-ca-nhan" class="dropntn"><%=user.getUserEmail()%></a>
 				<%
 					}
 				%><span class="arrow"></span>
@@ -102,7 +106,7 @@
 						if (user != null) {
 					%>
 					<c:forEach var="rows" items="${result.rows }">
-						<img src="Upload/Avartar/${rows.HinhAnh }" alt="No Image"
+						<img src="Upload/Avartar/${rows.HinhAnh }"
 							class="img-circle img-thumbnail" align="bottom" width="40"
 							height="40" />
 					</c:forEach>
@@ -114,8 +118,8 @@
 						<%
 							if (user != null) {
 						%>
-						<a href="#" class="dropntn" style="z-index: 1"><%=user.getUserEmail()%></a>
-						
+						<a href="#" class="dropntn" style="z-index: 1"><%=user.getUserHoTen()%></a>
+						</li>
 						<%
 							}
 						%><span class="arrow"></span></a> <a href="thong-tin-ca-nhan"
@@ -123,7 +127,7 @@
 							style="z-index: 1">Đổi mật khẩu</a>
 					</div>
 				</div>
-				<a href="logout.jsp">
+				<a href="index.jsp">
 					<button class="btn btn-danger navbar-btn"
 						style="border-radius: 15px; margin-right: 30px;">Đăng
 						xuất</button>
@@ -153,7 +157,7 @@
 				aria-expanded="false" style="height: 1px; color: blue;">
 				<ul class="nav navbar-nav" style="color: blue;">
 					<!-- navbar-nav-->
-					<li class=""><a href="trang-chu" style="color: white;">Trang
+					<li class=""><a href="indexuser.jsp" style="color: white;">Trang
 							chủ</a></li>
 					<li class="dropdown" style="color: white;"><a href="#"
 						class="dropdown-toggle" style="color: white;"
@@ -164,14 +168,14 @@
 							<%
 								for (KhoaHocs kh : khoahocsDAO.getKhoaHocList()) {
 							%>
-							<li><a href="khoa-hoc-chi-tiet?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
+							<li><a href="chitietkhoahoc.jsp?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
 							<%
 								}
 							%>
 
 						</ul></li>
 
-					<li><a href="thread-thao-luan" style="color: white;">Thảo luận</a></li>
+					<li><a href="thread.jsp" style="color: white;">Thảo luận</a></li>
 					<li><a href="" style="color: white; cursor: pointer"
 						id="myBtn">Liên hệ</a></li>
 					<li><a href="" style="color: white;">Giới thiệu</a></li>
@@ -183,6 +187,8 @@
 	</div>
 
 	</header>
+
+
 	<section class="container" style="min-height:000px"> <!-- Modal đăng nhập-->
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
@@ -203,7 +209,7 @@
 					<div class="account">
 
 						<form class="form-horizontal" id="contactform" name="commentform"
-							method="post" action="trang-chu"
+							method="post" action="indexuser.jsp"
 							data-bv-message="This value is not valid"
 							data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
 							data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
@@ -235,14 +241,15 @@
 								<label class="control-label col-md-4" for="comment">Nội
 									dung</label>
 								<div class="col-md-6">
-									<textarea rows="6" class="form-control" name="comments" placeholder="nội dung"></textarea>
+									<textarea rows="6" class="form-control" id="comments"
+										name="comments" placeholder="nội dung"></textarea>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-md-4" for="comment">Đính
 									kèm file</label>
 								<div class="col-md-6" class="form-control">
-									<input type="file" value="No file" placeholder="No file"/>
+									<input type="file" value="No file" placeholder="No file">
 								</div>
 							</div>
 							<div class="form-group">
@@ -261,6 +268,29 @@
 	</div>
 
 	</section>
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js" type="text/javascript"></script> -->
+	<!-- <script> -->
+	<!-- </script> -->
+	<!-- <!-- <script src="ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script> -->
+	
+	<!-- <!-- <script src="ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/jquery-ui.min.js"></script> -->
+	
+	<!-- <script src="Scripts/respond.min.js"></script> -->
+	<!-- <script src="Scripts/jssocials.min.jsp"></script> -->
+	<!-- <script src= "myUsers.js"></script> -->
+	<!-- <script src="Scripts/dangnhapdangky.js"></script> -->
+
+	<!--     <script src="Scripts/jquery.unobtrusive-ajax.min.js"></script> -->
+	<!--     <script src="Scripts/jquery.bxslider.min.js"></script> -->
+	<!--    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<!-- <!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+	<!--     Include all compiled plugins (below), or include individual files as needed -->
+	<!--   <!--   <script src="js/bootstrap.min.js"></script> -->
 	
 </body>
 </html>

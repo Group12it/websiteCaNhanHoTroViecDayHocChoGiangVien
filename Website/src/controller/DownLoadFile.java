@@ -31,9 +31,7 @@ public class DownLoadFile extends HttpServlet {
     }
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	Object requestObject=request.getParameter("filename");
-	String path=(String) requestObject;
-	//String path = (String) request.getParameter("hinhdown");
+	String path = request.getParameter("hinhdown");
 
 	//String fileName = extractFileName(part);
 		String filePath=getServletContext().getRealPath("")+"//fileUpload//"+path;

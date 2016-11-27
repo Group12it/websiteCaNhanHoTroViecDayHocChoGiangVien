@@ -45,9 +45,7 @@
                     </div>    
                     <div class="col-md-4">
                         <h3>Bài học số 1</h3>
-<!--                         <video id="myVideo" width="640" height="480" controls> -->
-                        <iframe width="560" height="315" src="<%=%>https://www.youtube.com/embed/pyPNLQxhOu8" frameborder="0" allowfullscreen>
-                        </iframe>
+                        <video id="myVideo" width="640" height="480" controls>
                         <source src="Video/movie.mp4" type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         Your browser does not support the video tag.
