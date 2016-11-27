@@ -22,8 +22,7 @@
     <link rel="stylesheet" type="text/css" href="css/thongtin.css">
 	<link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
- <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
-	<link rel="icon" href="images/head.ico" type="image/x-icon" />
+
 </head>
 
 <body>
@@ -72,13 +71,15 @@
                                  			</c:forEach> 
                                                 </thead>
         								    </table>
+                                        		<form method="post" action="edit-profile" enctype="multipart/form-data">
                                         		<table>  
-                                        		   <form method="post" action="edit-profile" enctype="multipart/form-data">
+                                        		   
             										<input type="hidden" name="Userid" value="<%=users.getUserID() %>"/>
             										<input type="file" name="file" value="Upload" class="filestyle" style="border-radius: 15px; margin-right: 30px;" data-buttonName="btn-primary" data-input="false"  data-icon="glyphicon glyphicon-home"></input>
            											<input type="submit" value="Tải lên hình ảnh" class="btn btn-danger navbar-btn" style="border-radius: 15px; margin-right: 30px;" />
-        											</form>
+        											
                                         		   </table>
+                                        		   </form>
                          	 </tr>
                         </thead>
 
@@ -131,7 +132,7 @@
 </script>
               
       <%--Header --%> <jsp:include page="footer.jsp"></jsp:include>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+     
       <!-- Include all compiled plugins (below), or include individual files as needed -->
       <script src="js/bootstrap.min.js"></script>
  </body>

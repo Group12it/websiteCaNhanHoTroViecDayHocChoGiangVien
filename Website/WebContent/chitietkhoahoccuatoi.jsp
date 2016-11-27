@@ -51,7 +51,7 @@
                         <div class="col-md-2 col-sm-2 col-xs-1">
                             <ul class="nav navs-tabs-brand">
                                 <br><br>
-                                <a style="background:#00a8d8" class="list-group-item " href="khoahoccuartoi.jsp">Quay lại</a>
+                                <a style="background:#00a8d8" class="list-group-item " href="khoa-hoc-cua-toi">Quay lại</a>
 
 
                             </ul>
@@ -108,23 +108,20 @@
                                                 <br><br>
                                             </a>
                                            
-                                         
+                                          <c:forEach var="rows" items="${result.rows }">
                                             <a href="DownLoadFile">
                                      <%--           
                                                <c:forEach var="rows" items="${result.rows }">
-                					
- 					
-                	
-                				<img src="<%=request.getContextPath()%>/fileUpload/${rows.HinhAnh }" class="img-circle img-thumbnail" align="bottom" width="40" height="40" />
+                			                				<img src="<%=request.getContextPath()%>/fileUpload/${rows.HinhAnh }" class="img-circle img-thumbnail" align="bottom" width="40" height="40" />
               					</c:forEach> --%>
                                                
-                                               <c:forEach var="rows" items="${result.rows }">
-               									    <input  type="text" name="hinhdown" value="${rows.HinhAnh}">
-                                                </c:forEach>
+                                              
+               									    <input  type="text" name="filename" value="${rows.HinhAnh}">
+                                              
                                                 <img src="images/pdf.png">
                                                 <span class="instancename">Ebook Ngôn ngữ lập trình C</span>
                                             </a>
-                                            
+                                              </c:forEach>
                                             <br><br>
                                              <a href="">
                                                 <img src="images/homework1.png">
@@ -192,20 +189,9 @@
             </div>
         </div>
     </div>
-  <footer>
-     <div class="container">
-     <div class="footer-info text-center">
-      <p>
-      Group 12 Copyright&copy; 2016 Designer</a><br>
-      </p>
-      </div>
-      </div>
-    </footer>
 
+<jsp:include page="footer.jsp"></jsp:include>
 
-                    <!--Script chuyển động baner-->
-                    <!--Script chuyển động baner-->
-                    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
                     <!-- Include all compiled plugins (below), or include individual files as needed -->
                     <script src="js/bootstrap.min.js"></script>

@@ -20,7 +20,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import connect.DBConnect;
+import dao.ChiTietKhoaHocDAO;
 import dao.UsersDAO;
+import model.ChiTietKhoaHoc;
 import model.Users;
 
 @SuppressWarnings("serial")
@@ -52,7 +54,30 @@ public class UsersServlet extends HttpServlet {
 		Users users = new Users();
 		HttpSession session = request.getSession();
 		String sql = "select * from users where Email=? and Password=?";
+	ChiTietKhoaHocDAO chitietkhoahocDAO=new ChiTietKhoaHocDAO(); 
 		switch (command) {
+		case "them":
+			try{
+				ChiTietKhoaHoc chitietkhoahoc = new ChiTietKhoaHoc();
+				
+				// String sql = "select * from users where Email=? and Password=?";
+					chitietkhoahoc.setChitietKhoaHocID(new java.util.Date().getTime());
+					chitietkhoahoc.setTenBaiHoc(request.getParameter("tieude"));
+					chitietkhoahoc.setNoiDung(request.getParameter("noidung"));
+					chitietkhoahoc.setPathBaiGiang("baigiang");
+					chitietkhoahoc.setPathEbook("ebook");
+					chitietkhoahoc.setPathVideo("video");
+					chitietkhoahoc.setPathBaiTap("baitap");
+					chitietkhoahoc.setMakh(Long.parseLong(request.getParameter("makh")));
+					
+					chitietkhoahocDAO.insertKHChitiet(chitietkhoahoc);
+					// session.setAttribute("user", users);
+					url="/xem-bai-giang";}
+				catch(Exception e){
+					
+				}
+			break;
+		
 		case "changepass":
 
 			String passnhap = request.getParameter("pass");
@@ -183,6 +208,8 @@ public class UsersServlet extends HttpServlet {
 			break;
 			
 		}
+		
+		
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
 		rd.forward(request, response);
 	}

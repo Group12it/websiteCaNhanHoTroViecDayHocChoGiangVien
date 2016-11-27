@@ -3,6 +3,9 @@
 <%@page import="model.*" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+ <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
   <head>
@@ -23,7 +26,7 @@
    <body>
   <jsp:include page="header.jsp"></jsp:include>
 
-    <section class="container" style="min-height:0px">
+ 
      
 <sql:setDataSource var="conn" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin" />
 
@@ -35,41 +38,47 @@
 	}
 %>
 
+        <section class="container" style="min-height:0px">
         <section class="row">
         <div class="row">
  <div class="content col-md-9 col-sm-9 col-xs-12">
            
-           <br>
             <div class="container">
                 <div class="row">
-                    <%
-                    String makh_1=(String)request.getAttribute("khoahoc");
+                <%
                     for(KhoaHocs kh: khoahocsDAO.getKhoaHocListByID(makh)) {
                     %>
                     
-                    <div class="col-md-3">
-                         <a href="#">
-                            <img class="img-responsive" src="images/c.png" alt="">
-                            </a>
-                                <h3><%=kh.getAdTenKH() %></h3>
-                              <p><%=kh.getAdKhaiQuat() %></p>
-                     </div>                   
+                                   
                      
                      <div class="item col-md-6 col-sm-6 col-xs-12 ">
                           <ul class="nav navs-tabs-brand">
                                     <div class="jumbotron">
-                                            <p><%=kh.getAdNoiDung()%></p>
-                                            <p><%=kh.getAdNgayKhaiGiang() %></p> 
-                                            <p><%=kh.getAdHocPhi()%></p>
-<%--                                             <p><%=kh.getAdShowtester() %></p> --%>
-                                                                                     </p>
-                                        <a href="dangkymonhoc.jsp" target="_blank" class="btn btn-primary btn-lg">Đăng ký</a></p>
-                                    </div>
+                                    <h2>Khoá học <%=kh.getAdTenKH() %></h2>
+                              <p>*Khái quát khoá học:</p>
+                              <p>&nbsp;&nbsp;&nbsp;&nbsp;<%=kh.getAdKhaiQuat() %></p>
+                              <p>*Nội dung: </p>
+                              <p>&nbsp;&nbsp;&nbsp;&nbsp;<%=kh.getAdNoiDung()%></p>
+                              <p>*Ngày khai giảng: <%=kh.getAdNgayKhaiGiang() %></p> 
+                              <p>*Học phí:<%=kh.getAdHocPhi()%></p>
 
+                                                                                     </p>
+                                        <a href="dang-ky-mon-hoc"  class="btn btn-primary btn-lg">Đăng ký</a></p>
+                                    </div>
                       </ul>
                   </div>
+                  
+                     <div class="col-md-6">
+                            <h3>Trailer</h3>
+                         <a href="#">
+                        
+                       <iframe width="560" height="400" src="<%=kh.getAdShowtester()%>?modestbranding=1" frameborder="0" allowfullscreen>
+                        </iframe>
+                        </a>
+                                
+                     </div> 
                  <%} %>
-                   <%=makh_1 %>
+                   
                 </div>
             </div>
             
@@ -93,10 +102,6 @@
 <script>
 $('#contactform').bootstrapValidator();
 </script>
-
-
-
-
 
 
 

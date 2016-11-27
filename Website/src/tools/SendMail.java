@@ -1,9 +1,7 @@
 package tools;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
@@ -19,7 +17,7 @@ import connect.DBConnect;
 
 public class SendMail {
 
-	public static boolean sendMail( String to, String subject, String text) {
+	public static boolean sendMail(String from,String pass, String to, String subject, String text) {
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
@@ -28,13 +26,13 @@ public class SendMail {
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("nhom12it@gmail.com", "nhom12spkt");
+				return new PasswordAuthentication(from, pass);
 			}
 		});
 		try {
 			Message message = new MimeMessage(session);
 			message.setHeader("Content-Type", "text/plain; charset=UTF-8");
-			message.setFrom(new InternetAddress("nhom12it@gmail.com"));
+			message.setFrom(new InternetAddress(from));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
 			message.setSubject(subject);
 			message.setText(text);
@@ -56,7 +54,7 @@ public class SendMail {
 			while(rs.next()) {		
 				String ms=rs.getString("GROUP_CONCAT(Email)");
 				System.out.println(ms);
-				System.out.println(sendMail(ms, "subject"," text"));
+				System.out.println(sendMail("nhom12it@gmail.com","nhom12spkt",ms, "subject"," text"));
 			}}
 		catch(Exception e){
 			

@@ -27,9 +27,10 @@ public class QuanLyKhoaHocServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		String command = request.getParameter("command");
 		String url = "";
-		String MaKH = request.getParameter("makh");
+		
 		KhoaHocs khoahocs=new KhoaHocs();
 //		Users users = new Users();
+		String MaKH = request.getParameter("makh");
 		String tenkh=request.getParameter("tenkh");
 		String ngaykhaigiang=request.getParameter("ngaykhaigiang");
 		String hocphi=request.getParameter("hocphi");
@@ -41,12 +42,12 @@ public class QuanLyKhoaHocServlet extends HttpServlet {
 
 			try{
 			khoahocs.setAdMaKH(new java.util.Date().getTime());
-			khoahocs.setAdTenKH(request.getParameter("tenkh"));
-			khoahocs.setAdNgayKhaiGiang(request.getParameter("ngaykhaigiang"));
-			khoahocs.setAdHocPhi(request.getParameter("hocphi"));
-			khoahocs.setAdKhaiQuat(request.getParameter("khaiquat"));
-			khoahocs.setAdNoiDung(request.getParameter("noidung"));
-			khoahocs.setAdShowtester("");
+			khoahocs.setAdTenKH(tenkh);
+			khoahocs.setAdNgayKhaiGiang(ngaykhaigiang);
+			khoahocs.setAdHocPhi(hocphi);
+			khoahocs.setAdKhaiQuat(khaiquat);
+			khoahocs.setAdNoiDung(noidung);
+			khoahocs.setAdShowtester(showtester);
 			khoahocsDAO.insertkhoahoc(khoahocs);
 			url = "/quanlykhoahoc.jsp";
 			}
@@ -80,7 +81,57 @@ public class QuanLyKhoaHocServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		doGet(request, response);
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		String command = request.getParameter("command");
+		String url = "";
+		String MaKH = request.getParameter("makh");
+		KhoaHocs khoahocs=new KhoaHocs();
+//		Users users = new Users();
+		String tenkh=request.getParameter("tenkh");
+		String ngaykhaigiang=request.getParameter("ngaykhaigiang");
+		String hocphi=request.getParameter("hocphi");
+		String khaiquat=request.getParameter("khaiquat");
+		String noidung=request.getParameter("noidung");
+		String showtester=request.getParameter("showtester");
+		switch (command) {
+		case "insert":
+
+			try{
+			khoahocs.setAdMaKH(new java.util.Date().getTime());
+			khoahocs.setAdTenKH(request.getParameter("tenkh"));
+			khoahocs.setAdNgayKhaiGiang(request.getParameter("ngaykhaigiang"));
+			khoahocs.setAdHocPhi(request.getParameter("hocphi"));
+			khoahocs.setAdKhaiQuat(request.getParameter("khaiquat"));
+			khoahocs.setAdNoiDung(request.getParameter("noidung"));
+			khoahocs.setAdShowtester(request.getParameter("showtester"));
+			khoahocsDAO.insertkhoahoc(khoahocs);
+			url = "/quanlykhoahoc.jsp";
+			}
+			catch(Exception e){
+				
+			}
+			break;
+		case "update":
+			try {
+				khoahocsDAO.updateKhoahoc(new KhoaHocs(Long.parseLong(MaKH),tenkh,ngaykhaigiang,hocphi,khaiquat,noidung,showtester));
+
+				url = "/quanlykhoahoc.jsp";
+			} catch (NumberFormatException e1) {
+
+				e1.printStackTrace();
+			}
+			break;
+
+		case "delete":
+			khoahocsDAO.DeleteKhoahoc(Long.parseLong(MaKH));
+			url = "/quanlykhoahoc.jsp";
+
+			break;
+		}
+
+		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+		rd.forward(request, response);
 	}
 
 }

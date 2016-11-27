@@ -75,8 +75,8 @@ public class UploadServlet extends HttpServlet {
 				uploadDir.mkdir();
 			}
 			String name = request.getParameter("Userid");
-			Part part = request.getPart("file");//lấy đường dẫn file
-			String fileName = extractFileName(part);//lấy tên file
+			Part part = request.getPart("file");
+			String fileName = extractFileName(part);
 			// out.println(fileName);
 			// out.println("\n" + name);
 			// out.println("\n" + name);

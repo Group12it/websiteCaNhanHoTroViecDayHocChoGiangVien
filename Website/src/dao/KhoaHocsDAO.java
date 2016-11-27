@@ -76,14 +76,14 @@ public ArrayList<KhoaHocs> getKhoaHocList() throws SQLException{
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException ex) {
-			Logger.getLogger(ThreadsDAO.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(KhoaHocsDAO.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		return false;
 	}
 	//Cập nhật khoá học
 	 public boolean updateKhoahoc(KhoaHocs kh)
 	 {
-		 String sql="update thread set TenKh=?, NgayKhaiGiang=?,HocPhi=?,KhaiQuat=?,NoiDung=?,ShowTester=? where MaKH=?";
+		 String sql="update khoahoc set TenKH=?, NgayKhaiGiang=?,HocPhi=?,KhaiQuat=?,NoiDung=?,ShowTester=? where MaKH=?";
 		 try {
 			 PreparedStatement ps = connection.prepareCall(sql);
 				
@@ -98,7 +98,7 @@ public ArrayList<KhoaHocs> getKhoaHocList() throws SQLException{
 			int temp = ps.executeUpdate();
 			return temp == 1;
 		} catch (SQLException e) {
-			Logger.getLogger(ThreadsDAO.class.getName()).log(Level.SEVERE, null, e);
+			Logger.getLogger(KhoaHocsDAO.class.getName()).log(Level.SEVERE, null, e);
 		}
 		 
 		 return false;

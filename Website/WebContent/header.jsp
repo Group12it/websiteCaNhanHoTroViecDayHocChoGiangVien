@@ -8,7 +8,6 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
   <head>
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
-    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width = device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
@@ -57,22 +56,13 @@
             <div class="logo col-md-6 col-sm-6 col-xs-12" ><h1><a href="#">Học lập trình</a></h1></div>
             <div class="navbar-right">
         
-                   <a href="thong-tin-ca-nhan" class="dropntn"><%=users.getUserHoTen()%></a>
+                   <a href="thong-tin-ca-nhan" class="dropntn" style="margin-left: 5px;"><%=users.getUserHoTen()%></a>
                     <div class="dropdown right">
-              <!--   <a href="" class="dropntn"><span class="arrow"></span></a> -->
-                  <%if(users!=null){%>
-<%--                 <a href="thongtincanhan.jsp" class="dropntn"><%=users.getUserEmail()%></a> --%>
-                                <%}%>
                 	<c:forEach var="rows" items="${result.rows }">
-                					
- 					
-                	
-                	<img src="<%=request.getContextPath()%>/fileUpload/${rows.HinhAnh }" class="img-circle img-thumbnail" align="bottom" width="40" height="40" />
+                	<img src="<%=request.getContextPath()%>/fileUpload/${rows.HinhAnh }" atl="Không có hình đại diện" class="img-circle img-thumbnail" align="bottom" width="40" height="40" />
               		</c:forEach>
-<!--                  <img src="images/hoclaptrinh.jpg" align="bottom" width="40" height="40" class="dropntn ;img-responsive img-circle" />                -->
-                                <span class="arrow"></span></a>
-                
-                <div class="dropdown-content" style="z-index: 1">
+                    <span class="arrow"></span>
+               	 <div class="dropdown-content" style="z-index: 1">
                	   <%if(users!=null){%>
                 	<a href="#" class="dropntn" style="z-index: 1"><%=users.getUserHoTen()%></a> </li>
                                 <%}%><span class="arrow"></span></a>
@@ -102,11 +92,11 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="indexuser.jsp"></a>
+				<a class="navbar-brand" href="trang-chu"></a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px; color: blue;">
 				<ul class="nav navbar-nav" style="color:blue;"><!-- navbar-nav-->
-					<li class=""><a href="indexuser.jsp" style="color:white;">Trang chủ</a></li>
+					<li class=""><a href="trang-chu" style="color:white;">Trang chủ</a></li>
 					<li class="dropdown" style="color:white;">
 						<a href="#" class="dropdown-toggle" style="color:white;" data-toggle="dropdown">Khoá học<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
@@ -117,16 +107,12 @@
                         <%
                             }
                         %>
-<!-- 							<li><a href="chitietkhoahoc.jsp">Lập trình C căn bản</a></li> -->
-<!-- 							<li><a href="#">Lập trình hướng đối tượng C++</a></li> -->
-<!-- 							<li><a href="#">Lập trình java</a></li> -->
-<!-- 						-->
 						</ul>
 					</li>
-					<li><a href="chi-tiet-khoa-hoc-cua-toi" style="color:white;">Khoá học của tôi</a></li>
+					<li><a href="khoa-hoc-cua-toi" style="color:white;">Khoá học của tôi</a></li>
 					<li><a href="thread-thao-luan" style="color:white;">Thảo luận</a></li>
 					<li><a href="kiem-tra" style="color:white;">Kiểm tra</a></li>	
-					<li><a href="" style="color:white;cursor:pointer" id="myBtn">Liên hệ</a></li>
+					<li><a href="" style="color:white;cursor:pointer" id="btnguimail">Liên hệ</a></li>
 					<li><a href="" style="color:white;">Giới thiệu</a></li>				
 				</ul>
 			</div><!--/.nav-collapse -->
@@ -140,7 +126,7 @@
 
  <section class="container" style="min-height:000px">
        
-        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal fade" id="myModal2" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -156,7 +142,7 @@
 
 					<div class="account">
 						
-						 <form class="form-horizontal" id="contactform" name="commentform" method="post" action="indexuser.jsp"
+						 <form class="form-horizontal" id="contactform" name="commentform" method="post" action="trang-chu"
             data-bv-message="This value is not valid"
             data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
             data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
@@ -166,18 +152,25 @@
 						  <div class="form-group">
                     <label class="control-label col-md-4" for="email">Địa chỉ Email</label>
                     <div class="col-md-6">
-           				 <input type="email" class="form-control" id="email" name="email" placeholder="Địa chỉ Email"
-                        data-bv-notempty data-bv-notempty-message="An email address is mandatory"
+           				 <input readonly type="email" class="form-control" id="email" name="email" value="nhom12it@gmail.com" placeholder="Địa chỉ Email"
+                        data-bv-notempty data-bv-notempty-message="Vui lòng nhập địa chỉ email"
                         />
                     </div>
                 	</div>
-               
+                 <div class="form-group">
+                    <label class="control-label col-md-4" for="">Mật khẩu </label>
+                    <div class="col-md-6">
+                        <input type="password" class="form-control" id="" name="matkhau	" placeholder="Mật khẩu mail"
+                        data-bv-notempty data-bv-notempty-message="Vui lòng nhập mật khẩu email của bạn!"
+                        />
+                    </div>
+                </div>
               
                 <div class="form-group">
                     <label class="control-label col-md-4" for="last_name">Tiêu đề</label>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Tiêu đề"
-                        data-bv-notempty data-bv-notempty-message="You've forgotten to provide your last name!"
+                        <input type="text" class="form-control" id="last_name" name="tieude" placeholder="Tiêu đề"
+                        data-bv-notempty data-bv-notempty-message="Tiêu đề không được bỏ trống!"
                         />
                     </div>
                 </div>
@@ -185,7 +178,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-4" for="comment">Nội dung</label>
                     <div class="col-md-6">
-                        <textarea rows="6" class="form-control" id="comments" name="comments" placeholder="nội dung"></textarea>
+                        <textarea rows="6" class="form-control" id="comments" name="noidung" placeholder="nội dung"></textarea>
                     </div>
                 </div>
                   <div class="form-group">

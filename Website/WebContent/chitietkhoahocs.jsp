@@ -41,34 +41,41 @@
         <div class="row">
  <div class="content col-md-9 col-sm-9 col-xs-12">
            
-           <br>
+        
             <div class="container">
                 <div class="row">
                     <%
                     for(KhoaHocs kh: khoahocsDAO.getKhoaHocListByID(makh)) {
                     %>
                     
-                    <div class="col-md-3">
-                         <a href="#">
-                            <img class="img-responsive" src="images/c.png" alt="">
-                            </a>
-                                <h3><%=kh.getAdTenKH() %></h3>
-                              <p><%=kh.getAdKhaiQuat() %></p>
-                     </div>                   
+                                   
                      
                      <div class="item col-md-6 col-sm-6 col-xs-12 ">
                           <ul class="nav navs-tabs-brand">
                                     <div class="jumbotron">
-                                            <p><%=kh.getAdNoiDung()%></p>
-                                            <p><%=kh.getAdNgayKhaiGiang() %></p> 
-                                            <p><%=kh.getAdHocPhi()%></p>
-<%--                                             <p><%=kh.getAdShowtester() %></p> --%>
-                                                                                     </p>
-                                        <a href="yeucaudangnhap.jsp" class="btn btn-primary btn-lg">Đăng ký</a></p>
-                                    </div>
+                                    <h2>Khoá học <%=kh.getAdTenKH() %></h2>
+                              <p>*Khái quát khoá học:</p>
+                              <p>&nbsp;&nbsp;&nbsp;&nbsp;<%=kh.getAdKhaiQuat() %></p>
+                              <p>*Nội dung: </p>
+                              <p>&nbsp;&nbsp;&nbsp;&nbsp;<%=kh.getAdNoiDung()%></p>
+                              <p>*Ngày khai giảng: <%=kh.getAdNgayKhaiGiang() %></p> 
+                              <p>*Học phí:<%=kh.getAdHocPhi()%></p>
 
+                                                                                     </p>
+                                        <a href="dang-ky-mon-hoc"  class="btn btn-primary btn-lg">Đăng ký</a></p>
+                                    </div>
                       </ul>
                   </div>
+                  
+                     <div class="col-md-6">
+                            <h3>Trailer</h3>
+                         <a href="#">
+                        
+                        <iframe width="560" height="400" src="<%=kh.getAdShowtester()%>?modestbranding=1" frameborder="0" allowfullscreen>
+                        </iframe>
+                        </a>
+                                
+                     </div> 
                  <%} %>
                    
                 </div>

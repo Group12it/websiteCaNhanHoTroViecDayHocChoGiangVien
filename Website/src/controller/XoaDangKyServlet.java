@@ -33,7 +33,7 @@ public class XoaDangKyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 		
 		long userid = Long.parseLong(request.getParameter("userid"));
 		long makh= Long.parseLong(request.getParameter("makh"));
@@ -49,6 +49,7 @@ public class XoaDangKyServlet extends HttpServlet {
 		}
 		
 		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 		request.setAttribute("makh", makh);
 		request.getRequestDispatcher("adminQuanLyHocVienDanhSachKhoaHoc.jsp").forward(request, response);
 	}

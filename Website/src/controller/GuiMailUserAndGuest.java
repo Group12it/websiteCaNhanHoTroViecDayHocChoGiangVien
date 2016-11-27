@@ -14,19 +14,19 @@ import javax.servlet.http.HttpServletResponse;
 import connect.DBConnect;
 import tools.SendMail;
 
-@WebServlet("/GuiMailAll")
-public class GuiMailAll extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
+
+@SuppressWarnings("serial")
+@WebServlet("/gui-email")
+public class GuiMailUserAndGuest extends HttpServlet {
+
 	SendMail senmail=new SendMail();
-	
-    public GuiMailAll() {
-        super();
+
+    public GuiMailUserAndGuest() {
+
     }
 
 	@SuppressWarnings("static-access")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		try {
 			Connection con=DBConnect.getConnection();
 		Statement stmt=con.createStatement();
@@ -35,20 +35,15 @@ public class GuiMailAll extends HttpServlet {
 			while(rs.next()) {		
 				String ms=rs.getString("GROUP_CONCAT(Email)");
 				System.out.println(ms);
-				senmail.sendMail("nhom12it@gmail.com","nhom12spkt",ms,request.getParameter("tieude"),request.getParameter("noidung"));
+				senmail.sendMail("","","nhom12it@gmail.com",request.getParameter("tieude"),request.getParameter("noidung"));
 			}}
 		catch(Exception e){
 			
 		}
-		
-		
-	}
 	
-protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	doGet(request, response);
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
-
 
 }

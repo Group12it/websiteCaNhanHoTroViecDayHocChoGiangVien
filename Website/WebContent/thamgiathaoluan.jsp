@@ -2,15 +2,15 @@
 <%@page import="model.*" %>
 <%@page import="dao.ThreadsDAO"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
 
@@ -20,7 +20,7 @@
 
 <body>
 	
-	<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
+	<sql:setDataSource  var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
 	
 	<jsp:include page="header.jsp"></jsp:include>
 
@@ -105,7 +105,24 @@
                                                 <input type="hidden" name="userid" value="<%=users.getUserHoTen() %>">
                                              <textarea name="binhluan" class="form-control" cols="20" 
                                              data-val="true" data-val-required="Nội dung câu trả lời không được bỏ trống."
-                                              rows="5" placeholder="Comment" name="txtTraLoi" id="traloi"></textarea>
+                                              rows="5" placeholder="Comment" id="traloi"></textarea>
+     
+       <%
+  String loi="";
+  if(request.getAttribute("error")!=null)
+  {
+	  loi=(String) request.getAttribute("error");
+  }
+ 
+  %>
+     							 <%if(request.getAttribute("error")!=null){%>
+                        <div class="">
+                            <p style="color:red"><%=request.getAttribute("error")%></p>
+                        </div> 
+                        <%} %>
+     
+                                              
+                                              
                                 </div>
                                 <div class="form-group">
                                     <label>&nbsp;&nbsp;Tải hình lên</label>
@@ -115,8 +132,9 @@
                                 <div style="text-align:center;margin:20px;">
                                   
                                    <input type="hidden" name="command" value="insertchitiet"></input>                  
-                                    <a href="thread.jsp" class="floatLeft btn btn-primary" role="link">Trở về</a>
                                     <button type="submit" class="btn btn-success" data-toggle="tooltip" data-placement="right" title="Trả lời câu hỏi này">Trả lời</button>
+                                  <a href="thread-thao-luan" class="floatLeft btn btn-primary" role="link">Trở về</a>
+                                  
                                 </div>
                                 </form>
                             </div>
@@ -129,5 +147,9 @@
     </section>
 
    <jsp:include page="footer.jsp"></jsp:include>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+   <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
