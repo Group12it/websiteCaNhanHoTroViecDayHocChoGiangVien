@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ page import="java.lang.*" %>
+<%@ page import="model.*" %>
+<%@page import="controller.*" %>
+<%@ page import="dao.*" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
   <head>
@@ -21,8 +28,8 @@
   </head>
    <body>
    <jsp:include page="header.jsp"></jsp:include>
+<sql:query dataSource="${DBConnect }" var="result"> select * from dethi;</sql:query> 
 
-  
   <div id="wrapper">
       <div class="container">
         <div class="row">
@@ -44,7 +51,7 @@
             <div class="col-md-12">
                 <div class="panel-body">
                    
-                        <div class="form">
+                        <form action ="Thaoluan" method="post" onSubmit="return confirmAction()">
                             <div class="alert alert-info"><span class="glyphicon glyphicon-envelope"></span>Làm bài thi và nộp bài trước khi thời gian kết thúc. Nếu thời gian kết thúc thì bài thi sẽ tự động được dừng lại và nộp</div>
                         <div id="ctl15_div_time" class="time-remain">
                             
@@ -58,12 +65,19 @@
 
                                         </span>
                         </div>
+                        </form>
                         </div>
                           <!--đồng hồ-->
                           
                       <!-- kết thúc lấy đề bài-->
                       
-                      <table> <embed src="baikiemtra.txt"  high="100%" type="" width="100%"></embed></table>
+                      
+                      <table> 
+                                 
+					<c:forEach var="rows" items="${result.rows }"> 
+                      <embed src="<%=request.getContextPath() %>/fileUpload/${row.File}"  high="100%" type="" width="100%"></embed>
+                      </c:forEach>
+                      </table>
                       
                         <br><br><br>
                         </div>
@@ -84,35 +98,21 @@
                     </div>
             </div>
             </div>
-         </div></div>
+         </div>
+         </div>
     
    
-  <div id="wrapper">
-      <div class="container">
-        <div class="row">
-          <div class="content col-md-12 col-sm-12 col-xs-12">
-            <div class="container">
-                <div class="row">
-                   <!-- kết thúc câu trả lời-->
-                   
-                </div>
-                </div>
-               
-            </div>
-            
+  
+
+
             <div class="form-group text-center">
                            <a href="kiemtra.jsp"> <button id="btnnop" type="submit" class="btn btn-info">Nộp bài</button></a>
                         </div>
         </div>
     </div>
-</div>
-                 </div>
 
-                  
-                </div>
-     
-          </div>
-                </div> 
+</div>
+
      
   <!-- bắt đầu script chèn file text -->
       <script>

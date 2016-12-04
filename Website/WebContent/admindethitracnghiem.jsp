@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<%@ page import="java.lang.*" %>
+<%@ page import="model.*" %>
+<%@page import="controller.*" %>
+<%@ page import="dao.*" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
   <head>
@@ -10,7 +15,10 @@
     
     <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
-    
+    <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+		
     <SCRIPT LANGUAGE="JavaScript">
       function confirmAction() {
         return confirm("Bạn Đã Thực Hiện Thao Tác Thành Công")
@@ -25,6 +33,8 @@
    
 <body>
 <jsp:include page="headeradmin.jsp" ></jsp:include>
+<% KhoaHocsDAO khoahocsDAO=new KhoaHocsDAO();
+%>
   <div>
       <div class="container">
         <div class="row">
@@ -41,7 +51,7 @@
                            <div class ="panel-body"> 
                   
                          <ul class="nav navs-tabs-brand">
-                               <li class="active"><a href="trang-chu-quan-tri" class="list-group-item " style="z-index: 0"><i class="glyphicon glyphicon-home"></i> &nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
+                               <li class="active"><a href="trang-chu-quan-tri" class="list-group-item active" style="z-index: 0"><i class="glyphicon glyphicon-home"></i> &nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
                                
                                 <li class="active"><a href="quanly-khoa-hoc" class ="list-group-item " style="z-index: 0"><i class="glyphicon glyphicon-education"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý khoá học</a></li>
                                
@@ -56,22 +66,23 @@
                             
                                 <li class="active"><a href="danh-sach-hoc-vien-nop-bai" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
                                
-                                <li class="active"><a href="them-de-thi-trac-nghiem" class="list-group-item active" style="z-index: 0"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
+                                <li class="active"><a href="them-de-thi-trac-nghiem" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
 
                         </ul>
                     </div>  
                     </div>
                     </div>    
+                     <form method="post" action="dethiservlet" enctype="multipart/form-data">
                     <div class="col-md-9  ">
                     <ul class="nav navs-tabs-brand">
-                          
-                                 <a class="list-group-item text-center" href="#" style="font-size: 20px;color: blue;"
-                             type="text/css" media="screen">
+<!--                                  <a class="list-group-item text-center" href="#" style="font-size: 20px;color: blue;" -->
+<!--                              type="text/css" media="screen"> -->
                                    
                                  Soạn Đề Thi Trắc Nghiệm</a> <br>  <label
                                  style="font-size: 15px" >Tên Đề Thi</label>
                                  
-                                  <input type="text" class="form-control" name="" value ="" placeholder="Tên Đề Thi" requied >
+                                  <input type="text" class="form-control" name="tendethi" id="DeThiID"value ="" placeholder="Tên Đề Thi" requied >
+                                  
                                   <lable><b style="font-size: 15px; ">Môn Thi</b></lable>
                                  <div class="row">
                                  
@@ -83,13 +94,11 @@
                                    
                                   <div class="col-md-6">
                                     
-                                 
-                                  <select name="guitoi" id="guitoi" class="form-control" style="font-size: 15px;width: 100%"  >
-                                  <option value="Lập trình web" selected >Lập trình java</option>
-                                    <option value="Lập trình web" selected >Lập trình web</option>
-                                     <option value="Lập trình web" selected >Lập trình c nâng cao</option>
-                                      <option value="Lập trình web" selected >Lập trình c căn bản</option>
-                                      
+                                  <select name="mhoc" id="mhoc" class="form-control" style="font-size: 15px;width: 100%"  >
+                                <%for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) { %>
+                                	<option value="<%=kh.getAdMaKH() %>" selected ><%=kh.getAdTenKH() %></option>
+                                }
+                                <%} %>
                                     </select>
                                     </div>
                                      </div>
@@ -98,7 +107,7 @@
                                   </p>
                                  <!--  de thi trac ngiem-->
                                  
-                                    <input type="file" id="opentFile"/>
+                                    <input type="file" id="file" name="file">
                                       <br>
                                       <textarea id="fileContetnts" style="resize: none;width: 100%; height: 150px " ></textarea>
 
@@ -109,19 +118,18 @@
                                       <div class="col-md-1"></div>
                                       <div class="col-md-1"></div>
                                         <div class="col-md-1">
-                                        <form action="admin.jsp" method="post" name="bcdonline" onsubmit="return formaction() " >
-                                        
-                                        <button class="btn btn-info" type="submit">OK </button>
+                   
+                                        <button class="btn btn-info" type="submit">OK</button>
                              </div>
-                                        </form> 
-                                    
-                                   <!--code hien file text đề thi -->                      
                     
-
-                                            
-
+                                   <!--code hien file text đề thi -->                      
+                              
+                       </ul>
                      </div>
+                     </form>
                 </div>
+                
+                
             </div>
             </div>
          
@@ -139,7 +147,7 @@
         </div>
       </div>
     </div>
-
+<br></br>
 <jsp:include page="footer.jsp"></jsp:include>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
