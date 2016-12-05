@@ -51,53 +51,6 @@ word-wrap: break-word;
 	}
 %>
 <section class="container" style="min-height:250px">
-                
-       
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-                 <div class="modal-content">
-                    <div class="modal-header" style="padding:10px 10px;background:#0CC;">
-                        <button type="button" class="close" data-dismiss="modal">
-                            &times;
-                        </button>
-                        <h2 style="color:white"><span class="glyphicon glyphicon-facetime-video"></span> Video bài giảng</h2>
-                    </div>
-                    <div class="modal-body" style="padding:20px 50px;">
-                  <div class="account">
-                            <form id="frm-login" action="Home
-		                    " method="POST" class="form-horizontal"   data-bv-message="This value is not valid"
-		            data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
-		            data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
-		            data-bv-feedbackicons-validating="glyphicon glyphicon-refresh"
-		            >
-		            <%--Loi --%>        
-                  
-               		  <div class="form-group">
-                   
-                    <div class="col-md-6">
-           		
-           		<%for(ChiTietKhoaHoc ctkh:chitietkhoahocDAO.getChiTietKhoaHocByID(khoahocid)) {%>
-           			    <iframe width="500" height="300" src="<%=ctkh.getPathVideo() %>?modestbranding=1" frameborder="0" allowfullscreen>
-                       							 </iframe>
-                 <%} %>
-   
-                    </div>
-                	</div>
-               		       </form>
-                    
-                </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-                            <span class="glyphicon glyphicon-remove"></span> Đóng
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-       
-       
         <section class="row">
   <div id="wrapper">
       <div class="container">
@@ -113,7 +66,6 @@ word-wrap: break-word;
                 <div class="col-md-11">
 
                                         <div class="panel panel-default">
-                      
                         			       <%
                         			       for(KhoaHocs kh:khoahocDao.getKhoaHocListByID(khoahocid))
                         			       {
@@ -154,7 +106,7 @@ word-wrap: break-word;
                                             
                                            
                                             <br><br>
-                                            <a href="">
+                                            <a href="<%=ctkh.getPathBaiGiang()%>" target="_blank">
 	
                                                 <img src="images/baigiang.png">
                                                 <span class="instancename">Bài giảng: Bài 1<span class="accesshide "> Page</span></span>
@@ -162,49 +114,39 @@ word-wrap: break-word;
                                             </a>
                                             <br>
 
-                                            <a href="">
+                                            <a href="bai-hoc-chi-tiet?chitietkhoahocs=<%=ctkh.getChitietKhoaHocID()%>">
 
                                                 <img src="images/video.png">
-                                                <span class="instancename"><span class="accesshide ">   <a style="cursor:pointer" id="myBtn">Video</a></span></span>
+                                                <span class="instancename"><span class="accesshide ">Video</span></span>
                                                 <br><br>
                                             </a>
                                            
                                              
-                                               <form action ="DownLoadFile" method="post">
-                                            	<a href="DownLoadFile">
-                                         <%--    <c:forEach var="rows" items="${result.rows }">
-                                          --%>       <input  type="hidden" name="idfilename" value="<%=ctkh.getPathEbook()%>"/>
+                                       	<a href="<%=ctkh.getPathEbook()%>" target="_blank">
+                                                <input  type="hidden" name="idfilename" value="<%=ctkh.getPathEbook()%>"/>
                                                 <button type="submit" style="background: transparent;background-color: transparent; border: none;">
                               				    <img src="images/pdf.png">
                                                 <span class="instancename">Ebook</span>
                                                 </button>
-                                      <%--       </c:forEach>
-                                       --%>     </a>
-                                            </form>
-                                            
-                                            
-                                                <form action ="DownLoadFile" method="post">
+                                          </a>
+                                          <br></br>
+                                            <form action ="DownLoadFile" method="post">
                                             	<a href="DownLoadFile">
-                                         <%--    <c:forEach var="rows" items="${result.rows }">
-                                          --%>       <input  type="hidden" name="idfilename" value="<%=ctkh.getPathBaiTap()%>"/>
+                                               <input  type="hidden" name="idfilename" value="<%=ctkh.getPathBaiTap()%>"/>
                                                 <button type="submit" style="background: transparent;background-color: transparent; border: none;">
                               				    <img src="images/homework.png">
-                                                <span class="instancename">Bài tập</span>
+                                                <span class="instancename">Bài tập sau buổi học</span>
                                                 </button>
-                                      <%--       </c:forEach>
-                                       --%>     </a>
+                                          </a>
+                                           <br>
+                                             <a href="nop-bai-tap?chitietkhoahocs=<%=ctkh.getChitietKhoaHocID()%>">
+                                                <span class="instancename" ><h3>Nộp bài tập <i class="glyphicon glyphicon-paperclip"></i></h3></span>
+                                            </a>
                                             </form>
                                             
                                             <%} %>
                                            
-                                           
-                                            <br>
-                                            
-                                             <a href="uploadbaitap.jsp">
-                                                <span class="instancename" ><h3>Nộp bài tập <i class="glyphicon glyphicon-paperclip"></i></h3></span>
-                                            </a>
-                                         
-                                        </div>
+                                         </div>
                              </div>
                     </div>
                 </div>

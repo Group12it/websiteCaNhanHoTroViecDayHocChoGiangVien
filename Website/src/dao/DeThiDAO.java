@@ -16,10 +16,6 @@ public class DeThiDAO {
 	
 	
 	Connection connection=DBConnect.getConnection();
-	
-
-	
-	
 
 	public ArrayList<DeThis> getDeThi() throws SQLException{
 		 String sql="Select * from dethi ";

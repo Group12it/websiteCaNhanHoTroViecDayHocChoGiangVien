@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import connect.DBConnect;
 import model.DSHVlamBaiThi;
-import model.DeThis;
 
 public class DanhSachHVThiDAO {
 

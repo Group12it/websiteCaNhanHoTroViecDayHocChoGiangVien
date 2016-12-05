@@ -50,6 +50,12 @@
 		if (request.getParameter("khoahoc") != null) {
 			khoahocid = request.getParameter("khoahoc");
 		}
+		
+		String khoahocchitietid = "";
+		if (request.getParameter("chitietkhoahocs") != null) {
+			khoahocchitietid = request.getParameter("chitietkhoahocs");
+		}
+		
 	%>
 
 
@@ -65,6 +71,7 @@
 								<span class="glyphicon glyphicon-education"> </span> KHOÁ HỌC
 								CỦA BẠN
 							</h3></b>
+						
 					</center>
 				</div>
 				<div class="panel-body">
@@ -75,25 +82,14 @@
 									<div class="col-md-11">
 										<div class="panel panel-default">
 											<div class="col-md-4">
-											<%for (KhoaHocs kh:khoahocDao.getKhoaHocListByID(khoahocid))
+											<%for (ChiTietKhoaHoc ctkh:chitietkhoahocDAO.getChiTietKhoaHocByIDCT(khoahocchitietid)	)
 											{
 											%>
-											<h3><%=kh.getAdTenKH() %> </h3>
-											<%} %>
-											
- 											<%for(ChiTietKhoaHoc ctkh:chitietkhoahocDAO.getChiTietKhoaHocByID(khoahocid)){ 
-												%>
-												<h3>Bài học số 1</h3>
-												<video>
-													 <iframe width="560" height="400" src="https://www.youtube.com/embed/WdJtw6F3MRI?modestbranding=1" frameborder="0" allowfullscreen>
+											<h3><%=ctkh.getTenBaiHoc() %> </h3>
+													 <iframe width="560" height="400" src="<%=ctkh.getPathVideo() %>?modestbranding=1" frameborder="0" allowfullscreen>
                        							 </iframe>
-												<source src="Video/movie.mp4" type="video/mp4"> <source
-													src="movie.ogg" type="video/ogg"> Your browser
-												does not support the video tag. </video>
 												<%} %>
 											</div>
-
-
 										</div>
 
 									</div>

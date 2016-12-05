@@ -1,29 +1,33 @@
+<%@page import="java.*" %>
+<%@page import="dao.*" %>
+<%@page import="model.*" %>
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta content="charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
-
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/stylemenu.css">
-<link rel="stylesheet" type="text/css" href="css/thongtin.css">
 <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 <link rel="icon" href="images/head.ico" type="image/x-icon" />
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-
 </head>
-
 <body>
-
 	<jsp:include page="header.jsp"></jsp:include>
 
+<%
+Diems diems=new Diems();
+DiemsDAO diemDAO =new DiemsDAO();
+String dethiID="";
+if(request.getParameter("dethis")!=null)
+{
+	dethiID=request.getParameter("dethis");
+}
+
+%>
 	<div id="wrapper">
 		<div class="container">
 			<div class="row">
@@ -38,24 +42,30 @@
 							</div>
 
 							<div class="col-md-7">
-
-
 								<h1>Điểm kiểm tra</h1>
 								<table class="table table-bordered">
 									<thead>
+									
 										<tr style="background: #00a8d8">
 											<th>STT</th>
 											<th>Tên khóa học</th>
-											<th>Điểm kiểm tra quá trình</th>
-											<th>Điểm kiểm tra cuối khóa</th>
+											<th>Điểm kiểm tra</th>
+											<th>Nhận xét</th>
 										</tr>
 									</thead>
 									<tbody>
+										<%
+										int i=0;
+										for(Diems diem: diemDAO.getDeThiByMaDeThi(dethiID)){ 
+										i++;
+										%>
+								
 										<tr>
-											<td>1</td>
-											<td>Lập trình C căn bản</td>
-											<td>8</td>
-											<td>9</td>
+											<td><%=i %></td>
+											<td><%=diem.getMaDeThi() %></td>
+											<td><%=diem.getDiem() %></td>
+											<td><%=diem.getNhanXet() %></td>
+											<%} %>
 									</tbody>
 								</table>
 							</div>
@@ -68,12 +78,7 @@
 		</div>
 
 	</div>
-
-
-
 	<jsp:include page="footer.jsp"></jsp:include>
-
-
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

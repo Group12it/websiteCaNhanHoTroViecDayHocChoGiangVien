@@ -271,7 +271,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>upload bai tap</servlet-name>
-    <url-pattern>/upload-bai-tap</url-pattern>
+    <url-pattern>/nop-bai-tap</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>xem diem</servlet-name>
@@ -329,6 +329,9 @@
     <servlet-name>Searchall</servlet-name>
     <url-pattern>/Searchs</url-pattern>
   </servlet-mapping>
+  
+
+   
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>

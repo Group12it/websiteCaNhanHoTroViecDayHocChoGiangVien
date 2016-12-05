@@ -14,6 +14,7 @@ import model.ChiTietKhoaHoc;;
 public class ChiTietKhoaHocDAO {
 	Connection connection = DBConnect.getConnection();
 
+	
 	public ArrayList<ChiTietKhoaHoc> getChiTietKhoaHocByID(String MaKH) throws SQLException {
 
 		String sql = "Select * from chitietkhoahoc where MaKH='" + MaKH + "'";
@@ -35,6 +36,27 @@ public class ChiTietKhoaHocDAO {
 		return list;
 	}
 	
+	//lay khoa hoc chi tiet theo ma khoa hoc chi tiet
+	public ArrayList<ChiTietKhoaHoc> getChiTietKhoaHocByIDCT(String CT) throws SQLException {
+
+		String sql = "Select * from chitietkhoahoc where ChiTietKHID='" + CT + "'";
+		PreparedStatement ps = connection.prepareCall(sql);
+		ResultSet rs = ps.executeQuery();
+		ArrayList<ChiTietKhoaHoc> list = new ArrayList<>();
+		while (rs.next()) {
+			ChiTietKhoaHoc chitietkhoahocs = new ChiTietKhoaHoc();
+			chitietkhoahocs.setChitietKhoaHocID(rs.getLong("ChiTietKHID"));
+			chitietkhoahocs.setTenBaiHoc(rs.getString("TenBaiHoc"));
+			chitietkhoahocs.setNoiDung(rs.getString("NoiDung"));
+			chitietkhoahocs.setPathBaiGiang(rs.getString("DuongDanBaiGiang"));
+			chitietkhoahocs.setPathEbook(rs.getString("DuongDanEbook"));
+			chitietkhoahocs.setPathVideo(rs.getString("DuongDanVideo"));
+			chitietkhoahocs.setPathBaiTap(rs.getString("DuongDanBaiTap"));
+			chitietkhoahocs.setMakh(rs.getLong("MaKH"));
+			list.add(chitietkhoahocs);
+		}
+		return list;
+	}
 	
 	
 	public ArrayList<ChiTietKhoaHoc> getChiTietKhoaHoc() throws SQLException {

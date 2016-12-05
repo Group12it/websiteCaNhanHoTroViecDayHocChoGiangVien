@@ -1,25 +1,31 @@
+<%@page import="java.lang.*" %>
+<%@page import="model.*" %>
+<%@page import="dao.*" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta content="charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
-    <link rel="stylesheet" type="text/css" href="css/thongtin.css">
-
  <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
 </head>
 <body>
 
 <jsp:include page="header.jsp"></jsp:include>
+
+
+<% ChiTietKhoaHocDAO chitietkhoahocDAO=new ChiTietKhoaHocDAO();
+	KhoaHocsDAO khoahocDao=new KhoaHocsDAO();
+	String khoahocid="";
+	if(request.getParameter("chitietkhoahocs")!=null){
+	khoahocid= request.getParameter("chitietkhoahocs");
+	}
+%>
 <div id="wrapper">
     <div class="container">
         <div class="row">
@@ -30,11 +36,17 @@
 
                         <div class="col-md-12">
                            <div class="panel panel-default">
-                                <div class="panel-heading" style="background:#0CC">
-                                    <h4 style="font-family: verdana;color:#000">Lập trình c căn bản</h4>
-                                </div>
-
-
+                               <%
+                        			       for(ChiTietKhoaHoc ctkh:chitietkhoahocDAO.getChiTietKhoaHocByIDCT(khoahocid))
+                        			       {
+                        			       %>
+                        			        <div class="panel-heading" style="background:#0CC">
+                                                <h3 style="font-family: verdana;color:#FFF">Bài tập <%=ctkh.getTenBaiHoc() %>
+                                                       <a href="khoa-hoc-cua-toi"> <button type="button" class="btn btn-danger navbar-btn pull-right" style="border-radius: 15px; margin-right: 30px;">Quay lại</button></a>
+                                                <br></br>
+                                                </h3>
+                                            </div>
+                                        <%} %>
                                 <p>
                                     <font size="5">
                                         Bài tập 1
@@ -75,10 +87,10 @@
                             </div>
                              <div class="form-group">
                                             <label for="contactghichu">Ghi chú</label><br>
-                                            <textarea class="form-group" id="contactghichu" rows="5" cols="132" name=""contactghichu></textarea>
+                                            <textarea class="form-group" id="contactghichu" rows="5" cols="132" name="contactghichu"></textarea>
                                             </div>
                             <label >Bài tập nộp</label><br>
-                              <input id="file" type="file" name="files" class="multitle" multipleva />
+                              <input id="file" type="file" name="files"  enctype="multipart/form-data" />
                               <br><br>
                               <button class="btn btn-info navbar-btn" id="btnsubmit" name="btnsubmit" style="margin-left: 500px;">Nộp bài tập</button>
                     </div>

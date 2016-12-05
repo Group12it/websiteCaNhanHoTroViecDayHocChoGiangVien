@@ -57,7 +57,7 @@ users.UserID=<%=users.getUserID() %> && dangkykhoahoc.chophep='1' ;</sql:query>
     <header>
       <div class="container">
            <div class="row">
-            <div class="logo col-md-6 col-sm-6 col-xs-12" ><h1><a href="#">Học lập trình</a></h1></div>
+            <div class="logo col-md-6 col-sm-6 col-xs-12" ><h1><a href="trang-chu">Học lập trình</a></h1></div>
             <div class="navbar-right">
         
                    <a href="thong-tin-ca-nhan" class="dropntn" title="Người dùng!" style="margin-left: 5px;"><%=users.getUserHoTen()%></a>
@@ -161,6 +161,7 @@ users.UserID=<%=users.getUserID() %> && dangkykhoahoc.chophep='1' ;</sql:query>
                             for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
                         %>
                            	<li><a href="khoa-hoc-chi-tiet?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
+                       
                         <%
                             }
                         %>

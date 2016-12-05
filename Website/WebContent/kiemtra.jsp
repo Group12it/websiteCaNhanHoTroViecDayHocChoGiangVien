@@ -73,7 +73,7 @@
                         <td>${rows.MaKH }</td>
                       	<td> ${rows.TenKH }</td>
                       	<td><a href="lam-bai-kiem-tra?khoahoc=${rows.MaKH }">${rows.TenDeThi }</a></td>
-                           <td><a href="xem-diem"> Xem kết quả </a></td>
+                           <td><a href="xem-diem?dethis=${rows.MaDeThi }"> Xem kết quả </a></td>
                           </tr>
                           </tbody>
                           </c:forEach>

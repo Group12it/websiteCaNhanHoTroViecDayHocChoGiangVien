@@ -9,7 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import connect.DBConnect;
-import model.Threads;
 import model.Users;
 
 public class UsersDAO {
