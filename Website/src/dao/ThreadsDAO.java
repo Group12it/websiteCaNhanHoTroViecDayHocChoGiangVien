@@ -74,7 +74,7 @@ public class ThreadsDAO {
 		 try {
 			PreparedStatement ps=connection.prepareCall(sql);
 			ps.setNString(1, threads.getTenThread());
-			ps.setString(2, threads.getNgayThread());
+			ps.setNString(2, threads.getNgayThread());
 			ps.setLong(3, threads.getThreadID());
 			
 			int temp = ps.executeUpdate();

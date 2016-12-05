@@ -46,14 +46,21 @@ public class Thaoluan extends HttpServlet {
 		switch (command) {
 		case "insert":
 
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			Date date = new Date();
+			System.out.println(dateFormat.format(date));
+			// get current date time with Calendar()
+			Calendar cal = Calendar.getInstance();
 			threads.setThreadID(new java.util.Date().getTime());
 			threads.setTenThread(request.getParameter("tenthread"));
-			threads.setNgayThread(request.getParameter("ngaytao"));
+			threads.setNgayThread(dateFormat.format(cal.getTime()));
 			threadsDAO.insertUser(threads);
 			url = "/threadadmin.jsp";
 
 			break;
 		case "update":
+			
+			
 			try {
 				threadsDAO.updateThread(new Threads(Long.parseLong(MaThread), request.getParameter("tenthread"),
 						request.getParameter("ngaytao")));
@@ -98,13 +105,29 @@ public class Thaoluan extends HttpServlet {
 		String threadid = request.getParameter("mathread");
 		String MaThread = request.getParameter("MaThread");
 		Threads threads = new Threads();
+
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date));
+		// get current date time with Calendar()
+		Calendar cal = Calendar.getInstance();
+		
 		switch (command) {
 		case "insert":
+			
 			threads.setThreadID(new java.util.Date().getTime());
+			threads.setTenThread(request.getParameter("tenthread"));
+			threads.setNgayThread(dateFormat.format(cal.getTime()));
+			threadsDAO.insertUser(threads);
+			url = "/threadadmin.jsp";
+			
+			
+			
+		/*	threads.setThreadID(new java.util.Date().getTime());
 			threads.setTenThread(request.getParameter("tenthread"));
 			threads.setNgayThread(request.getParameter("ngaytao"));
 			threadsDAO.insertUser(threads);
-			url = "/threadadmin.jsp";
+			url = "/threadadmin.jsp";*/
 			break;
 		case "update":
 			try {
@@ -125,13 +148,10 @@ public class Thaoluan extends HttpServlet {
 			break;
 
 		case "insertchitiet":
-			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-			// get current date time with Date()
-			Date date = new Date();
+		
 			System.out.println(dateFormat.format(date));
 			// get current date time with Calendar()
-			Calendar cal = Calendar.getInstance();
-
+		
 			ChiTietThreads chitietthread = new ChiTietThreads();
 			String mathread = request.getParameter("mathread");
 

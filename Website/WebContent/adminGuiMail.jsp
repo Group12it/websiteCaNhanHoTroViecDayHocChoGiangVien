@@ -1,3 +1,7 @@
+<%@ page import="java.lang.*" %>
+<%@ page import="model.*" %>
+<%@page import="controller.*" %>
+<%@ page import="dao.*" %>
 <?xml version="1.0" encoding="utf-8" ?>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
@@ -21,7 +25,7 @@
 </head>
 <body>
 	
-	<jsp:include page="headeradmin.jsp" ></jsp:include>
+	<jsp:include page="header.jsp" ></jsp:include>
     
     
     <div id="wrapper">
@@ -39,18 +43,11 @@
                           <li class="active"><a href="trang-chu-quan-tri" class="list-group-item " style="z-index: 0"><i class="glyphicon glyphicon-home"></i> &nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
                                
                                 <li class="active"><a href="quanly-khoa-hoc" class ="list-group-item " style="z-index: 0"><i class="glyphicon glyphicon-education"></i>&nbsp;&nbsp;&nbsp;&nbsp; Quản lý khoá học</a></li>
-                               
                                 <li class="active"><a href="quan-ly-thread" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-comment"></i> &nbsp;&nbsp;&nbsp;&nbsp;Thread thảo luận</a></li>
-                             
                                 <li class="active"><a href="ke-hoach-giang-day" class ="list-group-item" ><i class="glyphicon glyphicon-calendar"></i> &nbsp;&nbsp;&nbsp;&nbsp;Kế hoạch giảng dạy</a></li>
-                              
                                 <li class="active"><a href="quan-ly-hoc-vien" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-user"></i> &nbsp;&nbsp;&nbsp;&nbsp;Quản lý học viên</a></li>
-                              
                                 <li class="active"><a href="gui-mail" class ="list-group-item active" style="z-index: 0"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp; Gửi mail cho sinh viên</a></li>
-                              
-                            
                                 <li class="active"><a href="danh-sach-hoc-vien-nop-bai" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
-                               
                                 <li class="active"><a href="them-de-thi-trac-nghiem" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
 
                         </ul>
@@ -68,7 +65,7 @@
 
                                         <div class="panel-body">
                                         
-                                            <form class="form" method="post" id="contactform" action="GuiMailAll" role="form" ">
+                                            <form class="form" method="post" id="contactform" action="GuiMailAll" role="form">
 <!--                                                 <div class="form-group"> -->
 <!--                                                     <label for="contactemail">Địa Chỉ Email</label> -->
 <!--                                                     <input type="email" class="form-control" id="contactemail" placeholder="Nhập địa chỉ Email" required autofocus> -->
@@ -76,11 +73,17 @@
 
                                                 <div class="form-group">
                                                     <label for="contactsubject">Gửi Tới</label>
-                                                    <select name="to" id="input" class="form-control">
-                                                        <option value="">Khóa học lập trình c căn bản</option>
-                                                        <option value="">Khóa học lập trình java</option>
-                                                        <option value="">Khóa học lập trình web</option>
-                                                    </select>
+                                                   
+<% KhoaHocsDAO khoahocsDAO=new KhoaHocsDAO();
+%>                                                    
+                                                         <select name="to" id="input" class="form-control" style="font-size: 15px;width: 100%"  >
+                               						<option value="1" selected>Tất cả</option>
+                               					 <%for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) { %>
+                                				<option value="<%=kh.getAdMaKH() %>"><%=kh.getAdTenKH() %></option>
+                                
+                               			 <%} %>
+                                    </select>
+                                                    
                                                 </div>
 
                                                 <div class="form-group">
@@ -108,13 +111,6 @@
             </div>
             </div>
          </div></div>
-    
-    
-    
-    
-    
-    
-    
     
      <jsp:include page="footer.jsp"></jsp:include>
   <%--script thông báo --%>  

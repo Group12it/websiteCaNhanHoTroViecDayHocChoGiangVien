@@ -2,12 +2,7 @@
 <%!Statement st=null;
 Connection cn=null;
 %>
-<%-- <%
-Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-cn=DriverManager.getConnection("jdbc:odbc:data","root","");
 
-st=cn.createStatement();
-%> --%>
  
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
@@ -31,21 +26,7 @@ st=cn.createStatement();
      <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<script type="text/javascript">
-function onFileSelected(event) {
-	  var selectedFile =event.target.files[0];
-	  var reader = new FileReader();
 
-	  var imgtag = document.getElementById("target");
-	  imgtag.title = selectedFile.name;
-
-	  reader.onload = function(event) {
-	    imgtag.src = event.target.result;
-	  };
-
-	  reader.readAsDataURL(selectedFile);
-	}
-</script>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -54,14 +35,19 @@ function onFileSelected(event) {
 
   
       <%
+      
+      UsersDAO userdao=new UsersDAO();
             Users users = null;
             if (session.getAttribute("user") != null) {
                 users = (Users) session.getAttribute("user");
             }
+            String usersID="";
+           if(request.getParameter("user")!=null){
+        	   usersID=request.getParameter("user");
+           }
         %>	
        
 <sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=users.getUserEmail()%>";</sql:query> 
-
 
  <div id="wrapper">
       <div class="container">
@@ -85,14 +71,17 @@ function onFileSelected(event) {
                                             <h4> Ảnh đại diện</h4>
                                             <table class="table table-bordered">
                                                 <thead>
-                                                
-										<c:forEach var="rows" items="${result.rows }"> 
-                                		 		<tr>
-                                				<img src="<%=request.getContextPath()%>/fileUpload/${rows.HinhAnh }" class="img-responsive img-circle"></img>
+                         			 
+                                              <%
+                                              for(Users u:userdao.getUsersListByID(String.valueOf(users.getUserID())))
+                                            		  {
+                                              
+                                              %>
+                                              
+										 		<tr>
+                                				<img src="<%=request.getContextPath()%>/fileUpload/<%=u.getUserHinhAnh() %>" class="img-responsive img-circle"></img>
  											</tr>
- 											
- 											
-                                 			</c:forEach> 
+ 										 <%} %>
                                                 </thead>
                                             </table>
                                         		
@@ -110,7 +99,7 @@ function onFileSelected(event) {
                                        <div class="panel-body">
                                          	
                                          
-                                                <form class="form" method="post" id="contactform" action="capnhatthongtin.jsp" role="form">
+                                                <form class="form" method="post" id="contactform" action="chinh-sua-thong-tin-ca-nhan" role="form">
                                                  <div class="form-group has-feedback">
                                                         <label><strong>ID:</strong>  <%if(users!=null){%>
              			 								  <a href="#" class="dropntn">  <%=users.getUserID()%></a> </li>
@@ -126,25 +115,31 @@ function onFileSelected(event) {
                              							 <%--Lấy email cá nhân --%>
                                                        
                                                         </div>
-                                                <c:forEach var="rows" items="${result.rows }">
+                                              
+                                              <%
+                                              for(Users u:userdao.getUsersListByID(String.valueOf(users.getUserID())))
+                                            		  {
+                                              
+                                              %>
+                                              
+                                               
                                                  <div class="form-group has-feedback">
                                                         <label><strong>Họ và tên:</strong> <%if(users!=null){%>
-             			 								  <a href="#" class="dropntn"><c:out value="${rows.HoTen}"></c:out></a> </li>
+             			 								  <a href="#" class="dropntn"><%=u.getUserHoTen() %></a> </li>
                              							   <%}%></label>
                                                        
                                                     </div>
-                                                    
+                                                   
                                             
-                                                    
                                                      <div class="form-group has-feedback">
                                                         <label ><strong>Ngày sinh:</strong> <%if(users!=null){%>
-             			 								  <a href="#" class="dropntn"> <c:out value="${rows.NgaySinh}"></c:out></a> </li>
+             			 								  <a href="#" class="dropntn"><%=u.getUserNgaySinh()%></a> </li>
                              							   <%}%></label>
                                                        
                                                     </div>
                                                     <div class="form-group has-feedback">
                                                         <label ><strong>Giới tính:</strong><%if(users!=null){%>
-             			 								  <a href="#" class="dropntn"><c:out value="${rows.GioiTinh}"></c:out></a> </li>
+             			 								  <a href="#" class="dropntn"><%=u.getUserGioiTinh() %></a> </li>
                              							   <%}%></label>
                                                        
                                                     </div>
@@ -152,21 +147,15 @@ function onFileSelected(event) {
                                                  
                                                         <div class="form-group">
                                                            <label ><strong>Điện thoại :</strong><%if(users!=null){%>
-             			 								  <a href="#" class="dropntn">0<c:out value="${rows.SDT}"></c:out></a> </li>
+             			 								  <a href="#" class="dropntn"><%=u.getUserSDT() %></a> </li>
                              							   <%}%></label>
                                                         </div>
-                                                     </c:forEach>
-                                                   <a href="capnhatthongtin.jsp"> <button type="Submit" id="btncapnhat" name="btncapnhat" class="btn btn-info">Cập nhật</button></a>
-                                                     
-                                                     
-                                               
+                                                     <%} %> 
+                                                   <a href="chinh-sua-thong-tin-ca-nhan"> <button type="Submit" class="btn btn-info">Cập nhật</button></a>
                                             </form>
                                             </div>
                         	</table>
                         </div>
-                        
-                                  
-                                            
                         </div>
                     </div>  
                     </div>

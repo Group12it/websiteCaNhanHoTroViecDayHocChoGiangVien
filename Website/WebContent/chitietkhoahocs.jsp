@@ -36,7 +36,6 @@
 		makh= request.getParameter("khoahoc");
 	}
 %>
-
         <section class="row">
         <div class="row">
  <div class="content col-md-9 col-sm-9 col-xs-12">
@@ -62,7 +61,7 @@
                               <p>*Học phí:<%=kh.getAdHocPhi()%></p>
 
                                                                                      </p>
-                                        <a href="dang-ky-mon-hoc"  class="btn btn-primary btn-lg">Đăng ký</a></p>
+                                        <a href="yeu-cau-dang-nhap"  class="btn btn-primary btn-lg">Đăng ký</a></p>
                                     </div>
                       </ul>
                   </div>
@@ -74,21 +73,13 @@
                         <iframe width="560" height="400" src="<%=kh.getAdShowtester()%>?modestbranding=1" frameborder="0" allowfullscreen>
                         </iframe>
                         </a>
-                                
                      </div> 
                  <%} %>
                    
                 </div>
             </div>
-            
           </div>
-
-
-
-    </div>
-    <!--end row-->
-
-
+   </div>
         </section>
     </section>
 

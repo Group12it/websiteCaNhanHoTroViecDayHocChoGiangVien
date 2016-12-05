@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<%@page import="model.KhoaHocs"%>
+<%@page import="dao.KhoaHocsDAO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -24,7 +26,7 @@
 
 <body>
 
-<jsp:include page="headeradmin.jsp"></jsp:include>
+<jsp:include page="header.jsp"></jsp:include>
 <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
 
 <sql:query dataSource="${DBConnect }" var="result"> select * from khoahoc;</sql:query>
@@ -54,7 +56,7 @@
                                 <li class="active"><a href="gui-mail" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp; Gửi mail cho sinh viên</a></li>
                               
                             
-                                <li class="active"><a href="danh-sach-hoc-vien" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
+                                <li class="active"><a href="danh-sach-hoc-vien-nop-bai" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
                                
                                 <li class="active"><a href="them-de-thi-trac-nghiem" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
 
@@ -67,11 +69,11 @@
                    
                              <div class="panel panel-default" style="max-height:100%">
                                     <div class="panel-heading" style="background:#0CC">
-                                        <h4 style="font-family: verdana;color:#000">Quản lý Khóa học</h4>
+                                       <center> <h2 style="font-family: 'Times New Roman';size:15; color:#FFF">Quản lý Khóa học</h2>
+                                    </center>
                                     </div>
                                     <div class="panel-body">
 
-                                        <center><font style="font-family: 'Times New Roman'; font-size: 30px; color: #09F" >Danh sách khóa học</font></center>
                                         <br/>
                                         <a href="tao-khoa-hoc-moi" class="btn btn-info btn" style="background: #59b300">
                                             <span class="glyphicon glyphicon-plus"></span> Thêm Khóa Học
@@ -88,23 +90,36 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                             
-                                              <c:forEach var="rows" items="${result.rows }">
+                                           <% KhoaHocsDAO khoahocdao=new KhoaHocsDAO(); %> 
+                                           
+                                           <%
+                                           
+                                           int i=0;
+                                           for(KhoaHocs kh:khoahocdao.getKhoaHocList()){
+                                        	   
+                                        	   i++;
+                                        	   
+                                           
+                                           %>
+                                           
+                                           
                                                 <tr>
-                                                    <td><c:out value="${rows.MaKH}"></c:out></td>
-                                                    <td><c:out value="${rows.TenKH}"></c:out></td>
-                                                    <td><c:out value="${rows.NgayKhaiGiang}"></c:out></td>
-                                                    <td><c:out value="${rows.HocPhi}"></c:out></td>
+                                                    <td><%=kh.getAdMaKH() %> </td>
+                                                    <td><%=kh.getAdTenKH() %></td>
+                                                    <td><%=kh.getAdNgayKhaiGiang() %></td>
+                                                    <td><%=kh.getAdNgayKhaiGiang() %></td>
                                                     <td>
-                                                        <a href="chinh-sua-khoa-hoc?khoahoc=${rows.MaKH }" class="btn btn-info btn-sm" style="background: #660066">
+                                                        <a href="chinh-sua-khoa-hoc?khoahoc=<%=kh.getAdMaKH() %>" class="btn btn-info btn-sm" style="background: #660066">
                                                             <span class="glyphicon glyphicon-wrench"></span> Chỉnh sửa
                                                         </a>
-                                                        <a href="quan-ly-khoa-hoc?command=delete&makh=${rows.MaKH }" class="btn btn-info btn-sm" style="background: #ff3300;">
+                                                        <a href="quan-ly-khoa-hoc?command=delete&makh=<%=kh.getAdMaKH() %>" class="btn btn-info btn-sm" style="background: #ff3300;">
                                                             <span class="glyphicon glyphicon-trash"></span> Xóa
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                </c:forEach>
+                                           <%} %>
+                                           
+                                        
                                               
                                             </tbody>
                                         </table>

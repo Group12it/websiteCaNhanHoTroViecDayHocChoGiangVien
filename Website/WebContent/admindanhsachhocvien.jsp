@@ -1,3 +1,12 @@
+<%@ page import="java.sql.*"%>
+<%@ page import="connect.*"%>
+<%@ page import="java.util.*"%>
+<%@page import="java.*"%>
+<%@page import="dao.*"%>
+<%@page import="controller.*"%>
+<%@page import="model.*"%>
+
+
 <?xml version="1.0" encoding="utf-8" ?>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
@@ -15,7 +24,16 @@
   </head>
  <body>
 	
-	<jsp:include page="headeradmin.jsp" ></jsp:include>
+	<jsp:include page="header.jsp" ></jsp:include>
+	
+	
+	<% 
+		DeThiDAO dethidao=new DeThiDAO();
+	
+	%>
+	
+	
+	
   <div id="wrapper">
       <div class="container">
         <div class="row">
@@ -56,30 +74,26 @@
                                 <table class="table table-striped" border="1" >
                                     <thead>
                                       <tr>
-                                        <th dir="rtl" style="background:#0CC"> Stt</th>
+                                        <th dir="rtl" style="background:#0CC"> STT</th>
                                         <th dir="rtl" style="background:#0CC">Tên Đề Thi</th>
                                         <th dir="rtl" style="background:#0CC">Chi Tiết  </th>
                                       </tr>
                                     </thead>
                                     <tbody>
+                                   <%
+                                   int i=0;
+                                   for(DeThis dt: dethidao.getDeThi()){
+                                   i++;
+                                   %>
                                       <tr>
-                                        <td>1</td>
-                                        <td>Lập Trình C căn bản học những gì ?</td>
-                                        <td><button style="width:50% "><a href="adminbainophocvien.jsp">Xem</button>&nbsp;&nbsp;&nbsp;&nbsp;</a></button></td>
-                                        
+                                        <td><%=i %></td>
+                                        <td><%=dt.getTenDeThi() %></td>
+                                        <td><center> <a href="bai-nop-cua-hoc-vien?khoahoc=<%=dt.getMaKH()%>" class="btn btn-info btn-sm" style="background: #ff3300;">
+                                                            <span class="glyphicon glyphicon-view"></span>Xem chi tiết
+                                                        </a></center>
+                                        </td>
                                       </tr>
-                                      <tr>
-                                        <td>2</td>
-                                        <td>C# có khó học không ? </td>
-                                        <td><button style="width:50% ">Xem</button>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        
-                                      </tr>
-                                      <tr>
-                                        <td>2</td>
-                                        <td>Java là gì ? </td>
-                                        <td><button style="width:50% ">Xem</button>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        
-                                      </tr>
+                                    <%} %>
                                     </tbody>
                                   </table>  
                     </ul>
@@ -93,7 +107,6 @@
             </div>
          </div></div>
 	  <jsp:include page="footer.jsp"></jsp:include>
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

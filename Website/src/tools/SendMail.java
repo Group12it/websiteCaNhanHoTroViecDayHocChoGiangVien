@@ -50,11 +50,12 @@ public class SendMail {
 			Connection con=DBConnect.getConnection();
 		Statement stmt=con.createStatement();
 			String sql1="SELECT GROUP_CONCAT(Email)FROM users";
-		ResultSet rs=stmt.executeQuery(sql1);
+			
+			ResultSet rs=stmt.executeQuery(sql1);
 			while(rs.next()) {		
 				String ms=rs.getString("GROUP_CONCAT(Email)");
-				System.out.println(ms);
-				System.out.println(sendMail("nhom12it@gmail.com","nhom12spkt",ms, "subject"," text"));
+				//System.out.println(ms);
+				System.out.println(sendMail("nguoiemcuanui@gmail.com","duongthithuha","nhom12it@gmail.com", "subject"," text"));
 			}}
 		catch(Exception e){
 			

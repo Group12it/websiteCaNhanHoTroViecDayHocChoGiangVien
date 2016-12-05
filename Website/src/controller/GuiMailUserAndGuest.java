@@ -28,22 +28,24 @@ public class GuiMailUserAndGuest extends HttpServlet {
 	@SuppressWarnings("static-access")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			Connection con=DBConnect.getConnection();
-		Statement stmt=con.createStatement();
-			String sql="SELECT GROUP_CONCAT(Email)FROM users";
-		ResultSet rs=stmt.executeQuery(sql);
-			while(rs.next()) {		
-				String ms=rs.getString("GROUP_CONCAT(Email)");
-				System.out.println(ms);
-				senmail.sendMail("","","nhom12it@gmail.com",request.getParameter("tieude"),request.getParameter("noidung"));
-			}}
+//			Connection con=DBConnect.getConnection();
+//		Statement stmt=con.createStatement();
+//			String sql="SELECT GROUP_CONCAT(Email)FROM users";
+//		ResultSet rs=stmt.executeQuery(sql);
+//			while(rs.next()) {		
+//				String ms=rs.getString("GROUP_CONCAT(Email)");
+				System.out.println(request.getParameter("emailnguoigui"));
+				senmail.sendMail(request.getParameter("emailnguoigui"),request.getParameter("matkhauemail"),"nhom12it@gmail.com",request.getParameter("tieude"),request.getParameter("noidung"));
+//}
+		}
 		catch(Exception e){
 			
 		}
+		response.sendRedirect("trang-chu");
 	
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		doGet(request, response);
 	}
 
 }

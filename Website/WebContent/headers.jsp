@@ -8,7 +8,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
   <head>
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
-    <meta charset="utf-8">
+    <meta content="charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width = device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
@@ -250,12 +250,12 @@
                                           <label class="control-label col-md-4">Giới tính:</label>
                                           <label class="radio-inline"><input checked="checked" data-val="true" id="Gender1" name="Gender" type="radio" value="Nam" required> Nam </label>
                                           <label class="radio-inline"><input id="Gender2" name="Gender" type="radio" value="Nữ">Nữ</label>
-                            </div>
+                           		 </div>
                             	
                              <div class="form-group">
                                           <label class="control-label col-md-4">Điện thoại<span class="glyphicon glyphicon-phone"> </span></label>
                                        <div class="col-md-8" >
-                                          <input class="form-control" data-val="true" data-val-regex="Số điện thoại không hợp lệ" data-val-regex-pattern="^[0]\d{9,}$" id="PhoneNumber" name="sodienthoai" placeholder="Số điện thoại liên hệ" type="text" value="0">
+                                          <input class="form-control" data-val="true" data-val-regex="Số điện thoại không hợp lệ" data-val-regex-pattern="^[0]\d{9,}$" id="PhoneNumber" name="sodienthoai" placeholder="Số điện thoại liên hệ" type="text" value="">
                                           <span class="field-validation-valid text-danger" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span>
                                </div></div>
                        	
@@ -316,12 +316,12 @@
                         <textarea rows="6" class="form-control" id="comments" name="comments" placeholder="nội dung"></textarea>
                     </div>
                 </div>
-                  <div class="form-group">
-                    <label class="control-label col-md-4" for="comment">Đính kèm file</label>
-                    <div class="col-md-6" class="form-control">
-                       <input type="file" value="No file" placeholder="No file">
-                    </div>
-                </div>
+<!--                   <div class="form-group"> -->
+<!--                     <label class="control-label col-md-4" for="comment">Đính kèm file</label> -->
+<!--                     <div class="col-md-6" class="form-control"> -->
+<!--                        <input type="file" value="No file" placeholder="No file"> -->
+<!--                     </div> -->
+<!--                 </div> -->
                 <div class="form-group">
                     <div class="col-md-6">
                         <button type="submit" value="Submit" class="btn btn-custom pull-right" style="color:white;background:#0cc">Send</button>

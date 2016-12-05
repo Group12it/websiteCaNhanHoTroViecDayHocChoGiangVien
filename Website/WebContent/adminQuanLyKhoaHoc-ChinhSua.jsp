@@ -20,7 +20,7 @@
 
 <body>
 
-	<jsp:include page="headeradmin.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
   <%
 	Users user = null;
 	if (session.getAttribute("user") != null) {

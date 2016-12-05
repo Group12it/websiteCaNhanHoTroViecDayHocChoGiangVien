@@ -28,7 +28,7 @@
 <body>
 
      <%
-           
+     UsersDAO userdao=new UsersDAO();
             Users users = null;
             if (session.getAttribute("user") != null) {
                 users = (Users) session.getAttribute("user");
@@ -62,13 +62,16 @@
                                             <h4> Ảnh đại diện</h4>
                                             <table class="table table-bordered">
                                                 <thead>
-                                             <c:forEach var="rows" items="${result.rows }"> 
-                                		 		<tr>
-                                				<img src="<%=request.getContextPath()%>/fileUpload/${rows.HinhAnh }" class="img-responsive img-circle"></img>
+                                             <%
+                                              for(Users u:userdao.getUsersListByID(String.valueOf(users.getUserID())))
+                                            		  {
+                                              
+                                              %>
+                                              
+										 		<tr>
+                                				<img src="<%=request.getContextPath()%>/fileUpload/<%=u.getUserHinhAnh() %>" class="img-responsive img-circle"></img>
  											</tr>
- 											
- 											
-                                 			</c:forEach> 
+ 										 <%} %>
                                                 </thead>
         								    </table>
                                         		<form method="post" action="edit-profile" enctype="multipart/form-data">

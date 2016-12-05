@@ -141,8 +141,8 @@ public class UsersServlet extends HttpServlet {
 			users.setUserHoTen(request.getParameter("hovaten"));
 			users.setUserNgaySinh(request.getParameter("ngaysinh"));
 			users.setUserGioiTinh(request.getParameter("Gender"));
-			users.setUserSDT(request.getParameter("sodienthoai"));
-			users.setUserHinhAnh("");
+			users.setUserSDT("0"+request.getParameter("sodienthoai"));
+			users.setUserHinhAnh("null");
 			if (usersDAO.checkEmail(request.getParameter("email")) == false) {
 				usersDAO.insertUser(users);
 				session.setAttribute("user", users);
@@ -151,7 +151,7 @@ public class UsersServlet extends HttpServlet {
 			} else {
 				request.setAttribute("trung", "Email đã bị trùng");
 				response.getWriter().print("error");
-				// url="/index.jsp";
+				url="/index.jsp";
 			}
 			break;
 		// Đang nhập
@@ -204,7 +204,7 @@ public class UsersServlet extends HttpServlet {
 			
 		case "logout":
 			session.invalidate();
-			url="index.jsp";
+			url="home";
 			break;
 			
 		}

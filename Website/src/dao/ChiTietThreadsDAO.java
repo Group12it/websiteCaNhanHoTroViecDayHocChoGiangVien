@@ -69,7 +69,7 @@ public class ChiTietThreadsDAO {
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException ex) {
-			Logger.getLogger(ThreadsDAO.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ChiTietThreadsDAO.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		return false;
 	}

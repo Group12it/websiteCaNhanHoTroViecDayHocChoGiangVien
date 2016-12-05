@@ -22,7 +22,7 @@
 
 
 <body>
-<jsp:include page="headeradmin.jsp" ></jsp:include>
+<jsp:include page="header.jsp" ></jsp:include>
 	<div id="wrapper">
 		<div class="container">
 			<div class="row">

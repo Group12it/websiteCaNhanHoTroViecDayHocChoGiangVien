@@ -26,3 +26,11 @@
         
         <!--Gui mail--> 
      
+        $(document).ready(function () {
+            $.ajaxSetup({ cache: false });
+            $("#btnvideo").click(function () {
+                $("#myModal3").modal();
+
+            });
+        });
+        

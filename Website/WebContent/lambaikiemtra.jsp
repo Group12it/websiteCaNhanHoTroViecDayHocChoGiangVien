@@ -1,139 +1,206 @@
+<%@page import="model.KhoaHocs"%>
+<%@page import="model.Users"%>
+<%@page import="model.DeThis"%>
+<%@page import="dao.KhoaHocsDAO"%>
+<%@page import="dao.DeThiDAO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-    <%@ page import="java.lang.*" %>
-<%@ page import="model.*" %>
-<%@page import="controller.*" %>
-<%@ page import="dao.*" %>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
-
-   <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
-	<link rel="icon" href="images/head.ico" type="image/x-icon" />
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/stylemenu.css">
-
+<head>
+<meta content="charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
+<link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
+<link rel="icon" href="images/head.ico" type="image/x-icon" />
 <link rel="stylesheet" href="css/multiChoice.css" type="text/css">
-
 <script type="text/javascript" src="js/time_olympic.js"></script>
+</head>
+<body>
+	<jsp:include page="header.jsp"></jsp:include>
 
-  </head>
-   <body>
-   <jsp:include page="header.jsp"></jsp:include>
-<sql:query dataSource="${DBConnect }" var="result"> select * from dethi;</sql:query> 
+	<%
+		Users users = null;
+		if (session.getAttribute("user") != null) {
+			users = (Users) session.getAttribute("user");
+		}
 
-  <div id="wrapper">
-      <div class="container">
-        <div class="row">
-         
-            <div class="container">
-                <div class="row">
-                
-                    <div class="col-md-12">
-                       <div class="panel panel-primary" style="padding-top:0px ">
-              			 <div class="panel panel-default">
-                                <div class="panel-body text-center" style="background:Blue; "><font size="5"  color="white" >Làm bài kiểm tra</font> </div>
-                            </div>
-                           <div class ="panel-body"> 
-                  
-                           <div class="panel panel-primary lambaikiemtra">
-      
-        <div class="panel-body" style="padding:0">
-            <div class="panel ">
-            <div class="col-md-12">
-                <div class="panel-body">
-                   
-                        <form action ="Thaoluan" method="post" onSubmit="return confirmAction()">
-                            <div class="alert alert-info"><span class="glyphicon glyphicon-envelope"></span>Làm bài thi và nộp bài trước khi thời gian kết thúc. Nếu thời gian kết thúc thì bài thi sẽ tự động được dừng lại và nộp</div>
-                        <div id="ctl15_div_time" class="time-remain">
-                            
-                            <span class="sp-text">Thời gian còn lại</span> 
-                            <br></br>
-                            <span class="sp-time" id="aTime" class="timeCount">
+		DeThiDAO dethiDAOS = new DeThiDAO();
+		KhoaHocsDAO khoahocDAOs = new KhoaHocsDAO();
+		String khoahocid = "";
+		if (request.getParameter("khoahoc") != null) {
+			khoahocid = request.getParameter("khoahoc");
+		}
+	%>
 
-                                        <script type="text/javascript">
-                                            timeDisplay('aTime',0,0,10,01,5,'ctl15_btn');
-                                        </script>
+	<div id="wrapper">
+		<div class="container">
+			<div class="row">
 
-                                        </span>
-                        </div>
-                        </form>
-                        </div>
-                          <!--đồng hồ-->
-                          
-                      <!-- kết thúc lấy đề bài-->
-                      
-                      
-                      <table> 
-                                 
-					<c:forEach var="rows" items="${result.rows }"> 
-                      <embed src="<%=request.getContextPath() %>/fileUpload/${row.File}"  high="100%" type="" width="100%"></embed>
-                      </c:forEach>
-                      </table>
-                      
-                        <br><br><br>
-                        </div>
-                        <!-- câu trả lời -->    
-                        <div>
-                        <div class="alert alert-info">Bạn chỉ được điền một đáp án vào từng câu</div>
-                        <span class="label label-default">Câu 1 :</span>  <input type="" name="">  <br><br>
-                        <span class=" label label-default">Câu 2 :</span>  <input type="" name="">  <br><br>
-                        <span class="label label-default">Câu 3 :</span>  <input type="" name="">  <br><br>
-                        <span class="label label-default">Câu 4 :</span>  <input type="" name="">  <br><br>
-                        <span class="label label-default">Câu 5 :</span>  <input type="" name="">  
-                        </div>  
-      
-                        
-                    </div>  
-                    </div>
-                    </div>    
-                    </div>
-            </div>
-            </div>
-         </div>
-         </div>
-    
-   
-  
+				<div class="container">
+					<div class="row">
+
+						<div class="col-md-12">
+							
+								<form action="lam-bai-thi-trac-nghiem" method="post">
+							
+							<div class="panel panel-primary" style="padding-top: 0px">
+								<div class="panel panel-default">
+									<div class="panel-body text-center" style="background: Blue;">
+										<font size="5" color="white">Làm bài kiểm tra</font>
+									</div>
+								</div>
+								<div class="panel-body">
+									<div class="panel panel-primary lambaikiemtra">
+										<div class="panel-body" style="padding: 0">
+											<div class="panel ">
+												<div class="col-md-12">
+													<div class="panel-body">
+
+														<div class="form">
+															<div class="alert alert-info">
+																<span class="glyphicon glyphicon-envelope"></span>Làm
+																bài thi và nộp bài trước khi thời gian kết thúc. Nếu
+																thời gian kết thúc thì bài thi sẽ tự động được dừng lại
+																và nộp
+															</div>
+															<div class="time-remain">
+
+																<span class="sp-text">Thời gian còn lại</span> <br></br>
+																<span class="sp-time" id="aTimed" class="timeCount">
+																	<script type="text/javascript">
+																		-->
+																		timeDisplay(
+																				'aTimed',
+																				0,
+																				0,
+																				10,
+																				00,
+																				5,
+																				'btnnop');
+																	</script>
+																</span>
+															</div>
+
+														</div>
+														<!--đồng hồ-->
+
+														<!-- kết thúc lấy đề bài-->
+
+														<table>
+															<%
+																for (DeThis dt : dethiDAOS.getDeThiByMaKH(khoahocid)) {
+															%>
+															<embed
+																src="<%=request.getContextPath()%>/fileUpload/<%=dt.getFile()%>"
+																height="400px;" width="100%">
+															</embed>
+
+															<%
+																}
+															%>
+
+														</table>
+														<br>
+														<br>
+														<br>
+
+													</div>
+													<!-- câu trả lời -->
+
+													<div class="alert alert-info">Phần trả lời trắc
+														nghiệm</div>
+													<div class="col-md-9">
+														<span class="label label-primary">Câu 1 :</span> A <input
+															type="radio" name="cau1" value="A" id="cau11"> B
+														<input type="radio" name="cau1" value="B" id="cau12">
+														C <input type="radio" name="cau1" value="C" id="cau13">
+														D <input type="radio" name="cau1" value="D" id="cau14">
+
+														<br>
+														<br> <span class=" label label-primary">Câu 2
+															:</span> A <input type="radio" name="cau2" value="A" id="cau21">
+														B <input type="radio" name="cau2" value="B" id="cau22">
+														C <input type="radio" name="cau2" value="C" id="cau23">
+														D <input type="radio" name="cau2" value="D" id="cau24">
+
+														<br>
+														<br> <span class="label label-primary">Câu 3 :</span>
+														A <input type="radio" name="cau3" value="A" id="cau31">
+														B <input type="radio" name="cau3" value="B" id="cau32">
+														C <input type="radio" name="cau3" value="C" id="cau33">
+														D <input type="radio" name="cau3" value="D" id="cau34">
+														<br>
+														<br> <span class="label label-primary">Câu 4 :</span>
+														A <input type="radio" name="cau4" value="A" id="cau41">
+														B <input type="radio" name="cau4" value="B" id="cau42">
+														C <input type="radio" name="cau4" value="C" id="cau43">
+														D <input type="radio" name="cau4" value="D" id="cau44">
+														<br>
+														<br> <span class="label label-primary">Câu 5 :</span>
+														A <input type="radio" name="cau5" value="A" id="cau51">
+														B <input type="radio" name="cau5" value="B" id="cau52">
+														C <input type="radio" name="cau5" value="C" id="cau53">
+														D <input type="radio" name="cau6" value="D" id="cau54">
+
+													</div>
 
 
-            <div class="form-group text-center">
-                           <a href="kiemtra.jsp"> <button id="btnnop" type="submit" class="btn btn-info">Nộp bài</button></a>
-                        </div>
-        </div>
-    </div>
 
-</div>
+												</div>
 
-     
-  <!-- bắt đầu script chèn file text -->
-      <script>
-      function loadDoc() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("demo").innerHTML = this.responseText;
-          }
-        };
-        xhttp.open("GET", "demo.txt", true);
-        xhttp.send();
-      }
-      </script>
-        <!-- kết thúc script chèn file text -->
-   
-   <jsp:include page="footer.jsp"></jsp:include>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-   
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+											</div>
+										</div>
+									</div>
+								</div>
+
+									<%
+										for (DeThis dt: dethiDAOS.getDeThiByMaKH(khoahocid)) {
+									%>
+									<input type="hidden" value="<%=dt.getMaDeThi()%>" name="makhoahoc">
+									<%
+										}
+									%>
+									<%
+										if (users != null) {
+									%>
+									<input type="hidden" name="userid"
+										value="<%=users.getUserID()%>">
+									<%
+										}
+									%>
+
+									<center>
+										<button id="btnnop" type="submit" class="btn btn-info"
+											onclick="return confirmAction()">Nộp bài</button>
+									</center>
+									<br>
+								
+							</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="form-group text-center"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<jsp:include page="footer.jsp"></jsp:include>
+	<script src="js/bootstrap.min.js"></script>
+	<SCRIPT LANGUAGE="JavaScript">
+		function confirmAction() {
+			return confirm("Nộp bài thi!")
+			document.getElementById('btnnop').disabled = true;
+		}
+	</SCRIPT>
+</body>
 </html>

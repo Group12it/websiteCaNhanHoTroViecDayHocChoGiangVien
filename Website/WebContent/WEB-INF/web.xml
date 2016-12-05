@@ -123,7 +123,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>cap nhat thong tin ca nhan hoc vien</servlet-name>
-    <jsp-file>/capnhathongtin.jsp</jsp-file>
+    <jsp-file>/capnhatthongtin.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>cap nhat thong tin ca nhan hoc vien</servlet-name>
@@ -160,14 +160,6 @@
   <servlet-mapping>
     <servlet-name>chi tiet khoa hoc chua dang nhap</servlet-name>
     <url-pattern>/chi-tiet-khoa-hoc-xem</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>dang ky mon hoc</servlet-name>
-    <jsp-file>/dangkymonhoc.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>dang ky mon hoc</servlet-name>
-    <url-pattern>/dang-ky-mon-hoc</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>doi mat khau</servlet-name>
@@ -304,6 +296,38 @@
   <servlet-mapping>
     <servlet-name>phuchoimatkhau</servlet-name>
     <url-pattern>/quen-mat-khau</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>threadthaoluanadmin</servlet-name>
+    <jsp-file>/threadthaoluan.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>threadthaoluanadmin</servlet-name>
+    <url-pattern>/threads-thao-luan</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>thamgiathreadthaoluanadmin</servlet-name>
+    <jsp-file>/thamgiathaoluancuaadmin.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>thamgiathreadthaoluanadmin</servlet-name>
+    <url-pattern>/tham-gia-thao-luans</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Search</servlet-name>
+    <servlet-class>controller.Search</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Search</servlet-name>
+    <url-pattern>/Search</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Searchall</servlet-name>
+    <servlet-class>controller.SearchALL</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Searchall</servlet-name>
+    <url-pattern>/Searchs</url-pattern>
   </servlet-mapping>
   <session-config>
     <session-timeout>30</session-timeout>

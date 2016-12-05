@@ -1,10 +1,11 @@
 package controller;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.Random;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,142 +16,116 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
 import connect.DBConnect;
-import dao.UsersDAO;
-
-@SuppressWarnings("serial")
-@WebServlet("/dethiservlet")
-// @WebServlet(urlPatterns = {"/abc"})
-
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10, maxFileSize = 1024 * 1024 * 50, maxRequestSize = 1024 * 1024
-		* 100)
-// upload file's size up to 16MB
-
+ 
+@WebServlet("/uploadToDB")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+       maxFileSize = 1024 * 1024 * 10, // 10MB
+       maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class DeThiServlet extends HttpServlet {
-	// this if directory name where the file will be uploaded and saved
-	UsersDAO usersDAO = new UsersDAO();
-	@SuppressWarnings("unused")
-	private static final String SAVE_DIR = "Avartar";
-	
-	private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3; // 3MB
-	private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
-	private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50; // 50MB
-
-	private static final String UPLOAD_DIRECTORY = "fileUpload";
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		
-		String TenDT = request.getParameter("tendethi");
-		String MaKH = request.getParameter("mhoc");
-		
-		String url = "";
-		try {
-			
-			
-			DiskFileItemFactory factory = new DiskFileItemFactory();
-			// sets memory threshold - beyond which files are stored in disk
-			factory.setSizeThreshold(MEMORY_THRESHOLD);
-			// sets temporary location to store files
-			factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
-
-			ServletFileUpload upload = new ServletFileUpload(factory);
-
-			// sets maximum size of upload file
-			upload.setFileSizeMax(MAX_FILE_SIZE);
-
-			// sets maximum size of request (include file + form data)
-			upload.setSizeMax(MAX_REQUEST_SIZE);
-
-			// constructs the directory path to store upload file
-			// this path is relative to application's directory
-
-			// Ãƒâ€žÃ¯Â¿Â½ÃƒÂ¡Ã‚Â»Ã†â€™ upload lÃƒÆ’Ã‚Âªn host internet 
-			String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;
-			
-			// creates the directory if it does not exist
-			File uploadDir = new File(uploadPath);
-			if (!uploadDir.exists()) {
-				uploadDir.mkdir();
-			}
-			
-			
-			Part part = request.getPart("file");
-			String fileName = extractFileName(part);
-		
-			url = "/admindethitracnghiem.jsp";
-			part.write(uploadPath + File.separator + fileName);
-			request.setAttribute("msg",fileName);
-			
-			Connection con = DBConnect.getConnection();// DriverManager.getConnection("url",
-														// "host -name",
-											// "password");
-			@SuppressWarnings("unused")
-			String path = request.getParameter("path");
-		
-			//String sql = "UPDATE users SET HinhAnh=? WHERE UserID=?";
-			String sql ="Insert into dethi (MaDeThi,TenDeThi,MaKH,File) values(?,?,?,?)";
-			String filePath = fileName; // savePath + File.separator +
-										// fileName;// bở vì nó lưu luôn
-										// Đường dẫn local
-
-			PreparedStatement ps = con.prepareCall(sql);
-			ps.setLong(1, new java.util.Date().getTime());
-			ps.setString(2, TenDT);
-			ps.setLong(3,Long.parseLong(MaKH));
-			ps.setString(4, filePath);
-
-			ps.executeUpdate();
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
-		rd.forward(request, response);
-	}
-
-	// the extractFileName() is method used to extract the file name
-
-	private String extractFileName(Part part) {
-		String contentDisp = part.getHeader("content-disposition");
-		String[] items = contentDisp.split(";");
-		for (String s : items) {
-			if (s.trim().startsWith("filename")) {
-				return s.substring(s.indexOf("=") + 2, s.length() - 1);
-			}
-		}
-		return "";
-	}
-
-	@Override
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-
-			throws ServletException, IOException {
-
-		processRequest(request, response);
-
-	}
-
-	@Override
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-
-			throws ServletException, IOException {
-
-		processRequest(request, response);
-
-	}
-
-	@Override
-
-	public String getServletInfo() {
-
-		return "Short description";
-
-	}
-
+   private static final long serialVersionUID = 1L;
+ 
+   @Override
+   protected void doGet(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException {
+ 
+       RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/uploadToDB.jsp");
+ 
+       dispatcher.forward(request, response);
+   }
+ 
+   @Override
+   protected void doPost(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException {
+       Connection conn = null;
+       try {
+           // Kết nối tới Database
+           // (Xem thêm tài liệu JDBC).
+           conn = DBConnect.getConnection();// ConnectionUtils.getMyConnection();
+           conn.setAutoCommit(false);
+ 
+           String description = "1480223244590"; //request.getParameter("description");
+ 
+    
+           // Danh mục các phần đã upload lên (Có thể là nhiều file).
+           for (Part part : request.getParts()) {
+               String fileName = extractFileName(part);
+               if (fileName != null && fileName.length() > 0) {
+                   // Dữ liệu file.
+                   InputStream is = part.getInputStream();
+          
+                   // Ghi vào file.
+                   this.writeToDB(conn, fileName, description,is);
+               }
+           }
+           conn.commit();
+ 
+  
+           // Upload thành công.
+           response.sendRedirect(request.getContextPath() + "/uploadToDBResults");
+       } catch (Exception e) {
+           e.printStackTrace();
+           request.setAttribute("errorMessage", "Error: " + e.getMessage());
+           RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/uploadToDB.jsp");
+           dispatcher.forward(request, response);
+       } finally {
+           this.closeQuietly(conn);
+       }
+   }
+ 
+   private String extractFileName(Part part) {
+       // form-data; name="file"; filename="C:\file1.zip"
+       // form-data; name="file"; filename="C:\Note\file2.zip"
+       String contentDisp = part.getHeader("content-disposition");
+       String[] items = contentDisp.split(";");
+       for (String s : items) {
+           if (s.trim().startsWith("filename")) {
+               // C:\file1.zip
+               // C:\Note\file2.zip
+               String clientFileName = s.substring(s.indexOf("=") + 2, s.length() - 1);
+               clientFileName = clientFileName.replace("\\", "/");
+               int i = clientFileName.lastIndexOf('/');
+               // file1.zip
+               // file2.zip
+               return clientFileName.substring(i + 1);
+           }
+       }
+       return null;
+   }
+ 
+   private Long getMaxAttachmentId(Connection conn) throws SQLException {
+       String sql = "Select max(a.MaDeThi) from dethi a";
+       PreparedStatement pstm = conn.prepareStatement(sql);
+       ResultSet rs = pstm.executeQuery();
+       if (rs.next()) {
+           long max = rs.getLong(1);
+           return max;
+       }
+       return 0L;
+   }
+ 
+   private void writeToDB(Connection conn, String fileName,  String description,InputStream is) throws SQLException {
+ 
+	   	String sql="insert into dethi (MaDeThi,TenDeThi,MaKH,FileData) values (?,?,?,?)";
+//       String sql = "Insert into Attachment(Id,File_Name,File_Data,Description) " //
+//               + " values (?,?,?,?) ";
+       PreparedStatement pstm = conn.prepareStatement(sql);
+ 
+       Long id = this.getMaxAttachmentId(conn) + 1;
+       pstm.setLong(1, id);
+       pstm.setString(2, fileName);
+       pstm.setBlob(4, is);
+       pstm.setLong(3,Long.parseLong(description));
+       pstm.executeUpdate();
+   }
+ 
+   private void closeQuietly(Connection conn) {
+       try {
+           if (conn != null) {
+               conn.close();
+           }
+       } catch (Exception e) {
+       }
+   }
+ 
 }

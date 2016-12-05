@@ -7,19 +7,12 @@
     <meta content="charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
 	<link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
-   
-    
-
-  </head>
-   
+   </head>
 <body>
-	<jsp:include page="headeradmin.jsp" ></jsp:include>
-  
+	<jsp:include page="header.jsp" ></jsp:include>
   <div id="wrapper">
       <div class="container">
         <div class="row">
@@ -42,8 +35,6 @@
                                 <li class="active"><a href="quan-ly-hoc-vien" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-user"></i> &nbsp;&nbsp;&nbsp;&nbsp;Quản lý học viên</a></li>
                               
                                 <li class="active"><a href="gui-mail" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp; Gửi mail cho sinh viên</a></li>
-                              
-                            
                                 <li class="active"><a href="danh-sach-hoc-vien-nop-bai" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
                                
                                 <li class="active"><a href="them-de-thi-trac-nghiem" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
@@ -53,33 +44,24 @@
                     </div>  
                      <div class="panel panel-default">
                      <div class="col-md-9">
-                  <form action ="Thaoluan" method="post" onSubmit="return formaction()">
-                    <a class ="list-group-item text-center " href="#" style="font-size: 20px;color: blue;background: #0CC">Tạo Thread Thảo Luận</a><br> 
+                  <form class="form" action ="Thaoluan" method="post" onSubmit="return formaction()">
+                    <a class ="list-group-item text-center " href="#" style="font-size: 20px;color: blue;background: #0CC">Tạo Thread Thảo Luận</a><br> </br>
                     <label style="font-size: 15px">Tên Đề Tài Thảo Luận</label>
-                    <br>
-                    <input class="form-control" type="text" name="tenthread"  placeholder="Nhập Tên Đề Tài" size="50% " style="font-size: 15px" requied autofocus>
-                    <br>  
-                    <label style="font-size: 15px">Thời Gian Tạo Thread</label>
- 					
- 				
-            		<input class="form-control valid "  name="ngaytao"  type="date" value=""></input>
+                    <br></br>
+                    <input class="form-control" type="text" name="tenthread"  placeholder="Nhập Tên Đề Tài" size="50% " style="font-size: 15px" requied autofocus></input>
+                    <br></br>  
                	     <input type="hidden" name="command" value="insert"></input>                  
                      <button type="submit" class="btn btn-info">OK</button>
                     </form>
                          </div>      
-                                             
                 </div>
                 </div>
             </div>
-  
       </div>
     </div>
-</div></div>
+</div>
 
     <jsp:include page="footer.jsp" ></jsp:include>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     
     <SCRIPT LANGUAGE="JavaScript">

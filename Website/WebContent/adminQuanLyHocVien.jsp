@@ -11,10 +11,7 @@
     <meta content="charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
    <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
@@ -25,7 +22,7 @@
 
 <body>
 
-	<jsp:include page="headeradmin.jsp" ></jsp:include>
+	<jsp:include page="header.jsp" ></jsp:include>
 	
 	   
     <div id="wrapper">
@@ -102,7 +99,6 @@
                                                     <th><center>Họ Và Tên</center></th>
                                                     <th><center>Ngày sinh</center></th>
                                                     <th><center>Số điện thoại</center></th>
-                                                    <th><center>Mã khóa học</center></th>
                                                     <th><center>Tên khóa học</center></th>
                                                     <th width="21%"><center>Thao tác</center></th>
                                                 </tr>
@@ -112,21 +108,22 @@
 
 									            Statement statement = connection.createStatement() ;
 									            ResultSet resultset = 
-									                statement.executeQuery("select * from dangkykhoahoc") ; 
+									                statement.executeQuery("select * from viewthongtindangky where chophep=0") ; 
 									        %>
+									 
 									
 									            <% while(resultset.next()){ %>
 									            <tr>
 									                <td> <%= resultset.getString(2) %></td>
 									                <td> <%= resultset.getString(3) %></td>
-									                <td> <%= resultset.getString(4) %></td>
-									                <td> <%= resultset.getString(5) %></td>
-									                <td> <%= resultset.getString(6) %></td>
-									                <td> <%= resultset.getString(7) %></td>
-									                 <td width="21%" >
+ 									                <td><%= resultset.getString(4) %></td> 
+ 									                <td>0<%= resultset.getString(5) %></td> 
+ 									                <td> <%= resultset.getString(7) %></td> 
+ 									                 
+													<td width="21%" >
 									                 <form action="DangKyKhoaHocServlet?userid=<%= resultset.getString(1)%>&makh=<%= resultset.getString(6) %>" method="post">
-                                                        <button type="submit" class="btn btn-success" id="btnXacNhan">Xác Nhận</button>
-                                                        <button type="button" class="btn btn-warning" id="btnXoa1" title="right">Xóa</button>
+                                                        <button type="submit" class="btn btn-success" id="ddfbtnXacNhan">Xác Nhận</button>
+                                                       <a href="XoaXacNhan?makh=<%= resultset.getString(6) %>&userid=<%=resultset.getLong(1)%>" style="text-decoration: underline"><button type="button" class="btn btn-warning" id="btnXoa1" title="right">Xóa</button></a>
                                                      </form>
                                                     </td>
 									              
@@ -158,7 +155,7 @@
                                             </thead>
                                             <tbody>
                                                <% resultset = 
-									                statement.executeQuery("select * from khoahoc") ; 
+									                statement.executeQuery("select * from viewthongtinkhoahoc") ; 
                                                int i=0;
 									        %>
 									

@@ -20,7 +20,7 @@
 <body>
 
 
-	<jsp:include page="headeradmin.jsp" ></jsp:include>
+	<jsp:include page="header.jsp" ></jsp:include>
 	<%
 	ChiTietKhoaHocDAO chitietkhoahocDAO=new  ChiTietKhoaHocDAO();
 	KhoaHocsDAO khoahocsDAO=new KhoaHocsDAO();

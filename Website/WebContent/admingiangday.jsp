@@ -18,7 +18,7 @@
 </head>
 
 <body>
-	<jsp:include page="headeradmin.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
     <div id="wrapper">
       <div class="container">
         <div class="row">
@@ -68,19 +68,22 @@
                                             </thead>
                                                       
       <% KhoaHocsDAO khoahocsDAO=new KhoaHocsDAO();
-	%>        
+		%>        
                  		<%
+                 			int i=0;
                             for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
+                      
+                            	i++;
                         %>
                                             <tbody>
                                                 <tr>
-                                                    <td>1</td>
+                                                    <td><%=i %></td>
                                                     <td><%=kh.getAdMaKH() %></td>
                                                     <td><%=kh.getAdTenKH() %></td>
                                                     <th>
                                                         <center>
-                                                             <a href="adminGiangDay_LoadDulieu.jsp?khoahoc=<%=kh.getAdMaKH()%>"><button type="button" class="btn btn-success">Xem</button></a>
-                                                          <a href="adminGiangDay_UpFile.jsp">  <button type="button" class="btn btn-success">Tải lên</button></a>
+                                                             <a href="xem-bai-giang?khoahoc=<%=kh.getAdMaKH()%>"><button type="button" class="btn btn-success">Xem</button></a>
+                                                          <a href="upload-bai-giang?khoahoc=<%=kh.getAdMaKH()%>">  <button type="button" class="btn btn-success">Tải lên</button></a>
                                                         </center>
                                                     </th>
                                                 </tr>
@@ -97,9 +100,7 @@
             </div>
             </div>
          </div></div>
-    
-         
-    <jsp:include page="footer.jsp" ></jsp:include>    
+      <jsp:include page="footer.jsp" ></jsp:include>    
          <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>

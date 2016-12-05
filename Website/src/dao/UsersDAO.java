@@ -4,17 +4,75 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import connect.DBConnect;
+import model.Threads;
 import model.Users;
 
 public class UsersDAO {
 
 	
 	Connection connection = DBConnect.getConnection();
+	
+	public ArrayList<Users> getUsersListByID(String ID) throws SQLException{
+		 
+		 String sql="Select * from users where UserID='"+ID+"'";
+		 PreparedStatement ps=connection.prepareCall(sql);
+		 ResultSet rs=ps.executeQuery();
+		 ArrayList<Users> list  =new ArrayList<>();
+		 while(rs.next()){
+			 Users user=new Users();
+			 user.setUserID(rs.getLong("UserID"));
+			 user.setUserEmail(rs.getString("Email"));
+			 user.setUserPass(rs.getString("Password"));
+			 user.setUserRole(rs.getString("Role"));
+			 
+			 user.setUserHoTen(rs.getString("HoTen"));
+			user.setUserNgaySinh(rs.getString("NgaySinh"));
+			user.setUserGioiTinh(rs.getString("GioiTinh"));
+			user.setUserSDT(rs.getString("SDT"));
+			user.setUserHinhAnh(rs.getString("HinhAnh"));
+			
+			 
+			 list.add(user);
+			 
+		 }
+		 return list;
+	 }
+	
+	
+	
+	public ArrayList<Users> getUsersList() throws SQLException{
+		 
+		 String sql="Select * from users";
+		 PreparedStatement ps=connection.prepareCall(sql);
+		 ResultSet rs=ps.executeQuery();
+		 ArrayList<Users> list  =new ArrayList<>();
+		 while(rs.next()){
+			 Users user=new Users();
+			 user.setUserID(rs.getLong("UserID"));
+			 user.setUserEmail(rs.getString("Email"));
+			 user.setUserPass(rs.getString("Password"));
+			 user.setUserRole(rs.getString("Role"));
+			 
+			 user.setUserHoTen(rs.getString("HoTen"));
+			user.setUserNgaySinh(rs.getString("NgaySinh"));
+			user.setUserGioiTinh(rs.getString("GioiTinh"));
+			user.setUserSDT(rs.getString("SDT"));
+			user.setUserHinhAnh(rs.getString("HinhAnh"));
+			
+			 
+			 list.add(user);
+		 }
+		 return list;
+	 }
+	
 	// Kiem tra email co bi trung k
+	
+	
 	public boolean checkEmail(String email) {
 		
 		String sql = "SELECT * FROM users WHERE Email = '" + email + "'";
@@ -32,6 +90,26 @@ public class UsersDAO {
 		return false;
 	}
 
+	
+	public boolean checkQuyen(String email,String Role) {
+		
+		String sql = "SELECT * FROM users WHERE Email = '" + email + "' and Role='"+Role+"' and Role='Admin'";
+		PreparedStatement ps;
+		try {
+			ps = connection.prepareCall(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				connection.close();
+				return true;
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(UsersDAO.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return false;
+	}
+
+	
+	
 	// Them tai khoan
 	public boolean insertUser(Users u) {
 		
@@ -150,7 +228,7 @@ public class UsersDAO {
 	
 	public static void main(String[] args) throws SQLException {
 		UsersDAO dao = new UsersDAO();
-		System.out.println(dao.update(new Users(1, "MÃ¡c", "2016-02-02", "Ná»¯", "0000000000")));
-	}
+		System.out.println(dao.checkEmail("nguoiemcuanui@gmail.com"));
+				}
 
 }

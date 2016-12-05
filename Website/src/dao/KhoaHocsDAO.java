@@ -120,12 +120,11 @@ public ArrayList<KhoaHocs> getKhoaHocList() throws SQLException{
 		 
 		 return false;
 	 }
- 
-	 //test trong main
+ 	 //test trong main
 	 public static void main(String[] args) throws SQLException {
 		
 		 KhoaHocsDAO dao = new KhoaHocsDAO();
-	        for (KhoaHocs ds : dao.getKhoaHocListByID("1")) {
+	        for (KhoaHocs ds : dao.getKhoaHocListByID("1480223244590")) {
 	            System.out.println(ds.getAdMaKH() + " - " + ds.getAdTenKH());
 	        }
 	}

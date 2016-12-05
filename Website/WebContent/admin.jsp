@@ -1,4 +1,7 @@
+<%@page import="java.io.PrintWriter"%>
 <?xml version="1.0" encoding="utf-8" ?>
+<%@page import="dao.UsersDAO"%>
+<%@page import="model.Users"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -13,7 +16,32 @@
   
   </head>
     <body>
-    	<jsp:include page="headeradmin.jsp"></jsp:include>
+    	<jsp:include page="header.jsp"></jsp:include>
+    	
+    	
+    	<%	
+    	Users users=null;
+    	if(session.getAttribute("user")!=null)
+    	{
+    		users=(Users) session.getAttribute("user");
+    	}
+    	UsersDAO userDAO=new UsersDAO();
+    	String t="";
+    	
+    	if(userDAO.checkQuyen(users.getUserEmail(),users.getUserRole())==false){
+     			 
+    		 PrintWriter outt=response.getWriter();
+ 			 response.setContentType("text/html");
+ 			 outt.println("<!DOCTYPE html><head><title>Không có quyền truy cập</title></head><body></body></html>");
+     			
+     	 }else 
+     	 
+     	 {
+     		 t="khongloi";
+     	 }
+     	%>
+    	
+    	
         <div id="wrapper">
       <div class="container">
         <div class="row">

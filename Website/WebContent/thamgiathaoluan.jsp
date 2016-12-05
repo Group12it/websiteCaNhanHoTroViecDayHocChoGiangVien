@@ -106,15 +106,15 @@
                                              <textarea name="binhluan" class="form-control" cols="20" 
                                              data-val="true" data-val-required="Nội dung câu trả lời không được bỏ trống."
                                               rows="5" placeholder="Comment" id="traloi"></textarea>
-     
-       <%
-  String loi="";
-  if(request.getAttribute("error")!=null)
-  {
-	  loi=(String) request.getAttribute("error");
-  }
- 
-  %>
+						     
+						       <%
+						  String loi="";
+						  if(request.getAttribute("error")!=null)
+						  {
+							  loi=(String) request.getAttribute("error");
+						  }
+						 
+						  %>
      							 <%if(request.getAttribute("error")!=null){%>
                         <div class="">
                             <p style="color:red"><%=request.getAttribute("error")%></p>
@@ -148,7 +148,7 @@
 
    <jsp:include page="footer.jsp"></jsp:include>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
    <script src="js/bootstrap.min.js"></script>
 </body>

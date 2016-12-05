@@ -32,7 +32,7 @@ public class UploadServlet extends HttpServlet {
 	// this if directory name where the file will be uploaded and saved
 	UsersDAO usersDAO = new UsersDAO();
 	@SuppressWarnings("unused")
-	private static final String SAVE_DIR = "Avartar";
+	//private static final String SAVE_DIR = "Avartar";
 	
 	private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3; // 3MB
 	private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
@@ -104,39 +104,7 @@ public class UploadServlet extends HttpServlet {
 			ps.setString(1, filePath);
 
 			ps.executeUpdate();
-			
-			// đường dẫn đến thư mục lưu, nếu up lên host sẽ phải thay đổi!
-//			String savePath = "D:/STUDY/WebPrograming/Project/Website/WebContent/Upload" + File.separator + SAVE_DIR;
-//			File fileSaveDir = new File(savePath);
-//			if (!fileSaveDir.exists()) {
-//				fileSaveDir.mkdir();
-//			}
-//						
-//			String name = request.getParameter("Userid");
-//			Part part = request.getPart("file");
-//			String fileName = extractFileName(part);
-//			// out.println(fileName);
-//			// out.println("\n" + name);
-//			// out.println("\n" + name);
-//			url = "/capnhatthongtin.jsp";
-//			part.write(savePath + File.separator + fileName);
-//			request.setAttribute("msg",fileName);
-//			
-			/*
-			 * th
-			 * 
-			 * You need this loop if you submitted more than one file
-			 * 
-			 * for (Part part : request.getParts()) {
-			 * 
-			 * String fileName = extractFileName(part);
-			 * 
-			 * part.write(savePath + File.separator + fileName);
-			 * 
-			 * }
-			 */
-					// usersDAO.capnhathinhanh(new
-			// Users(Long.parseLong(userid),filePath));
+	
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -185,5 +153,9 @@ public class UploadServlet extends HttpServlet {
 		return "Short description";
 
 	}// </editor-fold>
+	
+	public static void main(String[] args) {
+		
+	}
 
 }

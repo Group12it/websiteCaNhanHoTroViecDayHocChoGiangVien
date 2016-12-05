@@ -9,7 +9,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
   <head>
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
-    <meta charset="utf-8">
+    <meta content="charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width = device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
@@ -88,14 +88,14 @@
              <thead>
              <tr>
              <th>
-             <marquee SCROLLDELAY = 150 width ="100%" height = "300" direction="up" style ="font:arial" scrollamount="2" id="bannerthongbao" name="bannerthongbao" onmouseover="this.stop()" onmouseout="this.start()">
+             <marquee SCROLLDELAY = 150 width ="100%" height = "300" direction="up" style ="font:arial" scrollamount="2" id="bannerthongbao" onmouseover="this.stop()" onmouseout="this.start()">
              <ul>
                  
                  	<%
                             for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
                         %>
                            	<li><a href="chi-tiet-khoa-hoc-xem?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
-                           	<p></p>
+                           	
                         <%
                             }
                         %>

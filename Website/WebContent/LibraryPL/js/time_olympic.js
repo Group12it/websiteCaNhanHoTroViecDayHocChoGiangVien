@@ -1,11 +1,11 @@
 ﻿// JScript File
-var paramSave;
+/*var paramSave;
 $(document).ready(function() {
 	$('.bat-close').click( function(){
 			$('#box_alert').hide();
 	})
 });
-
+*/
 
 var dayslimit = 0;
 var hourslimit = 0;
@@ -62,14 +62,14 @@ function timeDisplay(txtTimeDislay, days, hours, minute, second, delay, btSave)
        _setTimeout = setTimeout('timeDisplay(\'' + txtTimeDislay + '\',' + days + ',' + hoursStr + ',' + minuteStr + ',' + secondStr + ',' + delay + ')', 1000);
     }
     else {
-        document.getElementById(txtTimeDislay).innerHTML = 'Đã hết thời gian';
+      //  document.getElementById(txtTimeDislay).innerHTML = 'Đã hết thời gian';
         //document.getElementById(paramSave).attr("disabled", "disabled");
-        document.getElementById(paramSave).click();
-
+      //  document.getElementById(paramSave).click();
+        //document.getElementById(paramSave).disabled=true;	
     }
 }
 
-function timelimit(_minutelimit) {
+/*function timelimit(_minutelimit) {
     if(dayslimit == 0 & hourslimit == 0 & minutelimit <= _minutelimit )
     {
         return true;
@@ -112,3 +112,4 @@ function timeCountdown(txtTimeDislay, days, hours, minute, second)
         document.getElementById(txtTimeDislay).innerHTML = 'Xin chờ 0 giây'; 
     }
 } 
+*/

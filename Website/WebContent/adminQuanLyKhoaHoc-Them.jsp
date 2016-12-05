@@ -17,7 +17,7 @@
 
 <body>
 
-	<jsp:include page="headeradmin.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
   
   
    <div id="wrapper">
@@ -71,28 +71,28 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Ngày khai giảng</label>
-                                                    <input type="date" class="form-control" id="ngaykhaigiang" name="ngaykhaigiang" />
+                                                    <input type="date" class="form-control" id="ngaykhaigiang" name="ngaykhaigiang" required autofocus/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Học phí</label>
 
-                                                    <input name="hocphi" type="number" class="form-control" id="txt_hocphi" />
+                                                    <input name="hocphi" type="number" class="form-control" id="txt_hocphi" required autofocus/>
                                                 </div>
                                                 <div class="form-group">
 
                                                     <label>Khái quá khóa học</label>
-                                                    <textarea name="khaiquat" class="form-control" rows="5" cols="20"></textarea>
+                                                    <textarea name="khaiquat" class="form-control" rows="5" cols="20" required autofocus></textarea>
                                                 </div>
                                                 <div class="form-group">
 
                                                     <label>Nội dung khóa học</label>
-                                                    <textarea name="noidung" class="form-control" rows="5" cols="20"></textarea>
+                                                    <textarea name="noidung" class="form-control" rows="5" cols="20" required autofocus></textarea>
                                                 </div>
                                                 
                                                  <div class="form-group">
 
                                                     <label>Trailer(Link youtube)</label>
-                                                    <input name="showtester" class="form-control" />
+                                                    <input name="showtester" class="form-control" required autofocus/>
                                                 </div>
                                                 
                                                   <input type="hidden" name="command" value="insert"></input>                  

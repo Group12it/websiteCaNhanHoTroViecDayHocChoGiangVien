@@ -15,9 +15,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
 	<link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
@@ -25,7 +25,7 @@
 </head>
     
 <body>
-<jsp:include page="headeradmin.jsp" ></jsp:include>
+<jsp:include page="header.jsp" ></jsp:include>
 
 <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
 
@@ -75,36 +75,44 @@
                                 			<tr>
                                 				<th dir="rtl" style="background:#0CC"> STT</th>
                                 				<th dir="rtl" style="background:#0CC">Tên Thread</th>
-                                				<th dir="rtl" style="background:#0CC">Ngày tạo </th>
+                                				<th dir="rtl" style="background:#0CC">Thời gian tạo</th>
                                 				<th max-width="100%" dir="ltr" style="background:#0cc">Tuỳ chọn</th>
                                 			</tr>
                                 		</thead>
                                 		<tbody>
-  <%	
-	 ThreadsDAO threadsDAO =new ThreadsDAO();
+					 	 <%	
+						 ThreadsDAO threadsDAO =new ThreadsDAO();
+						
+						%>
 	
-	%>
-                        <%--         		  <%
-                            for (Threads thr :threadsDAO.getThreadsList()){
-                        %>
-                             --%>    		 <c:set var="count" value="0" /> <%--Khởi tạo biến đếm =0 --%>
-                                		 <c:forEach var="rows" items="${result.rows }">
-                                		 <c:set var="count"  value="${count+1}" /> <%--Tăng biến đếm lên 1 đơn vị --%>
-                                			<tr>
-                                				<td>${count}</td>
-                                				<td>${rows.TenThread}</td>
-                                				<td>${rows.NgayTao }</td>
+	
+									 <%
+									 int i=0;
+									 for(Threads th:threadsDAO.getThreadsList()){
+										 i++;
+										 %>
+									 
+									 		<tr>
+                                				<td><%=i %></td>
+                                				<td><%=th.getTenThread() %></td>
+                                				<td><%=th.getNgayThread()%></td>
                                 				<td>
                                                     <center> 
-                                                     <a href="chinh-sua-thread?thread=${rows.MaThread }"> <button type="button" class="btn btn-success" id="btnXacNhan" onclick="">Sửa</button></a>
-                                                  	 <a href="Thaoluan?command=delete&MaThread=${rows.MaThread }"> <button type="button"  onclick="return confirmAction()" class="btn btn-warning"  id="btnXoa1" onclick="">Xóa</button></a> 
+                                                     <a href="chinh-sua-thread?thread=<%=th.getThreadID() %>"> <button type="button" class="btn btn-success" id="btnXacNhan" onclick="">Sửa</button></a>
+                                                  	 <a href="Thaoluan?command=delete&MaThread=<%=th.getThreadID() %>"> <button type="button"  onclick="return confirmAction()" class="btn btn-warning"  id="btnXoa1" onclick="">Xóa</button></a> 
                                                 	</center>
                                                 </td>
 
 
 
                                 			</tr>
-                                			</c:forEach> 
+                                			<%} %>
+								
+								
+                        <%--         		  <%
+                            for (Threads thr :threadsDAO.getThreadsList()){
+                        %>
+                             --%>    	
                                 		</tbody>
                                 	<%-- 	<%} %>
                                 	 --%></table>	

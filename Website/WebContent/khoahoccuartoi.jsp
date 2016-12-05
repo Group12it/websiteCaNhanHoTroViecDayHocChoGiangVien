@@ -1,3 +1,11 @@
+<%@page import="java.sql.*" %>
+<%@page import="dao.*" %>
+<%@page import="model.*" %>
+<%@page import="connect.*" %>
+  <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<% Class.forName("com.mysql.jdbc.Driver"); %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,8 +22,31 @@
   
    <body>
    <jsp:include page="header.jsp"></jsp:include>
+ <%
+            Users users = null;
+            if (session.getAttribute("user") != null) {
+                users = (Users) session.getAttribute("user");
+            }
+ %>  
+   
+
+ 
+<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
+
+<sql:query dataSource="${DBConnect }" var="result"> SELECT DISTINCT TenKH from khoahoc,dangkykhoahoc,users where khoahoc.MaKH=dangkykhoahoc.MaKH && dangkykhoahoc.UserID=users.UserID &&
+users.UserID=<%=users.getUserID() %> && dangkykhoahoc.chophep='1' ;</sql:query>
+   
+   
+   <section class="container" style="min-height:270px">
+        <section class="row">
+ 
   <div id="wrapper">
       <div class="container">
+       <div class="panel panel-primary hoidap">
+                    <div class="panel-heading">
+                        <b ><span class="glyphicon glyphicon"> </span><center> Danh sách khoá học của bạn</center></b>
+                    </div>
+                    <div class="panel-body">
         <div class="row">
           <div class="content col-md-9 col-sm-9 col-xs-12">
            
@@ -27,7 +58,7 @@
                         </ul>
                     </div>    
                     <div class ="col-md-7">
-                        <h1>Danh sách khoá học của bạn</h1>
+                      
                       <!-- tạo bảng khóa học của tôi-->
                       <table class="table table-bordered">
                         <thead>
@@ -38,51 +69,29 @@
                           </tr>
                         </thead>
                         <tbody>
+     	             	 <c:set var="count" value="0" /> 
+<%--      	              Khởi tạo biến đếm =0 --%>
+                                		 <c:forEach var="rows" items="${result.rows }">
+                                		 <c:set var="count"  value="${count+1}" /> <%--Tăng biến đếm lên 1 đơn vị--%>
                           <tr>
-                            <td>1</td>
-                            <td>Khóa học lập trình c căn bản</td>
+                            <td>${count}</td>
+                          <td>${rows.TenKH }</td>
                            <td><a href="chi-tiet-khoa-hoc-cua-toi">vào khóa học</a></td>
                           </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>Khóa học lập trình web</td>
-                            <td>vào khóa học</td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>Lập trình window form</td>
-                            <td>vào khóa học</td>
-                          </tr>
+                          </c:forEach>
                         </tbody>
                   </table>
                       <!-- kết thúc tạo bảng khóa học của tôi -->
                     </div>
-
                     </div>
-                 
                 </div>
-
             <!--<div class="slider"><img src="dimages/slider.jpg"></div>-->
-            
-            
-          </div>
-          <div class="sidebar col-md-3 col-sm-3 col-xs-12">
-            <div class="sidebar-item">
-              <h4 class="widget-title">Thiết kế web</h4>
-              <div class="textwidget">
-                <img src="images/sidebar1.jpg">
-              </div>
+          </div></div></div>
+        
             </div>
-            
-
-
-                </div> 
-              </caption>
-
-            </div>
-
           </div>
         </div>
+        </section></section>
  <jsp:include page="footer.jsp"></jsp:include>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

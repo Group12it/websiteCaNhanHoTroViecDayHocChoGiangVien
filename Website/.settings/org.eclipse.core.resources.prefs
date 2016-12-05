@@ -1,9 +1,16 @@
 eclipse.preferences.version=1
-encoding//WebContent/testmail.jsp=UTF-8
+encoding//WebContent/NewFile.jsp=UTF-8
+encoding//src/controller/ChiTietKhoaHocServlet.java=UTF-8
+encoding//src/controller/DeThiServlet.java=UTF-8
+encoding//src/controller/HocVienDangKyKhoaHocServlet.java=UTF-8
 encoding//src/controller/PhucHoiMKServlet.java=UTF-8
+encoding//src/controller/TestST.java=UTF-8
 encoding//src/controller/Thaoluan.java=UTF-8
+encoding//src/controller/ThemDeThiServlet.java=UTF-8
+encoding//src/controller/ThiTracNghiemServlet.java=UTF-8
 encoding//src/controller/UploadServlet.java=UTF-8
 encoding//src/controller/UsersServlet.java=UTF-8
+encoding//src/dao/DangKyKhoaHocDAO.java=UTF-8
 encoding//src/dao/KhoaHocsDAO.java=UTF-8
 encoding//src/dao/UsersDAO.java=UTF-8
 encoding//src/tools/SendMail.java=UTF-8
