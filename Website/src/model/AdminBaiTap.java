@@ -8,21 +8,22 @@ public class AdminBaiTap {
 	private String NoiDungBaiTap;
 	private String HanNop;
 	private String GioNop;
+	private long MaChiTietKH;
 
-
-	public AdminBaiTap(long iDBaiTap, String tenBaiTap, String noiDungBaiTap, String hanNop, String gioNop) {
-		super();
-		IDBaiTap = iDBaiTap;
-		TenBaiTap = tenBaiTap;
-		NoiDungBaiTap = noiDungBaiTap;
-		HanNop = hanNop;
-		GioNop = gioNop;
-	}
 	
 	public AdminBaiTap() {
 		super();
 	}
 
+	public long getMaChiTietKH() {
+		return MaChiTietKH;
+	}
+
+	public void setMaChiTietKH(long maChiTietKH) {
+		MaChiTietKH = maChiTietKH;
+	}
+
+	
 	public String getGioNop() {
 		return GioNop;
 	}

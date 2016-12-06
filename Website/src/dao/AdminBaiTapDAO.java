@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import connect.DBConnect;
 import model.*;
@@ -30,16 +32,34 @@ public class AdminBaiTapDAO {
 		 connection.close();
 		 return list;
 	}
-	public static void main(String[] args) {
-		AdminBaiTapDAO adminbaitapdao=new AdminBaiTapDAO();
-		AdminBaiTap adminbaitap=new AdminBaiTap();
+public boolean insertAdminBaiTap(AdminBaiTap u) {
+		
+		String sql = "INSERT INTO adminbaitap VALUES(?,?,?,?,?,?)";
 		try {
-			for (AdminBaiTap s : adminbaitapdao.getAdminBaiTapListByID(1)) {
-				System.out.println(s.getHanNop());
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			PreparedStatement ps = connection.prepareCall(sql);
+
+			ps.setLong(1, u.getIDBaiTap());
+			ps.setNString(2, u.getTenBaiTap());
+			ps.setNString(3, u.getNoiDungBaiTap());
+			ps.setNString(4, u.getHanNop());
+			ps.setNString(5, u.getGioNop());
+			ps.setLong(6, u.getMaChiTietKH());
+			ps.executeUpdate();
+			return true;
+		} catch (SQLException ex) {
+			Logger.getLogger(UsersDAO.class.getName()).log(Level.SEVERE, null, ex);
 		}
+		return false;
+	}
+	public static void main(String[] args) {
+		AdminBaiTapDAO admin=new AdminBaiTapDAO();
+		AdminBaiTap a=new AdminBaiTap();
+		a.setIDBaiTap(4);
+		a.setTenBaiTap("Bài tập 3");
+		a.setNoiDungBaiTap("ooooooooooooooooooooooo");
+		a.setHanNop("2016-12-12");
+		a.setGioNop("12:00:00");
+		a.setMaChiTietKH(2);
+		admin.insertAdminBaiTap(a);
 	}
 }
