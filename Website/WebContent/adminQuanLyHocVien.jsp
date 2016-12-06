@@ -108,7 +108,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <% Connection connection = DBConnect.getConnection();
+                                            <% 
+                                            
+                                            Connection connection = DBConnect.getConnection();
 
 									            Statement statement = connection.createStatement() ;
 									            ResultSet resultset = 

@@ -4,12 +4,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import connect.DBConnect;
 import model.KhoaHocs;
+import net.sourceforge.jtds.jdbc.DateTime;
 
 public class KhoaHocsDAO {
 
@@ -123,10 +130,16 @@ public ArrayList<KhoaHocs> getKhoaHocList() throws SQLException{
  	 //test trong main
 	 public static void main(String[] args) throws SQLException {
 		
-		 KhoaHocsDAO dao = new KhoaHocsDAO();
-	        for (KhoaHocs ds : dao.getKhoaHocListByID("1480223244590")) {
-	            System.out.println(ds.getAdMaKH() + " - " + ds.getAdTenKH());
-	        }
+		 Connection connect=DBConnect.getConnection();
+
+			Statement statement = connect.createStatement();
+			ResultSet resultset = statement.executeQuery("select * from viewhannopbai where IDBaiTap=1");
+			while (resultset.next()) {
+				System.out.println(resultset.getString(7));
+				
+			}
+	        
+	        
 	}
 	 
 	
