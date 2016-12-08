@@ -16,7 +16,94 @@
 <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 <link rel="icon" href="images/head.ico" type="image/x-icon" />
 <link rel="stylesheet" href="css/multiChoice.css" type="text/css">
-<script type="text/javascript" src="js/time_olympic.js"></script>
+<!-- <script type="text/javascript" src="js/time_olympic.js"></script> -->
+
+<script type="text/javascript">
+
+var dayslimit = 0;
+var hourslimit = 0;
+var minutelimit = 0;
+var secondlimit = 0;
+var _setTimeout;
+
+function timeDisplay(txtTimeDislay, days, hours, minute, second, delay, btSave) 
+{  
+    dayslimit = days;
+    hourslimit = hours;
+    minutelimit = minute;
+    secondlimit  = second;
+  
+
+ if(days == 0 & hours == 0 & minute == 0 & second ==0 )
+   {
+		document.getElementById('cau11').disabled=true;
+		document.getElementById('cau12').disabled=true;
+		document.getElementById('cau13').disabled=true;
+		document.getElementById('cau14').disabled=true;
+		document.getElementById('cau21').disabled=true;
+		document.getElementById('cau22').disabled=true;
+		document.getElementById('cau23').disabled=true;
+		document.getElementById('cau24').disabled=true;
+		document.getElementById('cau31').disabled=true;
+		document.getElementById('cau32').disabled=true;
+		document.getElementById('cau33').disabled=true;
+		document.getElementById('cau34').disabled=true;
+		document.getElementById('cau41').disabled=true;
+		document.getElementById('cau42').disabled=true;
+		document.getElementById('cau43').disabled=true;
+		document.getElementById('cau44').disabled=true;
+		document.getElementById('cau51').disabled=true;
+		document.getElementById('cau52').disabled=true;
+		document.getElementById('cau53').disabled=true;
+		document.getElementById('cau54').disabled=true;
+		
+	}
+
+
+    var i=0;
+    if(btSave)
+    {
+        paramSave=btSave;
+    }
+
+
+    if (second >= 0) {
+        second = second - 1;
+    }
+    else {
+        clearTimeout(_setTimeout);
+        return false; 
+    }
+       
+    if (second < 0){  
+        second = 59; minute = minute-1;  
+        if (minute < 0){  
+            minute = 59; hours=hours-1;  
+            if (hours < 0){
+                hours = 23;  days=days-1;                
+                }
+        } 
+    }
+    
+   
+
+    if (days >= 0) {
+        var hoursStr = ((hours < 10) ? '0' : '') + hours;
+        var minuteStr = ((minute < 10) ? '0' : '') + minute;
+        var secondStr = ((second < 10) ? '0' : '') + second;
+
+      document.getElementById(txtTimeDislay).innerHTML = 'Còn '+days+' ngày '+hoursStr + ':' + minuteStr + ':' + secondStr; 
+        document.getElementById(txtTimeDislay).innerHTML = '' + hoursStr + ':' + minuteStr + ':' + secondStr;
+
+       _setTimeout = setTimeout('timeDisplay(\'' + txtTimeDislay + '\',' + days + ',' + hoursStr + ',' + minuteStr + ',' + secondStr + ',' + delay + ')', 1000);
+    }
+    else {
+       document.getElementById(txtTimeDislay).innerText = 'Đã hết thời gian';
+       
+    }
+}
+
+</script>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -64,25 +151,18 @@
 																<span class="glyphicon glyphicon-envelope"></span>Làm
 																bài thi và nộp bài trước khi thời gian kết thúc. Nếu
 																thời gian kết thúc thì bài thi sẽ tự động được dừng lại
-																và nộp
+															
 															</div>
-															<div class="time-remain">
+													<div class="time-remain">
 
-																<span class="sp-text">Thời gian còn lại</span> <br></br>
-																<span class="sp-time" id="aTimed" class="timeCount">
-																	<script type="text/javascript">
-																		-->
-																		timeDisplay(
-																				'aTimed',
-																				0,
-																				0,
-																				10,
-																				00,
-																				5,
-																				'btnnop');
-																	</script>
-																</span>
-															</div>
+													<span class="sp-text">Thời gian còn lại</span> <br></br>
+													<span class="sp-time" id="aTimed" class="timeCount">
+													<script type="text/javascript">
+				
+													timeDisplay('aTimed',0,0,10,0,1,'btnnop');
+													</script>
+													</span>
+													</div>
 
 														</div>
 														<!--đồng hồ-->

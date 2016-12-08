@@ -329,9 +329,30 @@
     <servlet-name>Searchall</servlet-name>
     <url-pattern>/Searchs</url-pattern>
   </servlet-mapping>
-  
-
-   
+  <servlet>
+    <servlet-name>admin tao bai tap cho hoc vien</servlet-name>
+    <jsp-file>/adminbaitap.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin tao bai tap cho hoc vien</servlet-name>
+    <url-pattern>/tao-bai-tap</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>admin xem danh sach bai tap</servlet-name>
+    <jsp-file>/admindanhsachbaitaptheokhoahoc.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin xem danh sach bai tap</servlet-name>
+    <url-pattern>/xem-danh-sach-bai-tap</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>admin xem danh sach hoc vien nop bai tap</servlet-name>
+    <jsp-file>/adDanhsachbaitapcuahocvien.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin xem danh sach hoc vien nop bai tap</servlet-name>
+    <url-pattern>/xem-danh-hoc-vien-nop-bai-tap</url-pattern>
+  </servlet-mapping>
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>

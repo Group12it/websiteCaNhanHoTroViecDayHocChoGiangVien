@@ -28,24 +28,37 @@
 
 	<jsp:include page="header.jsp"></jsp:include>
 
-	<%
-		Connection connect=DBConnect.getConnection();
 
-		Statement statement = connect.createStatement();
-		ResultSet resultset = statement.executeQuery("select * from viewhannopbai where IDBaiTap=1");
-	%>
+	  <%
+     
+	  UsersDAO userdao=new UsersDAO();     
+      KhoaHocsDAO khoahocsDAO=new KhoaHocsDAO();
+      Users users = null;
+            if (session.getAttribute("user") != null) {
+                users = (Users) session.getAttribute("user");
+            }
+        %>
+   	
 	<%
 		ChiTietKhoaHocDAO chitietkhoahocDAO = new ChiTietKhoaHocDAO();
 		KhoaHocsDAO khoahocDao = new KhoaHocsDAO();
-		String khoahocid = "";
+		String khoahocchitietid = "";
 		if (request.getParameter("chitietkhoahocs") != null) {
-			khoahocid = request.getParameter("chitietkhoahocs");
+			khoahocchitietid = request.getParameter("chitietkhoahocs");
 		}
+		
+		
+		
 	%>
 	<%
+	String baitapid="";
+	if (request.getParameter("abaitap") != null) {
+		baitapid = request.getParameter("abaitap");
+	}
 		AdminBaiTapDAO adminbaitapdao = new AdminBaiTapDAO();
-		AdminBaiTap adminbaitap = new AdminBaiTap();
+		AdminBaiTap adminbaitap = new AdminBaiTap(); 
 	%>
+
 	<div id="wrapper">
 		<div class="container">
 			<div class="row">
@@ -55,15 +68,16 @@
 
 
 							<div class="col-md-12">
+							<form action="nopbaitaphocvien" method="post" enctype="multipart/form-data">
 								<div class="panel panel-default">
 									<%
-										for (ChiTietKhoaHoc ctkh : chitietkhoahocDAO.getChiTietKhoaHocByIDCT(khoahocid)) {
+										for (ChiTietKhoaHoc ctkh : chitietkhoahocDAO.getChiTietKhoaHocByIDCT(khoahocchitietid)) {
 									%>
 									<div class="panel-heading" style="background: #0CC">
 										<h3 style="font-family: verdana; color: #FFF">
 											Bài tập
 											<%=ctkh.getTenBaiHoc()%>
-											<a href="khoa-hoc-cua-toi">
+											<a href="chi-tiet-khoa-hoc-cua-toi?khoahoc=<%=ctkh.getMakh()%>">
 												<button type="button"
 													class="btn btn-danger navbar-btn pull-right"
 													style="border-radius: 15px; margin-right: 30px;">Quay
@@ -71,18 +85,28 @@
 											</a> <br></br>
 										</h3>
 									</div>
+									
+								<input type="hidden" name="makh" value="<%=ctkh.getMakh() %>">
+								<input type="hidden" name="chitietkhoahocids" value="<%=ctkh.getChitietKhoaHocID()%>"> 
+									
 									<%
 										}
-									%>
+									%>  
+									
+									<input type="hidden" name="userids" value="<%=users.getUserID()%>">
+									
+								 	
 									<%
-										for (AdminBaiTap s : adminbaitapdao.getAdminBaiTapListByID(1)) {
+										for (AdminBaiTap s : adminbaitapdao.getAdminBaiTapListByID(Long.parseLong(khoahocchitietid))) {
 									%>
 									<p>
 										<font size="5"> <%=s.getTenBaiTap()%>
 										</font>
 									</p>
+									<input type="hidden"  name="idbaitaps" value="<%=s.getIDBaiTap()%>">
+									<input type="hidden" name="tenbaitaps" value="<%=s.getTenBaiTap() %>">
 									<div class="btn btn-default"
-										style="text-align: left; width: 100%; background-image: url(images/Untitled.png)">
+										style="text-align: left; max-width: 100%; background-image: url(images/Untitled.png)">
 										<%=s.getNoiDungBaiTap()%>
 
 									</div>
@@ -104,10 +128,16 @@
 											</tr>
 											<tr>
 												<%
-														String chuoigio="";
+													Connection connect=DBConnect.getConnection();
+
+													Statement statement = connect.createStatement();
+													ResultSet resultset = statement.executeQuery("select * from viewhannopbai where IDBaiTap='"+s.getIDBaiTap()+"'");	
+												
+													String chuoigio="";
 														while (resultset.next()) {
 														int ngay=Integer.parseInt(resultset.getString(7));
-														
+														int gio=Integer.parseInt(resultset.getString(8));
+													//	String h= resultset.getString("Gio");
 														/*if(resultset.getString(7).length()==9)
 														{
 															chuoigio=resultset.getString(7).substring(1,9);
@@ -118,7 +148,7 @@
 														}*/
 												%>
 												<th>Thời gian còn lại</th>
-												<th><font color="red"><%=resultset.getString(7)%>&nbsp;Ngày&nbsp; </font>
+												<th><font color="red"><%=resultset.getString(7)%>&nbsp; Ngày&nbsp;&nbsp; <%=resultset.getString(8)%>&nbsp;Giây&nbsp; </font>
 												
 												</th>
 											</tr>
@@ -128,17 +158,24 @@
 									</table>
 
 								</div>
+								
+								
 								<div class="form-group">
 									<label for="contactghichu">Ghi chú</label><br>
-									<textarea class="form-group" id="contactghichu" rows="5"
-										cols="132" name="contactghichu"></textarea>
+									<textarea class="form-group"  rows="5"
+										cols="100" name="contactghichu"></textarea>
 								</div>
 								<label>Bài tập nộp</label><br> <input id="file"
-									type="file" name="files" enctype="multipart/form-data" /> <br>
+									type="file" name="file" enctype="multipart/form-data" /> <br>
 								<br>
+								
+								
+								
+								
+								
 								<%
-								if(ngay>0)
-								{
+								if(ngay>=0 ||(ngay==0 && gio>0))
+								{ 
 								%>
 								<button class="btn btn-info navbar-btn" id="btnsubmit"
 									name="btnsubmit" style="margin-left: 500px;">Nộp bài
@@ -151,9 +188,13 @@
 								
 								
 									<%} %>
+									
+									
 								<%
 									}
 								%>
+								 
+								</form>
 							</div>
 						</div>
 
@@ -164,7 +205,6 @@
 			</div>
 
 		</div>
-
 	</div>
 
 	<jsp:include page="footer.jsp"></jsp:include>

@@ -75,11 +75,16 @@
 												Gửi mail cho sinh viên</a></li>
 
 
+											<li class="active"><a href="xem-danh-sach-bai-tap"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+												Bài tập của học viên</a></li>
+										
+										
 										<li class="active"><a href="danh-sach-hoc-vien-nop-bai"
 											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-												Bài tập của học viên</a></li>
-
+												Bài thi của học viên</a></li>
 										<li class="active"><a href="them-de-thi-trac-nghiem"
 											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-pencil"></i>
@@ -98,21 +103,21 @@
 									</div>
 									<div class="panel-body">
 
-	<form method="post" name="frm" action="Searchs"
+										<form method="post" name="frm" action="Searchs"
 											class="form-inline">
 											<div class="form-group form-group-sm">
-												
-													<div class="form-group">
-												<label for="tukhoa">Tìm câu hỏi:</label> <input type="text"
-													class="form-control" id="pid" name="pid"
-													data-autocomplete-source="/CauHoi/QuickSearch?MaChuDe=LT"
-													placeholder="Nhập câu hỏi ở đây!">
+
+												<div class="form-group">
+													<label for="tukhoa">Tìm câu hỏi:</label> <input type="text"
+														class="form-control" id="pid" name="pid"
+														data-autocomplete-source="/CauHoi/QuickSearch?MaChuDe=LT"
+														placeholder="Nhập câu hỏi ở đây!">
+												</div>
+												<span class="glyphicon glyphicon-search"></span><input
+													type="submit" name="submit" value="Tìm kiếm"
+													class="btn btn-warning ">
 											</div>
-											 <span
-													class="glyphicon glyphicon-search"></span><input type="submit" name="submit" value="Tìm kiếm"
-												class="btn btn-warning ">
-											</div>
-											
+
 										</form>
 										<table class="table table-bordered">
 											<thead style="background: #09F">
@@ -126,20 +131,19 @@
 												</tr>
 											</thead>
 											<tbody>
-											
-									<%
-									if (request.getAttribute("piList") == null) {
 
-										
-									%>
-								
-								
-									<%
-													String chophep=(String)(request.getAttribute("chophep"));
-													long makh= (Long)(request.getAttribute("makh"));
-													Connection connection = DBConnect.getConnection();
-													Statement statement = connection.createStatement();
-													ResultSet resultset = statement.executeQuery("select * from viewdanhsachhocvienkhoahoc where MaKH="+makh+"");
+												<%
+													if (request.getAttribute("piList") == null) {
+												%>
+
+
+												<%
+													String chophep = (String) (request.getAttribute("chophep"));
+														long makh = (Long) (request.getAttribute("makh"));
+														Connection connection = DBConnect.getConnection();
+														Statement statement = connection.createStatement();
+														ResultSet resultset = statement
+																.executeQuery("select * from viewdanhsachhocvienkhoahoc where MaKH=" + makh + "");
 												%>
 
 												<%
@@ -151,56 +155,55 @@
 													<TD><%=resultset.getString(4)%></TD>
 													<TD><%=resultset.getString(5)%></TD>
 													<TD><%=resultset.getString(6)%></TD>
-													<td>
-													<a href="XoaDangKyServlet?makh=<%=makh%>&userid=<%=resultset.getLong(1)%>" style="text-decoration: underline">Xóa Khỏi Danh Sách</a>
+													<td><a
+														href="XoaDangKyServlet?makh=<%=makh%>&userid=<%=resultset.getLong(1)%>"
+														style="text-decoration: underline">Xóa Khỏi Danh Sách</a>
 													</td>
 												</tr>
 												<%
 													}
 												%>
-								
-								
-								<%
-									}
 
-									
-								%>
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-											
+
 												<%
-									int count = 0;
-									String color = "#F9EBB3";
+													}
+												%>
 
-									if (request.getAttribute("piList") != null) {
-										ArrayList al = (ArrayList) request.getAttribute("piList");
-										System.out.println(al);
-										Iterator itr = al.iterator();
-										while (itr.hasNext()) {
 
-											if ((count % 2) == 0) {
-												color = "#eeffee";
-											}
-											count++;
-											ArrayList pList = (ArrayList) itr.next();
-											long makh = (Long) (request.getAttribute("makh"));
-											%>
-																				<tr>
- 													<td><%=pList.get(1) %></td>
+
+
+
+
+
+
+
+
+
+
+												<%
+													int count = 0;
+													String color = "#F9EBB3";
+
+													if (request.getAttribute("piList") != null) {
+														ArrayList al = (ArrayList) request.getAttribute("piList");
+														System.out.println(al);
+														Iterator itr = al.iterator();
+														while (itr.hasNext()) {
+
+															if ((count % 2) == 0) {
+																color = "#eeffee";
+															}
+															count++;
+															ArrayList pList = (ArrayList) itr.next();
+															long makh = (Long) (request.getAttribute("makh"));
+												%>
+												<tr>
+													<td><%=pList.get(1)%></td>
 													<td><%=pList.get(2)%></td>
 													<td><%=pList.get(3)%></td>
 													<td><%=pList.get(4)%></td>
 													<td><%=pList.get(5)%></td>
-<%-- 												
+													<%-- 												
 
 	<td><%=pList.get(6)%></td> --%>
 													<td><a
@@ -208,26 +211,26 @@
 														style="text-decoration: underline">Xóa Khỏi Danh Sách</a>
 													</td>
 												</tr>
-											<%-- 	<%
+												<%-- 	<%
 													}
 												%> --%>
 
-								<%
-									}
-									}
-								if (count == 0 && request.getAttribute("piList") != null) {
-								%>
-								<b>Không tìm thấy!!!</b>
-								<%
-									}
-								%>
-											
-											
-											
-											
-											
-											
-											
+												<%
+													}
+													}
+													if (count == 0 && request.getAttribute("piList") != null) {
+												%>
+												<b>Không tìm thấy!!!</b>
+												<%
+													}
+												%>
+
+
+
+
+
+
+
 
 											</tbody>
 										</table>

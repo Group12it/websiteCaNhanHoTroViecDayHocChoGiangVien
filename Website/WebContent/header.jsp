@@ -69,8 +69,6 @@ users.UserID=<%=users.getUserID() %> && dangkykhoahoc.chophep='1' ;</sql:query>
               	                              
 										 <%} %>
                 	
-                	
-                	
                     <span class="arrow"></span>
                		<div class="dropdown-content" style="z-index: 1">
                	   <%if(users!=null){%>
@@ -86,7 +84,7 @@ users.UserID=<%=users.getUserID() %> && dangkykhoahoc.chophep='1' ;</sql:query>
             </div>
           </div>
         <div class="col-md-13 ">
-            <img src="images/hoclaptrinh.jpg" align="bottom" width="1165" height="160" class="img-responsive img-rounded"/>
+            <img src="images/app_banner.jpg" align="bottom" width="1165" height="160" class="img-responsive img-rounded"/>
             
            </div>
         <nav class="navbar navbar-default" role="navigation" style="color:blue;"> <!--navbar-default-->
@@ -198,7 +196,7 @@ users.UserID=<%=users.getUserID() %> && dangkykhoahoc.chophep='1' ;</sql:query>
 
 					<div class="account">
 						
-						 <form class="form-horizontal" id="contactform" name="GuiMailUserAndGuest" method="post" action="gui-email"
+			<form class="form-horizontal" id="contactform" name="GuiMailUserAndGuest" method="post" action="gui-email"
             data-bv-message="This value is not valid"
             data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
             data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"

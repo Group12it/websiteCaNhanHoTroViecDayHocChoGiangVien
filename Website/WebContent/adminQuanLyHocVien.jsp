@@ -18,27 +18,19 @@
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
    <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
-   
-
-   
+      
 </head>
 
 <body>
-
-	<jsp:include page="headeradmin.jsp" ></jsp:include>
-	
-	   
+	<jsp:include page="header.jsp" ></jsp:include>
     <div id="wrapper">
       <div class="container">
         <div class="row">
-         
             <div class="container">
                 <div class="row">
-                
                     <div class="col-md-3">
                        <div class="panel panel-primary" style="padding-top:0px ">
                            <div class ="panel-body"> 
-                  
                          <ul class="nav navs-tabs-brand">
                            <li class="active"><a href="trang-chu-quan-tri" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-home"></i> &nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
                                
@@ -53,8 +45,16 @@
                                 <li class="active"><a href="gui-mail" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp; Gửi mail cho sinh viên</a></li>
                               
                             
-                                <li class="active"><a href="danh-sach-hoc-vien-nop-bai" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
-                               
+                                	<li class="active"><a href="xem-danh-sach-bai-tap"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+												Bài tập của học viên</a></li>
+										
+										
+										<li class="active"><a href="danh-sach-hoc-vien-nop-bai"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+												Bài thi của học viên</a></li>
                                 <li class="active"><a href="them-de-thi-trac-nghiem" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
 
                         </ul>
@@ -71,7 +71,7 @@
                                     </div>
                                     <div class="panel-body">
 
-                                        <form class="form-horizontal" role="form">
+                                 <!--        <form class="form-horizontal" role="form">
                                             <div class="form-group form-group-sm">
                                                 <label class="col-sm-2 control-lable" for="fromGroupInputSmall">Email:</label>
                                                 <div class="col-sm-4">
@@ -93,7 +93,7 @@
                                             </div>
 
                                         </form>
-
+ -->
 
                                         <table  class="table table-striped" border="1" >
                                             <thead style="background:#09F">
@@ -114,8 +114,8 @@
 
 									            Statement statement = connection.createStatement() ;
 									            ResultSet resultset = 
-									                statement.executeQuery("select * from viewthongtindangky") ; 
-									        %>
+									                statement.executeQuery("select * from viewthongtindangky where chophep=0") ; 
+									      	  %>
 									
 									            <% while(resultset.next()){ %>
 									            <tr>
@@ -128,8 +128,9 @@
 									                 <td width="21%" >
 									                 <form action="DangKyKhoaHocServlet?userid=<%= resultset.getString(1)%>&makh=<%= resultset.getString(6) %>" method="post">
                                                         <button type="submit" class="btn btn-success" id="btnXacNhan">Xác Nhận</button>
-                                                        <button type="button" class="btn btn-warning" id="btnXoa1" title="right">Xóa</button>
+                                                       
                                                      </form>
+                                                    <a href="XoaXacNhan?userid=<%= resultset.getString(1)%>&makh=<%= resultset.getString(6) %>" ><button type="button" class="btn btn-warning" id="btnXoa1" title="right">Xóa</button></a>
                                                     </td>
 									              
 									            </tr>

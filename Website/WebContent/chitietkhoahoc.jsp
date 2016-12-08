@@ -1,3 +1,6 @@
+<%@ page import="java.sql.*" %>
+<%@ page import="connect.*" %>
+<% Class.forName("com.mysql.jdbc.Driver"); %>
 <%@page import="java.*" %>
 <%@page import="dao.*" %>
 <%@page import="model.*" %>
@@ -31,6 +34,8 @@
             if (session.getAttribute("user") != null) {
                 users = (Users) session.getAttribute("user");
             }
+            
+            long userid=users.getUserID();
 %>
 <% 
 	String loi="";
@@ -42,6 +47,8 @@
 	String makh="";
 	if(request.getParameter("khoahoc")!=null){
 		makh= request.getParameter("khoahoc");
+		
+		
 	}
 %>
         <section class="container" style="min-height:0px">
@@ -66,26 +73,57 @@
                               <p>*Học phí:<%=kh.getAdHocPhi()%></p>
 		<%
      	DangKyKhoaHocDAO dkkh=new DangKyKhoaHocDAO();
-     	String t=""; 
+     	int t=0; 
+     	String k="";
      	//kiểm tra xem học viên đã đăng ký khoá học này hay chưa
-     	if(dkkh.checkEmaildangkykh(users.getUserID(), String.valueOf(kh.getAdMaKH()))==true){
-     			 t="loi";
+     	
+     	
+     	if(dkkh.checkEmaildangkykh(users.getUserID(), String.valueOf(kh.getAdMaKH()),"0")==true){
+     			 t=1;
+     			 k="loi";
      			
-     	 }else 
+     	 }else if(dkkh.checkEmaildangkykh(users.getUserID(), String.valueOf(kh.getAdMaKH()),"0")==false)
      	 
      	 {
-     		 t="khongloi";
+     		 t=2;
+     		 k="khong";
      	 }
+     	if(dkkh.checkEmaildangkykh(users.getUserID(), String.valueOf(kh.getAdMaKH()),"1")==true){
+     		t=3; 
+     		k="co";
+     	 }
+     	
+     
+     	if(t==1){
+     		
+     	
      	%>
-   			<c:set var="val" value="<%=t %>"/>			
+     		<a href="huy-dang-ky?userid=<%=users.getUserID() %>&makh=<%=kh.getAdMaKH() %>" class="btn btn-danger btn-lg" >Huỷ đăng ký</a>
+    	
+     	<%} else if(t==2){%>
+     		<a href="dang-ky-khoa-hoc?userid=<%=users.getUserID()%>&makh=<%= kh.getAdMaKH() %>"  class="btn btn-primary btn-lg" >Đăng ký</a>
+        
+     	<%} else if(t==3){
+     	%>
+     		<a href="" title="Bạn không thể huỷ khoá học khi đã được giáo viên thêm vào khoá học" class="btn btn-danger btn-lg" disabled>Đã được xác nhận</a>
+    	
+     		
+     <%	}%>
+     
+     		
+     		
+   		<%-- 	<c:set var="val" value="<%=t %>"/>			
 			<c:choose> 
   			<c:when test="${val=='loi'}">
-    		<a href="" class="btn btn-danger btn-lg" disabled>Đã đăng ký</a>
+    
+    		<a href="huy-dang-ky?userid=<%=users.getUserID() %>&makh=<%=kh.getAdMaKH() %>" class="btn btn-danger btn-lg" >Huỷ đăng ký
+    		</a>
+  		
   			</c:when>
   			<c:otherwise>
-       		<a href="dang-ky-khoa-hoc?userid=<%=users.getUserID()%>&makh=<%= kh.getAdMaKH() %>"  class="btn btn-primary btn-lg">Đăng ký</a>
-         	</c:otherwise>
-			</c:choose>
+  				<a href="dang-ky-khoa-hoc?userid=<%=users.getUserID()%>&makh=<%= kh.getAdMaKH() %>"  class="btn btn-primary btn-lg" >Đăng ký</a>
+        	</c:otherwise>
+			</c:choose> --%>
 	                            </div>
                       </ul>
                   </div>

@@ -19,9 +19,9 @@ public class DangKyKhoaHocDAO {
 	}
 	
 	
-	public boolean checkEmaildangkykh(long userid,String makh ) {
+	public boolean checkEmaildangkykh(long userid,String makh,String chophep) {
 		
-		String sql = "SELECT * FROM dangkykhoahoc  where UserID = '" + userid + "' and MaKH='"+makh+"'";
+		String sql = "SELECT * FROM dangkykhoahoc  where UserID = '" + userid + "' and MaKH='"+makh+"' and chophep='"+chophep+"'";
 		PreparedStatement ps;
 		try {
 			ps = connection.prepareCall(sql);

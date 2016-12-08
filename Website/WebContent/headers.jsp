@@ -67,7 +67,7 @@
         </div>
         <p></p>
         <div class="col-md-13 ">
-            <img src="images/hoclaptrinh.jpg" align="bottom" width="1165" height="160" class="img-responsive img-rounded"/>
+            <img src="images/app_banner.jpg" align="bottom" width="1165" height="160" class="img-responsive img-rounded"/>
             
            </div>
         

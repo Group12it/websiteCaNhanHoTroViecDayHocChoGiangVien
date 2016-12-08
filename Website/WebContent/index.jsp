@@ -95,7 +95,7 @@
                             for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
                         %>
                            	<li><a href="chi-tiet-khoa-hoc-xem?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
-                           	
+                           	<br></br>
                         <%
                             }
                         %>

@@ -64,8 +64,16 @@
                                 <li class="active"><a href="gui-mail" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp; Gửi mail cho sinh viên</a></li>
                               
                             
-                                <li class="active"><a href="danh-sach-hoc-vien-nop-bai" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
-                               
+                               	<li class="active"><a href="xem-danh-sach-bai-tap"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+												Bài tập của học viên</a></li>
+										
+										
+										<li class="active"><a href="danh-sach-hoc-vien-nop-bai"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+												Bài thi của học viên</a></li> 
                                 <li class="active"><a href="them-de-thi-trac-nghiem" class="list-group-item active" style="z-index: 0"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
 
                         </ul>
@@ -82,18 +90,16 @@
                                  
                                   <input type="text" class="form-control" name="tendethi" id="DeThiID" value ="" placeholder="Tên Đề Thi" required autofocus >
                                   
-                                  <lable><b style="font-size: 15px; ">Môn Thi</b></lable>
-                                 <div class="row">
                                  
-                                 <div></div>
+                                	 <div class="row">
                                  
+                                
                                   
                                   <p align=""><font face="Arial">
-                                  <div>
-                                   
-                                  <div class="col-md-6">
-                                    
-                                  <select name="mhoc" id="mhoc" class="form-control" style="font-size: 15px;width: 100%"  >
+                                  <div class="form-group">
+                                   <label class="control-label col-md-2">Khoá học</label>
+                                  <div class="col-md-12">
+                                 	 <select name="mhoc" id="mhoc" class="form-control" style="font-size: 15px;width: 100%"  >
                                 <%for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) { %>
                                 	<option value="<%=kh.getAdMaKH() %>" selected ><%=kh.getAdTenKH() %></option>
                             
@@ -102,18 +108,17 @@
                                     </div>
                                      </div>
                                     </div>
-							     <%--  de thi trac ngiem--%>
-                                 
-                                    <input type="file" id="file" name="file"required autofocus/>
-                                      <br></br>
-                                      <textarea id="fileContetnts" style="resize: none;width: 100%; height: 150px " ><%=request.getContextPath()%></textarea>
-
-                                      <script type="text/javascript" src="Scripts/script.js"></script>
-                                   
+                                    <br></br>
+							        <div class="form-group">
+							       	<label class="control-label col-md-2">Tải đề thi lên</label>
+							         <input type="file" id="fileContetnts" name="file"required autofocus title="Chỉ có đề thi dạng txt mới hiển thị được trên giao diện"/>
+                                      </div>
+                                     
+                                     
                                         <div class="col-md-1">
                    
                                         <button class="btn btn-info" type="submit" onclick="return formaction()">Tạo đề thi</button>
-                             </div>
+                           			  </div>
                     
                                    <!--code hien file text đề thi -->                      
                               

@@ -58,8 +58,13 @@
                                 <li class="active"><a href="gui-mail" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp; Gửi mail cho sinh viên</a></li>
                               
                             
-                                <li class="active"><a href="danh-sach-hoc-vien-nop-bai" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
-                               
+                                <li class="active"><a href="xem-danh-sach-bai-tap" class="list-group-item" style="z-index: 0"><i	class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;&nbsp;&nbsp;	Bài tập của học viên</a></li>
+										
+										
+								<li class="active"><a href="danh-sach-hoc-vien-nop-bai"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+												Bài thi của học viên</a></li>
                                 <li class="active"><a href="them-de-thi-trac-nghiem" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
                  
                         </ul>

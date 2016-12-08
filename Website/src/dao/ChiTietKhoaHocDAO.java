@@ -54,6 +54,7 @@ public class ChiTietKhoaHocDAO {
 			chitietkhoahocs.setPathBaiTap(rs.getString("DuongDanBaiTap"));
 			chitietkhoahocs.setMakh(rs.getLong("MaKH"));
 			list.add(chitietkhoahocs);
+			
 		}
 		return list;
 	}
@@ -76,6 +77,7 @@ public class ChiTietKhoaHocDAO {
 			chitietkhoahocs.setPathBaiTap(rs.getString("DuongDanBaiTap"));
 			chitietkhoahocs.setMakh(rs.getLong("MaKH"));
 			list.add(chitietkhoahocs);
+			connection.close();
 		}
 		return list;
 	}
@@ -96,6 +98,7 @@ public class ChiTietKhoaHocDAO {
 			ps.setNString(7, kh.getPathBaiTap());
 			ps.setLong(8, kh.getMakh());
 			ps.executeUpdate();
+			connection.close();
 			return true;
 		} catch (SQLException ex) {
 			Logger.getLogger(ChiTietKhoaHocDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -118,6 +121,7 @@ public class ChiTietKhoaHocDAO {
 			ps.setNString(6, kh.getPathBaiTap());
 			ps.setLong(7, kh.getMakh());
 			ps.executeUpdate();
+			connection.close();
 			return true;
 		} catch (SQLException ex) {
 			Logger.getLogger(ChiTietKhoaHocDAO.class.getName()).log(Level.SEVERE, null, ex);

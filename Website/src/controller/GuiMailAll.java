@@ -33,8 +33,8 @@ public class GuiMailAll extends HttpServlet {
 			Statement stmt = con.createStatement();
 			String makh = request.getParameter("to");
 			System.out.println(makh);
-
-			if (makh.equals("1")) {
+	
+			if (makh.equals(1)) {
 				String sql = "SELECT GROUP_CONCAT(Email)FROM users";
 				ResultSet rs = stmt.executeQuery(sql);
 				while (rs.next()) {

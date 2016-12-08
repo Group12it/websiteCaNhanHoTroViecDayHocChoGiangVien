@@ -21,6 +21,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="F:/phan mem hoc/apache-tomcat-7.0.72-windows-x64/Tomcat 8.0/lib/servlet-api.jar" sourcepath=""/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.0/lib/servlet-api.jar" sourcepath="/WebHostings"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

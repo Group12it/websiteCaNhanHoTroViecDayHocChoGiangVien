@@ -31,7 +31,12 @@
 	url="jdbc:mysql://localhost/web" user="root" password="admin" />
 
       <%
-            Users users = null;
+            
+      		String dethis="";
+      		if(request.getParameter("dethis")!=null){
+      			dethis=request.getParameter("dethis");
+      		}
+      		Users users = null;
             if (session.getAttribute("user") != null) {
                 users = (Users) session.getAttribute("user");
             }
@@ -65,14 +70,14 @@
                           </tr>
                         </thead>
                        
-                       <c:set var="count" value="0"></c:set>
+                       	<c:set var="count" value="0"></c:set>
                         <c:forEach var="rows" items="${khoahoccuatoi.rows}">
                         <tbody>
                         <tr>
                         <c:set var="count"  value="${count+1}" /> <%--Tăng biến đếm lên 1 đơn vị--%>
                         <td>${rows.MaKH }</td>
                       	<td> ${rows.TenKH }</td>
-                      	<td><a href="lam-bai-kiem-tra?khoahoc=${rows.MaKH }">${rows.TenDeThi }</a></td>
+                      	<td><a href="lam-bai-kiem-tra?khoahoc=${rows.MaKH }&dethis=${rows.MaDeThi}">${rows.TenDeThi }</a></td>
                            <td><a href="xem-diem?dethis=${rows.MaDeThi }"> Xem kết quả </a></td>
                           </tr>
                           </tbody>

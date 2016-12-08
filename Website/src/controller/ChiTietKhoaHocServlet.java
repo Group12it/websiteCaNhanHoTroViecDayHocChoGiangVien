@@ -20,7 +20,7 @@ import dao.UsersDAO;
 import model.ChiTietKhoaHoc;
 
 @SuppressWarnings("serial")
-@WebServlet("/them-khoa-hoc-chi-tiets")
+@WebServlet("/them-khoa-hoc-chi-tiet")
 // @WebServlet(urlPatterns = {"/abc"})
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10, maxFileSize = 1024 * 1024 * 50, maxRequestSize = 1024 * 1024
@@ -30,8 +30,6 @@ import model.ChiTietKhoaHoc;
 public class ChiTietKhoaHocServlet extends HttpServlet {
 	// this if directory name where the file will be uploaded and saved
 	UsersDAO usersDAO = new UsersDAO();
-	@SuppressWarnings("unused")
-	private static final String SAVE_DIR = "Avartar";
 	
 	private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3; // 3MB
 	private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB

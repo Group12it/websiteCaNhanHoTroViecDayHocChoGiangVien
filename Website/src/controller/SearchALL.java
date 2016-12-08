@@ -1,9 +1,11 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import connect.DBConnect;
+@SuppressWarnings("serial")
 public class SearchALL extends HttpServlet {
  
 	 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -62,7 +65,7 @@ public class SearchALL extends HttpServlet {
 	            }
 	 
 	            request.setAttribute("piList", pid_list);
-	            RequestDispatcher view = request.getRequestDispatcher("/adminQuanLyHocVienDanhSachKhoaHoc.jsp");
+	            RequestDispatcher view = request.getRequestDispatcher("/admin.jsp");
 	            view.forward(request, response);
 	            conn.close();
 	            System.out.println("Disconnected!");

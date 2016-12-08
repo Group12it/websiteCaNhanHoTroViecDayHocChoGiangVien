@@ -73,7 +73,7 @@ word-wrap: break-word;
                         			       %>
                         			        <div class="panel-heading" style="background:#0CC">
                                                 <h3 style="font-family: verdana;color:#FFF">Bài giảng <%=kh.getAdTenKH() %>
-                                                       <a href="khoa-hoc-cua-toi"> <button type="button" class="btn btn-danger navbar-btn pull-right" style="border-radius: 15px; margin-right: 30px;">Quay lại</button></a>
+                                                       <a href="trang-chu"> <button type="button" class="btn btn-danger navbar-btn pull-right" style="border-radius: 15px; margin-right: 30px;">Quay lại</button></a>
                                                 <br></br>
                                                 </h3>
                                             </div>
