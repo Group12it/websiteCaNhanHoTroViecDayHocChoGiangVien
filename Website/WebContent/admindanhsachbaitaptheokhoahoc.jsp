@@ -97,7 +97,7 @@
 											<td><%=i%></td>
 											<td><%=adbt.getTenBaiTap() %></td>
 											<td><center>
-													<a href="adDanhsachbaitapcuahocvien.jsp?mabaitap=<%=adbt.getIDBaiTap() %>&khoahocchitiet=<%=adbt.getMaChiTietKH() %>"
+													<a href="xem-danh-hoc-vien-nop-bai-tap?mabaitap=<%=adbt.getIDBaiTap() %>&khoahocchitiet=<%=adbt.getMaChiTietKH() %>"
 														class="btn btn-info btn-sm" style="background: #ff3300;">
 														<span class="glyphicon glyphicon-view"></span>Xem chi tiết
 													</a>

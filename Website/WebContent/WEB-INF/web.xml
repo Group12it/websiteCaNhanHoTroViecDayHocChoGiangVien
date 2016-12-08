@@ -353,6 +353,18 @@
     <servlet-name>admin xem danh sach hoc vien nop bai tap</servlet-name>
     <url-pattern>/xem-danh-hoc-vien-nop-bai-tap</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>admin xem chi tiet bai tap cua hoc vien</servlet-name>
+    <jsp-file>/adChitietbaitapcuahocvien.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin xem chi tiet bai tap cua hoc vien</servlet-name>
+    <url-pattern>/xem-cham-diem-bai-tap-hoc-vien</url-pattern>
+  </servlet-mapping>
+  
+  
+  
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>

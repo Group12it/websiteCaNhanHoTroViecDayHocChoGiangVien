@@ -144,7 +144,7 @@
 												<td><%=resultset.getString(4) %></td>
 												<td><%=resultset.getString(3)%></td>
 												<td><%=resultset.getString(8) %></td>
-												<td><a href="adChitietbaitapcuahocvien.jsp?mabaitap=<%=resultset.getString(1)%>&chitietkhoahoc=<%=resultset.getString(6)%>"><span
+												<td><a href="xem-cham-diem-bai-tap-hoc-vien?mabaitap=<%=resultset.getString(1)%>&chitietkhoahoc=<%=resultset.getString(6)%>"><span
 														class="glyphicon glyphicon-folder-open" aria-hidden="">&nbsp;Xem
 															chi tiết</span></a><br></td>
 											</tr>

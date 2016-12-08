@@ -1,8 +1,0 @@
-eclipse.preferences.version=1
-encoding//WebContent/css/Site.css=UTF-8
-encoding//WebContent/footer.jsp=UTF-8
-encoding//src/controller/Login.java=UTF-8
-encoding//src/controller/ThreadServlet.java=UTF-8
-encoding//src/controller/UsersServlet.java=UTF-8
-encoding//src/dao/Manager_Login.java=UTF-8
-encoding//src/dao/UsersDAO.java=UTF-8
