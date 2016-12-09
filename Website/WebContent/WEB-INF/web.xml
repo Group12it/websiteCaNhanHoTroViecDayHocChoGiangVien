@@ -353,8 +353,7 @@
     <servlet-name>admin xem danh sach hoc vien nop bai tap</servlet-name>
     <url-pattern>/xem-danh-hoc-vien-nop-bai-tap</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>admin xem chi tiet bai tap cua hoc vien</servlet-name>
     <jsp-file>/adChitietbaitapcuahocvien.jsp</jsp-file>
   </servlet>
@@ -362,7 +361,48 @@
     <servlet-name>admin xem chi tiet bai tap cua hoc vien</servlet-name>
     <url-pattern>/xem-cham-diem-bai-tap-hoc-vien</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>adminquanlytaikhoanhocvien.jsp</servlet-name>
+    <jsp-file>/adminquanlytaikhoanhocvien.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminquanlytaikhoanhocvien.jsp</servlet-name>
+    <url-pattern>/quan-ly-tai-khoan</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>adminXemThongTinCaNhanUser.jsp</servlet-name>
+    <jsp-file>/adminquanlytaikhoanhocvien.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminXemThongTinCaNhanUser.jsp</servlet-name>
+    <url-pattern>/xem-thong-tin-tai-khoan</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>hocvienkhaosatkhoahoc.jsp</servlet-name>
+    <jsp-file>/hocvienkhaosatkhoahoc.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>hocvienkhaosatkhoahoc.jsp</servlet-name>
+    <url-pattern>/khao-sat-khoa-hoc</url-pattern>
+  </servlet-mapping>
+   
+    <servlet>
+    <servlet-name>adDanhSachKhaoSatTheoKH.jsp</servlet-name>
+    <jsp-file>/adDanhSachKhaoSatTheoKH.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adDanhSachKhaoSatTheoKH.jsp</servlet-name>
+    <url-pattern>/danh-sach-khoa-hoc-khao-sat</url-pattern>
+  </servlet-mapping>
   
+     <servlet>
+    <servlet-name>adminXemKQKhaoSat.jsp</servlet-name>
+    <jsp-file>/adminXemKQKhaoSat.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminXemKQKhaoSat.jsp</servlet-name>
+    <url-pattern>/xem-ket-qua-khao-sat</url-pattern>
+  </servlet-mapping>
   
   
   <session-config>

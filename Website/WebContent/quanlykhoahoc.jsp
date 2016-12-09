@@ -59,7 +59,16 @@
                                 <li class="active"><a href="danh-sach-hoc-vien-nop-bai" class ="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp; Bài tập của học viên</a></li>
                                
                                 <li class="active"><a href="them-de-thi-trac-nghiem" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
-
+<li class="active"><a href="quan-ly-tai-khoan"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-pencil"></i>
+												&nbsp;&nbsp;&nbsp;&nbsp;Quản lý tài khoản</a></li>
+												
+												
+												<li class="active"><a href="danh-sach-khoa-hoc-khao-sat"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-pencil"></i>
+												&nbsp;&nbsp;&nbsp;&nbsp;Kết quả khảo sát KH</a></li>
                         </ul>
                     </div>  
                     </div>

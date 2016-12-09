@@ -18,6 +18,35 @@ USE `web`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `adminbaitap`
+--
+
+DROP TABLE IF EXISTS `adminbaitap`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `adminbaitap` (
+  `IDBaiTap` bigint(20) NOT NULL,
+  `TenBaiTap` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `NoiDung` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `HanNop` date DEFAULT NULL,
+  `GioNop` time DEFAULT NULL,
+  `MaChiTietKH` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`IDBaiTap`),
+  UNIQUE KEY `MaChiTietKH_UNIQUE` (`MaChiTietKH`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `adminbaitap`
+--
+
+LOCK TABLES `adminbaitap` WRITE;
+/*!40000 ALTER TABLE `adminbaitap` DISABLE KEYS */;
+INSERT INTO `adminbaitap` VALUES (1,'Bài tập 1','Các em tải file bài tập về làm và nén lại file rar và gửi lên trước thời hạn','2016-12-10','01:00:00',1480662203856);
+/*!40000 ALTER TABLE `adminbaitap` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `baitap`
 --
 
@@ -28,9 +57,10 @@ CREATE TABLE `baitap` (
   `baitapID` bigint(20) NOT NULL,
   `UserID` bigint(20) DEFAULT NULL,
   `TenBT` varchar(200) DEFAULT NULL,
-  `FileBaiTap` varchar(1000) DEFAULT NULL,
-  `ThoiGianNop` datetime DEFAULT NULL,
+  `GhiChu` varchar(1000) DEFAULT NULL,
   `MaCTKH` bigint(20) DEFAULT NULL,
+  `FileBaiTap` varchar(1000) DEFAULT NULL,
+  `ThoiGian` datetime DEFAULT NULL,
   PRIMARY KEY (`baitapID`),
   KEY `UserID` (`UserID`),
   KEY `uploadID` (`FileBaiTap`),
@@ -44,6 +74,7 @@ CREATE TABLE `baitap` (
 
 LOCK TABLES `baitap` WRITE;
 /*!40000 ALTER TABLE `baitap` DISABLE KEYS */;
+INSERT INTO `baitap` VALUES (1,1478396124277,'Bài tập 1','Hoàn thành tất cả các bài tập',1480662203856,'dbms.docx','2016-12-09 16:42:09');
 /*!40000 ALTER TABLE `baitap` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,6 +135,7 @@ CREATE TABLE `chitietthread` (
 
 LOCK TABLES `chitietthread` WRITE;
 /*!40000 ALTER TABLE `chitietthread` DISABLE KEYS */;
+INSERT INTO `chitietthread` VALUES (1481078687940,1480026543673,'Mác','2016-12-07 09:44:47','D');
 /*!40000 ALTER TABLE `chitietthread` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,7 +164,7 @@ CREATE TABLE `dangkykhoahoc` (
 
 LOCK TABLES `dangkykhoahoc` WRITE;
 /*!40000 ALTER TABLE `dangkykhoahoc` DISABLE KEYS */;
-INSERT INTO `dangkykhoahoc` VALUES (1478396124277,1480223244590,'1'),(1478396124277,1480223290372,'1'),(2,1480657717534,'1'),(1478396124277,1480657717534,'1');
+INSERT INTO `dangkykhoahoc` VALUES (1,1480223244590,'1'),(4,1480223244590,'1'),(1478396124277,1480223244590,'1'),(1478396124277,1480223290372,'1');
 /*!40000 ALTER TABLE `dangkykhoahoc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,31 +181,6 @@ SET character_set_client = utf8;
  1 AS `MaKH`,
  1 AS `chophep`*/;
 SET character_set_client = @saved_cs_client;
-
---
--- Table structure for table `danhsachhocvienthi`
---
-
-DROP TABLE IF EXISTS `danhsachhocvienthi`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `danhsachhocvienthi` (
-  `STT` int(11) NOT NULL,
-  `TenHV` varchar(50) DEFAULT NULL,
-  `TenBaiTap` varchar(50) DEFAULT NULL,
-  `ThoiGianNop` date DEFAULT NULL,
-  PRIMARY KEY (`STT`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `danhsachhocvienthi`
---
-
-LOCK TABLES `danhsachhocvienthi` WRITE;
-/*!40000 ALTER TABLE `danhsachhocvienthi` DISABLE KEYS */;
-/*!40000 ALTER TABLE `danhsachhocvienthi` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `dapanhv`
@@ -197,7 +204,7 @@ CREATE TABLE `dapanhv` (
 
 LOCK TABLES `dapanhv` WRITE;
 /*!40000 ALTER TABLE `dapanhv` DISABLE KEYS */;
-INSERT INTO `dapanhv` VALUES (1480906899197,'BBBBB',1478396124277,1),(1480906950925,'nullnullnullnullnull',1478396124277,1480905948523);
+INSERT INTO `dapanhv` VALUES (1481210281147,'BBABC',1478396124277,1),(1481210381305,'BBABC',1478396124277,1);
 /*!40000 ALTER TABLE `dapanhv` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,7 +236,7 @@ CREATE TABLE `dethi` (
   PRIMARY KEY (`MaDeThi`),
   KEY `MaKH` (`MaKH`),
   CONSTRAINT `dethi_ibfk_1` FOREIGN KEY (`MaKH`) REFERENCES `khoahoc` (`MaKH`)
-) ENGINE=InnoDB AUTO_INCREMENT=1480909567255 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,7 +245,7 @@ CREATE TABLE `dethi` (
 
 LOCK TABLES `dethi` WRITE;
 /*!40000 ALTER TABLE `dethi` DISABLE KEYS */;
-INSERT INTO `dethi` VALUES (1,'Kiểm tra lập trình C',1480657717534,'baikiemtra.txt');
+INSERT INTO `dethi` VALUES (1,'Kiểm tra lập trình C',1480223244590,'baikiemtra.txt');
 /*!40000 ALTER TABLE `dethi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -266,32 +273,59 @@ CREATE TABLE `diem` (
 
 LOCK TABLES `diem` WRITE;
 /*!40000 ALTER TABLE `diem` DISABLE KEYS */;
-INSERT INTO `diem` VALUES (1,1478396124277,10,'Good');
+INSERT INTO `diem` VALUES (0,0,0,NULL),(1,1478396124277,10,'Good');
 /*!40000 ALTER TABLE `diem` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `diemthitracnghiem`
+-- Table structure for table `diembaitap`
 --
 
-DROP TABLE IF EXISTS `diemthitracnghiem`;
+DROP TABLE IF EXISTS `diembaitap`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `diemthitracnghiem` (
-  `MaKH` bigint(20) DEFAULT NULL,
+CREATE TABLE `diembaitap` (
+  `MaBT` bigint(20) DEFAULT NULL,
   `UserID` bigint(20) DEFAULT NULL,
   `DiemSo` float DEFAULT NULL,
-  `XepLoai` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
+  `NhanXet` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `diemthitracnghiem`
+-- Dumping data for table `diembaitap`
 --
 
-LOCK TABLES `diemthitracnghiem` WRITE;
-/*!40000 ALTER TABLE `diemthitracnghiem` DISABLE KEYS */;
-/*!40000 ALTER TABLE `diemthitracnghiem` ENABLE KEYS */;
+LOCK TABLES `diembaitap` WRITE;
+/*!40000 ALTER TABLE `diembaitap` DISABLE KEYS */;
+INSERT INTO `diembaitap` VALUES (1,1478396124277,8,'Khá');
+/*!40000 ALTER TABLE `diembaitap` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `khaosatkhoahoc`
+--
+
+DROP TABLE IF EXISTS `khaosatkhoahoc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `khaosatkhoahoc` (
+  `MaKH` bigint(20) NOT NULL,
+  `UserID` bigint(20) NOT NULL,
+  `KQ` float DEFAULT NULL,
+  `NhanXet` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`MaKH`,`UserID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `khaosatkhoahoc`
+--
+
+LOCK TABLES `khaosatkhoahoc` WRITE;
+/*!40000 ALTER TABLE `khaosatkhoahoc` DISABLE KEYS */;
+INSERT INTO `khaosatkhoahoc` VALUES (1480223244590,4,60,''),(1480223244590,1478396124277,10,'');
+/*!40000 ALTER TABLE `khaosatkhoahoc` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -335,7 +369,7 @@ CREATE TABLE `thread` (
   `TenThread` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
   `NgayTao` datetime DEFAULT NULL,
   PRIMARY KEY (`MaThread`)
-) ENGINE=InnoDB AUTO_INCREMENT=1480938374420 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1480986680542 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -344,7 +378,7 @@ CREATE TABLE `thread` (
 
 LOCK TABLES `thread` WRITE;
 /*!40000 ALTER TABLE `thread` DISABLE KEYS */;
-INSERT INTO `thread` VALUES (1480026543673,'How to deploy to web??','2016-11-25 00:00:00'),(1480026995269,'Design template in html','2016-11-25 00:00:00'),(1480907470398,'How to deploy to web?','2016-12-05 00:00:00');
+INSERT INTO `thread` VALUES (1480026543673,'How to deploy to web??','2016-11-25 00:00:00'),(1480026995269,'Design template in html','2016-11-25 00:00:00'),(1480907470398,'How to deploy to web?','2016-12-05 00:00:00'),(1480986680541,'Học lập trình','2016-12-06 08:11:20');
 /*!40000 ALTER TABLE `thread` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -376,9 +410,28 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'nguoiemcuanui@gmail.com','admin','admin','Lưu Đình Mác','1995-09-13','Nam',965175646,'sdfsdf.jpg'),(2,'admin@gmail.com','123','admin','Admin','2000-01-01','Nữ',1234565655,'co.jpg'),(1478396124277,'user@gmail.com','123','user','Mác','1995-01-11','Nam',12345678,'ip.docx'),(1479265345174,'nhom12it@gmail.com','admin','admin','Mac','2016-11-16',NULL,1241241,''),(1479267239807,'vanbinh628@gmail.com','123','user','Binh','2016-11-16',NULL,0,''),(1480735379821,'luumac2801@gmail.com','123','user','Lưu Đình Mác','1995-09-13','Nam',0,''),(1480940679020,'luudinhmac@gmail.com','123','user','Luu Dinh Mac','2016-12-05','Nam',0,'null');
+INSERT INTO `users` VALUES (0,'nhom12it@gmail.com','123','admin','Lưu Đình Mác','1996-09-13','Nam',986175646,''),(1,'nguoiemcuanui@gmail.com','123','admin','Lưu Đình Mác','1995-09-13','Nam',965175646,''),(2,'luumac2801@gmail.com','123','user','Lưu Đình Mác','1995-09-13','Nam',965175646,''),(3,'liemnguyen388@gmail.com','123','user','Nguyễn Văn Liêm','1996-11-22','Nam',0,''),(4,'vanbinh628@gmail.com','123','user','Binh','2016-11-16','Nam',0,''),(1478396124277,'user@gmail.com','123','user','Học viên','1995-01-11','Nam',12345678,''),(1481278007510,'123@123','123','user','123123','2016-12-19','Nam',0,'null');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `viewdanhsachbaitap`
+--
+
+DROP TABLE IF EXISTS `viewdanhsachbaitap`;
+/*!50001 DROP VIEW IF EXISTS `viewdanhsachbaitap`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `viewdanhsachbaitap` AS SELECT 
+ 1 AS `baitapID`,
+ 1 AS `UserID`,
+ 1 AS `HoTen`,
+ 1 AS `TenBT`,
+ 1 AS `GhiChu`,
+ 1 AS `MaCTKH`,
+ 1 AS `FileBaiTap`,
+ 1 AS `ThoiGian`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Temporary view structure for view `viewdanhsachhocvienkhoahoc`
@@ -396,6 +449,76 @@ SET character_set_client = utf8;
  1 AS `NgaySinh`,
  1 AS `SDT`,
  1 AS `MaKH`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `viewdanhsachnopbai`
+--
+
+DROP TABLE IF EXISTS `viewdanhsachnopbai`;
+/*!50001 DROP VIEW IF EXISTS `viewdanhsachnopbai`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `viewdanhsachnopbai` AS SELECT 
+ 1 AS `UserID`,
+ 1 AS `HoTen`,
+ 1 AS `DapAnID`,
+ 1 AS `DeThiID`,
+ 1 AS `MaKH`,
+ 1 AS `ChuoiDapAn`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `viewdenopbai`
+--
+
+DROP TABLE IF EXISTS `viewdenopbai`;
+/*!50001 DROP VIEW IF EXISTS `viewdenopbai`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `viewdenopbai` AS SELECT 
+ 1 AS `UserID`,
+ 1 AS `HoTen`,
+ 1 AS `DapAnID`,
+ 1 AS `DeThiID`,
+ 1 AS `ChuoiDapAn`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `viewhannopbai`
+--
+
+DROP TABLE IF EXISTS `viewhannopbai`;
+/*!50001 DROP VIEW IF EXISTS `viewhannopbai`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `viewhannopbai` AS SELECT 
+ 1 AS `IDBaiTap`,
+ 1 AS `TenBaiTap`,
+ 1 AS `NoiDung`,
+ 1 AS `HanNop`,
+ 1 AS `GioNop`,
+ 1 AS `MaChiTietKH`,
+ 1 AS `ngay`,
+ 1 AS `Gio`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `viewquanlytaikhoan`
+--
+
+DROP TABLE IF EXISTS `viewquanlytaikhoan`;
+/*!50001 DROP VIEW IF EXISTS `viewquanlytaikhoan`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `viewquanlytaikhoan` AS SELECT 
+ 1 AS `UserID`,
+ 1 AS `Email`,
+ 1 AS `HoTen`,
+ 1 AS `NgaySinh`,
+ 1 AS `GioiTinh`,
+ 1 AS `SDT`,
+ 1 AS `HinhAnh`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -468,6 +591,24 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `viewdanhsachbaitap`
+--
+
+/*!50001 DROP VIEW IF EXISTS `viewdanhsachbaitap`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewdanhsachbaitap` AS (select `baitap`.`baitapID` AS `baitapID`,`baitap`.`UserID` AS `UserID`,`users`.`HoTen` AS `HoTen`,`baitap`.`TenBT` AS `TenBT`,`baitap`.`GhiChu` AS `GhiChu`,`baitap`.`MaCTKH` AS `MaCTKH`,`baitap`.`FileBaiTap` AS `FileBaiTap`,`baitap`.`ThoiGian` AS `ThoiGian` from (`users` join `baitap`) where (`users`.`UserID` = `baitap`.`UserID`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `viewdanhsachhocvienkhoahoc`
 --
 
@@ -481,6 +622,78 @@ SET character_set_client = @saved_cs_client;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `viewdanhsachhocvienkhoahoc` AS select `users`.`UserID` AS `UserID`,`users`.`Email` AS `Email`,`users`.`HoTen` AS `HoTen`,`users`.`GioiTinh` AS `GioiTinh`,`users`.`NgaySinh` AS `NgaySinh`,`users`.`SDT` AS `SDT`,`dangkykhoahoc`.`MaKH` AS `MaKH` from (`users` left join `dangkykhoahoc` on((`users`.`UserID` = `dangkykhoahoc`.`UserID`))) where (`dangkykhoahoc`.`chophep` = 1) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `viewdanhsachnopbai`
+--
+
+/*!50001 DROP VIEW IF EXISTS `viewdanhsachnopbai`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewdanhsachnopbai` AS (select `viewdenopbai`.`UserID` AS `UserID`,`viewdenopbai`.`HoTen` AS `HoTen`,`viewdenopbai`.`DapAnID` AS `DapAnID`,`viewdenopbai`.`DeThiID` AS `DeThiID`,`dethi`.`MaKH` AS `MaKH`,`viewdenopbai`.`ChuoiDapAn` AS `ChuoiDapAn` from (`viewdenopbai` left join `dethi` on((`viewdenopbai`.`DeThiID` = `dethi`.`MaDeThi`)))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `viewdenopbai`
+--
+
+/*!50001 DROP VIEW IF EXISTS `viewdenopbai`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewdenopbai` AS (select `users`.`UserID` AS `UserID`,`users`.`HoTen` AS `HoTen`,`dapanhv`.`DapAnID` AS `DapAnID`,`dapanhv`.`DeThiID` AS `DeThiID`,`dapanhv`.`ChuoiDapAn` AS `ChuoiDapAn` from (`dapanhv` left join `users` on((`dapanhv`.`UserID` = `users`.`UserID`)))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `viewhannopbai`
+--
+
+/*!50001 DROP VIEW IF EXISTS `viewhannopbai`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewhannopbai` AS (select `adminbaitap`.`IDBaiTap` AS `IDBaiTap`,`adminbaitap`.`TenBaiTap` AS `TenBaiTap`,`adminbaitap`.`NoiDung` AS `NoiDung`,`adminbaitap`.`HanNop` AS `HanNop`,`adminbaitap`.`GioNop` AS `GioNop`,`adminbaitap`.`MaChiTietKH` AS `MaChiTietKH`,(to_days(`adminbaitap`.`HanNop`) - to_days(now())) AS `ngay`,time_to_sec(timediff(`adminbaitap`.`GioNop`,curtime())) AS `Gio` from `adminbaitap`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `viewquanlytaikhoan`
+--
+
+/*!50001 DROP VIEW IF EXISTS `viewquanlytaikhoan`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewquanlytaikhoan` AS (select `users`.`UserID` AS `UserID`,`users`.`Email` AS `Email`,`users`.`HoTen` AS `HoTen`,`users`.`NgaySinh` AS `NgaySinh`,`users`.`GioiTinh` AS `GioiTinh`,`users`.`SDT` AS `SDT`,`users`.`HinhAnh` AS `HinhAnh` from `users`) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -530,4 +743,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-05 21:57:26
+-- Dump completed on 2016-12-09 20:07:18

@@ -9,36 +9,41 @@
 <%
 	Class.forName("com.mysql.jdbc.Driver");
 %>
+<%@page import="java.io.PrintWriter"%>
 <?xml version="1.0" encoding="utf-8" ?>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//Dtd XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/Dtd/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
 <head>
 <meta content="charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
+<meta name="viewport"
+	content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
 <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 <link rel="icon" href="images/head.ico" type="image/x-icon" />
-
+<title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
 
 </head>
-
 <body>
-
 	<jsp:include page="header.jsp"></jsp:include>
 
+
+	<%
+		Users users = null;
+		if (session.getAttribute("user") != null) {
+			users = (Users) session.getAttribute("user");
+		}
+		UsersDAO userDAO = new UsersDAO();
+	
+	%>
 
 
 	<div id="wrapper">
 		<div class="container">
 			<div class="row">
-
 				<div class="container">
 					<div class="row">
-
 						<div class="col-md-3">
 							<div class="panel panel-primary" style="padding-top: 0px">
 								<div class="panel-body">
@@ -65,7 +70,7 @@
 												&nbsp;&nbsp;&nbsp;&nbsp;Kế hoạch giảng dạy</a></li>
 
 										<li class="active"><a href="quan-ly-hoc-vien"
-											class="list-group-item active" style="z-index: 0"><i
+											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-user"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Quản lý học viên</a></li>
 
@@ -74,8 +79,7 @@
 												class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp;
 												Gửi mail cho sinh viên</a></li>
 
-
-											<li class="active"><a href="xem-danh-sach-bai-tap"
+										<li class="active"><a href="xem-danh-sach-bai-tap"
 											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;&nbsp;&nbsp;
 												Bài tập của học viên</a></li>
@@ -85,15 +89,15 @@
 											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;
 												Bài thi của học viên</a></li>
+
 										<li class="active"><a href="them-de-thi-trac-nghiem"
 											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-pencil"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
 <li class="active"><a href="quan-ly-tai-khoan"
-											class="list-group-item" style="z-index: 0"><i
+											class="list-group-item active" style="z-index: 0"><i
 												class="glyphicon glyphicon-pencil"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Quản lý tài khoản</a></li>
-												
 												
 												
 												<li class="active"><a href="danh-sach-khoa-hoc-khao-sat"
@@ -101,15 +105,24 @@
 												class="glyphicon glyphicon-pencil"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Kết quả khảo sát KH</a></li>
 									</ul>
+
 								</div>
 							</div>
 						</div>
+
+
+
+
+
 						<div class="col-md-9">
 							<ul class="nav navs-tabs-brand">
-								<div class="panel panel-default">
+
+								<div class="panel panel-default" style="max-height: 100%">
 									<div class="panel-heading" style="background: #0CC">
-										<h4 style="font-family: verdana; color: #000">Danh sách
-											khóa lập trình c căn bản</h4>
+										<center>
+											<h2
+												style="font-family: 'Times New Roman'; size: 15; color: #FFF">Quản lý tài khoản</h2>
+										</center>
 									</div>
 									<div class="panel-body">
 
@@ -118,7 +131,7 @@
 											<div class="form-group form-group-sm">
 
 												<div class="form-group">
-													<label for="tukhoa">Tìm câu hỏi:</label> <input type="text"
+													<label for="tukhoa">Tìm kiếm:</label> <input type="text"
 														class="form-control" id="pid" name="pid"
 														data-autocomplete-source="/CauHoi/QuickSearch?MaChuDe=LT"
 														placeholder="Nhập câu hỏi ở đây!">
@@ -129,67 +142,37 @@
 											</div>
 
 										</form>
+										
 										<table class="table table-bordered">
 											<thead style="background: #09F">
 												<tr>
+													<th><center>UserID</center></th>
 													<th><center>Email</center></th>
 													<th><center>Họ Và Tên</center></th>
 													<th><center>Giới tính</center></th>
 													<th><center>Ngày sinh</center></th>
 													<th><center>Số điện thoại</center></th>
-													<th width=""><center>Thao tác</center></th>
+													<th><center>Xem</center></th>
 												</tr>
 											</thead>
+											
+										
+											<%for(Users u:userDAO.getUsersList()){ %>
 											<tbody>
-
-												<%
-													if (request.getAttribute("piList") == null) {
-												%>
-
-
-												<%
-													String chophep = (String) (request.getAttribute("chophep"));
-														long makh = (Long) (request.getAttribute("makh"));
-														Connection connection = DBConnect.getConnection();
-														Statement statement = connection.createStatement();
-														ResultSet resultset = statement
-																.executeQuery("select * from viewdanhsachhocvienkhoahoc where MaKH=" + makh + "");
-												%>
-
-												<%
-													while (resultset.next()) {
-												%>
-												<TR>
-													<TD><%=resultset.getString(2)%></td>
-													<TD><%=resultset.getString(3)%></TD>
-													<TD><%=resultset.getString(4)%></TD>
-													<TD><%=resultset.getString(5)%></TD>
-													<TD><%=resultset.getString(6)%></TD>
-													<td><a
-														href="XoaDangKyServlet?makh=<%=makh%>&userid=<%=resultset.getLong(1)%>"
-														style="text-decoration: underline">Xóa Khỏi Danh Sách</a>
-													</td>
-												</tr>
-												<%
-													}
-												%>
-
-
-												<%
-													}
-												%>
-
-
-
-
-
-
-
-
-
-
-
-
+											<tr>
+											
+											<td><%=u.getUserID() %></td>
+											<td><%=u.getUserEmail() %></td>
+											<td><%=u.getUserHoTen() %></td>
+											<td><%=u.getUserGioiTinh() %></td>
+											<td><%=u.getUserNgaySinh() %></td>
+											<td><%=u.getUserSDT() %></td>
+											<td><a href="xem-thong-tin-tai-khoan?userid=<%=u.getUserID()%>">Chi tiết</a></td>
+											</tr>
+											</tbody>
+									
+											<%} %>
+										
 												<%
 													int count = 0;
 													String color = "#F9EBB3";
@@ -208,7 +191,7 @@
 															long makh = (Long) (request.getAttribute("makh"));
 												%>
 												<tr>
-													<td><%=pList.get(1)%></td>
+ 													<td><%=pList.get(1)%></td>
 													<td><%=pList.get(2)%></td>
 													<td><%=pList.get(3)%></td>
 													<td><%=pList.get(4)%></td>
@@ -216,10 +199,11 @@
 													<%-- 												
 
 	<td><%=pList.get(6)%></td> --%>
+													<%-- 
 													<td><a
 														href="XoaDangKyServlet?makh=<%=pList.get(6)%>&userid=<%=pList.get(0)%>"
 														style="text-decoration: underline">Xóa Khỏi Danh Sách</a>
-													</td>
+													</td> --%>
 												</tr>
 												<%-- 	<%
 													}
@@ -236,26 +220,36 @@
 												%>
 
 
-
-
-
-
-
-
 											</tbody>
 										</table>
 									</div>
+									<br></br>
+
+
+
 								</div>
+
+
 							</ul>
+
+
 						</div>
+
+
+
+
 					</div>
+
 				</div>
 			</div>
 		</div>
+
 	</div>
+
 	<jsp:include page="footer.jsp"></jsp:include>
-
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.min.js"></script>
-
 </body>
 </html>

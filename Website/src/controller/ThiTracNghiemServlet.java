@@ -35,11 +35,7 @@ public class ThiTracNghiemServlet extends HttpServlet {
 		String cau3 = request.getParameter("cau3");
 		String cau4 = request.getParameter("cau4");
 		String cau5 = request.getParameter("cau5");
-		
-		if(cau1.equals("")){
-			cau1="F";
-		}
-		
+	
 		ThiTracNghiemDAO thiDAO = new ThiTracNghiemDAO();
 		ThiTracNghiems thi = new ThiTracNghiems();
 		thi.setDapAnID(new java.util.Date().getTime());

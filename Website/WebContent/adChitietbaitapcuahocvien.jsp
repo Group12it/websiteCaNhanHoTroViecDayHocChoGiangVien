@@ -33,26 +33,26 @@
 
 	<jsp:include page="header.jsp"></jsp:include>
 
-		<%
-		
+	<%
 		long mabaitap = -1;
 		if (request.getParameter("mabaitap") != null) {
 			mabaitap = Long.parseLong(request.getParameter("mabaitap"));
 		}
-		
+
 		String khoahocchitiet = "";
 		if (request.getParameter("khoahocchitiet") != null) {
 			khoahocchitiet = request.getParameter("khoahocchitiet");
 		}
-		
-		String userid="";
+
+		String userid = "";
 		if (request.getParameter("userid") != null) {
 			userid = request.getParameter("userid");
 		}
-		
+
 		Connection connection = DBConnect.getConnection();
 		Statement statement = connection.createStatement();
-		ResultSet resultset = statement.executeQuery("select * from viewdanhsachbaitap where baitapID='"+mabaitap+"'");
+		ResultSet resultset = statement
+				.executeQuery("select * from viewdanhsachbaitap where baitapID='" + mabaitap + "'");
 	%>
 
 	<div id="wrapper">
@@ -67,7 +67,7 @@
 
 									<ul class="nav navs-tabs-brand">
 										<li class="active"><a href="trang-chu-quan-tri"
-											class="list-group-item active" style="z-index: 0"><i
+											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-home"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
 
@@ -99,8 +99,8 @@
 											class="list-group-item active" style="z-index: 0"><i
 												class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;&nbsp;&nbsp;
 												Bài tập của học viên</a></li>
-										
-										
+
+
 										<li class="active"><a href="danh-sach-hoc-vien-nop-bai"
 											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -110,59 +110,82 @@
 											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-pencil"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
-
+										<li class="active"><a href="quan-ly-tai-khoan"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-pencil"></i>
+												&nbsp;&nbsp;&nbsp;&nbsp;Quản lý tài khoản</a></li>
+												<li class="active"><a href="danh-sach-khoa-hoc-khao-sat"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-pencil"></i>
+												&nbsp;&nbsp;&nbsp;&nbsp;Kết quả khảo sát KH</a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-9">
-							
-								<a class="list-group-item text-center " href="#" s
-									tyle="font-size: 20px; color: blue; background: #0CC">Chi
-									Tiết Bài Tập của học viên nộp</a>
-				
-								<form action="cham-diem-bai-tap" method="post" onSubmit="return formaction()">
 
-						
-								<div class="col-md-12">
+
+							<a class="list-group-item text-center " href="#" s
+								tyle="font-size: 20px; color: blue; background: #0CC">Chi
+								Tiết Bài Tập của học viên nộp</a>
+
+							<!-- 								<form action="cham-diem-bai-tap" method="post" onSubmit="return formaction()"> -->
+
+
+							<div class="col-md-12">
 								<%
 									while (resultset.next()) {
 								%>
-									<label>Tên bài tập:<%=resultset.getString(4)%></label>
-									<br></br>
-									 <label>Học viên:<%=resultset.getString(3)%></label><br></br>
-									<label>Thời gian nộp:<%=resultset.getString(8) %></label><br></br>
-								<a href="DownLoadFile">File nộp của học viên: <button>tải</button> </a>
+								<label>Tên bài tập:<%=resultset.getString(4)%></label> <br></br>
+								<label>Học viên:<%=resultset.getString(3)%></label><br></br> <label>Thời
+									gian nộp:<%=resultset.getString(8)%></label><br></br>
+
+								<form action="DownLoadFile">
+									<a href="DownLoadFile"><button>
+											File nộp của học viên:<input name="idfilename" type="text"
+												value="dbms.docx" />
+										</button></a>
+								</form>
+								<br></br>
+								<form action="cham-diem-bai-tap" method="post"
+									onSubmit="return formaction()">
+
+
+									<input type="hidden" name="userid"
+										value="<%=resultset.getString(2)%>" /> <input type="hidden"
+										name="mabaitap" value="<%=resultset.getString(1)%>" /> <input
+										type="hidden" name="makhchitiet"
+										value="<%=resultset.getString(5)%>" />
+									<%
+										}
+									%>
 								
-								<input type="hidden" name="userid" value="<%=resultset.getString(2)%>"/>
-								<input type="hidden" name="mabaitap" value="<%=resultset.getString(1)%>"/>
-								<input type="hidden" name="makhchitiet"value="<%=resultset.getString(5)%>"/>
-							
-								<%
-									}
-								%>
 							</div>
-								<div class="col-md-12">
-									<button type="button" class="">
-										Nhập Điểm: 
-										
-										<input type="number" name="diem" class="form-control" min="0" max="10" step="0.5"
-											required="required"  height="10" width="20" />
-									</button>
-								</div>
-								<br></br>
-								
-								<div class="col-md-12">
-								 <label>Nhận Xét</label> 
-								<textarea	name="nhanxet" id="input" class="form-control" rows="3" required="required"></textarea>
-								</div>	
-								<br></br>
-								<div class ="col-md-12">
+
+							<div class="col-md-12">
+								<button type="button" class="">
+									Nhập Điểm: <input type="number" name="diem"
+										class="form-control" min="0" max="10" step="0.5"
+										required="required" height="10" width="20" />
+								</button>
+							</div>
+							<br></br>
+
+							<div class="col-md-12">
+								<label>Nhận Xét</label>
+								<textarea name="nhanxet" id="input" class="form-control"
+									rows="3" required="required"></textarea>
+							</div>
+							<br></br>
+							<div class="col-md-12">
 								<br />
-								<center><Button  type="submit" class="btn btn-info">Chấm điểm</Button></center>
-								</div>			
-								
-						</form>
+								<center>
+									<Button type="submit" class="btn btn-info">Chấm điểm</Button>
+								</center>
+								<br />
+								</form>
+							</div>
+
 
 						</div>
 

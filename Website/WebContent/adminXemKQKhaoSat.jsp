@@ -1,12 +1,16 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="connect.*"%>
 <%@ page import="java.util.*"%>
+<%@page import="java.*"%>
+<%@page import="dao.*"%>
+<%@page import="controller.*"%>
+<%@page import="model.*"%>
+
+<%
+	Class.forName("com.mysql.jdbc.Driver");
+%>
+<%@page import="java.io.PrintWriter"%>
 <?xml version="1.0" encoding="utf-8" ?>
-<%@page import="dao.ChiTietKhoaHocDAO"%>
-<%@page import="dao.DanhSachHVThiDAO"%>
-<%@page import="model.DSHVlamBaiThi"%>
-<%@page import="model.KhoaHocs"%>
-<%@page import="dao.KhoaHocsDAO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -14,60 +18,43 @@
 <head>
 <meta content="charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
+<meta name="viewport"
+	content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
 <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 <link rel="icon" href="images/head.ico" type="image/x-icon" />
-</head>
+<title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
 
+</head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
+
 
 	<%
-		ChiTietKhoaHocDAO chitietkh = new ChiTietKhoaHocDAO();
-		long mabaitap = -1;
-		if (request.getParameter("mabaitap") != null) {
-			mabaitap = Long.parseLong(request.getParameter("mabaitap"));
+		Users users = null;
+		if (session.getAttribute("user") != null) {
+			users = (Users) session.getAttribute("user");
 		}
-		KhoaHocsDAO khoahocdao = new KhoaHocsDAO();
-		String khoahocchitiet = "";
-		if (request.getParameter("khoahocchitiet") != null) {
-			khoahocchitiet = request.getParameter("khoahocchitiet");
+		UsersDAO userDAO = new UsersDAO();
+		String makh="";
+		if(request.getParameter("makh")!=null){
+			makh=request.getParameter("makh");
 		}
-
-		String userid = "";
-		if (request.getParameter("userid") != null) {
-			userid = request.getParameter("userid");
-		}
-
-		String dapanid = "";
-		if (request.getParameter("dapanhv") != null) {
-			dapanid = request.getParameter("dapanhv");
-		}
-
-		Connection connection = DBConnect.getConnection();
-		Statement statement = connection.createStatement();
-		ResultSet resultset = statement
-				.executeQuery("select * from viewdanhsachbaitap where baitapID='" + mabaitap + "'");
+		
 	%>
 
 
-
-	<jsp:include page="header.jsp"></jsp:include>
 	<div id="wrapper">
 		<div class="container">
 			<div class="row">
-
 				<div class="container">
 					<div class="row">
-
 						<div class="col-md-3">
 							<div class="panel panel-primary" style="padding-top: 0px">
 								<div class="panel-body">
 
 									<ul class="nav navs-tabs-brand">
 										<li class="active"><a href="trang-chu-quan-tri"
-											class="list-group-item" style="z-index: 0"><i
+											class="list-group-item " style="z-index: 0"><i
 												class="glyphicon glyphicon-home"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
 
@@ -96,13 +83,12 @@
 												class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp;
 												Gửi mail cho sinh viên</a></li>
 
-
 										<li class="active"><a href="xem-danh-sach-bai-tap"
-											class="list-group-item active" style="z-index: 0"><i
+											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;&nbsp;&nbsp;
 												Bài tập của học viên</a></li>
-
-
+										
+										
 										<li class="active"><a href="danh-sach-hoc-vien-nop-bai"
 											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -112,81 +98,67 @@
 											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-pencil"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
+										
 										<li class="active"><a href="quan-ly-tai-khoan"
 											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-pencil"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Quản lý tài khoản</a></li>
-												<li class="active"><a href="danh-sach-khoa-hoc-khao-sat"
-											class="list-group-item" style="z-index: 0"><i
+												
+										<li class="active"><a href="danh-sach-khoa-hoc-khao-sat"
+											class="list-group-item active" style="z-index: 0"><i
 												class="glyphicon glyphicon-pencil"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Kết quả khảo sát KH</a></li>
+										
+
 									</ul>
+
 								</div>
 							</div>
 						</div>
+
+
+
+
+
 						<div class="col-md-9">
 							<ul class="nav navs-tabs-brand">
 
-								<a class="list-group-item text-center " href="#"
-									style="font-size: 20px; color: blue; background: #0CC">Danh
-									sách học viên nộp bài tập</a>
-								</br>
+								<div class="panel panel-default" style="max-height: 100%">
+									<div class="panel-heading" style="background: #0CC">
+										<center>
+											<h2
+												style="font-family: 'Times New Roman'; size: 15; color: #FFF">Khảo sát</h2>
+										</center>
+									</div>
+									<div class="panel-body">
 
-								<table class="table table-striped" border="1">
-									<thead>
-
-
-										<tr>
-											<th dir="rtl" style="background: #0CC">STT</th>
-
-											<th dir="rtl" style="background: #0CC">Tên bài tập</th>
-											<th dir="rtl" style="background: #0CC">Tên học viên</th>
-											<th dir="rtl" style="background: #0cc">Thời gian</th>
-											<th dir="rtl" style="background: #0CC">Chi Tiết</th>
-										</tr>
-
-									</thead>
-									<tbody>
-
-
-										<%
-											int i = 0;
-											while (resultset.next()) {
-												i++;
-										%>
-										<tr>
-											<td><%=i%></td>
-											<td><%=resultset.getString(4)%></td>
-											<td><%=resultset.getString(3)%></td>
-											<td><%=resultset.getString(8)%></td>
-											<td><a
-												href="xem-cham-diem-bai-tap-hoc-vien?mabaitap=<%=resultset.getString(1)%>&chitietkhoahoc=<%=resultset.getString(6)%>"><span
-													class="glyphicon glyphicon-folder-open" aria-hidden="">&nbsp;Xem
-														chi tiết</span></a><br></td>
-										</tr>
-										<%
-											}
-										%>
-									</tbody>
-								</table>
+											<%
+														Connection connect = DBConnect.getConnection();
+															Statement statement = connect.createStatement();
+															ResultSet resultset = statement.executeQuery("select * from khaosatkhoahoc where MaKH='"+makh+"'");
+															float kq=0;
+															int dem=0;
+															while (resultset.next()) {
+															
+																dem++;
+																kq += Float.parseFloat(resultset.getString(3));
+															 
+												}%>
+										<%=kq/dem %>
+									</div>
+									<br></br>
+								</div>
 							</ul>
-
-
 						</div>
-
 					</div>
-
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<jsp:include page="footer.jsp"></jsp:include>
-
-
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.min.js"></script>
 </body>

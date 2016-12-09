@@ -83,7 +83,15 @@
 												class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;
 												Bài thi của học viên</a></li>
                                 <li class="active"><a href="admindethitracnghiem.jsp" class="list-group-item"><i class="glyphicon glyphicon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
-
+<li class="active"><a href="quan-ly-tai-khoan"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-pencil"></i>
+												&nbsp;&nbsp;&nbsp;&nbsp;Quản lý tài khoản</a></li>
+												
+												<li class="active"><a href="danh-sach-khoa-hoc-khao-sat"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-pencil"></i>
+												&nbsp;&nbsp;&nbsp;&nbsp;Kết quả khảo sát KH</a></li>
                         </ul>
                     </div>  
                     </div>

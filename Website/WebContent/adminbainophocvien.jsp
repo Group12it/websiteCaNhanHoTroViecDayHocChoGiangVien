@@ -29,25 +29,26 @@
 		if (request.getParameter("madethi") != null) {
 			madethi = Long.parseLong(request.getParameter("madethi"));
 		}
-		KhoaHocsDAO khoahocdao=new KhoaHocsDAO(); 
+		KhoaHocsDAO khoahocdao = new KhoaHocsDAO();
 		String makh = "";
 		if (request.getParameter("makh") != null) {
 			makh = request.getParameter("makh");
 		}
-		
-		String userid="";
+
+		String userid = "";
 		if (request.getParameter("userid") != null) {
 			userid = request.getParameter("userid");
 		}
-		
-		String dapanid="";
+
+		String dapanid = "";
 		if (request.getParameter("dapanhv") != null) {
 			dapanid = request.getParameter("dapanhv");
 		}
-		
+
 		Connection connection = DBConnect.getConnection();
 		Statement statement = connection.createStatement();
-		ResultSet resultset = statement.executeQuery("select * from viewdanhsachnopbai where DeThiID='"+madethi+"'");
+		ResultSet resultset = statement
+				.executeQuery("select * from viewdanhsachnopbai where DeThiID='" + madethi + "'");
 	%>
 
 
@@ -96,12 +97,12 @@
 												Gửi mail cho sinh viên</a></li>
 
 
-											<li class="active"><a href="xem-danh-sach-bai-tap"
+										<li class="active"><a href="xem-danh-sach-bai-tap"
 											class="list-group-item " style="z-index: 0"><i
 												class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;&nbsp;&nbsp;
 												Bài tập của học viên</a></li>
-										
-										
+
+
 										<li class="active"><a href="danh-sach-hoc-vien-nop-bai"
 											class="list-group-item active" style="z-index: 0"><i
 												class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -111,47 +112,62 @@
 											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-pencil"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
-
+										<li class="active"><a href="quan-ly-tai-khoan"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-pencil"></i>
+												&nbsp;&nbsp;&nbsp;&nbsp;Quản lý tài khoản</a></li>
+												<li class="active"><a href="danh-sach-khoa-hoc-khao-sat"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-pencil"></i>
+												&nbsp;&nbsp;&nbsp;&nbsp;Kết quả khảo sát KH</a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-9">
-							   <ul class="nav navs-tabs-brand">
-                           
-                               
-                                <table class="table table-striped" border="1" >
-										<thead>
+							<ul class="nav navs-tabs-brand">
 
-											
-											<tr>
-												<th dir="rtl" style="background: #0CC">STT</th>
+								<a class="list-group-item text-center " href="#"
+									style="font-size: 20px; color: blue; background: #0CC">Bài
+									Thi Của Học Viên</a>
+								</br>
 
-												<th dir="rtl" style="background: #0CC">mã học viên</th>
-												<th dir="rtl" style="background: #0CC">Tên học viên</th>
-												<th ir="rtl" style="background: #0CC">Chi Tiết</th>
-											</tr>
+								<table class="table table-striped" border="1">
+									<thead>
+										<tr>
+											<th dir="rtl" style="background: #0CC">STT</th>
 
-										</thead>
-										<tbody>
-											
-											
-											
-											
-											
-											<%int i=0; while(resultset.next()){
-												i++; %>
-											<tr>
-												<td><%=i %></td>
-												<td><%=resultset.getString(1) %></td>
-												<td><%=resultset.getString(2)%></td>
-												<td><a href="chi-tiet-bai-nop-cua-hoc-vien?madethi=<%=resultset.getString(4)%>&dapanhv=<%=resultset.getString(3)%>"><span
-														class="glyphicon glyphicon-folder-open" aria-hidden="">&nbsp;Xem
-															chi tiết</span></a><br></td>
-											</tr>
-											<%} %> 
-										</tbody>
-									</table>
+											<th dir="rtl" style="background: #0CC">mã học viên</th>
+											<th dir="rtl" style="background: #0CC">Tên học viên</th>
+											<th ir="rtl" style="background: #0CC">Chi Tiết</th>
+										</tr>
+
+									</thead>
+									<tbody>
+
+
+
+
+
+										<%
+											int i = 0;
+											while (resultset.next()) {
+												i++;
+										%>
+										<tr>
+											<td><%=i%></td>
+											<td><%=resultset.getString(1)%></td>
+											<td><%=resultset.getString(2)%></td>
+											<td><a
+												href="chi-tiet-bai-nop-cua-hoc-vien?madethi=<%=resultset.getString(4)%>&dapanhv=<%=resultset.getString(3)%>"><span
+													class="glyphicon glyphicon-folder-open" aria-hidden="">&nbsp;Xem
+														chi tiết</span></a><br></td>
+										</tr>
+										<%
+											}
+										%>
+									</tbody>
+								</table>
 							</ul>
 
 

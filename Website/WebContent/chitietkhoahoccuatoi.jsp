@@ -143,10 +143,17 @@ word-wrap: break-word;
                                                 <span class="instancename" ><h3>Nộp bài tập <i class="glyphicon glyphicon-paperclip"></i></h3></span>
                                             </a>
                                             </form>
+                                           
                                             
                                             <%} %>
                                            
                                          </div>
+                                         
+                                         
+                                     
+                                       <a href="khao-sat-khoa-hoc?khoahoc=<%=khoahocid%>"><h1>Khảo sát khoá học</h1></a>   
+                                              
+                                         
                              </div>
                     </div>
                 </div>

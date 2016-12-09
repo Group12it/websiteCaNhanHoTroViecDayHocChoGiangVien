@@ -94,8 +94,8 @@
 											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;&nbsp;&nbsp;
 												Bài tập của học viên</a></li>
-										
-										
+
+
 										<li class="active"><a href="danh-sach-hoc-vien-nop-bai"
 											class="list-group-item active" style="z-index: 0"><i
 												class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -105,25 +105,34 @@
 											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-pencil"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
-
+										<li class="active"><a href="quan-ly-tai-khoan"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-pencil"></i>
+												&nbsp;&nbsp;&nbsp;&nbsp;Quản lý tài khoản</a></li>
+												<li class="active"><a href="danh-sach-khoa-hoc-khao-sat"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-pencil"></i>
+												&nbsp;&nbsp;&nbsp;&nbsp;Kết quả khảo sát KH</a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-9">
-							
-								<a class="list-group-item text-center " href="#" s
-									tyle="font-size: 20px; color: blue; background: #0CC">Chi
-									Tiết Bài Nộp</a>
 
-						<form action="cham-diem" method="post" onSubmit="return formaction()">
+							<a class="list-group-item text-center " href="#" s
+								tyle="font-size: 20px; color: blue; background: #0CC">Chi
+								Tiết Bài Nộp</a>
+
+							<form action="cham-diem" method="post"
+								onSubmit="return formaction()">
 
 								<%
 									while (resultset.next()) {
 								%>
-								<input type="hidden" name="userid" value="<%=resultset.getString(1)%>"/>
-								<input type="hidden" name="made" value="<%=resultset.getString(4)%>"/>
-								<input type="hidden" name="makh"value="<%=resultset.getString(5)%>"/>
+								<input type="hidden" name="userid"
+									value="<%=resultset.getString(1)%>" /> <input type="hidden"
+									name="made" value="<%=resultset.getString(4)%>" /> <input
+									type="hidden" name="makh" value="<%=resultset.getString(5)%>" />
 								<div class="col-md-8">
 									<label>Đáp án của sinh viên: <%=resultset.getString(2)%></label>
 									<br></br> <label><%=resultset.getString(6)%></label>
@@ -133,28 +142,30 @@
 								<%
 									}
 								%>
-						
+
 								<div class="col-md-12">
 									<button type="button" class="">
-										Nhập Điểm: 
-										
-										<input type="number" name="diem" class="form-control" min="0" max="10" step="0.5"
-											required="required"  height="10" width="20" />
+										Nhập Điểm: <input type="number" name="diem"
+											class="form-control" min="0" max="10" step="0.5"
+											required="required" height="10" width="20" />
 									</button>
 								</div>
 								<br></br>
-								
+
 								<div class="col-md-12">
-								 <label>Nhận Xét</label> 
-								<textarea	name="nhanxet" id="input" class="form-control" rows="3" required="required"></textarea>
-								</div>	
+									<label>Nhận Xét</label>
+									<textarea name="nhanxet" id="input" class="form-control"
+										rows="3" required="required"></textarea>
+								</div>
 								<br></br>
-								<div class ="col-md-12">
-								<br />
-								<center><Button  type="submit" class="btn btn-info">Chấm điểm</Button></center>
-								</div>			
-								
-						</form>
+								<div class="col-md-12">
+									<br />
+									<center>
+										<Button type="submit" class="btn btn-info">Chấm điểm</Button>
+									</center>
+								</div>
+
+							</form>
 
 						</div>
 

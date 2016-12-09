@@ -62,7 +62,7 @@
 
 									<ul class="nav navs-tabs-brand">
 										<li class="active"><a href="trang-chu-quan-tri"
-											class="list-group-item active" style="z-index: 0"><i
+											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-home"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
 
@@ -111,12 +111,10 @@
 											class="list-group-item" style="z-index: 0"><i
 												class="glyphicon glyphicon-pencil"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Quản lý tài khoản</a></li>
-												
-												<li class="active"><a href="danh-sach-khoa-hoc-khao-sat"
-											class="list-group-item" style="z-index: 0"><i
+										<li class="active"><a href="danh-sach-khoa-hoc-khao-sat"
+											class="list-group-item active" style="z-index: 0"><i
 												class="glyphicon glyphicon-pencil"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Kết quả khảo sát KH</a></li>
-										
 
 									</ul>
 
@@ -135,140 +133,59 @@
 									<div class="panel-heading" style="background: #0CC">
 										<center>
 											<h2
-												style="font-family: 'Times New Roman'; size: 15; color: #FFF">Trang
-												chủ</h2>
+												style="font-family: 'Times New Roman'; size: 15; color: #FFF">Khảo sát</h2>
 										</center>
 									</div>
 									<div class="panel-body">
 
-										<form method="post" name="frm" action="Searchs"
-											class="form-inline">
-											<div class="form-group form-group-sm">
+  <table  class="table table-striped" border="1" >
+                                            <thead style="background:#09F">
+                                                <tr>
+                                                    <th><center>Email</center></th>
+                                                    <th><center>Họ Và Tên</center></th>
+                                                    <th><center>Ngày sinh</center></th>
+                                                    <th><center>Số điện thoại</center></th>
+                                                    <th><center>Mã khóa học</center></th>
+                                                    <th><center>Tên khóa học</center></th>
+                                                    <th width="21%"><center>Thao tác</center></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <% 
+                                            
+                                            Connection connection = DBConnect.getConnection();
 
-												<div class="form-group">
-													<label for="tukhoa">Tìm kiếm:</label> <input type="text"
-														class="form-control" id="pid" name="pid"
-														data-autocomplete-source="/CauHoi/QuickSearch?MaChuDe=LT"
-														placeholder="Nhập câu hỏi ở đây!">
-												</div>
-												<span class="glyphicon glyphicon-search"></span><input
-													type="submit" name="submit" value="Tìm kiếm"
-													class="btn btn-warning ">
-											</div>
-
-										</form>
-										<table class="table table-bordered">
-											<thead style="background: #09F">
-												<tr>
-													<th><center>Email</center></th>
-													<th><center>Họ Và Tên</center></th>
-													<th><center>Giới tính</center></th>
-													<th><center>Ngày sinh</center></th>
-													<th><center>Số điện thoại</center></th>
-												</tr>
-											</thead>
-											<tbody>
-
-
-												
-												<%
-													int count = 0;
-													String color = "#F9EBB3";
-
-													if (request.getAttribute("piList") != null) {
-														ArrayList al = (ArrayList) request.getAttribute("piList");
-														System.out.println(al);
-														Iterator itr = al.iterator();
-														while (itr.hasNext()) {
-
-															if ((count % 2) == 0) {
-																color = "#eeffee";
-															}
-															count++;
-															ArrayList pList = (ArrayList) itr.next();
-															long makh = (Long) (request.getAttribute("makh"));
-												%>
-												<tr>
- 													<td><%=pList.get(1)%></td>
-													<td><%=pList.get(2)%></td>
-													<td><%=pList.get(3)%></td>
-													<td><%=pList.get(4)%></td>
-													<td><%=pList.get(5)%></td>
-													<%-- 												
-
-	<td><%=pList.get(6)%></td> --%>
-													<%-- 
-													<td><a
-														href="XoaDangKyServlet?makh=<%=pList.get(6)%>&userid=<%=pList.get(0)%>"
-														style="text-decoration: underline">Xóa Khỏi Danh Sách</a>
-													</td> --%>
-												</tr>
-												<%-- 	<%
-													}
-												%> --%>
-
-												<%
-													}
-													}
-													if (count == 0 && request.getAttribute("piList") != null) {
-												%>
-												<b>Không tìm thấy!!!</b>
-												<%
-													}
-												%>
-
-
-
-
-
-
-
-
-											</tbody>
-										</table>
+									            Statement statement = connection.createStatement() ;
+									            ResultSet resultset = 
+									                statement.executeQuery("select * from khoahoc") ; 
+									      	  %>
+									
+									            <% while(resultset.next()){ %>
+									            <tr>
+									                <td> <%= resultset.getString(2) %></td>
+									                <td> <%= resultset.getString(3) %></td>
+									                <td> <%= resultset.getString(4) %></td>
+									                <td> <%= resultset.getString(5) %></td>
+									                <td> <%= resultset.getString(6) %></td>
+									                <td> <%= resultset.getString(7) %></td>
+									                 <td width="" >
+									                <a href="xem-ket-qua-khao-sat?makh=<%= resultset.getString(1)%>" ><button type="button" class="btn btn-warning" 	>Xem</button></a>
+                                                    </td>
+									              
+									            </tr>
+									            <% } %>
+                                            </tbody>
+                                        </table>
+										
 									</div>
 									<br></br>
-
-
-
 								</div>
-
-
 							</ul>
-
-
 						</div>
-
-
-
-						<!--     
-                     
-                     <div class="col-md-9">
-
-									<form method="post" name="frm" action="Searchs"
-											class="form-inline">
-											<div class="form-group form-group-sm">
-												
-													<div class="form-group">
-												<label for="tukhoa">Tìm kiếm</label> <input type="text"
-													class="form-control" id="pid" name="pid"
-													data-autocomplete-source="/CauHoi/QuickSearch?MaChuDe=LT"
-													placeholder="Nhập câu hỏi ở đây!">
-											</div>
-											 <span
-													class="glyphicon glyphicon-search"></span><input type="submit" name="submit" value="Tìm kiếm"
-												class="btn btn-warning ">
-											</div>
-											
-										</form></div> -->
-
-
 					</div>
-
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 	<jsp:include page="footer.jsp"></jsp:include>

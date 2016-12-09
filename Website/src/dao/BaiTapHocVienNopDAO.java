@@ -10,11 +10,27 @@ import java.util.logging.Logger;
 
 import connect.DBConnect;
 import model.BaiTapHocVienNops;
-import model.ChiTietKhoaHoc;
-import model.DeThis;
 
 public class BaiTapHocVienNopDAO {
 	Connection connection =DBConnect.getConnection();
+	
+	
+public boolean checktrangthainop(String userid,String baitapid) {
+		
+		String sql = "SELECT * FROM baitap  where UserID = '" + userid + "' and baitapID='"+baitapid+"'";
+		PreparedStatement ps;
+		try {
+			ps = connection.prepareCall(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				connection.close();
+				return true;
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(BaiTapHocVienNopDAO.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return false;
+	}
 	
 	public ArrayList<BaiTapHocVienNops> getBaiTap() throws SQLException{
 		 String sql="Select * from baitap";
@@ -64,7 +80,7 @@ public class BaiTapHocVienNopDAO {
 
 			ps.setLong(1, bt.getBaiTapID());
 			ps.setLong(2,bt.getUserID());
-			ps.setNString(3,bt.getGhiChu());
+			ps.setNString(3,bt.getTenBT());
 			ps.setNString(4,bt.getGhiChu());
 			ps.setLong(5,bt.getMaCTKH());
 			ps.setNString(6,bt.getFileBaiTap());
