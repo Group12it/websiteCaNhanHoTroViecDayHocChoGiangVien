@@ -33,17 +33,13 @@
 	<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
 		url="jdbc:mysql://localhost/web" user="root" password="admin" />
 
+
 	<%
 		Users users = null;
 		if (session.getAttribute("user") != null) {
 			users = (Users) session.getAttribute("user");
 		}
-	%>
-
-	<sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=users.getUserEmail()%>";</sql:query>
-
-
-	<%
+	
 		ChiTietKhoaHocDAO chitietkhoahocDAO = new ChiTietKhoaHocDAO();
 		KhoaHocsDAO khoahocDao = new KhoaHocsDAO();
 		String khoahocid = "";
@@ -55,8 +51,16 @@
 		if (request.getParameter("chitietkhoahocs") != null) {
 			khoahocchitietid = request.getParameter("chitietkhoahocs");
 		}
+		int kk=0;
+		KhaoSatKhoaHocDAO khaoSatDAO=new KhaoSatKhoaHocDAO();
+		if(khaoSatDAO.checktrangthaiKhaosat(String.valueOf(users.getUserID()), String.valueOf(khoahocid))){
+			kk=1;
+		}
+		
+		
 		
 	%>
+<sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=users.getUserEmail()%>";</sql:query>
 
 
 	<section class="container" style="min-height:270px"> <section
@@ -113,7 +117,7 @@
 														Phân vân <input type="radio" name="cau2" value="2" id="cau23">
 														Không đòng ý <input type="radio" name="cau2" value="1" id="cau24">
 														Hoàn toàn không đồng ý <input type="radio" name="cau2" value="0" id="cau25">
-<br><br>
+								<br><br>
 														<span class="label label-primary" style="size: 30">Khóa học cung cấp cho bạn những kiến thức cần thiết?
 														</span><br>
 													Hoàn toàn đồng ý <input type="radio" name="cau3" value="4" id="cau31"> 
@@ -149,8 +153,13 @@
 														</div>
 														<br>
 														<div class="">	
+														<center> 
+														<%if(kk==0){ %>
 														
-														<center> <button type="submit" class="btn btn-info">Gửi đánh giá</button>
+														<button type="submit" class="btn btn-info">Gửi đánh giá</button>
+														<%}else{ %>
+														<button type="button" class="btn btn-info" disabled>Đã đánh giá</button>
+														<%} %>
 														</center>
 														</div>
 														</form>

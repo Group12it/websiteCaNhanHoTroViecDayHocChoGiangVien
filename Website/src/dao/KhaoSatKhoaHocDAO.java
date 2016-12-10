@@ -13,6 +13,23 @@ import model.KhaoSatKhoaHocs;
 
 public class KhaoSatKhoaHocDAO {
 	Connection connection =DBConnect.getConnection();
+		
+	public boolean checktrangthaiKhaosat(String userid,String Makh) {
+		
+		String sql = "SELECT * FROM khaosatkhoahoc  where UserID = '" + userid + "' and MaKH='"+Makh+"'";
+		PreparedStatement ps;
+		try {
+			ps = connection.prepareCall(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				connection.close();
+				return true;
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(BaiTapHocVienNopDAO.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return false;
+	}
 	
 	public ArrayList<KhaoSatKhoaHocs> getKhaoSatByID(String MaDe) throws SQLException{
 		 String sql="Select * from khaosatkhoahoc where MaKH='"+MaDe+"'";
