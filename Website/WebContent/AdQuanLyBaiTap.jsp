@@ -5,7 +5,12 @@
 <%@page import="dao.*"%>
 <%@page import="controller.*"%>
 <%@page import="model.*"%>
+
+<%
+	Class.forName("com.mysql.jdbc.Driver");
+%>
 <?xml version="1.0" encoding="utf-8" ?>
+
 
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
@@ -30,12 +35,8 @@
 <body>
 
 <jsp:include page="header.jsp"></jsp:include>
-<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
 
-<sql:query dataSource="${DBConnect }" var="result"> select * from khoahoc;</sql:query>
-
-<% KhoaHocsDAO khoahocdao=new KhoaHocsDAO(); %> 
-  
+<%AdminBaiTapDAO adbaitapDAO=new AdminBaiTapDAO(); %>   
     <div id="wrapper">
       <div class="container">
         <div class="row">
@@ -46,8 +47,7 @@
                     <div class="col-md-3">
                        <div class="panel panel-primary" style="padding-top:0px ">
                            <div class ="panel-body"> 
-                  
-                         		<ul class="nav navs-tabs-brand">
+                  		<ul class="nav navs-tabs-brand">
 										<li class="active"><a href="trang-chu-quan-tri" class="list-group-item active" style="z-index: 0"><i class="glyphicon glyphicon-home"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị<i class="glyphicon glyphicon-menu-right text-right"></i> </a></li>
 
@@ -115,71 +115,69 @@
                    
                              <div class="panel panel-default" style="max-height:100%">
                                     <div class="panel-heading" style="background:#0CC">
-                                       <center> <h2 style="font-family: 'Times New Roman';size:15; color:#FFF">Quản lý Khóa học</h2>
+                                       <center> <h2 style="font-family: 'Times New Roman';size:15; color:#FFF">Quản lý bài tập</h2>
                                     </center>
                                     </div>
                                     <div class="panel-body">
 
-										
-                                        <br/>
-                                        <a href="tao-khoa-hoc-moi" class="btn btn-info btn" style="background: #59b300">
-                                            <span class="glyphicon glyphicon-plus"></span> Thêm Khóa Học
-                                        </a>
-                                        
-                                                <form method="post" name="frm" action="tim-khoa-hoc"
+                                        <form method="post" name="frm" action="tim-bai-tap"
 											class="form-inline">
 											<div class="form-group form-group-sm">
 
 												<div class="form-group">
 													<label for="tukhoa">Tìm kiếm:</label> <input type="text"
 														class="form-control" id="pid" name="pid"
-														placeholder="Nhập tên khoá học"/>
+														data-autocomplete-source="/CauHoi/QuickSearch?MaChuDe=LT"
+														placeholder="Nhập câu hỏi ở đây!">
 												</div>
 												<span class="glyphicon glyphicon-search"></span><input
 													type="submit" name="submit" value="Tìm kiếm"
-													class="btn btn-warning "/>
+													class="btn btn-warning ">
 											</div>
 
 										</form>
                                         <p></p>
+                                        
+                                        
+                                        
+                                        
                                         <table class="table table-bordered table-hover">
                                             <thead style="background:#09F">
                                            <tr>
-                                            <th>STT</th>
-                                            <th>Tên khóa học</th>
-                                            <th>Ngày giạy</th>
-                                            <th>Hoc phí</th>
+                                            <th>Tên bài tập</th>
+                                            <th>Ngày nộp</th>
+                                            <th>Giờ nộp</th>
                                             <th>Tuỳ chọn</th>
                                             </tr>
                                             </thead>
+                                           
                                             <tbody>
-                                                  		
-								<%	if (request.getAttribute("piList") == null) {
-										 
-                                          int i=0;
-                                          for(KhoaHocs kh:khoahocdao.getKhoaHocList()){
-                                       	   i++;
-                                          %>
-                                               <tr>
-                                                   <td><%=i %> </td>
-                                                   <td><%=kh.getAdTenKH() %></td>
-                                                   <td><%=kh.getAdNgayKhaiGiang() %></td>
-                                                   <td><%=kh.getAdNgayKhaiGiang() %></td>
-                                                   <td>
-                                                       <a href="chinh-sua-khoa-hoc?khoahoc=<%=kh.getAdMaKH() %>" class="btn btn-info btn-sm" style="background: #660066">
-                                                           <span class="glyphicon glyphicon-wrench"></span> Chỉnh sửa
-                                                       </a>
-                                                       <a href="quan-ly-khoa-hoc?command=delete&makh=<%=kh.getAdMaKH() %>" class="btn btn-info btn-sm" style="background: #ff3300;">
-                                                           <span class="glyphicon glyphicon-trash"></span> Xóa
-                                                       </a>
-                                                   </td>
-                                               </tr>
-                                          <%
-                                          } 
-                                         
-											}
-													//đếm số dòng trong bảng nếu tìm thấy
-                                       				int count = 0;
+                                       
+                                       			<%
+									if (request.getAttribute("piList") == null) {
+									for(AdminBaiTap adbt:adbaitapDAO.getAdminBaiTapList()){ %>
+                                           	<tr>
+                                           	<td><%=adbt.getTenBaiTap() %></td>
+                                           	<td><%=adbt.getHanNop() %></td>
+                                           	<td><%=adbt.getGioNop() %></td>
+                                           	<td>
+                                           	<a href="quan-ly-bai-tap-xem-chi-tiet?baitap=<%=adbt.getIDBaiTap() %>&chitiet=<%=adbt.getMaChiTietKH() %>" class="btn btn-info btn" style="background: #59b300">Xem chi tiết</a>
+                                           	</td>
+                                           	</tr>
+                                           
+                                           
+                                           <%} %>
+								<%
+									}
+
+									
+								%>
+                                       			
+												
+												
+												
+												<%
+													int count = 0;
 													String color = "#F9EBB3";
 
 													if (request.getAttribute("piList") != null) {
@@ -187,6 +185,7 @@
 														System.out.println(al);
 														Iterator itr = al.iterator();
 														while (itr.hasNext()) {
+
 															if ((count % 2) == 0) {
 																color = "#eeffee";
 															}
@@ -196,19 +195,10 @@
 												%>
 												<tr>
  													
-													<td><%=count%></td>
 													<td><%=pList.get(1)%></td>
-													<td><%=pList.get(2)%></td>
-													<td><%=pList.get(3) %></td>
-													<td>	
-													<a href="chinh-sua-khoa-hoc?khoahoc=<%=pList.get(0) %>" class="btn btn-info btn-sm" style="background: #660066">
-                                                           <span class="glyphicon glyphicon-wrench"></span> Chỉnh sửa
-                                                       </a>
-                                                       <a href="quan-ly-khoa-hoc?command=delete&makh=<%=pList.get(0)%>" class="btn btn-info btn-sm" style="background: #ff3300;">
-                                                           <span class="glyphicon glyphicon-trash"></span> Xóa
-                                                       </a>
-													
-<%-- 													<a href="quan-ly-khoa-hoc?baitap=<%=pList.get(0)%>&chitiet=<%=pList.get(5)%>" class="btn btn-info btn" style="background: #59b300">Xem chi tiết</a> --%>
+													<td><%=pList.get(3)%></td>
+													<td><%=pList.get(4)%></td>
+													<td>	<a href="quan-ly-bai-tap-xem-chi-tiet?baitap=<%=pList.get(0)%>&chitiet=<%=pList.get(5)%>" class="btn btn-info btn" style="background: #59b300">Xem chi tiết</a>
                                            			</td>
                                            		</tr>
 												
@@ -221,20 +211,15 @@
 												<%
 													}
 												%>
-                                        
-                                              
+                                       
+                                       
+                                         
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-                                
-
                     </ul>
-                                            
-
                      </div>
-  
-      
             </div>
             </div>
             </div>

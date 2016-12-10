@@ -1,8 +1,6 @@
-<%@page import="dao.ChiTietThreadsDAO"%>
-<%@page import="model.*" %>
-<%@page import="dao.ThreadsDAO"%>
 <?xml version="1.0" encoding="utf-8" ?>
-<%@page import="java.util.Date"%>
+<%@page import="dao.KhoaHocsDAO"%>
+<%@page import="model.KhoaHocs"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -11,55 +9,28 @@
     <meta content="charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
 	<link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
-   
-     <SCRIPT LANGUAGE="JavaScript">
-      function confirmAction() {
-        return confirm("Bạn Đã Thực Hiện Thao Tác Thành Công")
-      }
- 
-      </SCRIPT>
-    
-    <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
-</head>
-   
+   </head>
 <body>
 	<jsp:include page="header.jsp" ></jsp:include>
-  
-  
-<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
-
-<sql:query dataSource="${DBConnect }" var="result"> select * from thread;</sql:query>
-
-	<%
-	Users user = null;
-	if (session.getAttribute("user") != null) {
-		user = (Users) session.getAttribute("user");
-	}
-	
-		ThreadsDAO threadsDao=new ThreadsDAO();ChiTietThreadsDAO chitietthreadDAO=new ChiTietThreadsDAO();
-		String threadid="";
-		if(request.getParameter("thread")!=null){
-		threadid= request.getParameter("thread");
-		
-	}
-	%>
+  <%KhoaHocsDAO khoahocsDAO =new KhoaHocsDAO();
+  	String makh="";
+  	if(request.getParameter("khoahoc")!=null){
+  		makh=request.getParameter("khoahoc");
+  	}
+  %>
   
   <div id="wrapper">
       <div class="container">
         <div class="row">
            <div class="container">
                 <div class="row">
+                
                     <div class="col-md-3">
                           <div class="panel panel-primary" style="padding-top:0px ">
-                          <div class ="panel-body"> 
+                           <div class ="panel-body"> 
                   
                         		<ul class="nav navs-tabs-brand">
 										<li class="active"><a href="trang-chu-quan-tri" class="list-group-item active" style="z-index: 0"><i class="glyphicon glyphicon-home"></i>
@@ -126,56 +97,45 @@
                     </div>  
                      <div class="panel panel-default">
                      <div class="col-md-9">
-              	 
-                   <form action ="Thaoluan" method="post" onSubmit="return confirmAction()">
-                    <a class ="list-group-item text-center " href="#" style="font-size: 20px;color: blue;background: #0CC">Sửa Thread Thảo Luận</a><br> 
-                	
-                     <%
-                        for (Threads thr : threadsDao.getThreadsListByID(threadid)){
-                        %>
-                   
-                        			<input type="hidden" name="mathread" value="<%=thr.getThreadID()%>"> 
-                       <label style="font-size: 15px">Tên Đề Tài Thảo Luận</label>
-                    <br>
-                    <input value="<%=thr.getTenThread() %>" class="form-control" type="text" name="tenthread"  size="50% " style="font-size: 15px">
-                    <br>  
-                    <label style="font-size: 15px">Thời Gian Tạo Thread</label>
- 
- 					   <input value="<%=thr.getNgayThread() %>" class="form-control valid" data-val="true"  name="ngaytao"  type="date"  />
-                                  
-                        <%} %> 
-                          <input type="hidden" name="command" value="update"/>                  
-                    <button type="submit" class="btn btn-info">OK</button>
-                        </form>  
-                     </div>      
-                                       <div class="col-md-1"></div>    
-                                             
+                  <form class="form" action ="" method="post" onSubmit="return formaction()">
+                    <a class ="list-group-item text-center " href="#" style="font-size: 20px;color: blue;background: #0CC">Tạo Thread Thảo Luận</a><br> </br>
+                  
+                    <input  type="hidden" name="makh" value="<%=makh%>"/>
+                    
+                    <label style="font-size: 15px">Tên thông báo</label>
+                    <br></br>
+                    <input class="form-control" type="text" name="Tên thông báo"  placeholder="Nhập tên thông báo" size="50% " style="font-size: 15px" requied autofocus></input>
+                    <br></br> 
+                     
+                    <label style="font-size: 15px">Nội dung thông báo</label>
+                   <br></br>
+                    
+                    <textarea rows="" cols="" class="form-control" name="noidungthongbao" requied autofocus></textarea> 
+               	     <input type="hidden" name="command" value="insert"></input>                  
+                     <button type="submit" class="btn btn-info">OK</button>
+                    </form>
+                         </div>      
                 </div>
                 </div>
             </div>
-  
       </div>
     </div>
-</div></div>
+</div>
 
     <jsp:include page="footer.jsp" ></jsp:include>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     
-     
-    <script type="text/javascript">
+    <SCRIPT LANGUAGE="JavaScript">
+      function confirmAction() {
+        return confirm("Tạo thông báo?")
+      }
+ 
+      </SCRIPT>
+    
+     <script type="text/javascript">
     function formaction(){
      return alert('Thao tác thành công');
         
     }</script>
-    
-     <SCRIPT LANGUAGE="JavaScript">
-      function confirmAction() {
-        return confirm("Chắc chắn sửa?")
-      }
- 
-      </SCRIPT>
   </body>
 </html>

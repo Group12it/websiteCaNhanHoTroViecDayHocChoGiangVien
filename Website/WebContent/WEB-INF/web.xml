@@ -385,8 +385,7 @@
     <servlet-name>hocvienkhaosatkhoahoc.jsp</servlet-name>
     <url-pattern>/khao-sat-khoa-hoc</url-pattern>
   </servlet-mapping>
-   
-    <servlet>
+  <servlet>
     <servlet-name>adDanhSachKhaoSatTheoKH.jsp</servlet-name>
     <jsp-file>/adDanhSachKhaoSatTheoKH.jsp</jsp-file>
   </servlet>
@@ -394,8 +393,7 @@
     <servlet-name>adDanhSachKhaoSatTheoKH.jsp</servlet-name>
     <url-pattern>/danh-sach-khoa-hoc-khao-sat</url-pattern>
   </servlet-mapping>
-  
-     <servlet>
+  <servlet>
     <servlet-name>adminXemKQKhaoSat.jsp</servlet-name>
     <jsp-file>/adminXemKQKhaoSat.jsp</jsp-file>
   </servlet>
@@ -403,7 +401,31 @@
     <servlet-name>adminXemKQKhaoSat.jsp</servlet-name>
     <url-pattern>/xem-ket-qua-khao-sat</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AdQuanLyBaiTap.jsp</servlet-name>
+    <jsp-file>/AdQuanLyBaiTap.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdQuanLyBaiTap.jsp</servlet-name>
+    <url-pattern>/quan-ly-bai-tap</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdXemChiTietBaiTapDaRa.jsp</servlet-name>
+    <jsp-file>/AdXemChiTietBaiTapDaRa.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdXemChiTietBaiTapDaRa.jsp</servlet-name>
+    <url-pattern>/quan-ly-bai-tap-xem-chi-tiet</url-pattern>
+  </servlet-mapping>
   
+    <servlet>
+    <servlet-name>AdThongBao.jsp</servlet-name>
+    <jsp-file>/AdThongBao.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdThongBao.jsp</servlet-name>
+    <url-pattern>/ad-thong-bao</url-pattern>
+  </servlet-mapping>
   
   <session-config>
     <session-timeout>30</session-timeout>

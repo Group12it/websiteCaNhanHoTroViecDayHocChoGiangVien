@@ -1,24 +1,47 @@
-<%@page import="java.*" %>
+<?xml version="1.0" encoding="utf-8" ?>
 <%@page import="dao.*" %>
 <%@page import="model.*" %>
-<?xml version="1.0" encoding="utf-8" ?>
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="java.*" %>
+<%@ page import="connect.DBConnect" %> 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta content="charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix= "c" %>
+		<%@ taglib uri= "http://java.sun.com/jsp/jstl/sql" prefix= "sql" %>
+	
 <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 	<link rel="icon" href="images/head.ico" type="image/x-icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Website Cá nhân hỗ trợ giáo viên dạy học</title>
+
+
 </head>
 
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+
+<jsp:include page="header.jsp"></jsp:include>
+
+<%
+	ChiTietKhoaHocDAO ctkhDAO=new ChiTietKhoaHocDAO();
+	AdminBaiTapDAO adbaitapDAO=new AdminBaiTapDAO();
+	String baitap="";
+	if(request.getParameter("baitap")!=null){
+		baitap=request.getParameter("baitap");
+	}
+	String chitiet="";
+	if(request.getParameter("chitiet")!=null){
+		chitiet=request.getParameter("chitiet");
+	}
+	
+%>   
     <div id="wrapper">
       <div class="container">
         <div class="row">
@@ -94,61 +117,51 @@
                     </div>
                     </div>    
                     <div class="col-md-9">
-                       <div class="panel panel-default" style="max-height:100%">
+                         <ul class="nav navs-tabs-brand">
+                   
+                             <div class="panel panel-default" style="max-height:100%">
                                     <div class="panel-heading" style="background:#0CC">
-                                        <h4 style="font-family: verdana;color:#000">Quản lý giảng dạy</h4>
+                                       <center> <h2 style="font-family: 'Times New Roman';size:15; color:#FFF">Quản lý bài tập</h2>
+                                    </center>
                                     </div>
                                     <div class="panel-body">
-                                        <table class="table table-bordered table-hover">
-                                            <thead style="background:#09F">
-                                          <tr>
-                                           <th>STT</th>
-                                            <th >Mã Khóa Học</th>
-                                            <th >Tên Khóa Hoc</th>
-                                            <th>Thời gian</th>
-                                            <th >Thao Tác</th>
-                                            </tr>
-                                            </thead>
-                                                      
-     	 <% KhoaHocsDAO khoahocsDAO=new KhoaHocsDAO();
-		%>        
-                 		<%
-                 			int i=0;
-                            for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
-                            	i++;
-                        %>
-                                            <tbody>
-                                                <tr>
-                                                    <td><%=i %></td>
-                                                    <td><%=kh.getAdMaKH() %></td>
-                                                    <td><%=kh.getAdTenKH() %></td>
-                                                    <td><%=kh.getAdNgayKhaiGiang() %></td>
-                                                    <th>
-                                                        <center>
-                                                             <a href="xem-bai-giang?khoahoc=<%=kh.getAdMaKH()%>"><button type="button" class="btn btn-info">Xem</button></a>
-                                                         	 <a href="upload-bai-giang?khoahoc=<%=kh.getAdMaKH()%>">  <button type="button" class="btn btn-success">Tải lên</button></a>
-                                                       		 <a href="ad-thong-bao?khoahoc=<%=kh.getAdMaKH()%>">  <button type="button" class="btn btn-warning">Thông báo</button></a>
-                                                       		
-                                                        </center>
-                                                    </th>
-                                                </tr>
-                                            </tbody>
-                       
-                        <%
-                            }
-                        %>
-                                        </table>
-                                    </div>
+
+                                        <br/>
+                                        <a href="" class="btn btn-info btn" style="background: #59b300">
+                                            <span class="glyphicon glyphicon-plus"></span> 
+                                        </a>
+                                        <p></p>
+                                           <%for(AdminBaiTap adbt:adbaitapDAO.getAdminBaiTapListByIDBT(Long.parseLong(baitap))){ %>
+                                      
+                                     	 <ul>
+                                         <li> <label>Tên bài tập:  </label> <%=adbt.getTenBaiTap() %> </li>
+                                          <li><label>Hạn nộp:  </label> 	<%=adbt.getHanNop() %> <%=adbt.getGioNop() %>  </li>  
+                                           <li><label>Nội dung bài tập</label> <br><%=adbt.getNoiDungBaiTap() %></li>
+                                           
+                                           <%} %>
+                                           
+                                           <%for(ChiTietKhoaHoc ct: ctkhDAO.getChiTietKhoaHocByIDCT(chitiet)){ %>
+                                          
+                                          <form action="DownLoadFile" method="post">
+                                          <a href="DownLoadFile"><button type="submit" style="background-color: white;border: none;font-style: italic;"> <input name="idfilename" type="hidden" value="<%=ct.getPathBaiTap()%>"/>File bài tập</button></a>
+                                          </form>
+                                          
+                                           <%} %>
+                                           
+                                           
+                                         </ul>
+                                                                           </div>
                                 </div>
-         </div>
+                    </ul>
+                     </div>
             </div>
             </div>
             </div>
          </div></div>
-      <jsp:include page="footer.jsp" ></jsp:include>    
-         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
     
+   
+    <jsp:include page="footer.jsp"></jsp:include> 
+
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

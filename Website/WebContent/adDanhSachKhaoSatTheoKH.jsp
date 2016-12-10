@@ -61,10 +61,8 @@
 								<div class="panel-body">
 
 									<ul class="nav navs-tabs-brand">
-										<li class="active"><a href="trang-chu-quan-tri"
-											class="list-group-item" style="z-index: 0"><i
-												class="glyphicon glyphicon-home"></i>
-												&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
+										<li class="active"><a href="trang-chu-quan-tri" class="list-group-item active" style="z-index: 0"><i class="glyphicon glyphicon-home"></i>
+												&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị<i class="glyphicon glyphicon-menu-right text-right"></i> </a></li>
 
 										<li class="active"><a href="quanly-khoa-hoc"
 											class="list-group-item " style="z-index: 0"><i
@@ -104,18 +102,23 @@
 
 										<li class="active"><a href="them-de-thi-trac-nghiem"
 											class="list-group-item" style="z-index: 0"><i
-												class="glyphicon glyphicon-pencil"></i>
+												class="glyphicon glyphicon-record"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Đề thi trắc nghiệm</a></li>
 										
 										<li class="active"><a href="quan-ly-tai-khoan"
 											class="list-group-item" style="z-index: 0"><i
-												class="glyphicon glyphicon-pencil"></i>
+												class="glyphicon glyphicon-user"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Quản lý tài khoản</a></li>
-										<li class="active"><a href="danh-sach-khoa-hoc-khao-sat"
-											class="list-group-item active" style="z-index: 0"><i
-												class="glyphicon glyphicon-pencil"></i>
+												
+												<li class="active"><a href="danh-sach-khoa-hoc-khao-sat"
+											class="list-group-item" style="z-index: 0"><i
+												class="glyphicon glyphicon-stats"></i>
 												&nbsp;&nbsp;&nbsp;&nbsp;Kết quả khảo sát KH</a></li>
-
+										
+											<li class="active"><a href="quan-ly-bai-tap"
+											class="list-group-item " style="z-index: 0"><i
+												class="glyphicon glyphicon-bookmark"></i>
+												&nbsp;&nbsp;&nbsp;&nbsp;Quản lý bài tập</a></li>
 									</ul>
 
 								</div>
@@ -141,13 +144,11 @@
   <table  class="table table-striped" border="1" >
                                             <thead style="background:#09F">
                                                 <tr>
-                                                    <th><center>Email</center></th>
-                                                    <th><center>Họ Và Tên</center></th>
-                                                    <th><center>Ngày sinh</center></th>
-                                                    <th><center>Số điện thoại</center></th>
-                                                    <th><center>Mã khóa học</center></th>
-                                                    <th><center>Tên khóa học</center></th>
-                                                    <th width="21%"><center>Thao tác</center></th>
+                                                    <th><center>Tên khoá học</center></th>
+                                                    <th><center>Ngày khai giảng</center></th>
+                                                    <th><center>Học phí</center></th>
+                                                
+                                                     <th><center>Thao tác</center></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -165,13 +166,10 @@
 									                <td> <%= resultset.getString(2) %></td>
 									                <td> <%= resultset.getString(3) %></td>
 									                <td> <%= resultset.getString(4) %></td>
-									                <td> <%= resultset.getString(5) %></td>
-									                <td> <%= resultset.getString(6) %></td>
-									                <td> <%= resultset.getString(7) %></td>
 									                 <td width="" >
-									                <a href="xem-ket-qua-khao-sat?makh=<%= resultset.getString(1)%>" ><button type="button" class="btn btn-warning" 	>Xem</button></a>
+									               <center> <a href="xem-ket-qua-khao-sat?makh=<%= resultset.getString(1)%>" ><button type="button" class="btn btn-warning" 	>Xem</button></a>
+                                                    </center>
                                                     </td>
-									              
 									            </tr>
 									            <% } %>
                                             </tbody>

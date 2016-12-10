@@ -1,3 +1,5 @@
+
+
 package controller;
 
 import java.io.IOException;
@@ -8,13 +10,15 @@ import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import connect.DBConnect;
 @SuppressWarnings("serial")
-public class SearchALL extends HttpServlet {
+@WebServlet("/tim-khoa-hoc")
+public class SearchKhoaHoc extends HttpServlet {
  
 	 @SuppressWarnings({ "unchecked", "rawtypes" })
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -37,7 +41,7 @@ public class SearchALL extends HttpServlet {
 	 
 	            ArrayList al = null;
 	            ArrayList pid_list = new ArrayList();
-	            String query = "select  * from viewdanhsachhocvienkhoahoc where HoTen like '%"+pid+"%' or Email like '%"+pid+"%' or SDT like '%"+pid+"%'";
+	            String query = "select  * from khoahoc where TenKH like '%"+pid+"%' or NgayKhaiGiang like '%"+pid+"%'";
 	            		
 	 
 	            System.out.println("query " + query);
@@ -46,11 +50,7 @@ public class SearchALL extends HttpServlet {
 	 
 	            while (rs.next()) {
 	                al = new ArrayList();
-	 
-//	                out.println(rs.getString(1));
-//	                out.println(rs.getString(2));
-//	                out.println(rs.getString(3));
-//	                out.println(rs.getString(4));
+
 	                al.add(rs.getString(1));
 	                al.add(rs.getString(2));
 	                al.add(rs.getString(3));
@@ -58,17 +58,15 @@ public class SearchALL extends HttpServlet {
 	                al.add(rs.getString(5));
 	                al.add(rs.getString(6));
 	                al.add(rs.getString(7));
-	            //    al.add(rs.getString(4));
-	 
 	                System.out.println("al :: " + al);
 	                pid_list.add(al);
 	            }
 	 
 	            request.setAttribute("piList", pid_list);
-	            RequestDispatcher view = request.getRequestDispatcher("/admin.jsp");
+	            RequestDispatcher view = request.getRequestDispatcher("/quanly-khoa-hoc");
 	            view.forward(request, response);
 	            conn.close();
-	            System.out.println("Disconnected!");
+	         //   System.out.println("Disconnected!");
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
@@ -78,10 +76,10 @@ public class SearchALL extends HttpServlet {
             throws ServletException, IOException {
     	
     	doGet(request, response);
-    
+
     }
  
-     @Override
+      @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>

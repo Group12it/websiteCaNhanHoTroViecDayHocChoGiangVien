@@ -105,11 +105,11 @@
 											<font size="5"> <%=s.getTenBaiTap()%>
 											</font>
 										</p>
-										<input type="text" name="idbaitaps"
-											value="<%=s.getIDBaiTap()%>"> <input type="text"
+										<input type="hidden" name="idbaitaps"
+											value="<%=s.getIDBaiTap()%>"> <input type="hidden"
 											name="tenbaitaps" value="<%=s.getTenBaiTap()%>">
-										<div class="btn btn-default"
-											style="text-align: left; max-width: 100%; background-image: url(images/Untitled.png)">
+										<div class="form-group">
+										
 											<%=s.getNoiDungBaiTap()%>
 
 										</div>
@@ -190,7 +190,7 @@
 
 									<div class="form-group">
 										<label for="contactghichu">Ghi chú</label><br>
-										<textarea class="form-group" rows="5" cols="100"
+										<textarea class="form-control" rows="5" cols="100"
 											name="contactghichu"></textarea>
 									</div>
 									<label>Bài tập nộp</label><br> <input id="file"
