@@ -15,6 +15,23 @@ public class BaiTapHocVienNopDAO {
 	Connection connection =DBConnect.getConnection();
 	
 	
+public boolean checktrangthainop2(String userid,String chitietid) {
+		
+		String sql = "SELECT * FROM baitap  where UserID = '" + userid + "' and MaCTKH='"+chitietid+"'";
+		PreparedStatement ps;
+		try {
+			ps = connection.prepareCall(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				connection.close();
+				return true;
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(BaiTapHocVienNopDAO.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return false;
+	}
+	
 public boolean checktrangthainop(String userid,String baitapid) {
 		
 		String sql = "SELECT * FROM baitap  where UserID = '" + userid + "' and baitapID='"+baitapid+"'";

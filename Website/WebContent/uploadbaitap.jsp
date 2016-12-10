@@ -38,25 +38,27 @@
 		if (session.getAttribute("user") != null) {
 			users = (Users) session.getAttribute("user");
 		}
-	%>
-
-	<%
+		BaiTapHocVienNopDAO btnopDAO=new BaiTapHocVienNopDAO();
 		ChiTietKhoaHocDAO chitietkhoahocDAO = new ChiTietKhoaHocDAO();
 		KhoaHocsDAO khoahocDao = new KhoaHocsDAO();
 		String khoahocchitietid = "";
 		if (request.getParameter("chitietkhoahocs") != null) {
 			khoahocchitietid = request.getParameter("chitietkhoahocs");
 		}
-	%>
-	<%
+	
 		String baitapid = "";
 		if (request.getParameter("abaitap") != null) {
 			baitapid = request.getParameter("abaitap");
 		}
 		AdminBaiTapDAO adminbaitapdao = new AdminBaiTapDAO();
-		AdminBaiTap adminbaitap = new AdminBaiTap();
+		
+		
+		int kk=0;
+		if(btnopDAO.checktrangthainop2(String.valueOf(users.getUserID()),String.valueOf(khoahocchitietid))){
+			 kk=1;
+		}
+		
 	%>
-
 	<div id="wrapper">
 		<div class="container">
 			<div class="row">
@@ -96,8 +98,6 @@
 
 										<input type="hidden" name="userids"
 											value="<%=users.getUserID()%>">
-
-
 										<%
 											for (AdminBaiTap s : adminbaitapdao.getAdminBaiTapListByID(Long.parseLong(khoahocchitietid))) {
 										%>
@@ -122,7 +122,11 @@
 											<tbody>
 												<tr>
 													<th>Trạng thái nộp</th>
-													<th>Chưa</th>
+												<%if(kk==1){%>
+													<th>Đã nộp</th>
+													<%}else{ %>
+													<th>Chưa nộp</th>
+													<% }%>
 												</tr>
 
 												<tr>
@@ -191,20 +195,31 @@
 									<div class="form-group">
 										<label for="contactghichu">Ghi chú</label><br>
 										<textarea class="form-control" rows="5" cols="100"
-											name="contactghichu"></textarea>
+											name="contactghichu" required autofocus></textarea>
 									</div>
 									<label>Bài tập nộp</label><br> <input id="file"
-										type="file" name="file" enctype="multipart/form-data" /> <br>
+										type="file" name="file" enctype="multipart/form-data" required autofocus /> <br>
 									<br>
 
 									<%
-										if (ngay >= 0 || (ngay == 0 && gio > 0)) {
+										if (ngay > 0 || (ngay == 0 && gio > 0)) {
+											if(kk==0){
 									%>
 									<button class="btn btn-info navbar-btn" id="btnsubmit"
 										name="btnsubmit" style="margin-left: 500px;">Nộp bài
 										tập</button>
 									<%
-										} else {
+											}else{
+												
+											%>
+											<button disabled="disabled" class="btn btn-info navbar-btn"
+										id="btnsubmit" name="btnsubmit" style="margin-left: 500px;">Nộp
+										bài tập</button>
+											<%} %>	
+											
+											
+									<%	
+										} else if(ngay<0 ||(ngay==0 && gio <0)) {
 									%>
 									<button disabled="disabled" class="btn btn-info navbar-btn"
 										id="btnsubmit" name="btnsubmit" style="margin-left: 500px;">Nộp
