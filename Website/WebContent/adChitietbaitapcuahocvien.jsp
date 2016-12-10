@@ -66,8 +66,8 @@
 								<div class="panel-body">
 
 										<ul class="nav navs-tabs-brand">
-										<li class="active"><a href="trang-chu-quan-tri" class="list-group-item active" style="z-index: 0"><i class="glyphicon glyphicon-home"></i>
-												&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị<i class="glyphicon glyphicon-menu-right text-right"></i> </a></li>
+										<li class="active"><a href="trang-chu-quan-tri" class="list-group-item " style="z-index: 0"><i class="glyphicon glyphicon-home"></i>
+												&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị </a></li>
 
 										<li class="active"><a href="quanly-khoa-hoc"
 											class="list-group-item " style="z-index: 0"><i
@@ -95,9 +95,9 @@
 												Gửi mail cho sinh viên</a></li>
 
 										<li class="active"><a href="xem-danh-sach-bai-tap"
-											class="list-group-item" style="z-index: 0"><i
+											class="list-group-item active" style="z-index: 0"><i
 												class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-												Bài tập của học viên</a></li>
+												Bài tập của học viên<i class="glyphicon glyphicon-menu-right text-right"></i></a></li>
 										
 										
 										<li class="active"><a href="danh-sach-hoc-vien-nop-bai"
@@ -147,9 +147,9 @@
 									gian nộp:<%=resultset.getString(8)%></label><br></br>
 
 								<form action="DownLoadFile">
-									<a href="DownLoadFile"><button>
-											File nộp của học viên:<input name="idfilename" type="text"
-												value="dbms.docx" />
+									<a href="DownLoadFile" style="text-decoration: underline;"><button style="background: white;border: none">
+										Tải về File nộp bài tập của học viên<input name="idfilename" type="hidden"
+												value="<%=resultset.getString(7) %>" />
 										</button></a>
 								</form>
 								<br></br>

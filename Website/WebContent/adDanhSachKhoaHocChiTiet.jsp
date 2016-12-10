@@ -19,6 +19,13 @@
 
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
+	
+	<% String makh="";
+		if(request.getParameter("khoahoc")!=null){
+			makh=request.getParameter("khoahoc");
+		}
+		String ctkhoc="";
+	%>
     <div id="wrapper">
       <div class="container">
         <div class="row">
@@ -103,31 +110,28 @@
                                             <thead style="background:#09F">
                                           <tr>
                                            <th>STT</th>
-                                            <th >Mã Khóa Học</th>
-                                            <th >Tên Khóa Hoc</th>
-                                            <th>Thời gian</th>
+                                            
+                                            <th >Tên bài học</th>
                                             <th >Thao Tác</th>
                                             </tr>
                                             </thead>
                                                       
-     	 <% KhoaHocsDAO khoahocsDAO=new KhoaHocsDAO();
-		%>        
+			     	 <% ChiTietKhoaHocDAO chitietDAO=new ChiTietKhoaHocDAO();
+						%>        
                  		<%
                  			int i=0;
-                            for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
+                            for (ChiTietKhoaHoc ctkh :chitietDAO.getChiTietKhoaHocByID(makh)) {
                             	i++;
                         %>
                                             <tbody>
                                                 <tr>
                                                     <td><%=i %></td>
-                                                    <td><%=kh.getAdMaKH() %></td>
-                                                    <td><%=kh.getAdTenKH() %></td>
-                                                    <td><%=kh.getAdNgayKhaiGiang() %></td>
+                                                    <td><%=ctkh.getTenBaiHoc() %></td>
                                                     <th>
                                                         <center>
-                                                             <a href="xem-bai-giang?khoahoc=<%=kh.getAdMaKH()%>"><button type="button" class="btn btn-info">Xem</button></a>
-                                                         	 <a href="danh-sach-chi-tiet-khoa-hoc?khoahoc=<%=kh.getAdMaKH()%>">  <button type="button" class="btn btn-success">Chi tiết</button></a>
-                                                       		 <a href="ad-thong-bao?khoahoc=<%=kh.getAdMaKH()%>">  <button type="button" class="btn btn-warning">Thông báo</button></a>
+                                                         <a href="upload-bai-giang?khoahoc=<%=ctkh.getMakh()%>">  <button type="button" class="btn btn-success">Thêm</button></a>
+  														 <a href="sua-chi-tiet-khoa-hoc?khoahoc=<%=ctkh.getMakh()%>&khct=<%=ctkh.getChitietKhoaHocID()%>"><button type="button" class="btn btn-info">Sửa</button></a>
+ 														 <a href="xoa-chi-tiet-khoa-hoc?khoahoc=<%=ctkh.getMakh() %>&chitiet=<%=ctkh.getChitietKhoaHocID()%>">  <button type="button" class="btn btn-warning">Xoá</button></a>
                                                        		
                                                         </center>
                                                     </th>

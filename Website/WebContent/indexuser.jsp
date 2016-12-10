@@ -82,30 +82,28 @@
 <!--Thông báo-->
 
    <div class="sidebar col-md-3 col-sm-3 col-xs-12">
-      <br><br>
+   
               <div class="panel panel-default">
-                                <div class="panel-body" align="center"><font size="3" color="green">Thông báo mới </font> </div>
-                            </div>
+                                <div class="panel-body" align="center"><font size="3" color="green">Thông báo của giáo viên </font> </div>
+              </div>
              <table class="table table-bordered">
              <thead>
              <tr>
              <th>
-             <marquee SCROLLDELAY = 150 width ="100%" height = "300" direction="up" style ="font:arial" scrollamount="2" id="bannerthongbao" name="bannerthongbao" onmouseover="this.stop()" onmouseout="this.start()">
+             <marquee SCROLLDELAY = 150 width ="100%" height = "150" direction="up" style ="font:arial" scrollamount="2" id="bannerthongbao" name="bannerthongbao" onmouseover="this.stop()" onmouseout="this.start()">
              <ul>
              
-      <% KhoaHocsDAO khoahocsDAO=new KhoaHocsDAO();
-%>        
+    	  	<% ThongBaos thongbao=new ThongBaos();
+    	  	ThongBaoDAO tbDAO=new ThongBaoDAO();
+			%>        
                  	<%
-                            for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
+                            for (ThongBaos tb:tbDAO.getThongbaoListView()) {
                         %>
-                           	<li><a href="khoa-hoc-chi-tiet?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
+                           	<li><a href="xem-thong-bao?tb=<%=tb.getMaThongBao()%>"><%=tb.getTenThongBao()%></a></li>
                            	<br></br>
                         <%
                             }
                         %>
-<%--                  <c:forEach var="rows" items="${result.rows }"> --%>
-<%--                 	 <li><a href=chi-tiet-khoa-hoc-xem?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%>  "chitietkhoahoc.jsp">${rows.TenKH}</a></li> --%>
-<%--                   </c:forEach> --%>
              </ul>
              </marquee>
              </th>
@@ -115,6 +113,41 @@
 
     </div>
   <!--End thông báo--> 
+  
+  
+  
+   <div class="sidebar col-md-3 col-sm-3 col-xs-12">
+              <div class="panel panel-default">
+                                <div class="panel-body" align="center"><font size="3" color="green">Thông báo chung </font> </div>
+              </div>
+             <table class="table table-bordered">
+             <thead>
+             <tr>
+             <th>
+             <marquee SCROLLDELAY = 150 width ="100%" height = "150" direction="up" style ="font:arial" scrollamount="2" id="bannerthongbao" name="bannerthongbao" onmouseover="this.stop()" onmouseout="this.start()">
+             <ul>
+             
+            
+                 	<%
+                 		KhoaHocsDAO khoahocsDAO =new KhoaHocsDAO();
+                            for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) {
+                        %>
+                           	<li><a href="khoa-hoc-chi-tiet?khoahoc=<%=kh.getAdMaKH()%>"><%=kh.getAdTenKH()%></a></li>
+                           	<br></br>
+                        <%
+                            }
+                        %>
+             </ul>
+             </marquee>
+             </th>
+             </tr>
+             </thead>
+             </table>
+
+    </div>
+  
+  
+  
     </div>
     <!--end row-->
     </div>

@@ -139,10 +139,10 @@ word-wrap: break-word;
                                                 </button>
                                           </a>
                                            <br>
-                                             <a href="nop-bai-tap?chitietkhoahocs=<%=ctkh.getChitietKhoaHocID()%>">
-                                                <span class="instancename" ><h3>Nộp bài tập <i class="glyphicon glyphicon-paperclip"></i></h3></span>
-                                            </a>
+                                            
                                             </form>
+                                            <a href="nop-bai-tap?chitietkhoahocs=<%=ctkh.getChitietKhoaHocID()%>">
+                                            <h3> <i class="glyphicon glyphicon-paperclip"></i>  Nộp bài tập </h3> </a>
                                            
                                             
                                             <%} %>

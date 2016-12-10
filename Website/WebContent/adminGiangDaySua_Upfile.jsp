@@ -35,11 +35,12 @@
     	khid=request.getParameter("khoahoc");
     	
     }
-    ThreadsDAO threadsDAO =new ThreadsDAO();
-	ThreadsDAO threadsDao=new ThreadsDAO();ChiTietThreadsDAO chitietthreadDAO=new ChiTietThreadsDAO();
-	String threadid="";
-	if(request.getParameter("")!=null){
-	threadid= request.getParameter("khoahoc");
+    
+    String khct="khct";
+	if(request.getParameter("khct")!=null){
+	khct= request.getParameter("khct");
+	
+	
 }
     
 	
@@ -123,56 +124,54 @@
                     <ul class="nav navs-tabs-brand">
                     <table class="ria">
                         <tr>
-                           
-                       
-
-                                <div class="panel panel-default">
+                                 <div class="panel panel-default">
                                     <div class="panel-heading" style="background:#0CC">
                                         <h4 style="font-family: verdana;color:#000">Tên Bài Giảng</h4>
                                     </div>
                                     <div class="panel-body">
 
                                         <div class="panel-body">
-                                            <form class="form" method="post" action="them-khoa-hoc-chi-tiet" enctype="multipart/form-data" >
+                                            <form class="form" method="post" action="sua-khoa-hoc-chi-tiet" enctype="multipart/form-data" >
                                               	
+                                              	<%for(ChiTietKhoaHoc ctkh:chkhDAO.getChiTietKhoaHocByIDCT(khct)) {%>
                                                 <div class="form-group">
                                                     <label for="contactemail">Tên Bài Giảng</label>
-                                                    <input name="tieude" type="text" class="form-control"  placeholder="Nhập Tên Bài Giảng" required autofocus></input>
+                                                    <input name="tieude" value="<%=ctkh.getTenBaiHoc() %>" type="text" class="form-control"   placeholder="Nhập Tên Bài Giảng" required autofocus></input>
                                                 </div>
                                                   
                                                <div class="form-group">
                                                     <label for="contactemail">Slide Bài Giảng</label>
-                                                    <input name="baigiang" type="text" class="form-control"  placeholder="link Bài Giảng" required autofocus></input>
+                                                    <input name="baigiang" value="<%=ctkh.getPathBaiGiang() %>" type="text" class="form-control"  placeholder="link Bài Giảng" required autofocus></input>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="contactemail">Ebook</label>
-                                                    <input name="ebook" type="text" class="form-control"  placeholder="link ebook" required autofocus></input>
+                                                    <input name="ebook" value="<%=ctkh.getPathEbook() %>" type="text" class="form-control"  placeholder="link ebook" required autofocus></input>
                                                 </div> 
                                                 <div class="form-group">
                                                     <label for="contactemail">Video</label>
-                                                    <input name="video" type="text" class="form-control"  placeholder="link video" required autofocus></input>
+                                                    <input name="video" type="text" value="<%=ctkh.getPathVideo() %>" class="form-control"  placeholder="link video" required autofocus></input>
                                                 </div>
 
   												<div class="form-group">
                                                     <label for="contactmessage">Nội Dung Bài Giảng</label><br></br>
                                                	<div class="col-md-6">
-                       							 <textarea rows="10" class="form-control" name="noidung" placeholder="Nội dung bài giảng" required autofocus></textarea>
+                       							 <textarea rows="10" class="form-control" name="noidung" placeholder="Nội dung bài giảng" required autofocus><%=ctkh.getNoiDung() %></textarea>
                    								</div>
                                                 </div>
-                                         		
-                                          		<input type="file" id="file" name="file" required autofocus/> 
+                                                
+                                                	<input type="file" value="<%=ctkh.getPathBaiTap() %>" id="file" name="file" required autofocus/> 
                                           		<br></br>
+                                         			<input type="hidden" name="makhoc" value="<%=ctkh.getMakh()%>"/>
+                                          	
+                                          		<input type="hidden" name="machitiet" value="<%=ctkh.getChitietKhoaHocID() %>"/>
+                                        
+                                         		<%} %>
+                                          	
                                           		
-                                          		 <%
-                                            for(KhoaHocs kh:khDAO.getKhoaHocListByID(khid) ){
-                                            %> 
-                                          
-                                                 <input type="hidden" name="makhoc" value="<%=kh.getAdMaKH()%>"></input>
-                                             
-                                            <%} %>
+
                                            
-                                          		<input  type="hidden" value="insert" name="command"/>
-                                          <center> <button type="submit"  class="btn btn-info" title="Tạo bài giảng!">Tạo bài giảng</button>
+                                          	
+                                          <center> <button type="submit"  class="btn btn-info" title="Tạo bài giảng!">Sửa bài giảng</button>
                                          			</center>								
                                          </form>
    											

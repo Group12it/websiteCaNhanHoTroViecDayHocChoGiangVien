@@ -33,8 +33,8 @@
                            <div class ="panel-body"> 
                   
                         		<ul class="nav navs-tabs-brand">
-										<li class="active"><a href="trang-chu-quan-tri" class="list-group-item active" style="z-index: 0"><i class="glyphicon glyphicon-home"></i>
-												&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị<i class="glyphicon glyphicon-menu-right text-right"></i> </a></li>
+										<li class="active"><a href="trang-chu-quan-tri" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-home"></i>
+												&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
 
 										<li class="active"><a href="quanly-khoa-hoc"
 											class="list-group-item " style="z-index: 0"><i
@@ -47,9 +47,9 @@
 												&nbsp;&nbsp;&nbsp;&nbsp;Thread thảo luận</a></li>
 
 										<li class="active"><a href="ke-hoach-giang-day"
-											class="list-group-item"><i
+											class="list-group-item active"><i
 												class="glyphicon glyphicon-calendar"></i>
-												&nbsp;&nbsp;&nbsp;&nbsp;Kế hoạch giảng dạy</a></li>
+												&nbsp;&nbsp;&nbsp;&nbsp;Kế hoạch giảng dạy<i class="glyphicon glyphicon-menu-right text-right"></i> </a></li>
 
 										<li class="active"><a href="quan-ly-hoc-vien"
 											class="list-group-item" style="z-index: 0"><i
@@ -97,22 +97,23 @@
                     </div>  
                      <div class="panel panel-default">
                      <div class="col-md-9">
-                  <form class="form" action ="" method="post" onSubmit="return formaction()">
-                    <a class ="list-group-item text-center " href="#" style="font-size: 20px;color: blue;background: #0CC">Tạo Thread Thảo Luận</a><br> </br>
+                  <form class="form" action ="tao-thong-bao" method="post" onSubmit="return formaction()">
+                    <a class ="list-group-item text-center " href="#" style="font-size: 20px;color: blue;background: #0CC">Tạo thông báo</a><br> </br>
                   
                     <input  type="hidden" name="makh" value="<%=makh%>"/>
                     
                     <label style="font-size: 15px">Tên thông báo</label>
                     <br></br>
-                    <input class="form-control" type="text" name="Tên thông báo"  placeholder="Nhập tên thông báo" size="50% " style="font-size: 15px" requied autofocus></input>
+                    <input class="form-control" type="text" name="tenthongbao"  placeholder="Nhập tên thông báo" size="50% " style="font-size: 15px" required autofocus></input>
                     <br></br> 
                      
                     <label style="font-size: 15px">Nội dung thông báo</label>
                    <br></br>
                     
-                    <textarea rows="" cols="" class="form-control" name="noidungthongbao" requied autofocus></textarea> 
-               	     <input type="hidden" name="command" value="insert"></input>                  
-                     <button type="submit" class="btn btn-info">OK</button>
+                    <textarea rows="" cols="" class="form-control" name="noidungthongbao" required autofocus></textarea> 
+               	     <input type="hidden" name="command" value="insert"></input>           
+               	     <br></br>       
+                    <center><button type="submit" class="btn btn-info">OK</button></center>
                     </form>
                          </div>      
                 </div>

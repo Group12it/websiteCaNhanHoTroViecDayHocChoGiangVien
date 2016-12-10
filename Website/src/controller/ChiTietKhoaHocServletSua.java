@@ -20,14 +20,14 @@ import dao.UsersDAO;
 import model.ChiTietKhoaHoc;
 
 @SuppressWarnings("serial")
-@WebServlet("/them-khoa-hoc-chi-tiet")
+@WebServlet("/sua-khoa-hoc-chi-tiet")
 // @WebServlet(urlPatterns = {"/abc"})
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10, maxFileSize = 1024 * 1024 * 50, maxRequestSize = 1024 * 1024
 		* 100)
 // upload file's size up to 16MB
 
-public class ChiTietKhoaHocServlet extends HttpServlet {
+public class ChiTietKhoaHocServletSua extends HttpServlet {
 	// this if directory name where the file will be uploaded and saved
 	UsersDAO usersDAO = new UsersDAO();
 	
@@ -43,7 +43,7 @@ public class ChiTietKhoaHocServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		
+		String mact=request.getParameter("machitiet");
 		String Tde = request.getParameter("tieude");
 		String ND = request.getParameter("noidung");
 		String BaiG = request.getParameter("baigiang");
@@ -86,7 +86,7 @@ public class ChiTietKhoaHocServlet extends HttpServlet {
 			String fileName = extractFileName(part);
 		
 			System.out.println(mKH+"   "+Videos+"   "+Ebooks+"   "+ND+"   "+Tde+"   "+BaiG+"   "+fileName);
-			url = "/danh-sach-chi-tiet-khoa-hoc?khoahoc"+mKH;
+			url = "/danh-sach-chi-tiet-khoa-hoc?khoahoc="+mKH;
 			part.write(uploadPath + File.separator + fileName);
 			request.setAttribute("msg",fileName);
 			
@@ -116,7 +116,7 @@ public class ChiTietKhoaHocServlet extends HttpServlet {
 			String mKH = request.getParameter("makhoc");*/
 			
 			
-			ct.setChitietKhoaHocID(new java.util.Date().getTime());
+			ct.setChitietKhoaHocID(Long.parseLong(mact));
 			ct.setTenBaiHoc(Tde);
 			ct.setNoiDung(ND);
 			ct.setPathBaiGiang(BaiG);
@@ -126,7 +126,7 @@ public class ChiTietKhoaHocServlet extends HttpServlet {
 			ct.setMakh(Long.parseLong(mKH));
 			
 			
-			chitietkhdao.insertKHChitiet(ct);
+			chitietkhdao.UpdateKHChitiet(ct);
 			
 		//	dethidao.insertDethi(de);
 			

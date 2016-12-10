@@ -14,7 +14,6 @@ import model.ChiTietKhoaHoc;;
 public class ChiTietKhoaHocDAO {
 	Connection connection = DBConnect.getConnection();
 
-	
 	public ArrayList<ChiTietKhoaHoc> getChiTietKhoaHocByID(String MaKH) throws SQLException {
 
 		String sql = "Select * from chitietkhoahoc where MaKH='" + MaKH + "'";
@@ -35,8 +34,8 @@ public class ChiTietKhoaHocDAO {
 		}
 		return list;
 	}
-	
-	//lay khoa hoc chi tiet theo ma khoa hoc chi tiet
+
+	// lay khoa hoc chi tiet theo ma khoa hoc chi tiet
 	public ArrayList<ChiTietKhoaHoc> getChiTietKhoaHocByIDCT(String CT) throws SQLException {
 
 		String sql = "Select * from chitietkhoahoc where ChiTietKHID='" + CT + "'";
@@ -54,12 +53,11 @@ public class ChiTietKhoaHocDAO {
 			chitietkhoahocs.setPathBaiTap(rs.getString("DuongDanBaiTap"));
 			chitietkhoahocs.setMakh(rs.getLong("MaKH"));
 			list.add(chitietkhoahocs);
-			
+
 		}
 		return list;
 	}
-	
-	
+
 	public ArrayList<ChiTietKhoaHoc> getChiTietKhoaHoc() throws SQLException {
 
 		String sql = "Select * from chitietkhoahoc";
@@ -108,7 +106,7 @@ public class ChiTietKhoaHocDAO {
 
 	public boolean UpdateKHChitiet(ChiTietKhoaHoc kh) {
 
-		String sql = "update chitietkhoahoc set TenBaiHoc=?,NoiDung=?,DuongDanBaiGiang=?,DuongDanEbook=?, DuongDanVideo=?,DuongDanBaiTap=? where ChiTietKHID=?";
+		String sql = "update chitietkhoahoc set TenBaiHoc=?,NoiDung=?,DuongDanBaiGiang=?,DuongDanEbook=?, DuongDanVideo=?,DuongDanBaiTap=?,MaKH=? where ChiTietKHID=?";
 		try {
 			PreparedStatement ps = connection.prepareCall(sql);
 
@@ -129,10 +127,27 @@ public class ChiTietKhoaHocDAO {
 		return false;
 	}
 
+	public boolean DeleteCTKH(long kh) {
+
+		String sql = "delete from chitietkhoahoc where ChiTietKHID=?";
+		try {
+			PreparedStatement ps = connection.prepareCall(sql);
+
+			ps.setLong(1, kh);
+			ps.executeUpdate();
+			return true;
+
+		} catch (SQLException ex) {
+			Logger.getLogger(ChiTietKhoaHocDAO.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return false;
+	}
+
 	public static void main(String[] args) {
 
 		ChiTietKhoaHocDAO ct = new ChiTietKhoaHocDAO();
-		System.out.println(ct.insertKHChitiet(new ChiTietKhoaHoc(1, "qe", "23", "23", "23", "@3", "23",Long.parseLong("1480223244590"))));
+		System.out.println(ct.UpdateKHChitiet(
+				new ChiTietKhoaHoc(Long.parseLong("1480662203856"), "qe", "23", "23", "23", "@3", "23", Long.parseLong("1480223244590"))));
 
 	}
 }

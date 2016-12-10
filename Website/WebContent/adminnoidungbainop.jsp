@@ -60,8 +60,8 @@
 								<div class="panel-body">
 
 											<ul class="nav navs-tabs-brand">
-										<li class="active"><a href="trang-chu-quan-tri" class="list-group-item active" style="z-index: 0"><i class="glyphicon glyphicon-home"></i>
-												&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị<i class="glyphicon glyphicon-menu-right text-right"></i> </a></li>
+										<li class="active"><a href="trang-chu-quan-tri" class="list-group-item" style="z-index: 0"><i class="glyphicon glyphicon-home"></i>
+												&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
 
 										<li class="active"><a href="quanly-khoa-hoc"
 											class="list-group-item " style="z-index: 0"><i
@@ -95,9 +95,9 @@
 										
 										
 										<li class="active"><a href="danh-sach-hoc-vien-nop-bai"
-											class="list-group-item" style="z-index: 0"><i
+											class="list-group-item active" style="z-index: 0"><i
 												class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-												Bài thi của học viên</a></li>
+												Bài thi của học viên<i class="glyphicon glyphicon-menu-right text-right"></i> </a></li>
 
 										<li class="active"><a href="them-de-thi-trac-nghiem"
 											class="list-group-item" style="z-index: 0"><i

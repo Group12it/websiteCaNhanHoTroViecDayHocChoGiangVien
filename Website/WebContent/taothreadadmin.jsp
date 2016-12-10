@@ -24,8 +24,8 @@
                            <div class ="panel-body"> 
                   
                          		<ul class="nav navs-tabs-brand">
-										<li class="active"><a href="trang-chu-quan-tri" class="list-group-item active" style="z-index: 0"><i class="glyphicon glyphicon-home"></i>
-												&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị<i class="glyphicon glyphicon-menu-right text-right"></i> </a></li>
+										<li class="active"><a href="trang-chu-quan-tri" class="list-group-item " style="z-index: 0"><i class="glyphicon glyphicon-home"></i>
+												&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ quản trị</a></li>
 
 										<li class="active"><a href="quanly-khoa-hoc"
 											class="list-group-item " style="z-index: 0"><i
@@ -33,9 +33,9 @@
 												Quản lý khoá học</a></li>
 
 										<li class="active"><a href="quan-ly-thread"
-											class="list-group-item" style="z-index: 0"><i
+											class="list-group-item active" style="z-index: 0"><i
 												class="glyphicon glyphicon-comment"></i>
-												&nbsp;&nbsp;&nbsp;&nbsp;Thread thảo luận</a></li>
+												&nbsp;&nbsp;&nbsp;&nbsp;Thread thảo luận<i class="glyphicon glyphicon-menu-right text-right"></i></a></li>
 
 										<li class="active"><a href="ke-hoach-giang-day"
 											class="list-group-item"><i
