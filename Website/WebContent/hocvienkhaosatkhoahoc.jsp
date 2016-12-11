@@ -131,7 +131,7 @@
 														Hoàn toàn đồng ý <input type="radio" name="cau4" value="4" id="cau41">
 														Đồng ý <input type="radio" name="cau4" value="3" id="cau42">
 														Phân vân <input type="radio" name="cau4" value="2" id="cau43">
-														Không đồng ý <input type="radio" name="cau4" value="1 id=" cau44">
+														Không đồng ý <input type="radio" name="cau4" value="1" id="cau44">
 														Hoàn toàn không đồng ý	<input type="radio" name="cau4" value="0" id="cau45">
 														<br>
 														<br>
@@ -182,7 +182,7 @@
 			</div>
 
 		</div>
-	</div>
+	
 	
 	</section></section>
 

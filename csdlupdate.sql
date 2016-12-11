@@ -42,7 +42,7 @@ CREATE TABLE `adminbaitap` (
 
 LOCK TABLES `adminbaitap` WRITE;
 /*!40000 ALTER TABLE `adminbaitap` DISABLE KEYS */;
-INSERT INTO `adminbaitap` VALUES (1,'Bài tập 1','Các em tải file bài tập về làm và nén lại file rar và gửi lên trước thời hạn','2016-12-10','01:00:00',1480662203856);
+INSERT INTO `adminbaitap` VALUES (1,'Bài tập 1','Các em tải file bài tập về làm và nén lại file rar và gửi lên trước thời hạn','2016-12-11','23:00:00',1480662203856);
 /*!40000 ALTER TABLE `adminbaitap` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -74,8 +74,37 @@ CREATE TABLE `baitap` (
 
 LOCK TABLES `baitap` WRITE;
 /*!40000 ALTER TABLE `baitap` DISABLE KEYS */;
-INSERT INTO `baitap` VALUES (1,1478396124277,'Bài tập 1','Hoàn thành tất cả các bài tập',1480662203856,'dbms.docx','2016-12-09 16:42:09');
 /*!40000 ALTER TABLE `baitap` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cauhoi`
+--
+
+DROP TABLE IF EXISTS `cauhoi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cauhoi` (
+  `MaCH` bigint(20) NOT NULL,
+  `MaKH` bigint(20) NOT NULL,
+  `NoiDung` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `A` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `B` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `C` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `D` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `DADung` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`MaCH`,`MaKH`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cauhoi`
+--
+
+LOCK TABLES `cauhoi` WRITE;
+/*!40000 ALTER TABLE `cauhoi` DISABLE KEYS */;
+INSERT INTO `cauhoi` VALUES (1,1480223244590,'sdfsfsd','sdfsdgsd','sdgsdfsdf','sdfsdfsdf','sdfsdfsd','A'),(2,1480223244590,'123','123','123','123','123','A'),(123,1480223244590,'(NU12312323LL)','123123','13123','213123123','123123123','A'),(141212312312311,1480223244590,'24124124','1241241241241','124124124124124','124124124124','124124124','A');
+/*!40000 ALTER TABLE `cauhoi` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -106,7 +135,7 @@ CREATE TABLE `chitietkhoahoc` (
 
 LOCK TABLES `chitietkhoahoc` WRITE;
 /*!40000 ALTER TABLE `chitietkhoahoc` DISABLE KEYS */;
-INSERT INTO `chitietkhoahoc` VALUES (1480662203856,'Bài 1: Làm quen với ngôn ngữ lập trình C','Bài 1 làm quen với ngôn ngữ lập trình<br> Ngôn ngữ lập trình c là 1 cái gì đó là là là','123','123','https://www.youtube.com/embed/WdJtw6F3MRI','ip.docx',1480223244590),(1480937942115,'Bài 2: là, quen với ngôn ngữ lập trinh (tt)','Bài giảng','https://docs.google.com/document/d/1siwUVMjMPLZj2radlrbN9W-WKJjoVlttbyjoArOC4D8/edit?usp=sharing','https://docs.google.com/document/d/1MOhwpNAJeTElxTn3XqDBH74ztP9VKDEBz7ZtT_Y5XIA/edit?usp=sharing','https://www.youtube.com/embed/zj-aEwORdzk','14110114.docx',1480223244590);
+INSERT INTO `chitietkhoahoc` VALUES (1480662203856,'Bài 1: Làm quen với ngôn ngữ lập trình c và các lệnh cơ bản','I) Tạo chương trình cho phép xuất ra màn hình dòng chữ \"Hello world ! </br>Nhập vào năm:\" và bắt nhập vào năm hiện tại.</br>Sau đó xuất ra màn hình \"Năm bạn nhập là: [Số liệu bạn nhập trước đó]\".\r\n</br>Code:</br>\r\n#include \"stdio.h\"</br>\r\n#include \"conio.h\"</br>\r\nvoid main()\r\n{</br>\r\n      int year;</br>\r\n      printf(\"Hello world ! Nhap vao nam:\");</br>\r\n      scanf(\"%d\",&year);</br>\r\n      printf(\"Nam ban nhap la:%d\",year);</br>\r\n      getch();</br>\r\n}</br>\r\n-Đến đây sẽ có bạn hỏi rằng mấy cái chữ như int,#include ,getch().... là cái gì ? Tại sao lại cần nó ?</br>\r\nTrả lời : </br>\r\n-int : Đây là hàm khai báo biến có giá trị nguyên.Và 1 số hàm khai báo khác mình sẽ nói sau.</br>\r\n-getch(): Cái này giúp chương trình của bạn sau khi thực hiện xong hết các tác vụ nó sẽ đứng lại để bạn quan sát thành quả của mình.</br>\r\n-#include \"stdio.h\" :Đây là hàm dùng để bạn sử dụng getch(); trong chương trình.</br>\r\n-#include \"conio.h\" :Đây là hàm thư viện quản lý nhập/xuất trong chương trình trên,nó quản lý chững thứ như printf,scanf...</br>\r\n-printf : Đây là hàm xuất ra màn hình,những thứ được viết trong (\".....\") đều sẽ được đưa ra màn hình</br>\r\n\r\nCấu trúc : printf (\"[Những thứ sẽ được xuất ra màn hình]\",[kết quả sẽ được in ra]);\r\nhoặc printf(\"[Những thứ sẽ được xuất ra màn hình]\");</br>\r\n-scanf: Đây là hàm nhập,khi có hàm này chương trình của bạn sẽ dừng lại và bắt nhập vào 1 cái gì đó,như ví dụ trên thì \"%d\" có nghĩa là nơi để bạn nhập dữ liệu từ bàn phím còn \"&year\" là địa chỉ đối số của giá trị đó,nên nhớ rằng bạn phải khai báo \"year\" từ đầu.</br>\r\n\r\nCấu trúc : scanf (\"%[kiểu dữ liệu]\",Đối số);\r\nP/s: scanf có thể có nhiều đối số khác nhau \r\nVD: scanf(\"%[kiểu dữ liệu 1],%[kiểu dữ liệu 2]...\",Đối số 1,Đối số 2,...);</br>\r\nĐây là 1 ví dụ đơn giản.Sau đây mình sẽ liệt kê những loại biến khai báo khác về số khác :</br>\r\n-int : Khai báo biến có kiểu là số nguyên</br>\r\n-float : Khai báo biến có kiểu là số thực (số không nguyên,số lẻ)</br>\r\n-long : Khai báo biến có kiểu là số thực dài </br>\r\n-long double : Khai báo biến có kiểu là số thực rất dài</br>','https://www.youtube.com/embed/zj-aEwORdzk','https://www.youtube.com/embed/zj-aEwORdzk','https://www.youtube.com/embed/zj-aEwORdzk','HD git.docx',1480223244590),(1480937942115,'Bài 2: Làm quen với ngôn ngữ lập trình c và các lệnh cơ bản(tt)','II) VIẾT CHƯƠNG TRÌNH TÍNH CHU VI,DIỆN TÍCH CỦA HÌNH CHỮ NHẬT\r\nTrước khi thực hiện viết chương trình,bạn hãy suy nghĩ trong đầu rằng đề bài cần tìm cái gì và cần khai báo bao nhiêu biến?\r\nCông Thức : Chu vi = (Dài + Rộng)/2 và Diện tích = Dài*Rộng\r\nNếu chưa quen thì nên tập viết ra giấy sau đó viết lên máy.\r\nCode:\r\n#include \"stdio.h\"\r\n#include \"conio.h\"\r\nvoid main ()\r\n{\r\n    float Dai,Rong,Chuvi,Dientich;\r\n    printf(\"Chieu dai =\");\r\n    scanf(\"%f\",&Dai);\r\n    printf(\"Chieu rong =\");\r\n    scanf(\"%f\",&Rong);\r\n    Chuvi=(Dai+Rong)/2;\r\n    Dientich=Dai*Rong;\r\n    printf(\"Chu vi HCN = %0.2f\",Chuvi);\r\n    printf(\"Dien tich HCN = %0.2f\",Dientich);\r\n    getch();\r\n}\r\nSau khi quen với chương trình 1 thì chương trình này có thể bạn sẽ cảm thấy dễ hiểu rồi đúng không  .Ở đây nhận thấy là phải khai báo 4 biến là Dai,Rong,Chuvi,Dientich :2 biến để nhập vào,2 biến để xuất ra kết quả.Cái khác ở chương trình nằm ở chỗ là dùng toán tử gán,khi đã biết được hướng giải quyết thì việc viết chương trình cũng dễ hơn,cách đặt các phép toán tử cũng khá đơn giản,nó cũng như toán học vậy thôi.\r\n1 điều lưu ý là ở chương trình trên sẽ có bạn hỏi là tại sao khi xuất ra kết quả Chuvi,Dientich không dùng %f mà lại là %0.2f ?\r\nTrả lời: \r\nKhi xuất ra kết quả với %f thì máy sẽ hiểu theo cấu trúc [X.000000] có nghĩa là nó sẽ lấy độ dài phần dư đến 6 số.VD bạn ra kết quả = 5 thì nó sẽ xuất ra là 5.000000.Nên mình đã giới hạn nó lại bằng cách đặt là %0.2f.Các bạn cứ hiểu 0.2 ở đây là cho ra kết quả lấy phần dư chỉ giới hạn tối đa 2 số.VD kết quả bằng 5.345345 thì máy xuất ra là 5.34.','https://docs.google.com/document/d/1siwUVMjMPLZj2radlrbN9W-WKJjoVlttbyjoArOC4D8/edit?usp=sharing','https://docs.google.com/document/d/1MOhwpNAJeTElxTn3XqDBH74ztP9VKDEBz7ZtT_Y5XIA/edit?usp=sharing','https://www.youtube.com/embed/zj-aEwORdzk','chiaip.docx',1480223244590);
 /*!40000 ALTER TABLE `chitietkhoahoc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,7 +164,6 @@ CREATE TABLE `chitietthread` (
 
 LOCK TABLES `chitietthread` WRITE;
 /*!40000 ALTER TABLE `chitietthread` DISABLE KEYS */;
-INSERT INTO `chitietthread` VALUES (1481078687940,1480026543673,'Mác','2016-12-07 09:44:47','D');
 /*!40000 ALTER TABLE `chitietthread` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -164,7 +192,7 @@ CREATE TABLE `dangkykhoahoc` (
 
 LOCK TABLES `dangkykhoahoc` WRITE;
 /*!40000 ALTER TABLE `dangkykhoahoc` DISABLE KEYS */;
-INSERT INTO `dangkykhoahoc` VALUES (1,1480223244590,'1'),(4,1480223244590,'1'),(1478396124277,1480223244590,'1'),(1478396124277,1480223290372,'1');
+INSERT INTO `dangkykhoahoc` VALUES (1,1480223244590,'1'),(2,1480223244590,'1'),(4,1480223244590,'1'),(1478396124277,1480223244590,'1'),(1478396124277,1480223290372,'1');
 /*!40000 ALTER TABLE `dangkykhoahoc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,7 +232,7 @@ CREATE TABLE `dapanhv` (
 
 LOCK TABLES `dapanhv` WRITE;
 /*!40000 ALTER TABLE `dapanhv` DISABLE KEYS */;
-INSERT INTO `dapanhv` VALUES (1481210281147,'BBABC',1478396124277,1),(1481210381305,'BBABC',1478396124277,1);
+INSERT INTO `dapanhv` VALUES (1481210281147,'BBABC',1478396124277,1);
 /*!40000 ALTER TABLE `dapanhv` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,7 +264,7 @@ CREATE TABLE `dethi` (
   PRIMARY KEY (`MaDeThi`),
   KEY `MaKH` (`MaKH`),
   CONSTRAINT `dethi_ibfk_1` FOREIGN KEY (`MaKH`) REFERENCES `khoahoc` (`MaKH`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -245,7 +273,7 @@ CREATE TABLE `dethi` (
 
 LOCK TABLES `dethi` WRITE;
 /*!40000 ALTER TABLE `dethi` DISABLE KEYS */;
-INSERT INTO `dethi` VALUES (1,'Kiểm tra lập trình C',1480223244590,'baikiemtra.txt');
+INSERT INTO `dethi` VALUES (1,'Kiểm tra lập trình C',1480223244590,'baikiemtra.txt'),(2,'412411',1480223244590,'sdfsdf');
 /*!40000 ALTER TABLE `dethi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -273,7 +301,7 @@ CREATE TABLE `diem` (
 
 LOCK TABLES `diem` WRITE;
 /*!40000 ALTER TABLE `diem` DISABLE KEYS */;
-INSERT INTO `diem` VALUES (0,0,0,NULL),(1,1478396124277,10,'Good');
+INSERT INTO `diem` VALUES (1480223244590,1478396124277,5,'g');
 /*!40000 ALTER TABLE `diem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -298,7 +326,7 @@ CREATE TABLE `diembaitap` (
 
 LOCK TABLES `diembaitap` WRITE;
 /*!40000 ALTER TABLE `diembaitap` DISABLE KEYS */;
-INSERT INTO `diembaitap` VALUES (1,1478396124277,8,'Khá');
+INSERT INTO `diembaitap` VALUES (1,1478396124277,8,'Khá'),(1,1478396124277,10,'Tốt');
 /*!40000 ALTER TABLE `diembaitap` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -324,7 +352,7 @@ CREATE TABLE `khaosatkhoahoc` (
 
 LOCK TABLES `khaosatkhoahoc` WRITE;
 /*!40000 ALTER TABLE `khaosatkhoahoc` DISABLE KEYS */;
-INSERT INTO `khaosatkhoahoc` VALUES (1480223244590,4,60,''),(1480223244590,1478396124277,10,'');
+INSERT INTO `khaosatkhoahoc` VALUES (1480223244590,2,0,'Tệ'),(1480223244590,4,45,'Cung dk'),(1480223244590,1478396124277,95,'Good');
 /*!40000 ALTER TABLE `khaosatkhoahoc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -358,6 +386,59 @@ INSERT INTO `khoahoc` VALUES (1480223244590,'Lập trình C căn bản','2016-12
 UNLOCK TABLES;
 
 --
+-- Table structure for table `lambaikiemtra`
+--
+
+DROP TABLE IF EXISTS `lambaikiemtra`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lambaikiemtra` (
+  `MaKH` bigint(20) NOT NULL,
+  `MaCH` bigint(20) NOT NULL,
+  `UserID` bigint(20) NOT NULL,
+  `DapAnChon` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`MaKH`,`MaCH`,`UserID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lambaikiemtra`
+--
+
+LOCK TABLES `lambaikiemtra` WRITE;
+/*!40000 ALTER TABLE `lambaikiemtra` DISABLE KEYS */;
+INSERT INTO `lambaikiemtra` VALUES (1480223244590,1,1478396124277,'B'),(1480223244590,2,1478396124277,'A'),(1480223244590,123,1478396124277,'A'),(1480223244590,141212312312311,1478396124277,'B');
+/*!40000 ALTER TABLE `lambaikiemtra` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `thongbao`
+--
+
+DROP TABLE IF EXISTS `thongbao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `thongbao` (
+  `MaThongBao` bigint(20) NOT NULL,
+  `MaKH` bigint(20) DEFAULT NULL,
+  `TenThongBao` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `NoiDungTB` varchar(2000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ThoiGianTB` datetime DEFAULT NULL,
+  PRIMARY KEY (`MaThongBao`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `thongbao`
+--
+
+LOCK TABLES `thongbao` WRITE;
+/*!40000 ALTER TABLE `thongbao` DISABLE KEYS */;
+INSERT INTO `thongbao` VALUES (1481360290476,1480223244590,'Thông báo từ khoá học lập trình c','Có bài tập mới. Các em tải bài tập về và làm bài rồi nộp bài đúng trước thời hạn','2016-12-10 15:58:10');
+/*!40000 ALTER TABLE `thongbao` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `thread`
 --
 
@@ -378,7 +459,7 @@ CREATE TABLE `thread` (
 
 LOCK TABLES `thread` WRITE;
 /*!40000 ALTER TABLE `thread` DISABLE KEYS */;
-INSERT INTO `thread` VALUES (1480026543673,'How to deploy to web??','2016-11-25 00:00:00'),(1480026995269,'Design template in html','2016-11-25 00:00:00'),(1480907470398,'How to deploy to web?','2016-12-05 00:00:00'),(1480986680541,'Học lập trình','2016-12-06 08:11:20');
+INSERT INTO `thread` VALUES (1480026995269,'Design template pretty in html ','2016-11-25 00:00:00'),(1480907470398,'How to deploy to web?','2016-12-05 00:00:00'),(1480986680541,'Học lập trình c có khó không?','2016-12-06 08:11:20');
 /*!40000 ALTER TABLE `thread` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -410,7 +491,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (0,'nhom12it@gmail.com','123','admin','Lưu Đình Mác','1996-09-13','Nam',986175646,''),(1,'nguoiemcuanui@gmail.com','123','admin','Lưu Đình Mác','1995-09-13','Nam',965175646,''),(2,'luumac2801@gmail.com','123','user','Lưu Đình Mác','1995-09-13','Nam',965175646,''),(3,'liemnguyen388@gmail.com','123','user','Nguyễn Văn Liêm','1996-11-22','Nam',0,''),(4,'vanbinh628@gmail.com','123','user','Binh','2016-11-16','Nam',0,''),(1478396124277,'user@gmail.com','123','user','Học viên','1995-01-11','Nam',12345678,''),(1481278007510,'123@123','123','user','123123','2016-12-19','Nam',0,'null');
+INSERT INTO `users` VALUES (0,'nhom12it@gmail.com','123','admin','Lưu Đình Mác','1996-09-13','Nam',986175646,''),(1,'nguoiemcuanui@gmail.com','123','admin','Lưu Đình Mác','1995-09-13','Nam',965175646,'cho.gif'),(2,'luumac2801@gmail.com','123','user','Lưu Đình Mác','1995-09-13','Nam',965175646,''),(3,'liemnguyen388@gmail.com','123','user','Nguyễn Văn Liêm','1996-11-22','Nam',0,''),(4,'vanbinh628@gmail.com','123','user','Bình','2016-11-16','Nam',0,''),(1478396124277,'user@gmail.com','123','user','Học viên','1995-01-11','Nam',12345678,'');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -519,6 +600,22 @@ SET character_set_client = utf8;
  1 AS `GioiTinh`,
  1 AS `SDT`,
  1 AS `HinhAnh`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `viewthongbao`
+--
+
+DROP TABLE IF EXISTS `viewthongbao`;
+/*!50001 DROP VIEW IF EXISTS `viewthongbao`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `viewthongbao` AS SELECT 
+ 1 AS `MaThongBao`,
+ 1 AS `MaKH`,
+ 1 AS `TenThongBao`,
+ 1 AS `NoiDungTB`,
+ 1 AS `ThoiGianTB`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -699,6 +796,24 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `viewthongbao`
+--
+
+/*!50001 DROP VIEW IF EXISTS `viewthongbao`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewthongbao` AS (select distinct `thongbao`.`MaThongBao` AS `MaThongBao`,`thongbao`.`MaKH` AS `MaKH`,`thongbao`.`TenThongBao` AS `TenThongBao`,`thongbao`.`NoiDungTB` AS `NoiDungTB`,`thongbao`.`ThoiGianTB` AS `ThoiGianTB` from ((`thongbao` join `users`) join `dangkykhoahoc`) where ((`thongbao`.`MaKH` = `dangkykhoahoc`.`MaKH`) and (`dangkykhoahoc`.`chophep` = '1') and (`dangkykhoahoc`.`UserID` = `users`.`UserID`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `viewthongtindangky`
 --
 
@@ -743,4 +858,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-09 20:07:18
+-- Dump completed on 2016-12-12  0:08:44
