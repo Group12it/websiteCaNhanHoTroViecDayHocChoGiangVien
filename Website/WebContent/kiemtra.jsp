@@ -32,10 +32,7 @@
 
       <%
             
-      		String dethis="";
-      		if(request.getParameter("dethis")!=null){
-      			dethis=request.getParameter("dethis");
-      		}
+      		
       		Users users = null;
             if (session.getAttribute("user") != null) {
                 users = (Users) session.getAttribute("user");
@@ -44,8 +41,13 @@
                        
 <sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=users.getUserEmail()%>";</sql:query> 
         
-<sql:query dataSource="${DBConnect }" var="khoahoccuatoi"> select DISTINCT dethi.MaDeThi,TenKH,TenDeThi,khoahoc.MaKH from khoahoc,dangkykhoahoc,users,dethi where dangkykhoahoc.UserID=users.UserID
-&& dangkykhoahoc.MaKH=dethi.MaKH && dangkykhoahoc.chophep='1' && users.UserID=<%=users.getUserID() %> && dethi.MaKH=khoahoc.MaKH ;</sql:query>
+<sql:query dataSource="${DBConnect }" var="khoahoccuatoi"> select DISTINCT TenKH,khoahoc.MaKH from cauhoi,khoahoc,dangkykhoahoc,users
+ where 
+dangkykhoahoc.UserID=users.UserID
+&& dangkykhoahoc.MaKH=cauhoi.MaKH 
+&& dangkykhoahoc.chophep='1' 
+&& users.UserID=<%=users.getUserID() %>
+&& cauhoi.MaKH=khoahoc.MaKH ;</sql:query>
   <div id="wrapper">
       <div class="container">
         <div class="row">
@@ -77,8 +79,8 @@
                         <c:set var="count"  value="${count+1}" /> <%--Tăng biến đếm lên 1 đơn vị--%>
                         <td>${rows.MaKH }</td>
                       	<td> ${rows.TenKH }</td>
-                      	<td><a href="lam-bai-kiem-tra?khoahoc=${rows.MaKH }&dethis=${rows.MaDeThi}">${rows.TenDeThi }</a></td>
-                           <td><a href="xem-diem?dethis=${rows.MaDeThi }"> Xem kết quả </a></td>
+                      	<td><a href="lam-bai-kiem-tra?khoahoc=${rows.MaKH }">Vào thi</a></td>
+                           <td><a href="xem-diem?khoahoc=${rows.MaKH }&userid=<%=users.getUserID()%>"> Xem kết quả </a></td>
                           </tr>
                           </tbody>
                           </c:forEach>

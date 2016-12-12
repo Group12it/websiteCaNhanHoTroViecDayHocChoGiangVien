@@ -19,65 +19,103 @@
 	<jsp:include page="header.jsp"></jsp:include>
 
 <%
-Diems diems=new Diems();
+UsersDAO userdao =new UsersDAO();
+Users users=new Users();
+if(session.getAttribute("user")!=null){
+	users=(Users) session.getAttribute("user");
+}
+KhoaHocsDAO khDAO=new KhoaHocsDAO();
 DiemsDAO diemDAO =new DiemsDAO();
-String dethiID="";
-if(request.getParameter("dethis")!=null)
+String khoahocid="";
+if(request.getParameter("khoahoc")!=null)
 {
-	dethiID=request.getParameter("dethis");
+	khoahocid=request.getParameter("khoahoc");
+}
+String userid="";
+if(request.getParameter("userid")!=null)
+{
+	userid=request.getParameter("userid");
 }
 
+
 %>
+	
+	
+	
+		<section class="container" style="min-height:270px"> <section
+		class="row">
+
 	<div id="wrapper">
 		<div class="container">
-			<div class="row">
-				<div class="content col-md-9 col-sm-9 col-xs-12">
-
-					<div class="container">
-						<div class="row">
-
-							<div class="col-md-1">
-								<ul class="nav navs-tabs-brand">
-								</ul>
-							</div>
-
-							<div class="col-md-7">
-								<h1>Điểm kiểm tra</h1>
-								<table class="table table-bordered">
-									<thead>
-									
-										<tr style="background: #00a8d8">
-											<th>STT</th>
-											<th>Tên khóa học</th>
-											<th>Điểm kiểm tra</th>
-											<th>Nhận xét</th>
-										</tr>
-									</thead>
-									<tbody>
-										<%
-										int i=0;
-										for(Diems diem: diemDAO.getDeThiByMaDeThi(dethiID)){ 
-										i++;
-										%>
+			<div class="panel panel-primary hoidap">
+				<div class="panel-heading">
+					<center>
+						<b><h3>
+								<span class="glyphicon glyphicon-education"> </span> XEM ĐIỂM KIỂM TRA
 								
-										<tr>
-											<td><%=i %></td>
-											<td><%=diem.getMaDeThi() %></td>
-											<td><%=diem.getDiem() %></td>
-											<td><%=diem.getNhanXet() %></td>
+							</h3></b>
+						
+					</center>
+				</div>
+			
+<!-- 			d -->
+				<div class="panel-body">
+					<div class="row">
+						<div class="content col-md-12 col-sm-9 col-xs-12">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-11">
+										<div class="panel panel-default">
+										<div class="col-md-7">
+										<%for(KhoaHocs kh: khDAO.getKhoaHocListByID(khoahocid)){ %>
+										
+										<h1>
+										Khoá học <%=kh.getAdTenKH() %>
+										</h1><%} %>
+								<table class="table table-bordered">
+									
+									<tbody>
+										<div class="col-md-8">
+										<h2>Thông tin:</h2>
+										<h3>ID: <%=users.getUserID() %></h3><br>
+										<h3>Email: <%=users.getUserEmail() %></h3><br>
+										<h3>Tên học viên: <%=users.getUserHoTen() %></h3><br>
+										</div>
+										<br>
+										
+										<%
+										for(Diems diem: diemDAO.getDeThiByKHandUser(khoahocid, userid)){ 
+										
+										%>
+										
+											
+											<h3>Mã khoá học: <%=diem.getMaDeThi() %></h3><br>
+											<h3>Điểm số: <%=diem.getDiem() %></h3><br>
+											<h3>Xếp loại: <%=diem.getNhanXet() %></h3><br>
 											<%} %>
 									</tbody>
 								</table>
 							</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
 						</div>
+
 					</div>
 				</div>
-
+				
+<!-- 				s -->
+				
 			</div>
 
 		</div>
-
 	</div>
+	
+	</section></section>
+	
+	
 	<jsp:include page="footer.jsp"></jsp:include>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script

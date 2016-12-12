@@ -62,7 +62,7 @@ users.UserID=<%=users.getUserID() %> && dangkykhoahoc.chophep='1' ;</sql:query>
         
                    <a href="thong-tin-ca-nhan" class="dropntn" title="Người dùng!" style="margin-left: 5px;"><%=users.getUserHoTen()%></a>
                     <div class="dropdown right">
-                	 			 <%
+                	 					 <%
                                          for(Users u:userdao.getUsersListByID(String.valueOf(users.getUserID()))){
                                               %>
                 									<img src="<%=request.getContextPath()%>/fileUpload/<%=u.getUserHinhAnh() %>" atl="Không có hình đại diện" class="img-circle img-thumbnail" align="bottom" width="40" height="40" />

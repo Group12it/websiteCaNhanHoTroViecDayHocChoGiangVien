@@ -4,7 +4,7 @@ public class Diems {
 
 	private long MaDeThi;
 	private long UserID;
-	private float Diem;
+	private String Diem;
 	private String NhanXet;
 	public Diems() {
 		super();
@@ -21,10 +21,10 @@ public class Diems {
 	public void setUserID(long userID) {
 		UserID = userID;
 	}
-	public float getDiem() {
+	public String getDiem() {
 		return Diem;
 	}
-	public void setDiem(float diem) {
+	public void setDiem(String diem) {
 		Diem = diem;
 	}
 	public String getNhanXet() {
@@ -33,4 +33,5 @@ public class Diems {
 	public void setNhanXet(String nhanXet) {
 		NhanXet = nhanXet;
 	}
+
 }

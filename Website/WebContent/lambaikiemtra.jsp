@@ -1,8 +1,5 @@
-<%@page import="model.KhoaHocs"%>
-<%@page import="model.Users"%>
-<%@page import="model.DeThis"%>
-<%@page import="dao.KhoaHocsDAO"%>
-<%@page import="dao.DeThiDAO"%>
+<%@page import="dao.*" %>
+<%@page import="model.*" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,7 +13,6 @@
 <link rel="shortcut icon" href="images/head.ico" type="image/x-icon" />
 <link rel="icon" href="images/head.ico" type="image/x-icon" />
 <link rel="stylesheet" href="css/multiChoice.css" type="text/css">
-<!-- <script type="text/javascript" src="js/time_olympic.js"></script> -->
 
 <script type="text/javascript">
 
@@ -36,31 +32,11 @@ function timeDisplay(txtTimeDislay, days, hours, minute, second, delay, btSave)
 
  if(days == 0 & hours == 0 & minute == 0 & second ==0 )
    {
-		document.getElementById('cau11').disabled=true;
-		document.getElementById('cau12').disabled=true;
-		document.getElementById('cau13').disabled=true;
-		document.getElementById('cau14').disabled=true;
-		document.getElementById('cau21').disabled=true;
-		document.getElementById('cau22').disabled=true;
-		document.getElementById('cau23').disabled=true;
-		document.getElementById('cau24').disabled=true;
-		document.getElementById('cau31').disabled=true;
-		document.getElementById('cau32').disabled=true;
-		document.getElementById('cau33').disabled=true;
-		document.getElementById('cau34').disabled=true;
-		document.getElementById('cau41').disabled=true;
-		document.getElementById('cau42').disabled=true;
-		document.getElementById('cau43').disabled=true;
-		document.getElementById('cau44').disabled=true;
-		document.getElementById('cau51').disabled=true;
-		document.getElementById('cau52').disabled=true;
-		document.getElementById('cau53').disabled=true;
-		document.getElementById('cau54').disabled=true;
+		
+		document.getElementById('formlambai').disabled=true;
 		
 	}
-
-
-    var i=0;
+   var i=0;
     if(btSave)
     {
         paramSave=btSave;
@@ -84,14 +60,11 @@ function timeDisplay(txtTimeDislay, days, hours, minute, second, delay, btSave)
                 }
         } 
     }
-    
-   
-
-    if (days >= 0) {
+     if (days >= 0) {
         var hoursStr = ((hours < 10) ? '0' : '') + hours;
         var minuteStr = ((minute < 10) ? '0' : '') + minute;
         var secondStr = ((second < 10) ? '0' : '') + second;
-
+        
       document.getElementById(txtTimeDislay).innerHTML = 'Còn '+days+' ngày '+hoursStr + ':' + minuteStr + ':' + secondStr; 
         document.getElementById(txtTimeDislay).innerHTML = '' + hoursStr + ':' + minuteStr + ':' + secondStr;
 
@@ -114,7 +87,7 @@ function timeDisplay(txtTimeDislay, days, hours, minute, second, delay, btSave)
 			users = (Users) session.getAttribute("user");
 		}
 
-		DeThiDAO dethiDAOS = new DeThiDAO();
+		CauHoiDAO cauhoiDAO=new CauHoiDAO();
 		KhoaHocsDAO khoahocDAOs = new KhoaHocsDAO();
 		String khoahocid = "";
 		if (request.getParameter("khoahoc") != null) {
@@ -131,7 +104,7 @@ function timeDisplay(txtTimeDislay, days, hours, minute, second, delay, btSave)
 
 						<div class="col-md-12">
 							
-								<form action="lam-bai-thi-trac-nghiem" method="post">
+								<form action="lam-bai-xong" method="post">
 							
 							<div class="panel panel-primary" style="padding-top: 0px">
 								<div class="panel panel-default">
@@ -170,65 +143,78 @@ function timeDisplay(txtTimeDislay, days, hours, minute, second, delay, btSave)
 														<!-- kết thúc lấy đề bài-->
 
 														<table>
-															<%
-																for (DeThis dt : dethiDAOS.getDeThiByMaKH(khoahocid)) {
-															%>
-															<embed
-																src="<%=request.getContextPath()%>/fileUpload/<%=dt.getFile()%>"
-																height="400px;" width="100%">
-															</embed>
+														
+															<form id="formlambai"  method="post">
+				<div class="form-group col-sm-offset-0">
 
-															<%
-																}
-															%>
+				<div class="alert alert-info">Phần trả lời trắc
+														nghiệm</div>
+					<%
+					
+					int dem=0;
+					int count=0;
+					for(CauHoi c:cauhoiDAO.getCauHoiByMaKH(khoahocid)){dem++; %>
+					
+					<section id="miSlide" class="carousel sline col-md-12"
+							data-interval="false">
+							<div class="carousel-inner">
+								<div class="item active">
 
+									<div class=" panel panel-warning ">
+										<div class="panel-heading">
+											<div style="font-size: 18px">
+												<p>
+													<span class="label label-primary">Câu <%=dem %> :</span>
+													<strong><%=c.getNoiDung() %> </strong>
+												</p>
+												
+											</div>
+										</div>
+										<div class="panel-body">
+											<div class="input-group">
+												
+												<div>
+													<input type="radio" name="<%=c.getMaCau() %>"
+														class="checkCauHoi" value="A"><label>A: 
+															<%=c.getDanA() %>
+													</label>
+												</div>
+												<div>
+													<input type="radio" name="<%=c.getMaCau() %>"
+														class="checkCauHoi" value="B"><label>B: 
+														<%=c.getDanB() %>
+													</label>
+												</div>
+												<div>
+													<input type="radio" name="<%=c.getMaCau() %>"
+														class="checkCauHoi" value="C"><label>C:
+															<%=c.getDanC() %>
+													</label>
+												</div>
+												<div>
+													<input type="radio" name="<%=c.getMaCau() %>"
+														class="checkCauHoi" value="D"><label>D:
+															<%=c.getDanD() %>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</section>
+							<%} %>
+				</div>
+				
+			</form>
 														</table>
 														<br>
 														<br>
 														<br>
 
 													</div>
-													<!-- câu trả lời -->
-
-													<div class="alert alert-info">Phần trả lời trắc
-														nghiệm</div>
-													<div class="col-md-9">
-														<span class="label label-primary">Câu 1 :</span> A <input
-															type="radio" name="cau1" value="A" id="cau11"> B
-														<input type="radio" name="cau1" value="B" id="cau12">
-														C <input type="radio" name="cau1" value="C" id="cau13">
-														D <input type="radio" name="cau1" value="D" id="cau14">
-
-														<br>
-														<br> <span class=" label label-primary">Câu 2
-															:</span> A <input type="radio" name="cau2" value="A" id="cau21">
-														B <input type="radio" name="cau2" value="B" id="cau22">
-														C <input type="radio" name="cau2" value="C" id="cau23">
-														D <input type="radio" name="cau2" value="D" id="cau24">
-
-														<br>
-														<br> <span class="label label-primary">Câu 3 :</span>
-														A <input type="radio" name="cau3" value="A" id="cau31">
-														B <input type="radio" name="cau3" value="B" id="cau32">
-														C <input type="radio" name="cau3" value="C" id="cau33">
-														D <input type="radio" name="cau3" value="D" id="cau34">
-														<br>
-														<br> <span class="label label-primary">Câu 4 :</span>
-														A <input type="radio" name="cau4" value="A" id="cau41">
-														B <input type="radio" name="cau4" value="B" id="cau42">
-														C <input type="radio" name="cau4" value="C" id="cau43">
-														D <input type="radio" name="cau4" value="D" id="cau44">
-														<br>
-														<br> <span class="label label-primary">Câu 5 :</span>
-														A <input type="radio" name="cau5" value="A" id="cau51">
-														B <input type="radio" name="cau5" value="B" id="cau52">
-														C <input type="radio" name="cau5" value="C" id="cau53">
-														D <input type="radio" name="cau6" value="D" id="cau54">
-
-													</div>
-
-
-
+										
 												</div>
 
 
@@ -237,28 +223,14 @@ function timeDisplay(txtTimeDislay, days, hours, minute, second, delay, btSave)
 									</div>
 								</div>
 
-									<%
-										for (DeThis dt: dethiDAOS.getDeThiByMaKH(khoahocid)) {
-									%>
-									<input type="hidden" value="<%=dt.getMaDeThi()%>" name="makhoahoc">
-									<%
-										}
-									%>
-									<%
-										if (users != null) {
-									%>
-									<input type="hidden" name="userid"
-										value="<%=users.getUserID()%>">
-									<%
-										}
-									%>
-
 									<center>
-										<button id="btnnop" type="submit" class="btn btn-info"
+										<button id="btnnop" type="" class="btn btn-info"
 											onclick="return confirmAction()">Nộp bài</button>
 									</center>
 									<br>
-								
+					<input type="hidden" name="makh" value="<%=khoahocid%>">
+					<input type="hidden" name="userid" value="<%=users.getUserID()%>">
+					<input type="hidden" name="dem" value="<%=dem %>">			
 							</div>
 							</form>
 						</div>

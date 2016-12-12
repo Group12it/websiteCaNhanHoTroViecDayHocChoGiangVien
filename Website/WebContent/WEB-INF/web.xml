@@ -449,6 +449,18 @@
     <servlet-name>adminGiangDaySua_Upfile.jsp</servlet-name>
     <url-pattern>/sua-chi-tiet-khoa-hoc</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>adXemDethi.jsp</servlet-name>
+    <jsp-file>/adXemDethi.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adXemDethi.jsp</servlet-name>
+    <url-pattern>/xem-de-thi</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>

@@ -30,6 +30,9 @@
 	<% 
 		DeThiDAO dethidao=new DeThiDAO();
 	
+		KhoaHocsDAO khDAO=new KhoaHocsDAO();
+		
+	
 	%>
 	
 	
@@ -124,14 +127,16 @@
                                  
                                  	<%
 											int i = 0;
-											for (DeThis dt : dethidao.getDeThi()) {
+											
+                                 	
+                                 	for (KhoaHocs kh:khDAO.getKhoaHocList()) {
 												i++;
 										%>
 										<tr>
 											<td><%=i%></td>
-											<td><%=dt.getTenDeThi()%></td>
+											<td><%=kh.getAdTenKH()%></td>
 											<td><center>
-													<a href="bai-nop-cua-hoc-vien?madethi=<%=dt.getMaDeThi()%>&makh=<%=dt.getMaKH()%>"
+													<a href="bai-nop-cua-hoc-vien?makh=<%=kh.getAdMaKH()%>"
 														class="btn btn-info btn-sm" style="background: #ff3300;">
 														<span class="glyphicon glyphicon-view"></span>Xem chi tiết
 													</a>

@@ -35,7 +35,7 @@ public class NhapDiem extends HttpServlet {
 		String mades=request.getParameter("made");
 		diems.setMaDeThi(Long.parseLong(mades));
 		diems.setUserID(Long.parseLong(request.getParameter("userid")));
-		diems.setDiem(Long.parseLong(request.getParameter("diem")));
+		//diems.setDiem(Long.parseLong(request.getParameter("diem")));
 		diems.setNhanXet(request.getParameter("nhanxet"));
 		
 		diemsDAO.InsertDiem(diems);

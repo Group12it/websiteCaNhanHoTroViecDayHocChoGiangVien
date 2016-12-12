@@ -53,7 +53,7 @@ public class CauHoiServlet extends HttpServlet {
 			cauhoi.setDanDung(caudung);
 			
 			cauhoiDAO.CauHoi(cauhoi);
-			url = "/adDanhSachDeThi.jsp";
+			url = "/them-de-thi-trac-nghiem";
 		
 		
 

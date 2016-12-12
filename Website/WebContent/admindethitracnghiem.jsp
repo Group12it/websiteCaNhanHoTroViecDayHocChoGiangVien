@@ -1,3 +1,6 @@
+<%@ page import="java.sql.*" %>
+<%@ page import="connect.*" %>
+<% Class.forName("com.mysql.jdbc.Driver"); %>
 <?xml version="1.0" encoding="utf-8" ?>
 <%@ page import="java.lang.*" %>
 <%@ page import="model.*" %>
@@ -113,51 +116,107 @@
                     </div>  
                     </div>
                     </div>    
-                     <form method="post" action="dethi" enctype="multipart/form-data" >
+                     <form method="post" action="cau-hoi">
                     <div class="col-md-9  ">
                     <ul class="nav navs-tabs-brand">
-                             <a class="list-group-item text-center" href="#" style="font-size: 20px;color: blue;"
-                        type="text/css" media="screen">
-                                 Soạn Đề Thi Trắc Nghiệm</a> <br>  <label
-                                 style="font-size: 15px" >Tên Đề Thi</label>
-                                 
-                                  <input type="text" class="form-control" name="tendethi" id="DeThiID" value ="" placeholder="Tên Đề Thi" required autofocus >
+                            <li><a class="list-group-item text-center" href="#" style="font-size: 20px;color: blue;"
+                        	type="text/css" media="screen">
+                                 Soạn Đề Thi Trắc Nghiệm</a></li> 
                                   
-                                 
-                                	 <div class="row">
-                                 
-                                
-                                  
-                                  <p align=""><font face="Arial">
+                                  <table class="table table-striped" border="1">
+									<thead>
+										<tr>
+											<th dir="rtl" style="background: #0CC">STT</th>
+											<th dir="rtl" style="background: #0CC">Đề thi</th>
+											<th dir="rtl" style="background: #0cc">Số câu</th>
+											<th dir="rtl" style="background: #0CC">Chi Tiết</th>
+										</tr>
+									</thead>
+									<tbody>
+									
+									  <% 
+                                            
+                                            Connection connection = DBConnect.getConnection();
+
+									            Statement statement = connection.createStatement() ;
+									            ResultSet resultset = 
+									                statement.executeQuery("select * from viewdethi") ; 
+									      	  %>
+									
+									            <% while(resultset.next()){ %>
+									            <tr>
+									                <td> <%= resultset.getString(1) %></td>
+									                <td> <%= resultset.getString(2) %></td>
+									                <td> <%= resultset.getString(4) %></td>
+									                 <td width="21%" >
+									                 
+                                                   <center>
+													<a
+														href="xem-de-thi?makhoa=<%=resultset.getString(1) %>"
+														class="btn btn-info btn-sm" style="background: #ff3300;">
+														<span class="glyphicon glyphicon-view"></span>Xem chi tiết
+													</a>
+												</center> </td>
+									              
+									            </tr>
+									            <% } %>
+									
+									
+									
+
+
+									</tbody>
+								</table>
+                              	  <div class="row">
                                   <div class="form-group">
                                    <label class="control-label col-md-2">Khoá học</label>
                                   <div class="col-md-12">
-                                 	 <select name="mhoc" id="mhoc" class="form-control" style="font-size: 15px;width: 100%"  >
+                                 	 <select name="makh" id="mhoc" class="form-control" style="font-size: 15px;width: 100%"  >
                                 <%for (KhoaHocs kh :khoahocsDAO.getKhoaHocList()) { %>
-                                	<option value="<%=kh.getAdMaKH() %>" selected ><%=kh.getAdTenKH() %></option>
+                                	<option value="<%=kh.getAdMaKH() %>"><%=kh.getAdTenKH() %></option>
                             
                                 <%} %>
                                     </select>
                                     </div>
                                      </div>
                                     </div>
+                                    
+                                     <label style="font-size: 15px" >Câu hỏi</label>
+                                 <input type="text" class="form-control" name="noidung"  value ="" placeholder="Tên Đề Thi" required autofocus />
+                                 
+                                 <label style="font-size: 15px" >Đáp án A</label>
+                                 
+                                  <input type="text" class="form-control" name="caua"  value ="" placeholder="Tên Đề Thi" required autofocus />
+                                 <label style="font-size: 15px" >Đáp án B</label>
+                                 
+                                  <input type="text" class="form-control" name="caub"  value ="" placeholder="Tên Đề Thi" required autofocus />
+                                 <label style="font-size: 15px" >Đáp án C</label>
+                                 
+                                  <input type="text" class="form-control" name="cauc"  value ="" placeholder="Tên Đề Thi" required autofocus />
+                                 <label style="font-size: 15px" >Đáp án D</label>
+                                 
+                                  <input type="text" class="form-control" name="caud"  value ="" placeholder="Tên Đề Thi" required autofocus />
+                                
+                                    
+                                     <label style="font-size: 15px" >Đáp án đúng</label>
+                                 
+                                 <select name="caudung" class="form-control" style="font-size: 15px;width: 100%" >
+                                 <option value="A">A</option>
+                                 <option value="B">B</option>
+                                 <option value="C">C</option>
+                                 <option value="D">D</option>
+                                 </select>
                                     <br></br>
-							        <div class="form-group">
-							       	<label class="control-label col-md-2">Tải đề thi lên</label>
-							         <input type="file" id="fileContetnts" name="file"required autofocus title="Chỉ có đề thi dạng txt mới hiển thị được trên giao diện"/>
-                                      </div>
-                                     
-                                     
-                                        <div class="col-md-1">
-                   
+							   
                                         <button class="btn btn-info" type="submit" onclick="return formaction()">Tạo đề thi</button>
+                           			 </ul>
                            			  </div>
                     
-                                   <!--code hien file text đề thi -->                      
+                                      </form>              
                               
-                       </ul>
+                      
                      </div>
-                     </form>
+                     
                 </div>
                 
             </div>
@@ -170,7 +229,7 @@
           </div>
         </div>
       </div>
-    </div>
+
 <br></br>
 <jsp:include page="footer.jsp"></jsp:include>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -184,4 +243,4 @@
     }</script>
     
   </body>
-</html>
+</html>>

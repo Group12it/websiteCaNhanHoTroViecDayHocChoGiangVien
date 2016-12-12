@@ -21,13 +21,14 @@ import model.Diems;
 import model.LamBaiKiemTra;
 import model.Users;
 
-@WebServlet("/KiemTraServlet")
+@WebServlet("/lam-bai-xong")
 public class KiemTraServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public KiemTraServlet() {
 		super();
 	}
+	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -71,11 +72,34 @@ public class KiemTraServlet extends HttpServlet {
 				}
 			
 			}
+			float kq=count*(float)10/dem;
+			
 			
 			diem.setMaDeThi(Long.parseLong(makh));
 			diem.setUserID(Long.parseLong(userid));
-			diem.setDiem(count*(float)2.5);
-			diem.setNhanXet("g");
+			diem.setDiem(String.valueOf(count*(float)10/dem));
+			if(kq>=9){
+				diem.setNhanXet("Xuất sắc");
+			}
+			if(kq<9 && kq>=8){
+				diem.setNhanXet("Giỏi");
+			}
+			if(kq<8 &&kq>=6.5){
+				diem.setNhanXet("Khá");
+			}
+			if(kq>=5 &&kq<6.5){
+				diem.setNhanXet("Trung bình");
+			}
+			if(kq<5&&kq>=3.5){
+				diem.setNhanXet("Trung bình yếu");
+			}
+			if(kq<3.5){
+				diem.setNhanXet("Yếu");
+			}
+			
+				
+			
+			
 			diemDAO.InsertDiem(diem);
 			
 			System.out.println(count);

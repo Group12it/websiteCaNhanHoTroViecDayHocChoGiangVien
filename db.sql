@@ -103,7 +103,7 @@ CREATE TABLE `cauhoi` (
 
 LOCK TABLES `cauhoi` WRITE;
 /*!40000 ALTER TABLE `cauhoi` DISABLE KEYS */;
-INSERT INTO `cauhoi` VALUES (1,1480223244590,'sdfsfsd','sdfsdgsd','sdgsdfsdf','sdfsdfsdf','sdfsdfsd','A'),(2,1480223244590,'123','123','123','123','123','A'),(123,1480223244590,'(NU12312323LL)','123123','13123','213123123','123123123','A'),(141212312312311,1480223244590,'24124124','1241241241241','124124124124124','124124124124','124124124','A');
+INSERT INTO `cauhoi` VALUES (1,1480223244590,'sdfsfsd','sdfsdgsd','sdgsdfsdf','sdfsdfsdf','sdfsdfsd','A'),(2,1480223244590,'123','123','123','123','123','A'),(123,1480223244590,'(NU12312323LL)','123123','13123','213123123','123123123','A'),(1481508158059,1480657717534,'sdfds','sdf','dsf','sdf','sdfsdf','A'),(1481508648560,1480657717534,'sdfds','sdf','dsf','sdf','sdfsdf','A'),(1481508746654,1480657717534,'sdfds','sdf','dsf','sdf','sdfsdf','A'),(141212312312311,1480223244590,'24124124','1241241241241','124124124124124','124124124124','124124124','A');
 /*!40000 ALTER TABLE `cauhoi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +192,7 @@ CREATE TABLE `dangkykhoahoc` (
 
 LOCK TABLES `dangkykhoahoc` WRITE;
 /*!40000 ALTER TABLE `dangkykhoahoc` DISABLE KEYS */;
-INSERT INTO `dangkykhoahoc` VALUES (1,1480223244590,'1'),(2,1480223244590,'1'),(4,1480223244590,'1'),(1478396124277,1480223244590,'1'),(1478396124277,1480223290372,'1');
+INSERT INTO `dangkykhoahoc` VALUES (1,1480223244590,'1'),(2,1480223244590,'1'),(4,1480223244590,'1'),(1478396124277,1480223244590,'1'),(1478396124277,1480223290372,'1'),(1478396124277,1480657717534,'1');
 /*!40000 ALTER TABLE `dangkykhoahoc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -301,7 +301,7 @@ CREATE TABLE `diem` (
 
 LOCK TABLES `diem` WRITE;
 /*!40000 ALTER TABLE `diem` DISABLE KEYS */;
-INSERT INTO `diem` VALUES (1480223244590,1478396124277,5,'g');
+INSERT INTO `diem` VALUES (1480223244590,4,2.5,'Yếu'),(1480223244590,1478396124277,10,'Xuất sắc'),(1480657717534,1478396124277,0,'Yếu');
 /*!40000 ALTER TABLE `diem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,7 +326,6 @@ CREATE TABLE `diembaitap` (
 
 LOCK TABLES `diembaitap` WRITE;
 /*!40000 ALTER TABLE `diembaitap` DISABLE KEYS */;
-INSERT INTO `diembaitap` VALUES (1,1478396124277,8,'Khá'),(1,1478396124277,10,'Tốt');
 /*!40000 ALTER TABLE `diembaitap` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -407,7 +406,7 @@ CREATE TABLE `lambaikiemtra` (
 
 LOCK TABLES `lambaikiemtra` WRITE;
 /*!40000 ALTER TABLE `lambaikiemtra` DISABLE KEYS */;
-INSERT INTO `lambaikiemtra` VALUES (1480223244590,1,1478396124277,'B'),(1480223244590,2,1478396124277,'A'),(1480223244590,123,1478396124277,'A'),(1480223244590,141212312312311,1478396124277,'B');
+INSERT INTO `lambaikiemtra` VALUES (1480223244590,1,4,'A'),(1480223244590,1,1478396124277,'A'),(1480223244590,2,4,'B'),(1480223244590,2,1478396124277,'A'),(1480223244590,123,4,'B'),(1480223244590,123,1478396124277,'A'),(1480223244590,141212312312311,4,'B'),(1480223244590,141212312312311,1478396124277,'A'),(1480657717534,1481508158059,1478396124277,'D'),(1480657717534,1481508648560,1478396124277,'D'),(1480657717534,1481508746654,1478396124277,'D');
 /*!40000 ALTER TABLE `lambaikiemtra` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -563,6 +562,21 @@ SET character_set_client = utf8;
  1 AS `DapAnID`,
  1 AS `DeThiID`,
  1 AS `ChuoiDapAn`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `viewdethi`
+--
+
+DROP TABLE IF EXISTS `viewdethi`;
+/*!50001 DROP VIEW IF EXISTS `viewdethi`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `viewdethi` AS SELECT 
+ 1 AS `MaKH`,
+ 1 AS `TenKH`,
+ 1 AS `MaCH`,
+ 1 AS `SoCau`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -760,6 +774,24 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `viewdethi`
+--
+
+/*!50001 DROP VIEW IF EXISTS `viewdethi`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewdethi` AS (select `khoahoc`.`MaKH` AS `MaKH`,`khoahoc`.`TenKH` AS `TenKH`,`cauhoi`.`MaCH` AS `MaCH`,count(`cauhoi`.`MaCH`) AS `SoCau` from (`khoahoc` join `cauhoi`) where (`cauhoi`.`MaKH` = `khoahoc`.`MaKH`) group by `khoahoc`.`MaKH`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `viewhannopbai`
 --
 
@@ -858,4 +890,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-12  0:08:44
+-- Dump completed on 2016-12-12 10:59:52

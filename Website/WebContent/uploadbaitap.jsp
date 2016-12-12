@@ -58,6 +58,11 @@
 			 kk=1;
 		}
 		
+		DiemBaiTapDAO diembtDAO=new DiemBaiTapDAO();
+		
+		
+		
+		
 	%>
 	<div id="wrapper">
 		<div class="container">
@@ -121,6 +126,19 @@
 											</thead>
 											<tbody>
 												<tr>
+												<th>Điểm</th>
+												<%
+												Connection connect = DBConnect.getConnection();
+												Statement statements =connect.createStatement();
+												ResultSet res = statements.executeQuery("select * from diembaitap where MaBT='" + s.getIDBaiTap() + "'");
+													while(res.next()){
+												%>
+													<th><%=res.getString(3) %></th>
+												<%} %>
+												</tr>
+											
+											
+												<tr>
 													<th>Trạng thái nộp</th>
 												<%if(kk==1){%>
 													<th>Đã nộp</th>
@@ -135,7 +153,6 @@
 												</tr>
 												<tr>
 													<%
-														Connection connect = DBConnect.getConnection();
 															Statement statement = connect.createStatement();
 															ResultSet resultset = statement
 																	.executeQuery("select * from viewhannopbai where IDBaiTap='" + s.getIDBaiTap() + "'");
