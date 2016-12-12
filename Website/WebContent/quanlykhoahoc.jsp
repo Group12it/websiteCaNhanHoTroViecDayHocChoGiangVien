@@ -30,9 +30,9 @@
 <body>
 
 <jsp:include page="header.jsp"></jsp:include>
-<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/>
+<%-- <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/web" user="root" password="admin"/> --%>
 
-<sql:query dataSource="${DBConnect }" var="result"> select * from khoahoc;</sql:query>
+<%-- <sql:query dataSource="${DBConnect }" var="result"> select * from khoahoc;</sql:query> --%>
 
 <% KhoaHocsDAO khoahocdao=new KhoaHocsDAO(); %> 
   

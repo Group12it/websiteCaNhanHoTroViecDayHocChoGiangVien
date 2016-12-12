@@ -47,8 +47,7 @@
 
 		Connection connection = DBConnect.getConnection();
 		Statement statement = connection.createStatement();
-		ResultSet resultset = statement
-				.executeQuery("select * from viewdanhsachnopbai where DeThiID='" + madethi + "'");
+		ResultSet resultset = statement.executeQuery("select * from viewhocviennopbai where MaDeThi='" +makh + "'");
 	%>
 
 
@@ -140,10 +139,9 @@
 									<thead>
 										<tr>
 											<th dir="rtl" style="background: #0CC">STT</th>
-
-											<th dir="rtl" style="background: #0CC">mã học viên</th>
+											<th dir="rtl" style="background: #0CC">Mã học viên</th>
 											<th dir="rtl" style="background: #0CC">Tên học viên</th>
-											<th ir="rtl" style="background: #0CC">Chi Tiết</th>
+											<th dir="rtl" style="background: #0cc">Điểm kiểm tra</th>
 										</tr>
 
 									</thead>
@@ -160,12 +158,9 @@
 										%>
 										<tr>
 											<td><%=i%></td>
-											<td><%=resultset.getString(1)%></td>
 											<td><%=resultset.getString(2)%></td>
-											<td><a
-												href="chi-tiet-bai-nop-cua-hoc-vien?madethi=<%=resultset.getString(4)%>&dapanhv=<%=resultset.getString(3)%>"><span
-													class="glyphicon glyphicon-folder-open" aria-hidden="">&nbsp;Xem
-														chi tiết</span></a><br></td>
+											<td><%=resultset.getString(3)%></td>
+											<td><%=resultset.getString(4) %></td>
 										</tr>
 										<%
 											}

@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,6 +14,27 @@ import model.LamBaiKiemTra;
 public class LamBaiKiemTraDAO {
 	Connection connection = DBConnect.getConnection();
 
+	
+	
+public boolean checktrangthaiKT(String userid,String makh) {
+		
+		String sql = "SELECT * FROM lambaikiemtra  where UserID = '" + userid + "' and MaKH='"+makh+"'";
+		PreparedStatement ps;
+		try {
+			ps = connection.prepareCall(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				connection.close();
+				return true;
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(LamBaiKiemTraDAO.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return false;
+	}
+	
+	
+	
 	public boolean LamBai(LamBaiKiemTra l) {
 
 		String sql = "Insert into lambaikiemtra  values(?,?,?,?)";

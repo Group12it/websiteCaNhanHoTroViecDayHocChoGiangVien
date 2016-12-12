@@ -128,6 +128,7 @@
 												<tr>
 												<th>Điểm</th>
 												<%
+												int ktra;
 												Connection connect = DBConnect.getConnection();
 												Statement statements =connect.createStatement();
 												ResultSet res = statements.executeQuery("select * from diembaitap where MaBT='" + s.getIDBaiTap() + "'");
@@ -230,7 +231,7 @@
 												
 											%>
 											<button disabled="disabled" class="btn btn-info navbar-btn"
-										id="btnsubmit" name="btnsubmit" style="margin-left: 500px;">Nộp
+										id="btnsubmit" name="btnsubmit" style="margin-left: 500px;">Đã nộp
 										bài tập</button>
 											<%} %>	
 											

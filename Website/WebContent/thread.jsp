@@ -24,10 +24,10 @@
 
 <p></p>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<%-- <jsp:include page="header.jsp"></jsp:include>
 	<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
 		url="jdbc:mysql://localhost/web" user="root" password="admin" />
-
+ --%>
 
 	<%
 		Users users = null;
@@ -36,7 +36,7 @@
 		}
 	%>
 
-	<sql:query dataSource="${DBConnect }" var="result"> select * from thread;</sql:query>
+<%-- 	<sql:query dataSource="${DBConnect }" var="result"> select * from thread;</sql:query> --%>
 
 	<%
 		ThreadsDAO threadsDAO = new ThreadsDAO();

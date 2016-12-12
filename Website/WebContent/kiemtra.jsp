@@ -1,3 +1,6 @@
+<%@ page import="java.sql.*"%>
+<%@ page import="connect.*"%>
+<%@ page import="java.util.*"%>
 <%@page import="java.*" %>
 <%@page import="dao.*" %>
 <%@page import="model.*" %>
@@ -27,27 +30,27 @@
   <jsp:include page="header.jsp"></jsp:include>
   
   
-  <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
+  <%-- <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost/web" user="root" password="admin" />
-
+ --%>
       <%
             
-      		
+      		LamBaiKiemTraDAO lambaiktDAO=new LamBaiKiemTraDAO();
       		Users users = null;
             if (session.getAttribute("user") != null) {
                 users = (Users) session.getAttribute("user");
             }
-        %>
+            
+            long userid= users.getUserID();
+            Connection connection = DBConnect.getConnection();
+    		Statement statement = connection.createStatement();
+    		ResultSet resultset = statement
+    				.executeQuery("select DISTINCT TenKH,khoahoc.MaKH from cauhoi,khoahoc,dangkykhoahoc,users where dangkykhoahoc.UserID=users.UserID and dangkykhoahoc.MaKH=cauhoi.MaKH and dangkykhoahoc.chophep='1'  and users.UserID='"+userid+"' && cauhoi.MaKH=khoahoc.MaKH");
+           
+    		
+    		
+       %>
                        
-<sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=users.getUserEmail()%>";</sql:query> 
-        
-<sql:query dataSource="${DBConnect }" var="khoahoccuatoi"> select DISTINCT TenKH,khoahoc.MaKH from cauhoi,khoahoc,dangkykhoahoc,users
- where 
-dangkykhoahoc.UserID=users.UserID
-&& dangkykhoahoc.MaKH=cauhoi.MaKH 
-&& dangkykhoahoc.chophep='1' 
-&& users.UserID=<%=users.getUserID() %>
-&& cauhoi.MaKH=khoahoc.MaKH ;</sql:query>
   <div id="wrapper">
       <div class="container">
         <div class="row">
@@ -72,18 +75,44 @@ dangkykhoahoc.UserID=users.UserID
                           </tr>
                         </thead>
                        
-                       	<c:set var="count" value="0"></c:set>
+                       	<%	
+											int i = 0;
+											while (resultset.next()) {
+												i++;
+												
+										%>
+										
+										
+										 <tbody>
+                        <tr>
+                       
+                        <td><%=resultset.getString(2) %></td>
+                      	<td> <%=resultset.getString(1) %></td>
+                      	<td>
+                      	
+                      	<a href="lam-bai-kiem-tra?khoahoc=<%=resultset.getString(2) %>">Vào thi</a></td>
+                      
+                        <td><a href="xem-diem?khoahoc=<%=resultset.getString(2) %>&userid=<%=users.getUserID()%>"> Xem kết quả </a></td>
+                          </tr>
+                          </tbody>
+										
+										
+										<%} %>
+                       
+                       
+                     <%--   	<c:set var="count" value="0"></c:set>
                         <c:forEach var="rows" items="${khoahoccuatoi.rows}">
+                      
                         <tbody>
                         <tr>
-                        <c:set var="count"  value="${count+1}" /> <%--Tăng biến đếm lên 1 đơn vị--%>
+                        <c:set var="count"  value="${count+1}" /> Tăng biến đếm lên 1 đơn vị
                         <td>${rows.MaKH }</td>
                       	<td> ${rows.TenKH }</td>
                       	<td><a href="lam-bai-kiem-tra?khoahoc=${rows.MaKH }">Vào thi</a></td>
                            <td><a href="xem-diem?khoahoc=${rows.MaKH }&userid=<%=users.getUserID()%>"> Xem kết quả </a></td>
                           </tr>
                           </tbody>
-                          </c:forEach>
+                          </c:forEach> --%>
                   
                   </table>
                     </div>

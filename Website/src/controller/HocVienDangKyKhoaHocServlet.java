@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.DangKyKhoaHocDAO;
-import dao.KhoaHocsDAO;
 import model.DangKyKhoaHoc;
 
 @WebServlet("/dang-ky-khoa-hoc")
