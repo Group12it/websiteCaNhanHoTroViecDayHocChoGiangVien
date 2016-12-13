@@ -126,6 +126,7 @@
                 </div> 
                 </div></div>
      <br><br><br>
+     <br><br><br><br><br><br>
 	<jsp:include page="footer.jsp"></jsp:include>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   
