@@ -33,8 +33,8 @@
 <%-- <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" --%>
 <%-- 	url="jdbc:mysql://node177650-nhom12it.jelastic.servint.net/web" user="root" password="CCJD98OftR" /> --%>
 
-<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://localhost/web" user="root" password="admin" />
+<%-- <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" --%>
+<%-- 		url="jdbc:mysql://localhost/web" user="root" password="admin" /> --%>
 	<%
 		Users users = null;
 		if (session.getAttribute("user") != null) {
@@ -42,7 +42,7 @@
 		}
 	%>
 
-	<sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=users.getUserEmail()%>";</sql:query>
+<%-- 	<sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=users.getUserEmail()%>";</sql:query> --%>
 
 
 	<%

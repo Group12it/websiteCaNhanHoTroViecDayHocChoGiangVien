@@ -34,12 +34,12 @@
                 users = (Users) session.getAttribute("user");
             }
         %>
-<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://localhost/web" user="root" password="admin" />
+<%-- <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" --%>
+<%-- 		url="jdbc:mysql://localhost/web" user="root" password="admin" /> --%>
 
 <%-- <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://node177650-nhom12it.jelastic.servint.net/web" user="root" password="CCJD98OftR"/> --%>
 
-<sql:query dataSource="${DBConnect }" var="result"> select * from users where UserID=<%=users.getUserID() %>;</sql:query>
+<%-- <sql:query dataSource="${DBConnect }" var="result"> select * from users where UserID=<%=users.getUserID() %>;</sql:query> --%>
 	<jsp:include page="header.jsp"></jsp:include>
  <div id="wrapper">
       <div class="container">

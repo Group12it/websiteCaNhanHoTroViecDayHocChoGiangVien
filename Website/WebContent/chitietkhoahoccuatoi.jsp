@@ -32,8 +32,8 @@ word-wrap: break-word;
 
 <jsp:include page="header.jsp"></jsp:include>
 
-<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://localhost/web" user="root" password="admin" />
+<%-- <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" --%>
+<%-- 		url="jdbc:mysql://localhost/web" user="root" password="admin" /> --%>
 	
 <%-- <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" --%>
 <%-- 	url="jdbc:mysql://node177650-nhom12it.jelastic.servint.net/web" user="root" password="CCJD98OftR" /> --%>
@@ -45,7 +45,7 @@ word-wrap: break-word;
             }
         %>
                        
-<sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=users.getUserEmail()%>";</sql:query>
+<%-- <sql:query dataSource="${DBConnect }" var="result"> select * from users where Email="<%=users.getUserEmail()%>";</sql:query> --%>
 <% ChiTietKhoaHocDAO chitietkhoahocDAO=new ChiTietKhoaHocDAO();
 	KhoaHocsDAO khoahocDao=new KhoaHocsDAO();
 	String khoahocid="";
