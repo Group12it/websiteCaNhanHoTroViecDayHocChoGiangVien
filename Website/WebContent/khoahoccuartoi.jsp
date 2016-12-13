@@ -30,9 +30,9 @@
  %>  
    
 <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://localhost/web" user="root" password="admin" />
+ 		url="jdbc:mysql://localhost/web" user="root" password="admin" /> 
  
-<%-- <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://node177650-nhom12it.jelastic.servint.net/web" user="root" password="CCJD98OftR"/> --%>
+<%-- <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://node177650-nhom12it.jelastic.servint.net/web" user="root" password="CCJD98OftR"/>  --%>
 
 <sql:query dataSource="${DBConnect }" var="result"> SELECT DISTINCT TenKH from khoahoc,dangkykhoahoc,users where khoahoc.MaKH=dangkykhoahoc.MaKH && dangkykhoahoc.UserID=users.UserID &&
 users.UserID=<%=users.getUserID() %> && dangkykhoahoc.chophep='1' ;</sql:query>

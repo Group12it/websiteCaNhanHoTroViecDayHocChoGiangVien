@@ -52,7 +52,7 @@
 		Connection connection = DBConnect.getConnection();
 		Statement statement = connection.createStatement();
 		ResultSet resultset = statement
-				.executeQuery("select * from viewdanhsachbaitap where baitapID='" + mabaitap + "'");
+				.executeQuery("select * from viewdanhsachbaitap where baitapID='" + mabaitap + "' and UserID='"+userid+"'");
 	%>
 
 	<div id="wrapper">

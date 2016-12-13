@@ -142,9 +142,8 @@
 			</div>
 		</div>
 	</div>
-	</section> 
-	</section>
-<br><br><br><br><br>
+	</section> </section>
+
 	<jsp:include page="footer.jsp"></jsp:include>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

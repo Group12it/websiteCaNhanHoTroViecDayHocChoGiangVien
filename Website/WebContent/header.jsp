@@ -39,11 +39,12 @@
 </head>
 
 <body ng-app="myApp" ng-controller="userCtrl">
-	<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://localhost/web" user="root" password="admin" />
+	
+ 	<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" 
+		url="jdbc:mysql://localhost/web" user="root" password="admin" /> 
 		
-	<%-- <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" --%>
-	<%-- 	url="jdbc:mysql://node177650-nhom12it.jelastic.servint.net/web" user="root" password="CCJD98OftR" /> --%>
+<%-- 	 <sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" --%>
+<%-- 	 	url="jdbc:mysql://node177650-nhom12it.jelastic.servint.net/web" user="root" password="CCJD98OftR" /> --%>
 
 	<%
 		UsersDAO userdao = new UsersDAO();
@@ -69,15 +70,17 @@ users.UserID=<%=users.getUserID()%> && dangkykhoahoc.chophep='1' ;</sql:query>
 				</h1>
 			</div>
 			<div class="navbar-right">
-
+			
+				<%for (Users us : userdao.getUsersListByID(String.valueOf(users.getUserID()))) {%>
+				<a href="thong-tin-ca-nhan" class="dropntn" title="Người dùng!"
+					style="margin-left: 5px;"><%=us.getUserHoTen()%></a>
+					<%} %>
 				
 				
+				<div class="dropdown right">
 					<%
 						for (Users u : userdao.getUsersListByID(String.valueOf(users.getUserID()))) {
 					%>
-					<a title="Người dùng!"
-					style="margin-left: 5px;"><%=u.getUserHoTen()%></a>
-					<div class="dropdown right">
 					<img
 						src="<%=request.getContextPath()%>/fileUpload/<%=u.getUserHinhAnh()%>"
 						atl="Không có hình đại diện" class="img-circle img-thumbnail"

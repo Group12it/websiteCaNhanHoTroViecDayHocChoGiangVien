@@ -20,12 +20,14 @@
 
 <body>
 
-<%-- 	<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" --%>
-<%-- 		url="jdbc:mysql://node177650-nhom12it.jelastic.servint.net/web" --%>
-<%-- 		user="root" password="CCJD98OftR" /> --%>
-	<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://localhost/web" user="root" password="admin" />
-	<jsp:include page="header.jsp"></jsp:include>
+<%--  	<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" --%>
+<%--  		url="jdbc:mysql://node177650-nhom12it.jelastic.servint.net/web" --%>
+<%--  		user="root" password="CCJD98OftR" /> --%>
+	<sql:setDataSource var="DBConnect" driver="com.mysql.jdbc.Driver" 
+ 		url="jdbc:mysql://localhost/web" user="root" password="admin" /> 
+
+
+<jsp:include page="header.jsp"></jsp:include> 
 
 	<sql:query dataSource="${DBConnect }" var="result"> select * from chitietthread;</sql:query>
 
