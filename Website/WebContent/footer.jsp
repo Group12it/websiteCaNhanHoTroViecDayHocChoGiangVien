@@ -16,14 +16,14 @@
                         <div class="container col-md-12 col-xs-12" >
                             <div class="footer-info text-center" >
                             <p>
-						    <div>
-						          © 2016 All Rights Reserved  •  Design by : <font size="4" color="white" >Group 12</font>
-						          </div>
-						        </p>
-								<p>
-						        <img src="images/guimail.png"> Email hỗ trợ, góp ý: <i>nhom12it@gmail.com</i></img>
-									<a style="color:#fff" href="index.jsp" title="Website Cá nhân hỗ trợ giáo viên dạy học" target="_blank"> | Website Cá nhân hỗ trợ giáo viên dạy học</a>
-								</p>
+				<div>
+				 © 2016 All Rights Reserved  •  Design by : <font size="4" color="white" >Group 12</font>
+				</div>
+			</p>
+				<p>
+				<img src="images/guimail.png"> Email hỗ trợ, góp ý: <i>nhom12it@gmail.com</i></img>
+				<a style="color:#fff" href="index.jsp" title="Website Cá nhân hỗ trợ giáo viên dạy học" target="_blank"> | Website Cá nhân hỗ trợ giáo viên dạy học</a>
+				</p>
                             </div>
                         </div>
                     </footer>
