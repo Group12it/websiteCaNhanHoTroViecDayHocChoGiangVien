@@ -115,11 +115,6 @@
 
 											<form class="form" method="post" id="contactform"
 												action="GuiMailAll" role="form">
-												<!--                                                 <div class="form-group"> -->
-												<!--                                                     <label for="contactemail">Địa Chỉ Email</label> -->
-												<!--                                                     <input type="email" class="form-control" id="contactemail" placeholder="Nhập địa chỉ Email" required autofocus> -->
-												<!--                                                 </div> -->
-
 												<div class="form-group">
 													<label for="contactsubject">Gửi Tới</label>
 
