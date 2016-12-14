@@ -21,7 +21,7 @@
 						          </div>
 						        </p>
 								<p>
-						        <img src="images/guimail.png"> Email hỗ trợ, góp ý: <i>nhom12it@gmail.com mk nhom12spkt</i></img>
+						        <img src="images/guimail.png"> Email hỗ trợ, góp ý: <i>nhom12it@gmail.com</i></img>
 									<a style="color:#fff" href="index.jsp" title="Website Cá nhân hỗ trợ giáo viên dạy học" target="_blank"> | Website Cá nhân hỗ trợ giáo viên dạy học</a>
 								</p>
                             </div>
